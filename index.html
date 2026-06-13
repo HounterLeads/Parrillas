@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Parrillas · Hounter Leads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#050347;
+    --azul:#2025C9;
+    --peri:#6670FF;
+    --lav:#B098F0;
+    --bg:#F4F5FF;
+    --white:#FFFFFF;
+    --ink:#0B0A2E;
+    --muted:#6A6E96;
+    --line:#E2E3F5;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--bg);
+    color:var(--ink);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    min-height:100vh;
+  }
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(150deg,var(--navy) 0%,#0d0a63 55%,var(--azul) 130%);
+    color:#fff;padding:72px 24px 64px;position:relative;overflow:hidden;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-30%;right:-8%;width:46%;height:120%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);
+    filter:blur(30px);
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-40%;left:-6%;width:40%;height:120%;
+    background:radial-gradient(circle,rgba(176,152,240,.30) 0%,transparent 65%);
+    filter:blur(30px);
+  }
+  .hero-in{position:relative;z-index:2;max-width:920px;margin:0 auto}
+  .brand-row{display:flex;align-items:center;gap:12px;margin-bottom:40px}
+  .brand-logo{
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.5rem;color:#fff;
+    letter-spacing:-.5px;
+  }
+  .brand-logo b{font-weight:400}
+  .brand-logo span{font-weight:300;opacity:.85;font-style:normal;font-family:'Inter',sans-serif;font-size:1.1rem}
+  .pill{
+    display:inline-block;padding:7px 16px;border:1px solid rgba(176,152,240,.5);
+    color:var(--lav);font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;
+    border-radius:50px;margin-bottom:24px;font-weight:600;
+  }
+  .hero h1{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(2.2rem,5.5vw,3.6rem);line-height:1.02;letter-spacing:-.02em;
+    margin-bottom:18px;
+  }
+  .hero h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--lav)}
+  .hero p{max-width:520px;color:#C9CCF2;font-size:1.05rem;font-weight:300}
+
+  /* LISTA DE MARCAS */
+  .marcas-sec{padding:56px 0 90px}
+  .sec-label{
+    font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--azul);
+    font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:12px;
+  }
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .marca{
+    background:var(--white);border:1px solid var(--line);border-radius:18px;
+    margin-bottom:16px;overflow:hidden;transition:box-shadow .3s,border-color .3s;
+  }
+  .marca.open{box-shadow:0 22px 50px rgba(32,37,201,.10);border-color:var(--peri)}
+  .marca-head{
+    display:flex;align-items:center;gap:18px;padding:22px 24px;cursor:pointer;
+    user-select:none;
+  }
+  .marca-ic{
+    width:56px;height:56px;border-radius:14px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;font-size:1.7rem;
+    background:linear-gradient(135deg,var(--peri),var(--lav));
+  }
+  .marca-meta{flex:1;min-width:0}
+  .marca-meta h3{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.25rem;
+    color:var(--ink);line-height:1.1;
+  }
+  .marca-meta .sector{font-size:.85rem;color:var(--muted);margin-top:2px}
+  .marca-count{
+    font-size:.72rem;font-weight:600;color:var(--azul);background:#ECEDFF;
+    padding:5px 11px;border-radius:50px;white-space:nowrap;
+  }
+  .chevron{
+    width:34px;height:34px;border-radius:50%;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;color:var(--azul);
+    transition:transform .3s,background .3s;flex-shrink:0;font-size:1rem;
+  }
+  .marca.open .chevron{transform:rotate(180deg);background:var(--azul);color:#fff;border-color:var(--azul)}
+
+  .marca-body{
+    max-height:0;overflow:hidden;transition:max-height .4s ease;
+  }
+  .marca-body-in{padding:4px 24px 24px}
+  .parrilla{
+    display:flex;align-items:center;gap:16px;text-decoration:none;
+    padding:18px 20px;border-radius:13px;background:var(--bg);
+    border:1px solid transparent;transition:all .25s;margin-top:10px;
+  }
+  .parrilla:hover{border-color:var(--peri);background:#fff;transform:translateX(4px)}
+  .parrilla-ic{
+    width:42px;height:42px;border-radius:10px;background:#fff;border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;
+  }
+  .parrilla-info{flex:1;min-width:0}
+  .parrilla-info h4{
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;font-size:1rem;
+    color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;
+  }
+  .parrilla-info p{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .estado{
+    font-size:.6rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;
+    padding:3px 9px;border-radius:50px;
+  }
+  .estado.activa{background:#E0F5E9;color:#1C7A47}
+  .estado.borrador{background:#FFF1D6;color:#9A6A12}
+  .ext{font-size:.7rem;color:var(--peri);font-weight:600}
+  .go{color:var(--azul);font-size:1.3rem;flex-shrink:0;opacity:.5;transition:opacity .25s}
+  .parrilla:hover .go{opacity:1}
+
+  /* FOOTER */
+  footer{
+    text-align:center;padding:40px 24px;color:var(--muted);font-size:.82rem;
+    border-top:1px solid var(--line);
+  }
+  footer b{font-family:'Fraunces',serif;font-style:italic;color:var(--azul);font-weight:400}
+
+  @media(max-width:600px){
+    .marca-head{padding:18px 16px;gap:14px}
+    .marca-ic{width:48px;height:48px;font-size:1.4rem}
+    .marca-body-in{padding:4px 16px 18px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="brand-row">
+      <span class="brand-logo"><b>Hounter</b> <span>leads</span></span>
+    </div>
+    <span class="pill">Centro de parrillas</span>
+    <h1>Tus marcas,<br><em>tus parrillas</em>, en un solo lugar.</h1>
+    <p>Elige una marca para desplegar sus parrillas de contenido y estrategias activas.</p>
+  </div>
+</header>
+
+<main class="marcas-sec">
+  <div class="wrap">
+    <div class="sec-label">Marcas activas</div>
+    <div id="lista"></div>
+  </div>
+</main>
+
+<footer>
+  Hecho con <b>cariño</b> por Hounter Leads · <span id="anio"></span>
+</footer>
+
+<script>
+  // ─── Agregar una marca nueva = duplicar un bloque aquí ───
+  const MARCAS = [
+    {
+      nombre: "Melissas del Norte",
+      sector: "Miel artesanal · Apícola",
+      emoji: "🐝",
+      parrillas: [
+        {
+          titulo: "Estrategia & Parrilla del mes",
+          desc: "Visión, concepto de marca, 10 piezas con referencias y miniserie",
+          url: "./melissas/",
+          estado: "activa"
+        }
+      ]
+    },
+    {
+      nombre: "K13 Dental",
+      sector: "Odontología · Pauta Meta",
+      emoji: "🦷",
+      parrillas: [
+        {
+          titulo: "Parrilla de pauta · Fase 01",
+          desc: "Ortodoncia + Implantes · ideas creativas y guiones",
+          url: "https://hounterleads.github.io/K13-Pauta-Testeo/",
+          estado: "activa",
+          externa: true
+        }
+      ]
+    }
+  ];
+
+  const lista = document.getElementById('lista');
+  MARCAS.forEach((m, i) => {
+    const parrillasHTML = m.parrillas.map(p => `
+      <a class="parrilla" href="${p.url}" ${p.externa ? 'target="_blank" rel="noopener"' : ''}>
+        <div class="parrilla-ic">📋</div>
+        <div class="parrilla-info">
+          <h4>${p.titulo}
+            <span class="estado ${p.estado === 'activa' ? 'activa' : 'borrador'}">${p.estado === 'activa' ? 'Activa' : 'Borrador'}</span>
+            ${p.externa ? '<span class="ext">↗ externa</span>' : ''}
+          </h4>
+          <p>${p.desc}</p>
+        </div>
+        <span class="go">→</span>
+      </a>
+    `).join('');
+
+    const card = document.createElement('div');
+    card.className = 'marca';
+    card.innerHTML = `
+      <div class="marca-head">
+        <div class="marca-ic">${m.emoji}</div>
+        <div class="marca-meta">
+          <h3>${m.nombre}</h3>
+          <div class="sector">${m.sector}</div>
+        </div>
+        <span class="marca-count">${m.parrillas.length} parrilla${m.parrillas.length > 1 ? 's' : ''}</span>
+        <span class="chevron">▾</span>
+      </div>
+      <div class="marca-body"><div class="marca-body-in">${parrillasHTML}</div></div>
+    `;
+    lista.appendChild(card);
+
+    const head = card.querySelector('.marca-head');
+    const body = card.querySelector('.marca-body');
+    head.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      // cerrar las demás
+      document.querySelectorAll('.marca').forEach(c => {
+        c.classList.remove('open');
+        c.querySelector('.marca-body').style.maxHeight = null;
+      });
+      if (!isOpen) {
+        card.classList.add('open');
+        body.style.maxHeight = body.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // abrir la primera por defecto
+  const first = document.querySelector('.marca');
+  if (first) {
+    first.classList.add('open');
+    const fb = first.querySelector('.marca-body');
+    fb.style.maxHeight = fb.scrollHeight + 'px';
+  }
+
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>

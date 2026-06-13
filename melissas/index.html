@@ -1,0 +1,1115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Estrategia Digital · Melissas del Norte</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400&family=Inter:wght@300;400;500;600;700&family=Caveat:wght@500;600&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --negro:#0A0A0A;
+    --negro-soft:#1A1612;
+    --negro-suave:#2C2620;
+    --dorado:#D4A24C;
+    --dorado-claro:#E8B95A;
+    --dorado-suave:#F4D77A;
+    --dorado-pale:#FBE9B6;
+    --crema:#FAF5E8;
+    --crema-2:#F5EFE0;
+    --marron:#6B4423;
+    --blanco:#FFFFFF;
+    --gris-tx:#3A352E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;
+    background:var(--crema);
+    color:var(--gris-tx);
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
+  .container{max-width:1100px;margin:0 auto;padding:0 28px}
+
+  /* HERO */
+  .hero{
+    min-height:100vh;
+    background:linear-gradient(135deg,var(--negro) 0%,var(--negro-soft) 60%,#221c14 100%);
+    color:var(--crema);
+    display:flex;flex-direction:column;justify-content:center;align-items:center;
+    text-align:center;position:relative;overflow:hidden;
+    padding:80px 28px;
+  }
+  .hero::before{
+    content:"";position:absolute;top:-20%;left:-10%;width:60%;height:60%;
+    background:radial-gradient(circle, rgba(212,162,76,.25) 0%, transparent 70%);
+    filter:blur(40px);
+  }
+  .hero::after{
+    content:"";position:absolute;bottom:-20%;right:-10%;width:55%;height:55%;
+    background:radial-gradient(circle, rgba(232,185,90,.18) 0%, transparent 70%);
+    filter:blur(40px);
+  }
+  .hero-content{position:relative;z-index:2}
+  .hero .tag{
+    display:inline-block;padding:8px 20px;border:1px solid var(--dorado);
+    color:var(--dorado);font-size:.78rem;letter-spacing:3px;text-transform:uppercase;
+    border-radius:50px;margin-bottom:36px;font-weight:500;
+  }
+  .hero h1{
+    font-family:'Playfair Display',serif;font-weight:700;
+    font-size:clamp(2.4rem,5.5vw,4.6rem);line-height:1.05;
+    margin-bottom:24px;letter-spacing:-.02em;
+  }
+  .hero h1 .gold{color:var(--dorado-claro);font-style:italic;font-weight:400}
+  .hero .subtitle{
+    font-family:'Caveat',cursive;color:var(--dorado-suave);
+    font-size:clamp(1.6rem,3vw,2.2rem);margin-bottom:32px;
+  }
+  .hero .lead{
+    max-width:680px;color:#D6CFC0;font-size:1.05rem;
+    margin:0 auto 48px;font-weight:300;
+  }
+  .hero .meta{
+    display:flex;gap:36px;flex-wrap:wrap;justify-content:center;
+    color:var(--dorado);font-size:.85rem;letter-spacing:2px;text-transform:uppercase;
+    font-weight:500;
+  }
+  .hero .meta span{display:flex;align-items:center;gap:8px}
+  .hero .meta span::before{content:"";width:6px;height:6px;background:var(--dorado);border-radius:50%}
+  .scroll-hint{
+    position:absolute;bottom:30px;left:50%;transform:translateX(-50%);
+    color:var(--dorado);font-size:.75rem;letter-spacing:2px;
+    animation:bounce 2s infinite;z-index:2;
+  }
+  @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-8px)}}
+
+  /* SECCIONES */
+  section{padding:96px 0;position:relative}
+  section.dark{background:var(--negro);color:var(--crema)}
+  section.cream{background:var(--crema)}
+  section.crema2{background:var(--crema-2)}
+
+  .sec-tag{
+    display:inline-block;font-size:.72rem;letter-spacing:4px;
+    text-transform:uppercase;color:var(--marron);font-weight:600;
+    margin-bottom:14px;
+  }
+  section.dark .sec-tag{color:var(--dorado)}
+  .sec-title{
+    font-family:'Playfair Display',serif;font-weight:700;
+    font-size:clamp(2rem,4vw,3rem);line-height:1.1;
+    color:var(--negro);margin-bottom:24px;letter-spacing:-.01em;
+  }
+  section.dark .sec-title{color:var(--crema)}
+  .sec-title em{font-style:italic;color:var(--dorado);font-weight:600}
+  .sec-lead{
+    font-size:1.08rem;max-width:720px;color:var(--gris-tx);
+    margin-bottom:48px;font-weight:400;
+  }
+  section.dark .sec-lead{color:#D6CFC0}
+
+  /* GRID HELPERS */
+  .grid-2{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+  .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:24px}
+
+  /* CARDS */
+  .card{
+    background:var(--blanco);border-radius:14px;padding:32px 28px;
+    border:1px solid #EBE2CD;transition:all .3s ease;
+  }
+  .card:hover{transform:translateY(-4px);box-shadow:0 18px 40px rgba(20,15,5,.08);border-color:var(--dorado)}
+  section.dark .card{background:var(--negro-soft);border:1px solid #2D2820;color:var(--crema)}
+  section.dark .card:hover{border-color:var(--dorado)}
+  .card .num{
+    font-family:'Playfair Display',serif;color:var(--dorado);
+    font-size:2.4rem;font-weight:700;line-height:1;margin-bottom:14px;
+  }
+  .card h3{
+    font-family:'Playfair Display',serif;font-weight:600;
+    font-size:1.3rem;color:var(--negro);margin-bottom:12px;
+  }
+  section.dark .card h3{color:var(--crema)}
+  .card p{font-size:.95rem;color:var(--gris-tx)}
+  section.dark .card p{color:#C9C1B0}
+
+  /* VISIÓN — objetivos */
+  .objetivos{margin-top:48px;display:grid;gap:18px}
+  .obj{
+    display:grid;grid-template-columns:80px 1fr;gap:24px;align-items:center;
+    padding:24px;background:var(--blanco);border-radius:12px;
+    border-left:4px solid var(--dorado);
+  }
+  .obj .num-obj{
+    font-family:'Playfair Display',serif;font-size:2.6rem;color:var(--dorado);
+    font-weight:700;line-height:1;
+  }
+  .obj h4{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--negro);margin-bottom:6px}
+  .obj p{font-size:.95rem;color:var(--gris-tx)}
+
+  /* DIAGNÓSTICO STATS */
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:24px;margin-top:40px}
+  .stat{text-align:center;padding:32px 20px;background:var(--negro-soft);border-radius:14px;border:1px solid #2D2820}
+  .stat .big{font-family:'Playfair Display',serif;font-size:2.8rem;color:var(--dorado);font-weight:700;line-height:1}
+  .stat .label{color:#C9C1B0;font-size:.85rem;margin-top:10px;text-transform:uppercase;letter-spacing:1.5px}
+
+  /* CONCEPTO — split */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:48px}
+  .split-card{padding:40px 32px;border-radius:14px}
+  .split-card.cercano{background:var(--blanco);border:1px solid #EBE2CD}
+  .split-card.premium{background:var(--negro);color:var(--crema)}
+  .split-card h3{font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:14px}
+  .split-card.premium h3{color:var(--dorado)}
+  .split-card .symbol{font-family:'Caveat',cursive;font-size:1.4rem;color:var(--dorado);margin-bottom:12px;display:block}
+  .split-card ul{list-style:none;margin-top:20px}
+  .split-card li{padding:10px 0;border-bottom:1px solid rgba(212,162,76,.18);font-size:.95rem;display:flex;gap:12px;align-items:start}
+  .split-card li::before{content:"●";color:var(--dorado);font-size:.7rem;margin-top:6px}
+  .split-card li:last-child{border:0}
+  .union{
+    text-align:center;margin-top:48px;padding:40px;background:linear-gradient(135deg,var(--dorado) 0%,var(--dorado-claro) 100%);
+    border-radius:14px;color:var(--negro);
+  }
+  .union .ec{font-family:'Caveat',cursive;font-size:1.6rem;display:block;margin-bottom:8px}
+  .union h3{font-family:'Playfair Display',serif;font-size:1.8rem;font-style:italic}
+  @media(max-width:720px){.split{grid-template-columns:1fr}}
+
+  /* DIFERENCIAL — tabla */
+  .vs-table{margin-top:48px;background:var(--blanco);border-radius:14px;overflow:hidden;border:1px solid #EBE2CD}
+  .vs-table table{width:100%;border-collapse:collapse}
+  .vs-table th,.vs-table td{padding:18px 20px;text-align:left;border-bottom:1px solid #EBE2CD;font-size:.92rem}
+  .vs-table th{background:var(--negro);color:var(--dorado);font-family:'Playfair Display',serif;font-weight:600;font-size:.95rem;text-transform:none;letter-spacing:.5px}
+  .vs-table tr:last-child td{border-bottom:0}
+  .vs-table tr.melissas{background:var(--dorado-pale)}
+  .vs-table tr.melissas td{font-weight:600;color:var(--negro)}
+  .vs-table td:first-child{font-weight:600}
+  .vs-table .yes{color:#3E7A3E;font-weight:700}
+  .vs-table .no{color:#A0817A}
+
+  /* PILARES */
+  .pilar{padding:30px 26px;background:var(--blanco);border-radius:14px;border:1px solid #EBE2CD;position:relative;overflow:hidden}
+  .pilar::before{content:"";position:absolute;top:0;left:0;width:4px;height:100%;background:var(--dorado)}
+  .pilar .ico{
+    width:48px;height:48px;background:var(--dorado-pale);border-radius:10px;
+    display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;
+  }
+  .pilar h4{font-family:'Playfair Display',serif;font-size:1.2rem;color:var(--negro);margin-bottom:8px}
+  .pilar .objetivo{font-size:.78rem;text-transform:uppercase;letter-spacing:1.5px;color:var(--dorado);font-weight:600;margin-bottom:14px}
+  .pilar p{font-size:.92rem;color:var(--gris-tx)}
+
+  /* PARRILLA */
+  .parrilla-distrib{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:18px;margin-top:36px;margin-bottom:48px}
+  .pd{padding:24px 20px;background:var(--negro-soft);border-radius:12px;border-top:3px solid var(--dorado);text-align:center}
+  .pd .pd-num{font-family:'Playfair Display',serif;font-size:2.4rem;color:var(--dorado);font-weight:700;line-height:1}
+  .pd .pd-cat{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;color:#C9C1B0;margin-top:8px;font-weight:600}
+  .pd .pd-desc{font-size:.82rem;color:#A09885;margin-top:6px}
+
+  .post-list{display:grid;gap:18px;margin-top:24px}
+  .post-item{
+    display:grid;grid-template-columns:1fr 340px;gap:28px;
+    padding:26px 24px;background:var(--blanco);border-radius:14px;border:1px solid #EBE2CD;
+  }
+  section.dark .post-item{background:var(--negro-soft);border-color:#2D2820;color:var(--crema)}
+  .post-info{display:flex;flex-direction:column;justify-content:space-between;gap:14px}
+  .post-header{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+  .post-num{
+    font-family:'Playfair Display',serif;color:var(--dorado);font-size:1.8rem;font-weight:700;line-height:1;
+  }
+  .post-tipo{
+    font-size:.7rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:700;
+    padding:6px 12px;border-radius:50px;display:inline-block;
+  }
+  .post-tipo.venta{background:#FFE8C2;color:#7A4A0E}
+  .post-tipo.marca{background:var(--dorado-pale);color:#7A4A0E}
+  .post-tipo.edu{background:#E2EFD9;color:#3E7A3E}
+  .post-tipo.bts{background:#F0E4F5;color:#6D3F8A}
+  .post-tipo.serie{background:var(--dorado);color:var(--negro)}
+  .post-desc{font-size:.95rem;color:#D6CFC0;line-height:1.55}
+  .post-desc strong{font-family:'Playfair Display',serif;font-size:1.15rem;color:var(--crema);display:block;margin-bottom:8px;font-weight:600}
+  section:not(.dark) .post-desc{color:var(--gris-tx)}
+  section:not(.dark) .post-desc strong{color:var(--negro)}
+  .post-format{
+    font-size:.75rem;color:var(--dorado);font-weight:600;text-transform:uppercase;
+    letter-spacing:1.5px;padding-top:14px;border-top:1px solid rgba(212,162,76,.2);margin-top:auto;
+  }
+  section:not(.dark) .post-format{color:var(--marron);border-top:1px solid #EBE2CD}
+  .post-ref{
+    display:flex;align-items:flex-start;justify-content:center;min-height:280px;
+    background:#0F0C09;border-radius:10px;padding:12px;overflow:hidden;
+  }
+  section:not(.dark) .post-ref{background:#F5EFE0}
+  .post-ref iframe,.post-ref blockquote{max-width:100% !important}
+  .ref-video{
+    width:100%;max-width:280px;border-radius:10px;display:block;background:#000;
+    box-shadow:0 8px 24px rgba(0,0,0,.3);
+  }
+  .ref-image{
+    width:100%;max-width:280px;border-radius:10px;display:block;
+    box-shadow:0 8px 24px rgba(0,0,0,.2);
+  }
+  .ref-link-btn{
+    display:inline-flex;align-items:center;gap:6px;
+    padding:7px 14px;margin-top:10px;font-size:.72rem;
+    color:var(--dorado);background:rgba(212,162,76,.12);
+    border:1px solid rgba(212,162,76,.35);border-radius:50px;
+    text-decoration:none;letter-spacing:1px;text-transform:uppercase;
+    font-weight:600;transition:all .25s;
+  }
+  .ref-link-btn:hover{background:rgba(212,162,76,.25);border-color:var(--dorado)}
+  section:not(.dark) .ref-link-btn{color:var(--marron);background:rgba(107,68,35,.08);border-color:rgba(107,68,35,.3)}
+  .ref-stack{display:flex;flex-direction:column;gap:14px;align-items:center;width:100%}
+  .ref-carousel{
+    display:flex;gap:8px;overflow-x:auto;scroll-snap-type:x mandatory;
+    width:100%;max-width:300px;border-radius:10px;
+    scroll-behavior:smooth;-webkit-overflow-scrolling:touch;
+    padding-bottom:6px;
+  }
+  .ref-carousel img{
+    width:280px;height:auto;flex-shrink:0;scroll-snap-align:center;
+    border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.25);
+    object-fit:cover;
+  }
+  .ref-carousel::-webkit-scrollbar{height:6px}
+  .ref-carousel::-webkit-scrollbar-track{background:transparent}
+  .ref-carousel::-webkit-scrollbar-thumb{background:var(--dorado);border-radius:3px}
+  .carousel-hint{
+    font-size:.68rem;color:var(--dorado);margin-top:6px;letter-spacing:1.5px;
+    text-transform:uppercase;font-weight:600;text-align:center;
+  }
+  .ref-pair{display:flex;flex-direction:column;align-items:center;gap:4px}
+  .post-ref-empty{
+    display:flex;flex-direction:column;align-items:center;justify-content:center;
+    color:#A09885;font-size:.82rem;text-align:center;padding:20px;font-style:italic;
+  }
+  .post-ref-empty::before{content:"⋯";font-size:2rem;color:var(--dorado);margin-bottom:8px}
+  @media(max-width:780px){
+    .post-item{grid-template-columns:1fr}
+    .post-ref{order:2;min-height:200px}
+  }
+
+  /* MINISERIE */
+  .miniserie-box{
+    margin-top:40px;padding:50px;background:linear-gradient(135deg,var(--negro) 0%,var(--negro-soft) 100%);
+    border-radius:14px;color:var(--crema);position:relative;overflow:hidden;
+  }
+  .miniserie-box::before{
+    content:"";position:absolute;top:-50%;right:-20%;width:60%;height:200%;
+    background:radial-gradient(circle, rgba(212,162,76,.15) 0%, transparent 60%);
+  }
+  .miniserie-box > *{position:relative;z-index:2}
+  .miniserie-box .frase{
+    font-family:'Playfair Display',serif;font-style:italic;font-size:1.6rem;
+    color:var(--dorado-suave);line-height:1.4;margin:20px 0 32px;
+    padding-left:20px;border-left:3px solid var(--dorado);
+  }
+  .caps{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:20px;margin-top:28px}
+  .cap{padding:24px;background:rgba(212,162,76,.08);border-radius:10px;border:1px solid rgba(212,162,76,.2)}
+  .cap .ep{font-family:'Caveat',cursive;color:var(--dorado);font-size:1.2rem;margin-bottom:8px}
+  .cap h5{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:8px}
+  .cap p{font-size:.88rem;color:#C9C1B0}
+
+  /* PRODUCCIÓN */
+  .sesiones{display:grid;gap:18px;margin-top:36px}
+  .sesion{
+    display:grid;grid-template-columns:120px 1fr;gap:24px;
+    padding:28px;background:var(--blanco);border-radius:12px;border:1px solid #EBE2CD;
+  }
+  .sesion .num-s{
+    font-family:'Playfair Display',serif;font-size:3rem;color:var(--dorado);font-weight:700;line-height:1;
+  }
+  .sesion h4{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--negro);margin-bottom:8px}
+  .sesion .loc{font-size:.82rem;color:var(--marron);text-transform:uppercase;letter-spacing:1.5px;font-weight:600;margin-bottom:12px}
+  .sesion ul{list-style:none;padding-left:0}
+  .sesion li{padding:6px 0;font-size:.92rem;display:flex;gap:10px;align-items:start}
+  .sesion li::before{content:"→";color:var(--dorado);font-weight:700}
+  @media(max-width:600px){.sesion{grid-template-columns:1fr}}
+
+  /* REFERENCIAS VISUALES */
+  .refs-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;margin-top:40px;align-items:start}
+  .ref-card{
+    background:var(--blanco);border-radius:14px;padding:18px;
+    border:1px solid #EBE2CD;display:flex;flex-direction:column;align-items:center;
+    transition:all .3s;
+  }
+  .ref-card:hover{box-shadow:0 18px 40px rgba(20,15,5,.08);transform:translateY(-2px)}
+  .ref-card .ref-label{
+    font-size:.72rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--marron);font-weight:600;margin-bottom:12px;align-self:flex-start;
+  }
+  .ref-card .ref-platform{
+    display:inline-block;padding:3px 10px;border-radius:50px;
+    font-size:.65rem;letter-spacing:1.5px;font-weight:700;text-transform:uppercase;
+    margin-bottom:10px;align-self:flex-start;
+  }
+  .platform-tt{background:var(--negro);color:#FFFFFF}
+  .platform-ig{background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);color:#FFF}
+  .platform-pin{background:#E60023;color:#FFF}
+  .platform-fb{background:#1877F2;color:#FFF}
+  .ref-embed{width:100%;display:flex;justify-content:center;min-height:300px}
+  .fb-ad-card{
+    width:100%;padding:36px 20px;background:linear-gradient(135deg,var(--negro) 0%,var(--negro-soft) 100%);
+    border-radius:10px;color:var(--crema);text-align:center;text-decoration:none;
+    display:block;transition:all .3s;
+  }
+  .fb-ad-card:hover{transform:translateY(-2px);border:1px solid var(--dorado)}
+  .fb-ad-card .fb-ic{font-size:2rem;color:var(--dorado);margin-bottom:10px}
+  .fb-ad-card .fb-title{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:6px}
+  .fb-ad-card .fb-sub{font-size:.82rem;color:#A09885}
+
+  /* CTA FINAL */
+  .cta-final{
+    text-align:center;padding:80px 28px;
+    background:linear-gradient(135deg,var(--dorado) 0%,var(--dorado-claro) 100%);
+    color:var(--negro);
+  }
+  .cta-final h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,4vw,3rem);font-style:italic;font-weight:700;margin-bottom:18px}
+  .cta-final p{font-size:1.1rem;max-width:600px;margin:0 auto 36px}
+  .cta-final .btn{
+    display:inline-block;padding:16px 36px;background:var(--negro);color:var(--dorado);
+    text-decoration:none;border-radius:50px;font-weight:600;letter-spacing:1px;
+    text-transform:uppercase;font-size:.88rem;transition:all .3s;
+  }
+  .cta-final .btn:hover{background:var(--negro-soft);transform:translateY(-2px)}
+
+  /* FOOTER */
+  footer{padding:40px 28px;background:var(--negro);color:#888;text-align:center;font-size:.85rem}
+  footer .firma{font-family:'Caveat',cursive;color:var(--dorado);font-size:1.4rem;margin-bottom:8px;display:block}
+
+  /* RESPONSIVE GENERAL */
+  @media(max-width:768px){
+    section{padding:64px 0}
+    .obj{grid-template-columns:60px 1fr;gap:16px;padding:18px}
+    .miniserie-box{padding:32px}
+  }
+
+  /* IMPRESIÓN — PDF EN UNA SOLA PÁGINA CONTINUA */
+  @media print{
+    @page{
+      size:1200px 18700px;
+      margin:0;
+    }
+    html,body{height:auto !important}
+    *{
+      -webkit-print-color-adjust:exact !important;
+      print-color-adjust:exact !important;
+      page-break-inside:avoid !important;
+      break-inside:avoid !important;
+    }
+    section,.post-item,.card,.obj,.pilar,.sesion,.cap,.miniserie-box{
+      page-break-inside:avoid !important;
+      break-inside:avoid !important;
+    }
+    .hero{min-height:auto;padding:80px 28px}
+    .scroll-hint{display:none}
+
+    /* Ocultar videos y embeds (no se renderizan en PDF) */
+    .post-ref video,
+    .post-ref blockquote{display:none !important}
+
+    /* Quitar el recuadro negro del contenedor de referencia */
+    .post-ref{
+      background:transparent !important;
+      padding:0 !important;
+      min-height:auto !important;
+      flex-direction:column !important;
+      justify-content:center !important;
+      align-items:center !important;
+    }
+
+    /* Mantener fondo solo en carruseles (sí se ven bien en PDF) */
+    .post-ref:has(.ref-carousel){
+      background:#F5EFE0 !important;
+      padding:12px !important;
+    }
+
+    /* Botón "Ver en..." más prominente */
+    .ref-link-btn{
+      font-size:1rem !important;
+      padding:14px 26px !important;
+      margin:0 !important;
+    }
+
+    /* Ocultar mensaje "Referencia pendiente" */
+    .post-ref-empty{display:none !important}
+
+    /* Piezas sin link ni carrusel — colapsar a una sola columna */
+    .post-item:not(:has(.ref-link-btn)):not(:has(.ref-carousel)){
+      grid-template-columns:1fr !important;
+    }
+    .post-item:not(:has(.ref-link-btn)):not(:has(.ref-carousel)) .post-ref{
+      display:none !important;
+    }
+
+    /* Ocultar el "hint" del carrusel (← desliza →) en PDF */
+    .carousel-hint{display:none !important}
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <span class="tag">Estrategia Digital · 2026</span>
+    <h1>Melissas <span class="gold">del Norte</span></h1>
+    <p class="subtitle">— el dulce viaje de la marca a lo digital —</p>
+    <p class="lead">
+      Una hoja de ruta para llevar una tradición familiar apícola
+      al lugar que se merece: la mesa de quienes valoran lo real, lo artesanal
+      y lo hecho con propósito.
+    </p>
+    <div class="meta">
+      <span>Visión de marca</span>
+      <span>Estrategia digital</span>
+      <span>Parrilla mensual</span>
+    </div>
+  </div>
+  <div class="scroll-hint">↓ Desliza para conocer la propuesta</div>
+</section>
+
+<!-- VISIÓN -->
+<section class="cream" id="vision">
+  <div class="container">
+    <span class="sec-tag">Nuestra visión</span>
+    <h2 class="sec-title">De marca apícola local <br><em>a marca artesanal con alma</em></h2>
+    <p class="sec-lead">
+      Melissas del Norte tiene algo que ninguna otra marca de miel del país tiene:
+      una historia familiar real, abejas propias en las montañas de Antioquia, y ahora también
+      dos cervezas artesanales hechas con su propia miel. Nuestro reto es contarlo
+      con la calidad visual y la consistencia que esa historia merece — y volverlo en ventas.
+    </p>
+
+    <div class="objetivos">
+      <div class="obj">
+        <div class="num-obj">01</div>
+        <div>
+          <h4>Construir presencia y reconocimiento</h4>
+          <p>Crecer la comunidad digital de Melissas del Norte con contenido que conecte: pasar de ser conocidos en Copacabana a ser referentes de miel artesanal en todo el Valle de Aburrá.</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="num-obj">02</div>
+        <div>
+          <h4>Impulsar la venta de la Miel Pura 500gr</h4>
+          <p>Posicionar la presentación de 500gr como el producto estrella: una miel real, de calidad genuina, como alternativa al azúcar refinado y a los edulcorantes industriales. Llevar tráfico al ecommerce y cerrar la venta.</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="num-obj">03</div>
+        <div>
+          <h4>Abrir el canal B2B</h4>
+          <p>Conectar con negocios que quieran incorporar miel pura a su oferta: cafés, restaurantes, panaderías, gimnasios, nutricionistas y hoteles. Un consumidor empresarial significa volumen recurrente.</p>
+        </div>
+      </div>
+      <div class="obj">
+        <div class="num-obj">04</div>
+        <div>
+          <h4>Lanzar las cervezas artesanales MILA y EMI</h4>
+          <p>Presentar los dos productos nuevos como sello premium de la marca — un gancho aspiracional que atrae a un público nuevo y refuerza la identidad artesanal de Melissas del Norte.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIAGNÓSTICO -->
+<section class="dark">
+  <div class="container">
+    <span class="sec-tag">Punto de partida</span>
+    <h2 class="sec-title">Dónde estamos <em>hoy</em></h2>
+    <p class="sec-lead">
+      Antes de proyectar, miramos con honestidad el momento de la marca.
+      Tenemos una base sólida y mucho terreno por delante.
+    </p>
+
+    <div class="stats">
+      <div class="stat"><div class="big">888</div><div class="label">Seguidores Instagram</div></div>
+      <div class="stat"><div class="big">12+</div><div class="label">Productos en ecommerce</div></div>
+      <div class="stat"><div class="big">2</div><div class="label">Cervezas artesanales nuevas</div></div>
+      <div class="stat"><div class="big">✓</div><div class="label">Apiario propio</div></div>
+    </div>
+
+    <div class="grid-2" style="margin-top:48px">
+      <div class="card">
+        <h3>Lo que tenemos a favor</h3>
+        <p>
+          → Ecommerce recién lanzado en Shopify, listo para escalar.<br>
+          → Identidad gráfica base (dorado/negro) coherente con el producto.<br>
+          → Historia familiar real — autenticidad como activo.<br>
+          → Dos cervezas artesanales nuevas (MILA y EMI) como sello premium.
+        </p>
+      </div>
+      <div class="card">
+        <h3>Lo que necesitamos construir</h3>
+        <p>
+          → Producción visual desde cero (fotos profesionales del producto, apiario y familia).<br>
+          → Catálogo Instagram + ficha Google del negocio activos.<br>
+          → Pauta digital con creatividades nuevas y segmentación inteligente.<br>
+          → Apertura del canal B2B con catálogo y propuesta para negocios.<br>
+          → Storytelling sostenido que vuelva memorable a la marca.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCEPTO -->
+<section class="cream">
+  <div class="container">
+    <span class="sec-tag">El concepto</span>
+    <h2 class="sec-title">Cercanía <em>con un toque premium</em></h2>
+    <p class="sec-lead">
+      No queremos ser una marca distante de lujo, ni una marca informal sin valor.
+      Queremos lo que el consumidor de hoy busca: una marca que se sienta cercana
+      cuando la conoces, y premium cuando la pruebas.
+    </p>
+
+    <div class="split">
+      <div class="split-card cercano">
+        <span class="symbol">— Cercanía</span>
+        <h3>La familia que cuida abejas</h3>
+        <p style="margin-top:14px">
+          La gente compra a quien conoce. Mostrar las manos, los rostros, los apiarios reales,
+          los procesos diarios y la pasión detrás del frasco.
+        </p>
+        <ul>
+          <li>Detrás de cámara real, sin filtros excesivos</li>
+          <li>Voz humana — no corporativa</li>
+          <li>Lenguaje cálido y cercano en cada copy</li>
+          <li>Mostrar la familia y a las abejas como protagonistas</li>
+        </ul>
+      </div>
+      <div class="split-card premium">
+        <span class="symbol">— Y cuando queremos más</span>
+        <h3>MILA y EMI — el sello premium</h3>
+        <p style="margin-top:14px">
+          Para quien busca algo especial, las dos cervezas artesanales son el toque
+          aspiracional de la marca. La misma miel, transformada en una experiencia
+          para disfrutar diferente.
+        </p>
+        <ul>
+          <li>Cervezas artesanales con miel real</li>
+          <li>Para ocasiones, regalos, descubrimientos</li>
+          <li>El gancho que abre puerta a un público nuevo</li>
+          <li>Refuerza la identidad artesanal de la marca</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- DIFERENCIAL -->
+<section class="crema2">
+  <div class="container">
+    <span class="sec-tag">Lo que nos hace únicos</span>
+    <h2 class="sec-title">El espacio que <em>nadie más ocupa</em></h2>
+    <p class="sec-lead">
+      En Antioquia hay buenas marcas de miel (Apinal, Bon Miel, Samaná). Nuestra apuesta es distinta:
+      calidad real, historia familiar contada con autenticidad, y una línea de cervezas artesanales
+      propias que abre una conversación que ninguna otra marca apícola está teniendo.
+    </p>
+
+    <div class="vs-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Atributo</th>
+            <th>Apinal</th>
+            <th>Bon Miel</th>
+            <th>Samaná</th>
+            <th>Melissas del Norte</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Miel propia</td>
+            <td class="yes">Sí</td>
+            <td class="yes">Sí</td>
+            <td class="yes">Sí</td>
+            <td class="yes">Sí</td>
+          </tr>
+          <tr>
+            <td>Historia familiar</td>
+            <td class="no">Empresarial</td>
+            <td class="yes">Sí, 3 gen.</td>
+            <td class="no">Cooperativa</td>
+            <td class="yes">Sí — familiar real</td>
+          </tr>
+          <tr>
+            <td>Línea fermentada propia</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="no">No</td>
+            <td class="yes">Sí — MILA, EMI e Hidromiel</td>
+          </tr>
+          <tr>
+            <td>Ecommerce activo</td>
+            <td class="yes">Sí</td>
+            <td class="no">Limitado</td>
+            <td class="yes">Sí</td>
+            <td class="yes">Sí — recién lanzado</td>
+          </tr>
+          <tr class="melissas">
+            <td>Posicionamiento único</td>
+            <td>Tradición</td>
+            <td>Artesanía</td>
+            <td>Sostenibilidad</td>
+            <td>Calidad · Familia · Carácter</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- PILARES -->
+<section class="cream">
+  <div class="container">
+    <span class="sec-tag">Pilares de contenido</span>
+    <h2 class="sec-title">Sobre qué hablamos <em>y por qué</em></h2>
+    <p class="sec-lead">
+      Toda la comunicación se organiza en seis pilares. Cada publicación responde a uno
+      de ellos, y cada pilar trabaja un objetivo distinto.
+    </p>
+
+    <div class="grid-3">
+      <div class="pilar">
+        <div class="ico">🐝</div>
+        <div class="objetivo">Recordación · Cercanía</div>
+        <h4>La familia y el apiario</h4>
+        <p>Quiénes están detrás. Las manos, los rostros, las montañas. Es el corazón del storytelling.</p>
+      </div>
+      <div class="pilar">
+        <div class="ico">🍯</div>
+        <div class="objetivo">Conversión</div>
+        <h4>Miel en la mesa</h4>
+        <p>La miel pura como alternativa saludable al azúcar. En desayunos, bebidas, recetas y rituales diarios — el reemplazo natural.</p>
+      </div>
+      <div class="pilar">
+        <div class="ico">📖</div>
+        <div class="objetivo">Autoridad</div>
+        <h4>Educación apícola</h4>
+        <p>Cómo reconocer miel pura, qué es hidromiel, beneficios reales. Lo que se guarda y se comparte.</p>
+      </div>
+      <div class="pilar">
+        <div class="ico">🍺</div>
+        <div class="objetivo">Premium · Aspiracional</div>
+        <h4>Las cervezas MILA y EMI</h4>
+        <p>Los dos productos nuevos. Sello premium que abre puerta a un público nuevo y refuerza el carácter artesanal de la marca.</p>
+      </div>
+      <div class="pilar">
+        <div class="ico">🎬</div>
+        <div class="objetivo">Engagement</div>
+        <h4>Detrás de cámaras</h4>
+        <p>Cosecha de miel, día de trabajo, producción de cerveza. Lo real engancha más que lo perfecto.</p>
+      </div>
+      <div class="pilar">
+        <div class="ico">🤝</div>
+        <div class="objetivo">B2B · Volumen</div>
+        <h4>Negocios aliados</h4>
+        <p>Cafés, restaurantes, panaderías, gimnasios y nutricionistas que incorporan miel pura. Comunicación con tono profesional y propuesta de valor clara.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PARRILLA -->
+<section class="dark">
+  <div class="container">
+    <span class="sec-tag">La parrilla del mes</span>
+    <h2 class="sec-title">10 piezas, <em>una narrativa</em></h2>
+    <p class="sec-lead">
+      Cada mes producimos 10 contenidos distribuidos de forma estratégica.
+      No es relleno — cada pieza tiene un objetivo distinto y todas trabajan en conjunto.
+    </p>
+
+    <div class="parrilla-distrib">
+      <div class="pd"><div class="pd-num">3</div><div class="pd-cat">Venta directa</div><div class="pd-desc">Producto + CTA + oferta</div></div>
+      <div class="pd"><div class="pd-num">3</div><div class="pd-cat">Marca</div><div class="pd-desc">Branding · venta indirecta</div></div>
+      <div class="pd"><div class="pd-num">2</div><div class="pd-cat">Educativo</div><div class="pd-desc">Autoridad · valor</div></div>
+      <div class="pd"><div class="pd-num">1</div><div class="pd-cat">Detrás de cámaras</div><div class="pd-desc">Sesión real de producción</div></div>
+      <div class="pd"><div class="pd-num">1</div><div class="pd-cat">Miniserie</div><div class="pd-desc">Reel de apertura</div></div>
+    </div>
+
+    <h3 style="font-family:'Playfair Display',serif;font-size:1.4rem;color:var(--dorado);margin-bottom:18px;margin-top:48px">Listado de contenidos</h3>
+
+    <div class="post-list">
+
+      <!-- 01 — Miniserie -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">01</span>
+            <span class="post-tipo serie">Miniserie</span>
+          </div>
+          <div class="post-desc">
+            <strong>Episodio 1 · 25 formas de utilizar la miel</strong>
+            Apertura de la miniserie. Primer uso de la miel — marca el tono y abre la serie de los 25 episodios. Dos referencias para fusionar en una sola estética.
+          </div>
+          <div class="post-format">Reel · 30s</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:18px;align-items:center;min-height:auto">
+          <div class="ref-pair">
+            <video class="ref-video" controls preload="metadata" playsinline>
+              <source src="referencias_melissas/01_miniserie_a.mp4" type="video/mp4">
+            </video>
+            <a class="ref-link-btn" href="https://vt.tiktok.com/ZSxx6aN9y/" target="_blank" rel="noopener">▶ Ver en TikTok</a>
+          </div>
+          <div class="ref-pair">
+            <video class="ref-video" controls preload="metadata" playsinline>
+              <source src="referencias_melissas/01_miniserie_b.mp4" type="video/mp4">
+            </video>
+            <a class="ref-link-btn" href="https://vt.tiktok.com/ZSxxMmQSb/" target="_blank" rel="noopener">▶ Ver en TikTok</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- 02 — Marca -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">02</span>
+            <span class="post-tipo marca">Marca</span>
+          </div>
+          <div class="post-desc">
+            <strong>Video satisfactorio · rellenado y movimiento</strong>
+            Tomas close-up del rellenado y la textura de la miel en movimiento. Pieza sensorial, sin voz, que retiene la mirada y refuerza la calidad del producto.
+          </div>
+          <div class="post-format">Reel · close-up sensorial</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:8px;align-items:center">
+          <video class="ref-video" controls preload="metadata" playsinline>
+            <source src="referencias_melissas/02_marca_satisfactorio.mp4" type="video/mp4">
+          </video>
+          <a class="ref-link-btn" href="https://www.tiktok.com/@deytrok/video/7369065621033667845" target="_blank" rel="noopener">▶ Ver en TikTok</a>
+        </div>
+      </div>
+
+      <!-- 03 — Educativo 1 -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">03</span>
+            <span class="post-tipo edu">Educativo</span>
+          </div>
+          <div class="post-desc">
+            <strong>Cómo se cosecha la miel</strong>
+            Pieza explicativa: el proceso real de cosecha paso a paso. Aporta autoridad apícola y refuerza la transparencia de origen de la marca.
+          </div>
+          <div class="post-format">Carrusel explicativo</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:6px;align-items:center">
+          <div class="ref-carousel">
+            <img src="referencias_melissas/03_edu_cosecha_1.png" alt="Slide 1">
+            <img src="referencias_melissas/03_edu_cosecha_2.png" alt="Slide 2">
+            <img src="referencias_melissas/03_edu_cosecha_3.png" alt="Slide 3">
+            <img src="referencias_melissas/03_edu_cosecha_4.png" alt="Slide 4">
+            <img src="referencias_melissas/03_edu_cosecha_5.png" alt="Slide 5">
+            <img src="referencias_melissas/03_edu_cosecha_6.png" alt="Slide 6">
+          </div>
+          <div class="carousel-hint">← Desliza para ver las 6 slides →</div>
+          <a class="ref-link-btn" href="https://www.instagram.com/p/DVwOC7pld-T/" target="_blank" rel="noopener">▶ Ver en Instagram</a>
+        </div>
+      </div>
+
+      <!-- 04 — Venta directa 1 -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">04</span>
+            <span class="post-tipo venta">Venta directa</span>
+          </div>
+          <div class="post-desc">
+            <strong>Receta UGC con voz · "yo quiero hacer eso"</strong>
+            Pieza tipo UGC, primera persona. La referencia del lado es solo orientativa: queremos algo <b>más cercano y deseable</b>, que el espectador piense "yo quiero preparar esto" y termine preguntando "¿dónde consigo la miel?". CTA claro al ecommerce.
+          </div>
+          <div class="post-format">Reel UGC · vertical</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:8px;align-items:center">
+          <video class="ref-video" controls preload="metadata" playsinline>
+            <source src="referencias_melissas/04_venta_receta.mp4" type="video/mp4">
+          </video>
+          <a class="ref-link-btn" href="https://vt.tiktok.com/ZSxxMuWhN/" target="_blank" rel="noopener">▶ Ver en TikTok</a>
+        </div>
+      </div>
+
+      <!-- 05 — Marca -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">05</span>
+            <span class="post-tipo marca">Marca</span>
+          </div>
+          <div class="post-desc">
+            <strong>Proceso de recolección · sin voz</strong>
+            Documentar cómo se recoge la miel y cuál es el proceso de producción de la marca. Sin voz en off — solo el sonido natural del trabajo apícola. Pieza editorial.
+          </div>
+          <div class="post-format">Reel · documental</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:8px;align-items:center">
+          <video class="ref-video" controls preload="metadata" playsinline>
+            <source src="referencias_melissas/05-08_ig_bauernhof.mp4" type="video/mp4">
+          </video>
+          <a class="ref-link-btn" href="https://www.instagram.com/reels/DYVEyqLKryF/" target="_blank" rel="noopener">▶ Ver en Instagram</a>
+        </div>
+      </div>
+
+      <!-- 06 — Sesión de fotos -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">06</span>
+            <span class="post-tipo bts">Sesión de fotos</span>
+          </div>
+          <div class="post-desc">
+            <strong>Foto principal · mano + frasco + entorno</strong>
+            Pieza estilo editorial documental: una mano sosteniendo el frasco de miel frente al apiario o colmena. Cálido, natural, transmite confianza y origen real.
+          </div>
+          <div class="post-format">Foto estática · feed</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:6px;align-items:center">
+          <div class="ref-carousel">
+            <img src="referencias_melissas/06_sesion_fotos_1.webp" alt="Referencia 1">
+            <img src="referencias_melissas/06_sesion_fotos_2.jpg" alt="Referencia 2">
+            <img src="referencias_melissas/06_sesion_fotos_3.jpg" alt="Referencia 3">
+            <img src="referencias_melissas/06_sesion_fotos_4.jpg" alt="Referencia 4">
+            <img src="referencias_melissas/06_sesion_fotos_5.jpg" alt="Referencia 5">
+          </div>
+          <div class="carousel-hint">← Desliza para ver 5 referencias →</div>
+        </div>
+      </div>
+
+      <!-- 07 — Educativo 2 (dos opciones a elegir) -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">07</span>
+            <span class="post-tipo edu">Educativo</span>
+          </div>
+          <div class="post-desc">
+            <strong>Dos ideas — el cliente elige</strong>
+            Proponemos dos enfoques distintos de contenido educativo. Ambos refuerzan la autoridad apícola de la marca, pero con tonos diferentes. El cliente escoge la opción que mejor le suene.
+          </div>
+          <div style="display:flex;gap:14px;flex-direction:column;margin-top:10px">
+            <div style="padding:16px;background:rgba(212,162,76,.10);border-left:3px solid var(--dorado);border-radius:8px">
+              <span style="display:inline-block;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);font-weight:700;margin-bottom:6px">Opción A</span>
+              <strong style="font-family:'Playfair Display',serif;color:var(--crema);display:block;margin-bottom:6px;font-size:1.05rem">Por qué la miel cristaliza (y por qué es buena señal)</strong>
+              <span style="font-size:.88rem;color:#C9C1B0;line-height:1.5">Mucha gente cree que la miel cristalizada está dañada y la bota. Desmitificar esto es ventas puras: la miel pura sí cristaliza — y eso confirma que es real, no industrial.</span>
+            </div>
+            <div style="padding:16px;background:rgba(212,162,76,.10);border-left:3px solid var(--dorado);border-radius:8px">
+              <span style="display:inline-block;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);font-weight:700;margin-bottom:6px">Opción B</span>
+              <strong style="font-family:'Playfair Display',serif;color:var(--crema);display:block;margin-bottom:6px;font-size:1.05rem">Equivalencias: cuánta miel reemplaza a cuánta azúcar</strong>
+              <span style="font-size:.88rem;color:#C9C1B0;line-height:1.5">Tabla práctica de equivalencias para usar miel en lugar de azúcar en recetas, café o repostería. Apoya directo el objetivo de "alternativa saludable" y sirve también para B2B (panaderías, cafés).</span>
+            </div>
+          </div>
+          <div class="post-format">Carrusel · 5-6 slides</div>
+        </div>
+        <div class="post-ref">
+          <div class="post-ref-empty">Referencia visual se define al elegir la opción</div>
+        </div>
+      </div>
+
+      <!-- 08 — Venta directa 2 -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">08</span>
+            <span class="post-tipo venta">Venta directa</span>
+          </div>
+          <div class="post-desc">
+            <strong>Presentaciones y referencias de productos</strong>
+            Mostrar las distintas presentaciones del catálogo: tamaños, formatos, opciones. Brindar claridad de qué se puede comprar.
+          </div>
+          <div class="post-format">Reel · vertical</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:8px;align-items:center">
+          <video class="ref-video" controls preload="metadata" playsinline>
+            <source src="referencias_melissas/08_venta_presentaciones.mp4" type="video/mp4">
+          </video>
+          <a class="ref-link-btn" href="https://www.instagram.com/reel/DO_55peAdTX/" target="_blank" rel="noopener">▶ Ver en Instagram</a>
+        </div>
+      </div>
+
+      <!-- 09 — Marca -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">09</span>
+            <span class="post-tipo marca">Marca</span>
+          </div>
+          <div class="post-desc">
+            <strong>Experiencia + miel + producto</strong>
+            Combinación de los dos conceptos anteriores: experiencia sensorial + textura de la miel + producto en escena. Pieza editorial que cierra el storytelling del mes.
+          </div>
+          <div class="post-format">Reel / Carrusel</div>
+        </div>
+        <div class="post-ref" style="flex-direction:column;gap:8px;align-items:center">
+          <video class="ref-video" controls preload="metadata" playsinline>
+            <source src="referencias_melissas/09_marca_experiencia.mp4" type="video/mp4">
+          </video>
+          <a class="ref-link-btn" href="https://co.pinterest.com/pin/1093389615795715329/" target="_blank" rel="noopener">▶ Ver en Pinterest</a>
+        </div>
+      </div>
+
+      <!-- 10 — Venta directa 3 -->
+      <div class="post-item">
+        <div class="post-info">
+          <div class="post-header">
+            <span class="post-num">10</span>
+            <span class="post-tipo venta">Venta directa</span>
+          </div>
+          <div class="post-desc">
+            <strong>Introducción / descripción de marca</strong>
+            Quiénes somos, qué hacemos y qué vendemos. Una pieza de presentación de la marca con intención de generar venta directa: el visitante nuevo entiende rápido qué es Melissas del Norte y por qué confiar.
+          </div>
+
+          <div style="margin-top:14px;padding:22px;background:rgba(212,162,76,.08);border-left:3px solid var(--dorado);border-radius:8px">
+            <span style="display:inline-block;font-size:.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--dorado);font-weight:700;margin-bottom:14px">Guion borrador · para afinar con el cliente</span>
+
+            <p style="color:#E8E1CF;font-size:.96rem;line-height:1.75;font-family:'Playfair Display',serif;font-style:italic">
+              "Somos Melissas del Norte, una familia de Copacabana, Antioquia, que lleva más de [X] años cuidando abejas en la montaña.
+              <br><br>
+              Lo nuestro no empezó como un negocio — empezó como una tradición. Y así se ha mantenido: con la misma paciencia, el mismo respeto por las abejas, y la misma convicción de que la miel de verdad no se fabrica, se cuida.
+              <br><br>
+              Producimos miel 100% pura, polen, propóleo, jalea real y cera. Y desde hace poco, dos cervezas artesanales hechas con nuestra propia miel: MILA y EMI.
+              <br><br>
+              Cada frasco que llega a tu mesa cuenta nuestra historia — y la de las abejas que la hicieron posible.
+              <br><br>
+              Encuéntranos en melissasdelnorte.com. Hacemos envíos a todo el país."
+            </p>
+
+            <div style="margin-top:18px;padding-top:14px;border-top:1px solid rgba(212,162,76,.2);font-size:.78rem;color:#A09885">
+              <b style="color:var(--dorado)">Tono:</b> cercano, primera persona ("nosotros"), sin guion forzado. <b style="color:var(--dorado)">Música:</b> suave, instrumental, sin distraer. <b style="color:var(--dorado)">Duración:</b> 30-40s.
+            </div>
+          </div>
+
+          <div class="post-format">Reel · 30-35s · vertical</div>
+        </div>
+        <div class="post-ref">
+          <div class="post-ref-empty">Pieza propia · sin referente externo</div>
+        </div>
+      </div>
+
+    </div>
+
+    <p style="margin-top:32px;font-size:.88rem;color:#A09885;font-style:italic;text-align:center;max-width:700px;margin-left:auto;margin-right:auto">
+      * Los conceptos exactos de cada pieza, copys finales y fechas de publicación se desarrollan en el documento operativo interno.
+    </p>
+  </div>
+</section>
+
+<!-- MINISERIE -->
+<section class="cream">
+  <div class="container">
+    <span class="sec-tag">La miniserie</span>
+    <h2 class="sec-title">25 formas <em>de utilizar la miel</em></h2>
+    <p class="sec-lead">
+      Una miniserie de 25 episodios cortos. Cada uno muestra un uso distinto de la miel
+      en la vida diaria — de la cocina al cuidado personal, del café al maridaje.
+      Es contenido útil que se guarda, se comparte y que vuelve memorable a la marca.
+    </p>
+
+    <div class="miniserie-box">
+      <span class="sec-tag" style="color:var(--dorado)">Formato episódico</span>
+      <h3 style="font-family:'Playfair Display',serif;font-size:1.8rem;color:var(--crema);margin-top:8px">
+        25 episodios · 25 usos · Una sola miel
+      </h3>
+      <p class="frase">
+        "Episodio 1 — el primero de muchos.<br>
+        Una nueva forma cada vez."
+      </p>
+      <p style="color:#C9C1B0;font-size:.98rem">
+        El reel del Episodio 1 abre la serie y marca el tono.
+        Cada episodio refuerza el objetivo principal — más usos de la miel = más mesas con
+        Miel Pura 500gr — y aporta valor real al seguidor sin sentirse a venta directa.
+      </p>
+
+      <div class="caps">
+        <div class="cap">
+          <span class="ep">— Cocina</span>
+          <h5>En lo dulce y lo salado</h5>
+          <p>Marinadas, salsas, aderezos, repostería, panes. La miel como ingrediente versátil.</p>
+        </div>
+        <div class="cap">
+          <span class="ep">— Bienestar</span>
+          <h5>Salud y rutina diaria</h5>
+          <p>En ayunas, con limón, en infusiones, en mascarillas. Lo natural que el cuerpo agradece.</p>
+        </div>
+        <div class="cap">
+          <span class="ep">— Bebidas</span>
+          <h5>Café, té y maridajes</h5>
+          <p>Reemplazo del azúcar en el café, dulzor en limonadas, maridaje con queso y cervezas.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCCIÓN VISUAL -->
+<section class="crema2">
+  <div class="container">
+    <span class="sec-tag">Producción visual</span>
+    <h2 class="sec-title">Construimos un banco <em>desde cero</em></h2>
+    <p class="sec-lead">
+      No buscamos imágenes de estudio ni escenas armadas. Vamos a producir un banco visual
+      con fotografía real, honesta y cercana — desde el apiario y desde la casa.
+      Lo casero hecho con intención es lo que conecta con la audiencia que buscamos.
+    </p>
+
+    <div class="sesiones">
+      <div class="sesion">
+        <div class="num-s">01</div>
+        <div>
+          <h4>Sesión apiario · fotos reales</h4>
+          <div class="loc">En el apiario · al aire libre</div>
+          <ul>
+            <li>Manos abriendo colmenas y trabajando con las abejas</li>
+            <li>Macro de panales — la miel saliendo en vivo</li>
+            <li>Abejas en movimiento, vuelos, momentos reales</li>
+            <li>Tomas amplias del entorno y golden hour</li>
+            <li>Documental honesto, sin armar escenas</li>
+          </ul>
+        </div>
+      </div>
+      <div class="sesion">
+        <div class="num-s">02</div>
+        <div>
+          <h4>Sesión casera · producto en uso</h4>
+          <div class="loc">En casa · luz natural</div>
+          <ul>
+            <li>La miel en el café, en el té, en el desayuno</li>
+            <li>En la cocina — recetas reales, manos sirviendo</li>
+            <li>Pequeños rituales: una cuchara, un pan, una fruta</li>
+            <li>Producción casera, sin estudio: lo real es la propuesta</li>
+            <li>Banco visual para alimentar la miniserie "25 formas..."</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-final">
+  <h2>Esto apenas empieza</h2>
+  <p>
+    El primer mes sienta las bases. Lo que sigue es seguir contando una historia consistente,
+    medir lo que funciona, ajustar la pauta y escalar lo que conecta.
+  </p>
+  <a href="#vision" class="btn">Volver al inicio</a>
+</section>
+
+<footer>
+  <span class="firma">— Estrategia preparada con cariño —</span>
+  <div>Melissas del Norte · Mayo 2026</div>
+</footer>
+
+<!-- SCRIPTS DE EMBEBES -->
+<script async src="https://www.tiktok.com/embed.js"></script>
+<script async src="//www.instagram.com/embed.js"></script>
+<script async defer src="//assets.pinterest.com/js/pinit.js"></script>
+
+</body>
+</html>
