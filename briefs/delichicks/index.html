@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Delichicks · Brief creativo — Reels de receta</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cream:#FBF6EE; --ink:#241C16; --muted:#6B5D50;
+  --paprika:#E2571E; --paprika-d:#C0410F; --tomato:#C0392B;
+  --olive:#4E6B33; --gold:#E9A23B;
+  --line:#E7DCCB; --card:#FFFFFF;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.08;letter-spacing:-.01em}
+.eyebrow{font-size:.78rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--paprika)}
+.muted{color:var(--muted)}
+
+/* HERO */
+.hero{background:radial-gradient(120% 140% at 80% 0%,#3a241a 0%,#1d130d 60%);color:#F7EFE3;padding:96px 0 88px;position:relative;overflow:hidden}
+.hero:after{content:"";position:absolute;right:-80px;top:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(226,87,30,.45),transparent 65%);filter:blur(10px)}
+.hero .eyebrow{color:var(--gold)}
+.hero h1{font-size:clamp(2.6rem,6vw,4.4rem);color:#fff;margin:18px 0 18px;font-weight:600}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero p{font-size:1.18rem;max-width:620px;color:#E9DCCB}
+.hero .meta{margin-top:34px;font-size:.85rem;letter-spacing:.04em;color:#B9A892;display:flex;gap:18px;flex-wrap:wrap}
+.hero .meta span{padding:7px 14px;border:1px solid rgba(255,255,255,.16);border-radius:100px}
+
+section{padding:78px 0;border-bottom:1px solid var(--line)}
+.snum{display:inline-flex;align-items:center;justify-content:center;font-family:'Fraunces',serif;font-weight:700;color:var(--paprika);font-size:1rem;border:1.5px solid var(--paprika);border-radius:100px;width:42px;height:42px;margin-bottom:18px}
+.shead{font-size:clamp(1.9rem,4vw,2.7rem);margin-bottom:14px}
+.sintro{font-size:1.1rem;max-width:680px;margin-bottom:40px}
+
+/* good/bad framing pill */
+.pill{display:inline-block;font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:5px 12px;border-radius:100px}
+.pill.bad{background:#FBE3DE;color:var(--tomato)}
+.pill.good{background:#E5EFD9;color:var(--olive)}
+
+/* video grid */
+.vgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px}
+.vcard{background:var(--card);border:1px solid var(--line);border-radius:18px;overflow:hidden;box-shadow:0 8px 24px rgba(60,40,20,.06)}
+.vcard video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+.vcard .lbl{padding:12px 14px;font-size:.86rem;font-weight:600}
+.vcard .lbl small{display:block;color:var(--muted);font-weight:500;font-size:.78rem;margin-top:2px}
+
+/* data strip */
+.stats{display:flex;gap:16px;flex-wrap:wrap;margin-top:34px}
+.stat{flex:1;min-width:150px;background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px}
+.stat b{font-family:'Fraunces',serif;font-size:2rem;color:var(--ink);display:block;line-height:1}
+.stat span{font-size:.85rem;color:var(--muted)}
+
+/* improvement cards */
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:26px 24px;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 14px 30px rgba(60,40,20,.09)}
+.card .ico{font-size:1.7rem;margin-bottom:12px}
+.card h3{font-size:1.22rem;margin-bottom:8px}
+.card p{font-size:.94rem;color:var(--muted)}
+.card .tag{display:inline-block;margin-top:14px;font-size:.74rem;font-weight:700;color:var(--paprika);letter-spacing:.04em}
+
+/* comparison */
+.cmp{background:#fff;border:1px solid var(--line);border-radius:22px;padding:28px;margin-bottom:34px;box-shadow:0 10px 30px rgba(60,40,20,.06)}
+.cmp .ttl{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin-bottom:22px}
+.cmp .ttl h3{font-size:1.5rem}
+.cmp .ttl .dish{color:var(--muted);font-size:.95rem}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
+.side .head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.side video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:14px;background:#000;display:block}
+.ctable{width:100%;border-collapse:collapse;font-size:.9rem;margin-bottom:20px}
+.ctable th{text-align:left;font-size:.72rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);padding:9px 10px;border-bottom:1px solid var(--line)}
+.ctable td{padding:11px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.ctable td:first-child{font-weight:600;width:24%}
+.ctable .c-bad{color:var(--tomato)}
+.ctable .c-good{color:var(--olive)}
+.change{background:linear-gradient(180deg,#FFF8F1,#FFF2E6);border:1px solid #F3DEC8;border-radius:14px;padding:18px 20px}
+.change b{color:var(--paprika-d);font-family:'Fraunces',serif}
+.change ul{margin:8px 0 0 18px}
+.change li{margin:4px 0;font-size:.94rem}
+
+/* guion */
+.gnote{background:linear-gradient(180deg,#2a1a12,#3a241a);color:#F3E3D2;border-radius:16px;padding:20px 22px;margin-bottom:26px;font-size:.96rem}
+.gnote b{color:var(--gold);font-family:'Fraunces',serif}
+.guion{background:#fff;border:1px solid var(--line);border-radius:22px;padding:26px;margin-bottom:26px;box-shadow:0 10px 30px rgba(60,40,20,.06)}
+.guion .gh{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.guion .gh h3{font-size:1.4rem}
+.gmeta{display:flex;gap:8px;flex-wrap:wrap;margin:12px 0 18px}
+.gchip{font-size:.73rem;font-weight:600;background:#FBEFE3;color:var(--paprika-d);padding:5px 12px;border-radius:100px}
+.gtable{width:100%;border-collapse:collapse;font-size:.85rem}
+.gtable th{text-align:left;font-size:.66rem;text-transform:uppercase;letter-spacing:.07em;color:var(--muted);padding:8px 9px;border-bottom:1px solid var(--line)}
+.gtable td{padding:10px 9px;border-bottom:1px solid var(--line);vertical-align:top}
+.gtable td:first-child{font-family:'Fraunces',serif;font-weight:600;color:var(--paprika);white-space:nowrap}
+.gtable .voz{font-style:italic}
+.gtable tr.money td{background:#FFF6ED}
+.gswap{font-size:.82rem;color:var(--muted);margin-top:12px}
+.gref{display:flex;gap:16px;align-items:center;background:#FBF6EE;border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:18px}
+.gref video{width:118px;aspect-ratio:9/16;object-fit:cover;border-radius:10px;background:#000;flex-shrink:0}
+.gref p{font-size:.88rem;color:var(--muted);margin:0}
+.gref p strong{color:var(--ink)}
+
+/* references */
+.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ref{background:#fff;border:1px solid var(--line);border-radius:18px;overflow:hidden}
+.ref img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.ref .cap{padding:16px 18px}
+.ref .cap h3{font-size:1.05rem;margin-bottom:5px}
+.ref .cap p{font-size:.88rem;color:var(--muted)}
+
+/* closing */
+.closing{background:radial-gradient(120% 140% at 20% 0%,#3a241a,#1d130d);color:#fff;text-align:center;border:none}
+.closing h2{font-size:clamp(1.8rem,4.5vw,3rem);color:#fff;max-width:760px;margin:0 auto 16px}
+.closing h2 em{font-style:normal;color:var(--gold)}
+.closing p{color:#D8C8B2;max-width:540px;margin:0 auto}
+.closing .next{margin-top:30px;display:inline-block;background:var(--paprika);color:#fff;padding:13px 26px;border-radius:100px;font-weight:600;font-size:.95rem}
+.foot{text-align:center;padding:30px;font-size:.8rem;color:var(--muted)}
+
+@media(max-width:860px){
+  .vgrid{grid-template-columns:1fr 1fr}
+  .cards{grid-template-columns:1fr 1fr}
+}
+@media(max-width:560px){
+  .vgrid,.cards,.duo,.refgrid{grid-template-columns:1fr}
+  section{padding:56px 0}
+  .hero{padding:70px 0 60px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Brief creativo · Delichicks 🍗</div>
+    <h1>Subamos el nivel de<br>los <em>reels de receta</em></h1>
+    <p>Buenas noticias: las recetas ya están deliciosas y son variadas. Lo que falta es que <strong>antojen en pantalla</strong>. Acá está el qué y el cómo.</p>
+    <div class="meta">
+      <span>Equipo creativo Delichicks</span>
+      <span>Gestión · Hounterleads</span>
+      <span>Junio 2026</span>
+    </div>
+  </div>
+</header>
+
+<!-- 1 -->
+<section>
+  <div class="wrap">
+    <div class="snum">01</div>
+    <h2 class="shead">Lo que tenemos hoy</h2>
+    <p class="sintro">Estos son algunos de los reels de receta recientes. La preparación está muy bien — el reto está en la <strong>terminación visual</strong> y en darle más energía para que la gente reaccione (like, guarde, comparta).</p>
+    <div class="vgrid">
+      <div class="vcard"><video src="assets/deli_muslitos.mp4" poster="assets/muslos_deli.jpg" controls playsinline preload="metadata"></video><div class="lbl">Muslitos al ajo<small>2 jun</small></div></div>
+      <div class="vcard"><video src="assets/deli_pasta.mp4" controls playsinline preload="metadata"></video><div class="lbl">Pasta gratinada<small>20 may</small></div></div>
+      <div class="vcard"><video src="assets/deli_ensalada.mp4" poster="assets/ensalada_deli.jpg" controls playsinline preload="metadata"></video><div class="lbl">Ensalada hamburguesa<small>5 jun</small></div></div>
+      <div class="vcard"><video src="assets/deli_encocado.mp4" controls playsinline preload="metadata"></video><div class="lbl">Contramuslos encocado<small>receta</small></div></div>
+    </div>
+    <div class="stats">
+      <div class="stat"><b>4–30</b><span>me gusta por reel</span></div>
+      <div class="stat"><b>0</b><span>comentarios (en casi todos)</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- 2 -->
+<section>
+  <div class="wrap">
+    <div class="snum">02</div>
+    <h2 class="shead">Qué podemos mejorar</h2>
+    <p class="sintro">Seis ajustes de producción que cambian todo. No requieren más presupuesto — requieren intención.</p>
+    <div class="cards">
+      <div class="card"><div class="ico">💡</div><h3>La luz</h3><p>Cambiar la luz plana de frente por <strong>luz cálida de lado</strong> (de una ventana). Es el ajuste #1: saca el brillo, el volumen y el antojo. <em>¿Sin ventana? Una lámpara cálida puesta de lado, difuminada con papel mantequilla para una luz suave.</em></p><span class="tag">MÁXIMO IMPACTO</span></div>
+      <div class="card"><div class="ico">🤤</div><h3>Un "money shot"</h3><p>Mínimo una toma héroe en primer plano: el queso estirándose, la salsa cayendo en cámara lenta, el crunch, o <strong>cómo se desprende el pollo jugoso</strong>. Es lo que se guarda y comparte.</p></div>
+      <div class="card"><div class="ico">🔍</div><h3>Acércate al plato</h3><p>Llenar el cuadro con la comida — <strong>menos aire y margen</strong> alrededor del plato. Al acercarte, el plato manda y de paso <strong>desaparece el fondo "clínico"</strong>.</p></div>
+      <div class="card"><div class="ico">📐</div><h3>Varía los ángulos</h3><p>Combinar cenital, <strong>45°</strong> ("como te lo vas a comer"), ras de mesa y macros de textura. Muchos de esos ángulos ni siquiera muestran el fondo.</p></div>
+      <div class="card"><div class="ico">🎨</div><h3>Color y acompañantes</h3><p>El plato final nunca solo: garnish (cilantro, perejil, ajonjolí), arepita, limón, salsa en bowl. Un pop de color para que no se vea plano.</p></div>
+      <div class="card"><div class="ico">🍳</div><h3>Muestra la cocción</h3><p>Superficie cálida (madera/mantel) y filmar <strong>recién hecho</strong> → vapor + brillo con un toque de aceite. Sumar <strong>tomas en el fogón</strong> (que se vean las burbujas si es salsa).</p></div>
+      <div class="card"><div class="ico">🗣️</div><h3>Personalidad</h3><p>Manteniendo el formato <strong>sin rostro</strong>, la energía igual tiene que estar: <strong>voz en off con carácter</strong>, ritmo y dinamismo. Pasar de tutorial a contenido con vida.</p></div>
+      <div class="card"><div class="ico">✍️</div><h3>Texto y cierre</h3><p>Texto grande y legible. Abrir con un <strong>hook con personalidad</strong> (no "agregamos la salsa") y cerrar con una pregunta o invitación a guardar/compartir.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- 3 -->
+<section>
+  <div class="wrap">
+    <div class="snum">03</div>
+    <h2 class="shead">La misma receta, dos resultados</h2>
+    <p class="sintro">Comparamos una receta de Delichicks con una de creadores que la rompen en redes. Misma comida — la diferencia está en cómo se cuenta y cómo se ve.</p>
+
+    <!-- Comparativo muslos -->
+    <div class="cmp">
+      <div class="ttl"><h3>Muslos al ajillo</h3><span class="dish">🍗 misma receta · pollo en mantequilla y ajo</span></div>
+      <div class="duo">
+        <div class="side"><div class="head"><span class="pill bad">Delichicks</span></div><video src="assets/deli_muslitos.mp4" poster="assets/muslos_deli.jpg" controls playsinline preload="metadata"></video></div>
+        <div class="side"><div class="head"><span class="pill good">Referencia · @losdenam</span></div><video src="assets/ref_muslos.mp4" poster="assets/muslos_ref_food.jpg" controls playsinline preload="metadata"></video></div>
+      </div>
+      <table class="ctable">
+        <tr><th>Elemento</th><th>Delichicks</th><th>Referencia</th></tr>
+        <tr><td>Energía</td><td class="c-bad">Plano, sin voz ni ritmo</td><td class="c-good">Mucho carácter y dinamismo</td></tr>
+        <tr><td>Cierre</td><td class="c-bad">Plato final estático</td><td class="c-good">Primer plano de cómo se desprende el pollo jugoso</td></tr>
+        <tr><td>Set / fondo</td><td class="c-bad">Cocina neutra, plana</td><td class="c-good">Set colorido y vibrante, con vida</td></tr>
+        <tr><td>Ritmo</td><td class="c-bad">Cenital estático</td><td class="c-good">Dinámico, ángulos variados</td></tr>
+        <tr><td>Lo que Delichicks SÍ hace bien</td><td class="c-good" colspan="2">El plato final se ve glossy y apetitoso ✅ — hay que explotarlo más</td></tr>
+      </table>
+      <div class="change"><b>Qué cambiaría aquí 👇</b>
+        <ul>
+          <li>Meter una capa humana: <strong>voz en off con carácter</strong> (la personalidad no tiene que ser la cara, pero tiene que estar).</li>
+          <li>Cambiar el cierre estático por un money shot con emoción: <strong>mano jalando la carne jugosa + salsa brillante en cámara lenta</strong>.</li>
+          <li>Calentar el set con color y madera; subir el ritmo y sumar ángulos.</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Comparativo ensalada -->
+    <div class="cmp">
+      <div class="ttl"><h3>Ensalada de pollo</h3><span class="dish">🥗 misma receta · pollo crispy + verdes</span></div>
+      <div class="duo">
+        <div class="side"><div class="head"><span class="pill bad">Delichicks</span></div><video src="assets/deli_ensalada.mp4" poster="assets/ensalada_deli.jpg" controls playsinline preload="metadata"></video></div>
+        <div class="side"><div class="head"><span class="pill good">Referencia · @juliainr11</span></div><video src="assets/ref_ensalada.mp4" poster="assets/ensalada_ref.jpg" controls playsinline preload="metadata"></video></div>
+      </div>
+      <table class="ctable">
+        <tr><th>Elemento</th><th>Delichicks</th><th>Referencia</th></tr>
+        <tr><td>Luz</td><td class="c-bad">Fría, plana, blanco sobre blanco</td><td class="c-good">Cálida, natural, brillante</td></tr>
+        <tr><td>Color / frescura</td><td class="c-bad">Apagado (verdes pálidos, cafés)</td><td class="c-good">Aguacate verde, zanahoria naranja, pollo dorado</td></tr>
+        <tr><td>Money shot</td><td class="c-bad">Bowl estático con tenedor</td><td class="c-good">Macro del pollo crispy dorado</td></tr>
+        <tr><td>Set</td><td class="c-bad">Cocina clínica blanca</td><td class="c-good">Madera cálida + planta (vida)</td></tr>
+        <tr><td>La salsa</td><td class="c-bad">Batida en el canasto negro (poco apetitosa)</td><td class="c-good">Salsa fresca, bien mostrada</td></tr>
+      </table>
+      <div class="change"><b>Qué cambiaría aquí 👇</b>
+        <ul>
+          <li><strong>Luz cálida natural</strong> y fondo de madera en vez del blanco clínico.</li>
+          <li>Buscar su propio <strong>héroe en macro</strong> (la proteína jugosa, el queso o la salsa cayendo) + sumar <strong>color fresco a la vista</strong> (aguacate, tomate, zanahoria).</li>
+          <li>Mostrar la salsa de forma apetitosa, no batida en el canasto negro.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 -->
+<section>
+  <div class="wrap">
+    <div class="snum">04</div>
+    <h2 class="shead">Así se ve cuando antoja</h2>
+    <p class="sintro">Referencias de terminación: lo que logran la luz cálida, la textura como héroe y el color. A esto apuntamos.</p>
+    <div class="refgrid">
+      <div class="ref"><img src="assets/ensalada_ref.jpg" alt="pollo crispy macro"><div class="cap"><h3>Textura como héroe</h3><p>Primer plano del crispy con luz cálida → la textura dorada se vuelve irresistible. Eso es un money shot.</p></div></div>
+      <div class="ref"><img src="assets/muslos_ref_food.jpg" alt="muslos al ajillo en salsa"><div class="cap"><h3>El cierre que prueba</h3><p>Un primer plano de la salsa cayendo o del pollo desprendiéndose jugoso comunica "esto está delicioso" — sin mostrar a nadie.</p></div></div>
+      <div class="ref"><img src="assets/ref_cesar.jpg" alt="ensalada césar con pollo"><div class="cap"><h3>Luz cálida + abundancia</h3><p>El pollo dorado en rodajas va arriba, protagonista. Luz cálida y plato generoso = antojo inmediato.</p></div></div>
+      <div class="ref"><img src="assets/ref_broccoli.jpg" alt="pasta con crema de brócoli"><div class="cap"><h3>Color y props</h3><p>Props de color alrededor (brócoli, tomate) + el pollo y las hierbas encima rompen lo plano y suman frescura.</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- 5 -->
+<section>
+  <div class="wrap">
+    <div class="snum">05</div>
+    <h2 class="shead">Guion plantilla</h2>
+    <p class="sintro">Dos guiones listos para grabar, con la estructura ganadora: <strong>Hook → producto → proceso → money shot → cierre</strong>. Replicables para cualquier receta.</p>
+
+    <div class="gnote">⭐ <b>Regla de oro:</b> el <strong>producto Delichicks es el protagonista</strong> — nombrado en el hook, con un <strong>beauty shot del empaque</strong> al inicio, reforzado en la voz y presente en el plato final. No es un ingrediente de paso: es la razón del video.</div>
+
+    <div class="guion">
+      <div class="gh"><span style="font-size:1.5rem">🍝</span><h3>Albóndigas de pollo en salsa cremosa</h3></div>
+      <div class="gmeta"><span class="gchip">Producto · Pechuga de Pollo Delichicks</span><span class="gchip">~45s</span><span class="gchip">🎙️ voz en off</span><span class="gchip">vertical 9:16</span></div>
+      <div class="gref"><video src="assets/ref_albondigas.mp4" poster="assets/ref_albondigas.jpg" controls playsinline preload="metadata"></video><p>📹 <strong>Referencia que replicamos.</strong> Misma estructura: hook con el plato final → producto → proceso (manos + ASMR) → money shot → cierre.</p></div>
+      <table class="gtable">
+        <tr><th>Tiempo</th><th>Toma (qué se ve + ángulo)</th><th>Voz en off</th><th>Sonido</th></tr>
+        <tr><td>0–3s</td><td><strong>Hook:</strong> macro de las albóndigas en salsa, el tenedor parte una + vapor (45°)</td><td class="voz">"Nadie creería que estas albóndigas jugosas salen de una pechuga Delichicks 🤤"</td><td>música + corte</td></tr>
+        <tr><td>3–6s</td><td><strong>Beauty shot</strong> del empaque de Pechuga de Pollo Delichicks (giro / abrir)</td><td class="voz">"Todo empieza con la pechuga de pollo Delichicks"</td><td>empaque</td></tr>
+        <tr><td>6–10s</td><td>Cubos de pechuga al procesador con ajo, cebolla y perejil (cenital)</td><td class="voz">"Al procesador con ajo, cebolla y perejil"</td><td>procesador</td></tr>
+        <tr><td>10–14s</td><td>Formar las bolitas con las manos (45°)</td><td class="voz">"Formamos las albóndigas"</td><td>manos</td></tr>
+        <tr><td>14–20s</td><td>Dorándose en el sartén (ras de mesa, ver el dorado)</td><td class="voz">"Las doramos hasta que queden jugosas por dentro"</td><td>chisporroteo</td></tr>
+        <tr><td>20–26s</td><td>Verter la salsa cremosa de espinaca y parmesano — que se vean las burbujas (macro, slow-mo)</td><td class="voz">"Y la salsa cremosa de espinaca…"</td><td>burbujeo</td></tr>
+        <tr><td>26–32s</td><td>Bañar las albóndigas + espolvorear perejil (cenital + macro)</td><td class="voz">"…que lo cambia todo"</td><td>cuchara</td></tr>
+        <tr class="money"><td>32–38s</td><td>⭐ <strong>Money shot:</strong> partir una, sale jugosa + el tenedor con salsa hilada (macro, slow-mo)</td><td class="voz">(sin voz, solo el sonido)</td><td>ASMR, música sube</td></tr>
+        <tr><td>38–45s</td><td>Plato final con el empaque al lado + CTA</td><td class="voz">"Hazlas con tu pechuga Delichicks 📌 Guarda la receta 👇"</td><td>cierre</td></tr>
+      </table>
+    </div>
+
+    <div class="guion">
+      <div class="gh"><span style="font-size:1.5rem">🍔</span><h3>Hamburguesa BBQ de pollo</h3></div>
+      <div class="gmeta"><span class="gchip">Producto · Carne de Hamburguesa de Pollo Delichicks</span><span class="gchip">~40s</span><span class="gchip">🎙️ voz en off</span><span class="gchip">vertical 9:16</span></div>
+      <div class="gref"><video src="assets/ref_burger_bbq.mp4" poster="assets/ref_burger_bbq.jpg" controls playsinline preload="metadata"></video><p>📹 <strong>Referencia de estilo.</strong> Tomamos el glaseado BBQ, el armado y los money shots — pero con la <strong>carne de hamburguesa Delichicks</strong> (no apanado).</p></div>
+      <table class="gtable">
+        <tr><th>Tiempo</th><th>Toma</th><th>Voz en off</th><th>Sonido</th></tr>
+        <tr><td>0–3s</td><td><strong>Hook:</strong> la hamburguesa con la salsa BBQ brillante goteando + el queso (macro)</td><td class="voz">"Esta hamburguesa BBQ se hace con la carne de pollo Delichicks 🍔🔥"</td><td>música + ASMR</td></tr>
+        <tr><td>3–6s</td><td><strong>Beauty shot</strong> del empaque de Carne de Hamburguesa de Pollo Delichicks (cenital)</td><td class="voz">"La carne de hamburguesa de pollo Delichicks"</td><td>empaque</td></tr>
+        <tr><td>6–12s</td><td>Dorar la carne jugosa en la plancha (ras de mesa, ver los jugos)</td><td class="voz">"La doramos jugosa en la plancha"</td><td>chisporroteo</td></tr>
+        <tr><td>12–17s</td><td>Glasear con salsa BBQ + panela molida — la salsa cayendo brillante y caramelizada (macro, slow-mo)</td><td class="voz">"La bañamos en salsa BBQ y un toque de panela molida…"</td><td>salsa</td></tr>
+        <tr><td>17–22s</td><td>Fundir el queso encima, tapar (vapor, macro)</td><td class="voz">"…y le fundimos el queso"</td><td>plancha</td></tr>
+        <tr><td>22–30s</td><td>Armar: pan tostado + salsa, la carne BBQ con queso, cebolla, tomate, lechuga (45°)</td><td class="voz">"Armamos con pan, harto fresco y más salsa"</td><td>manos</td></tr>
+        <tr class="money"><td>30–35s</td><td>⭐ <strong>Money shot:</strong> partir a la mitad → corte jugoso + queso + BBQ (macro, slow-mo)</td><td class="voz">(sin voz, solo el sonido)</td><td>ASMR, música sube</td></tr>
+        <tr><td>35–40s</td><td>Plato final con el empaque + CTA</td><td class="voz">"Hazla con tu carne Delichicks 📌 ¿con BBQ o picante? 👇"</td><td>cierre</td></tr>
+      </table>
+      <p class="gswap">🌭 <strong>Swap fácil:</strong> misma estructura con <strong>Salchicha de Pollo Delichicks</strong> → perrito artesanal BBQ.</p>
+    </div>
+
+    <p class="sintro" style="margin-top:6px"><strong>Reglas de producción (fijas en la plantilla):</strong> luz cálida lateral · fondo de madera · llenar el cuadro · variar ángulos (cenital/45°/ras/macro) · filmar recién hecho (vapor) · ASMR real + música bajita.</p>
+  </div>
+</section>
+
+<section class="closing">
+  <div class="wrap">
+    <h2>Pasemos de <em>"tutorial de cocina"</em><br>a <em>"contenido que da ganas"</em>.</h2>
+    <p>La comida ya queda rica. Con luz, un money shot y un poco de personalidad, esos mismos platos van a antojar muchísimo más.</p>
+    <div class="next">🎬 Listos para grabar</div>
+  </div>
+</section>
+
+<div class="foot">Delichicks · Brief creativo de contenido — Hounterleads 2026</div>
+
+</body>
+</html>
