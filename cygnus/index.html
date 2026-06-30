@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cygnus Pilates — Parrilla de Contenido · Julio 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAF7F4;
+    color: #3D3533;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 80px 30px 55px;
+    background: linear-gradient(180deg, #F0EBE5 0%, #FAF7F4 100%);
+    border-bottom: 1px solid #E8E0D8;
+  }
+  .header .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #B8956A;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3em;
+    font-weight: 300;
+    color: #3D3533;
+    line-height: 1.2;
+  }
+  .header p { font-size: 0.95em; color: #8A7E76; margin-top: 14px; }
+  .header .doc-tag {
+    display: inline-block;
+    border: 1px solid #D4C8BC;
+    color: #8A7E76;
+    padding: 6px 22px;
+    border-radius: 50px;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    margin-top: 22px;
+  }
+
+  /* SECTION HEADER */
+  .section-head { text-align: center; margin: 70px 0 10px; }
+  .section-head .eyebrow {
+    font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase;
+    color: #B8956A; font-weight: 500;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.3em; font-weight: 300; color: #3D3533; margin-top: 6px;
+  }
+  .section-head p { color: #8A7E76; font-size: 0.9em; margin-top: 6px; }
+  .divider { width: 60px; height: 1px; background: #D4C8BC; margin: 22px auto 40px; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+  /* CARD */
+  .card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid #E8E0D8;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .card:hover { box-shadow: 0 8px 30px rgba(184,149,106,0.14); transform: translateY(-2px); }
+
+  /* MEDIA */
+  .card-media {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    background: #17120E;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card-media video, .card-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  /* CARRUSEL */
+  .carousel { position: relative; width: 100%; height: 100%; }
+  .carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .35s; display: flex; align-items: center; justify-content: center; }
+  .carousel .slide.active { opacity: 1; }
+  .carousel .slide img, .carousel .slide video { width: 100%; height: 100%; object-fit: contain; }
+  .car-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.85); color: #3D3533; border: none;
+    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+    font-size: 1.3em; line-height: 1; display: flex; align-items: center; justify-content: center;
+    z-index: 3; transition: background .2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .car-btn:hover { background: #fff; }
+  .car-prev { left: 10px; }
+  .car-next { right: 10px; }
+  .car-count {
+    position: absolute; top: 12px; right: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 0.72em; font-weight: 500;
+    padding: 3px 11px; border-radius: 50px; letter-spacing: 0.5px;
+  }
+  .car-dots { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; gap: 6px; justify-content: center; z-index: 3; }
+  .car-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.5); transition: all .2s; }
+  .car-dots span.on { background: #fff; width: 18px; border-radius: 4px; }
+
+  .media-type {
+    position: absolute; top: 12px; left: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 0.68em; font-weight: 500;
+    padding: 4px 11px; border-radius: 50px; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* BODY */
+  .card-body { padding: 22px 24px 20px; display: flex; flex-direction: column; flex: 1; }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .card-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4em; color: #D4C8BC; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5em; font-weight: 500;
+    color: #3D3533; line-height: 1.2; margin-bottom: 10px;
+  }
+  .card-desc { color: #5A5250; font-size: 0.88em; font-weight: 300; flex: 1; }
+  .card-script {
+    white-space: pre-line; background: #FAF7F4; border-left: 2px solid #D4C8BC;
+    padding: 12px 16px; border-radius: 8px; font-size: 0.82em; color: #5A5250;
+    margin-top: 10px; font-style: italic;
+  }
+  .card-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid #F0EBE5;
+  }
+  .card-ref { color: #B8956A; text-decoration: none; font-size: 0.8em; font-weight: 500; letter-spacing: 0.3px; }
+  .card-ref:hover { color: #8A6D45; }
+
+  /* TAGS */
+  .tags { display: flex; gap: 8px; align-items: center; }
+  .tag { display: inline-block; padding: 4px 13px; border-radius: 50px; font-size: 0.72em; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; }
+  .tag-reel { background: #F0EBE5; color: #B8956A; }
+  .tag-carrusel { background: #EDE8E3; color: #8A7E76; }
+  .tag-status { background: #FFF8F0; color: #C4956A; border: 1px solid #F0DAD5; font-size: 0.72em; padding: 4px 12px; border-radius: 50px; }
+  .tag-future { background: #F0F0F5; color: #7E7EA0; border: 1px solid #E2E2EC; font-size: 0.72em; padding: 4px 12px; border-radius: 50px; }
+
+  /* SUMMARY */
+  .summary {
+    display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;
+    margin: 40px 0 10px; padding: 30px; background: #FFFCF9;
+    border: 1px solid #E8E0D8; border-radius: 16px;
+  }
+  .summary .stat { text-align: center; }
+  .summary .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2.6em; color: #B8956A; line-height: 1; }
+  .summary .stat .lbl { font-size: 0.75em; letter-spacing: 1.5px; text-transform: uppercase; color: #8A7E76; margin-top: 8px; }
+
+  /* FOOTER */
+  /* OBJETIVO / INTRO */
+  .objetivo {
+    background: #FFFCF9;
+    border: 1px solid #E8E0D8;
+    border-radius: 18px;
+    padding: 44px 48px;
+    margin: 44px 0 10px;
+  }
+  .objetivo .eyebrow { font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase; color: #B8956A; font-weight: 500; }
+  .objetivo h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.9em; font-weight: 300;
+    color: #3D3533; margin: 6px 0 18px;
+  }
+  .objetivo .lead {
+    font-size: 1em; color: #5A5250; font-weight: 300; line-height: 1.8;
+    border-left: 2px solid #D4C8BC; padding-left: 20px; margin-bottom: 26px;
+  }
+  .objetivo h4 { font-size: 0.82em; letter-spacing: 1.5px; text-transform: uppercase; color: #B8956A; font-weight: 500; margin-bottom: 16px; }
+  .ejes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .eje { background: #FFFFFF; border: 1px solid #F0EBE5; border-radius: 12px; padding: 20px 22px; }
+  .eje .eje-t { font-family: 'Cormorant Garamond', serif; font-size: 1.25em; color: #3D3533; margin-bottom: 8px; }
+  .eje .eje-d { font-size: 0.82em; color: #5A5250; font-weight: 300; }
+  .eje .eje-d em { color: #8A7E76; font-style: italic; }
+  .objetivo .cierre {
+    margin-top: 26px; text-align: center; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35em; font-weight: 300; font-style: italic; color: #6B5E54; line-height: 1.5;
+  }
+  @media (max-width: 760px) { .ejes { grid-template-columns: 1fr; } .objetivo { padding: 30px 26px; } }
+
+  .footer { text-align: center; padding: 60px 20px 50px; color: #A89E96; font-size: 0.8em; }
+  .footer .brand-f { font-family: 'Cormorant Garamond', serif; letter-spacing: 6px; text-transform: uppercase; color: #B8956A; font-size: 1.1em; margin-bottom: 8px; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2em; }
+    .summary { gap: 28px; }
+    .card-media { height: 380px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Cygnus Pilates Studio</div>
+  <h1>Parrilla de Contenido</h1>
+  <p>Plan de publicaciones · Julio 2026</p>
+  <div class="doc-tag">Propuesta para revisión · referencias reproducibles</div>
+</div>
+
+<div class="container">
+
+  <div class="objetivo">
+    <div class="eyebrow">Objetivo</div>
+    <h3>Hacia dónde apunta esta parrilla</h3>
+    <p class="lead">Julio tiene un <strong>doble propósito</strong>: seguir fortaleciendo el vínculo con la comunidad actual de Cygnus y, al mismo tiempo, empezar a <strong>construir expectativa</strong> alrededor de la nueva sede en El Poblado.</p>
+    <h4>Tres ejes de contenido</h4>
+    <div class="ejes">
+      <div class="eje">
+        <div class="eje-t">Marca y emoción</div>
+        <div class="eje-d">Reels que conectan desde los pequeños detalles y el sentir de pertenecer a Cygnus. <em>Existe un lugar · Moverme sana · No canceles</em></div>
+      </div>
+      <div class="eje">
+        <div class="eje-t">Comunidad y humor</div>
+        <div class="eje-d">Piezas que humanizan el estudio, generan cercanía y se sienten "de nosotras". <em>Mesita · Coach súper buena · Barrer · Agenda llena</em></div>
+      </div>
+      <div class="eje">
+        <div class="eje-t">Expectativa nueva sede</div>
+        <div class="eje-d">Fase de intriga que despierta curiosidad e intención de visita al nuevo espacio. <em>Algo se está cocinando · Reveal · Guarda la fecha · Coming soon</em></div>
+      </div>
+    </div>
+    <div class="cierre">Mantener viva la conversación con quienes ya nos quieren,<br>mientras encendemos la curiosidad de quienes están por descubrirnos. 🤍</div>
+  </div>
+
+  <div class="summary">
+    <div class="stat"><div class="num">20</div><div class="lbl">Piezas</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">Carruseles</div></div>
+    <div class="stat"><div class="num">14</div><div class="lbl">Reels</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Secciones</div></div>
+  </div>
+
+  <!-- ============ SECCIÓN 1 ============ -->
+  <div class="section-head">
+    <div class="eyebrow">Sección 01</div>
+    <h2>Parrilla Principal</h2>
+    <p>Contenido de marca, comunidad y humor · 13 piezas</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="grid">
+
+    <!-- p01 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Carrusel</span>
+        <div class="carousel">
+          <div class="slide active"><img src="cygnus-julio-videos/p01-1.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p01-2.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p01-3.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p01-4.jpg" alt=""></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-carrusel">Carrusel</span></div></div>
+        <div class="card-title">Moverme sana</div>
+        <div class="card-desc">Carrusel motivacional con una modelo específica. Foto + frase motivacional.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DZS6kqblGkn/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p02 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Carrusel</span>
+        <div class="carousel">
+          <div class="slide active"><img src="cygnus-julio-videos/p02-1.png" alt=""></div>
+          <div class="slide"><video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p02-2.mp4" type="video/mp4"></video></div>
+          <div class="slide"><img src="cygnus-julio-videos/p02-3.jpg" alt=""></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-carrusel">Carrusel</span></div></div>
+        <div class="card-title">Pilates 60+</div>
+        <div class="card-desc">Tomas generales + texto con las razones por las cuales practicar pilates con más de 60 años.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DZnHJt2FN7g/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p03 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Carrusel</span>
+        <div class="carousel">
+          <div class="slide active"><img src="cygnus-julio-videos/p03-1.png" alt=""></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">03</span><div class="tags"><span class="tag tag-carrusel">Carrusel</span></div></div>
+        <div class="card-title">Miniatura pilates</div>
+        <div class="card-desc">Frase común a la hora de poner excusas para practicar pilates y, en miniatura, por qué sí deberías hacerlo. <em>(Referencia: solo portada.)</em></div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DZHEjANFCA6/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p04 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Carrusel</span>
+        <div class="carousel">
+          <div class="slide active"><img src="cygnus-julio-videos/p04-1.png" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p04-2.png" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p04-3.png" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p04-4.png" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/p04-5.png" alt=""></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">04</span><div class="tags"><span class="tag tag-carrusel">Carrusel</span></div></div>
+        <div class="card-title">Barre birthday</div>
+        <div class="card-desc">Tomas del cumpleaños en barre + información de los planes.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DW1vdV2iUeZ/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p05 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p05.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">05</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Existe un lugar</div>
+        <div class="card-desc">Reel emotivo de marca — Cygnus + los pequeños detalles.</div>
+        <div class="card-script">Imagina que existe un lugar...
+Donde vienes a entrenar
+Pero te quedas por los pequeños detalles
+Por la sonrisa con la que te reciben todos los días
+y esos momentos para desconectarte
+Por las clases que te hacen sentir fuerte
+Y las que te ayudan a bajar revoluciones
+Por el cafecito después de entrenar
+Y por la calidad de personas que terminas conociendo
+Porque aquí nadie juzga
+Y solo vienes a sentirte mejor
+Si existe... CYGNUS</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/reel/DZ590VLudFg/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p06 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p06.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">06</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Mesita</div>
+        <div class="card-desc">Humor: "A esto se refiere tu coach cuando dice piernas en mesa".</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DaBbUF3CaHF/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p07 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p07.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">07</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">No canceles</div>
+        <div class="card-desc">Persona en clase de barre con texto en primer plano: "Tu clase de pilates es una cita contigo misma, no la canceles".</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DYkcf2cIAPR/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p08 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p08.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">08</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Barrer</div>
+        <div class="card-desc">Humor: "Lo que los demás piensan cuando digo que voy a clase de barre".</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.tiktok.com/@altea.studio/video/7597643037883288852" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p09 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p09.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">09</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Eres lo que repites</div>
+        <div class="card-desc">Persona en una misma posición de ejercicios con +5 cambios de ropa. Símbolo: constancia.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DYPm9JtCwS0/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p10 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p10.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">10</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Equipo 20/10</div>
+        <div class="card-desc">"Si tú estás aquí y yo también, entonces ¿quién está en el estudio?" 😮</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DUWYx86CVt8/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p11 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p11.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">11</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Agenda llena</div>
+        <div class="card-desc">Un perrito o Victoria como trabajador de Cygnus, con la obligación de llenar la agenda.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/reels/DSTNNmJkTqT/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p12 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p12.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">12</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Ejercicios mal hechos · v2</div>
+        <div class="card-desc">Segunda versión del formato de ejercicios mal hechos — corregir la postura hace toda la diferencia.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DPT9yAJDdqa/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- p13 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/p13.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">13</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Coach súper buena</div>
+        <div class="card-desc">Humor: "Me dijeron que la coach de esta clase es súper buena" — "¿Tú no eres la coach?".</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DPEfJ2uDbjF/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ============ SECCIÓN 2 ============ -->
+  <div class="section-head">
+    <div class="eyebrow">Sección 02</div>
+    <h2>Expectativa · Nueva Sede</h2>
+    <p>Contenido de lanzamiento — Sede El Poblado · 7 piezas</p>
+  </div>
+  <div class="divider"></div>
+
+  <div class="grid">
+
+    <!-- e01 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/e01.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Expectativa</div>
+        <div class="card-desc">"Algo se está cocinando" — primer teaser de intriga sobre la nueva sede.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DTDtotjgJOn/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- e02 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/e02.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Guarda la fecha</div>
+        <div class="card-desc">Anuncio de la inauguración con fecha — invitación a guardarla.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/reel/DYxjZU4xOfU/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- e03 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/e03.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">03</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Ya conoces nuestra sede de...</div>
+        <div class="card-desc">Texto en primer plano "¿Ya conoces nuestra sede de El Poblado?" con tomas de fondo del espacio y las clases.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/reel/DZbd7aiseEl/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- e04 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Carrusel</span>
+        <div class="carousel">
+          <div class="slide active"><img src="cygnus-julio-videos/e04-1.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/e04-2.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/e04-3.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/e04-4.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/e04-5.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/e04-6.jpg" alt=""></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">04</span><div class="tags"><span class="tag tag-carrusel">Carrusel</span></div></div>
+        <div class="card-title">Reveal</div>
+        <div class="card-desc">"Swipe to reveal..." — antes y después de un espacio de la nueva sede.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DZdYZHUE_bT/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- e05 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/e05.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">05</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Conoce al equipo · v2</div>
+        <div class="card-desc">Presentar al equipo — no solo como coaches, sino como equipo — mostrándolos también en las labores generales del estudio. <strong>Variación con el equipo actual</strong> (o a futuro con el equipo de la nueva sede, cuando haya buena dinámica).</div>
+        <div class="card-foot"><span class="tag-future">Idea / variación</span><a class="card-ref" href="https://www.instagram.com/reel/DaDdq4rTkuY/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- e06 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Carrusel</span>
+        <div class="carousel">
+          <div class="slide active"><img src="cygnus-julio-videos/e06-1.jpg" alt=""></div>
+          <div class="slide"><img src="cygnus-julio-videos/e06-2.jpg" alt=""></div>
+        </div>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">06</span><div class="tags"><span class="tag tag-carrusel">Carrusel</span></div></div>
+        <div class="card-title">Ellos tuvieron una idea</div>
+        <div class="card-desc">Slide 1: "Ellos tuvieron una idea". Slide 2: "...y la hicieron realidad".</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/p/DXx82B-lWJO/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+    <!-- e07 -->
+    <div class="card">
+      <div class="card-media">
+        <span class="media-type">Reel</span>
+        <video controls preload="metadata" playsinline><source src="cygnus-julio-videos/e07.mp4" type="video/mp4"></video>
+      </div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">07</span><div class="tags"><span class="tag tag-reel">Reel</span></div></div>
+        <div class="card-title">Coming soon</div>
+        <div class="card-desc">Teaser final "Coming soon" / soft launch del nuevo espacio antes de la apertura.</div>
+        <div class="card-foot"><span class="tag-status">En revisión</span><a class="card-ref" href="https://www.instagram.com/reel/DYwwN75svtn/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="brand-f">Cygnus</div>
+  Parrilla de contenido · Julio 2026 · @cygnus
+</div>
+
+<script>
+  document.querySelectorAll('.carousel').forEach(function(car){
+    var slides = car.querySelectorAll('.slide');
+    if (slides.length <= 1) return;
+    var idx = 0;
+
+    var count = document.createElement('div');
+    count.className = 'car-count';
+    car.appendChild(count);
+
+    var prev = document.createElement('button');
+    prev.className = 'car-btn car-prev'; prev.innerHTML = '‹';
+    var next = document.createElement('button');
+    next.className = 'car-btn car-next'; next.innerHTML = '›';
+    car.appendChild(prev); car.appendChild(next);
+
+    var dots = document.createElement('div');
+    dots.className = 'car-dots';
+    slides.forEach(function(){ dots.appendChild(document.createElement('span')); });
+    car.appendChild(dots);
+    var dotEls = dots.querySelectorAll('span');
+
+    function render(){
+      slides.forEach(function(s,i){
+        s.classList.toggle('active', i === idx);
+        if (i !== idx) { var v = s.querySelector('video'); if (v) v.pause(); }
+      });
+      dotEls.forEach(function(d,i){ d.classList.toggle('on', i === idx); });
+      count.textContent = (idx+1) + ' / ' + slides.length;
+    }
+    prev.addEventListener('click', function(){ idx = (idx - 1 + slides.length) % slides.length; render(); });
+    next.addEventListener('click', function(){ idx = (idx + 1) % slides.length; render(); });
+    render();
+  });
+</script>
+
+</body>
+</html>
