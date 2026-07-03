@@ -256,7 +256,7 @@
           tag:"#001", titulo:"Campaña Mundial", subtitulo:"ADN ganador de base con temática Mundial",
           fecha:"03 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:true,
           intro:"Las piezas hechas para Mundial, aunque <b>sí venden</b>, no están alcanzando el ROAS que queremos. La idea de esta solicitud es <b>duplicar los anuncios que ya funcionan</b> —ya sea por diseño o por producto— y hacer su <b>versión Mundial</b>, para ver si le damos un giro que <b>mejore el ROAS de la campaña</b>.",
-          regla:"<b>Regla:</b> el Mundial de Nutrecat NO se construye con sus piezas de Mundial (no fueron rentables, ROAS &lt; 3). Se replica la <b>estructura ganadora de la campaña base</b> — gato + producto + <b>checklist de beneficios</b> — y se le pone el <b>envoltorio Mundial</b> (“golazo”). Gato real protagonista, sin promesas absolutas.",
+          regla:"<b>Regla:</b> el Mundial de Nutrecat no se construye con sus piezas de Mundial: aunque tienen retorno, todavía no alcanzan el ROAS que buscamos (nuestros objetivos son más altos). Se replica la <b>estructura ganadora de la campaña base</b> — gato + producto + <b>checklist de beneficios</b> — y se le pone el <b>envoltorio Mundial</b> (“golazo”). Gato real protagonista, sin promesas absolutas.",
           referencias:[
             {img:"img/ncat-tilapia.png", roas:"Base · Adulto Tilapia ✅",
              h:"“Así se ve un gato bien alimentado con tilapia”", p:"Replica el <b>diseño y la intención</b>: gato protagonista, producto Tilapia y <b>checklist de beneficios</b> (peso saludable, ojos sanos, pelo brillante, sin bolas de pelo). Vístelo de Mundial."},
@@ -278,7 +278,10 @@
         }
       ]
     },
-    { key:"luckyperros", nombre:"Lucky Perros", sector:"Snacks perros", emoji:"🦴", solicitudes:[] },
+    { key:"luckyperros", nombre:"Lucky Perros", sector:"Snacks perros", emoji:"🦴",
+      vacio:{ic:"✅", h:"Base estable — sin cambios este ciclo",
+        p:"La campaña base de Lucky Perros se mantiene con buen desempeño, así que se conserva lo que ya funciona. Sin solicitudes de contenido por ahora."},
+      solicitudes:[] },
     { key:"luckygatos", nombre:"Lucky Gatos", sector:"Snacks gatos", emoji:"🐾", solicitudes:[] }
   ];
 
@@ -299,9 +302,10 @@
     p.id = 'panel-' + m.key;
 
     if (!m.solicitudes.length) {
-      p.innerHTML = `<div class="empty"><div class="big">${m.emoji}</div>
-        <h3>Aún no hay solicitudes para ${m.nombre}</h3>
-        <p>Se irán publicando aquí a medida que se soliciten.</p></div>`;
+      const v = m.vacio || {ic:m.emoji, h:`Aún no hay solicitudes para ${m.nombre}`, p:`Se irán publicando aquí a medida que se soliciten.`};
+      p.innerHTML = `<div class="empty"><div class="big">${v.ic}</div>
+        <h3>${v.h}</h3>
+        <p>${v.p}</p></div>`;
     } else {
       m.solicitudes.forEach(s => p.appendChild(buildSol(s)));
     }
