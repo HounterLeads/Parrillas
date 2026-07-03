@@ -100,6 +100,16 @@
   .sol-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
   .sol-body-in{padding:2px 22px 26px}
 
+  /* ABREBOCAS / CONTEXTO */
+  .intro{background:var(--navy);color:#EDEEFF;border-radius:14px;padding:16px 20px;margin:8px 0 6px;
+    font-size:.92rem;line-height:1.55;position:relative;overflow:hidden}
+  .intro::before{content:"";position:absolute;top:-40%;right:-6%;width:38%;height:180%;
+    background:radial-gradient(circle,rgba(102,112,255,.4) 0%,transparent 65%);filter:blur(24px)}
+  .intro b{color:var(--lav)}
+  .intro .lbl{display:block;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--lav);font-weight:700;margin-bottom:6px;position:relative;z-index:1}
+  .intro span.t{position:relative;z-index:1}
+
   /* REGLA */
   .regla{display:flex;gap:12px;background:linear-gradient(135deg,#FDECF7,#F3EEFF);
     border:1px solid #F3CFE8;border-radius:14px;padding:16px 18px;margin:8px 0 22px}
@@ -239,7 +249,35 @@
         }
       ]
     },
-    { key:"nutrecat", nombre:"Nutrecat", sector:"Alimento gatos", emoji:"🐈", solicitudes:[] },
+    {
+      key:"nutrecat", nombre:"Nutrecat", sector:"Alimento gatos", emoji:"🐈",
+      solicitudes:[
+        {
+          tag:"#001", titulo:"Campaña Mundial", subtitulo:"ADN ganador de base con temática Mundial",
+          fecha:"03 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:true,
+          intro:"Las piezas hechas para Mundial, aunque <b>sí venden</b>, no están alcanzando el ROAS que queremos. La idea de esta solicitud es <b>duplicar los anuncios que ya funcionan</b> —ya sea por diseño o por producto— y hacer su <b>versión Mundial</b>, para ver si le damos un giro que <b>mejore el ROAS de la campaña</b>.",
+          regla:"<b>Regla:</b> el Mundial de Nutrecat NO se construye con sus piezas de Mundial (no fueron rentables, ROAS &lt; 3). Se replica la <b>estructura ganadora de la campaña base</b> — gato + producto + <b>checklist de beneficios</b> — y se le pone el <b>envoltorio Mundial</b> (“golazo”). Gato real protagonista, sin promesas absolutas.",
+          referencias:[
+            {img:"img/ncat-tilapia.png", roas:"Base · Adulto Tilapia ✅",
+             h:"“Así se ve un gato bien alimentado con tilapia”", p:"Replica el <b>diseño y la intención</b>: gato protagonista, producto Tilapia y <b>checklist de beneficios</b> (peso saludable, ojos sanos, pelo brillante, sin bolas de pelo). Vístelo de Mundial."},
+            {img:"img/ncat-gatitos.png", roas:"Base · Gatitos deslactosada ✅",
+             h:"“Su aventura apenas comienza”", p:"Replica el <b>diseño y la intención</b>: gatito protagonista, producto deslactosado y beneficio de crecimiento. Vístelo de Mundial (“su primer tiempo”)."}
+          ],
+          piezas:[
+            {n:1, name:"NCAT_GatitosDeslactosada", formato:"Estático + Reel", prio:"alta",
+             concepto:"Ángulo ganador de base: gatitos + deslactosada. Gatito protagonista, producto Gatitos deslactosado visible, envoltorio Mundial.",
+             copy:"Su mejor debut arranca con nutrición deslactosada.", cta:"Compra ahora"},
+            {n:2, name:"NCAT_AdultosTilapia", formato:"Estático", prio:"alta",
+             concepto:"Ángulo ganador de base: adulto + tilapia (sabor que le fascina). Gato adulto, producto Tilapia visible, envoltorio Mundial.",
+             copy:"Tilapia que le fascina. ¡Qué golazo alimentarlo bien!", cta:"Compra ahora"},
+            {n:3, name:"NCAT_HogarLimpio", formato:"Estático", prio:"alta",
+             concepto:"Ángulo ganador de base y superpoder del gato: dolor práctico del dueño (menos olor en la arena, casa limpia). Escena de hogar, producto adulto, envoltorio Mundial.",
+             copy:"Menos olor en la arena, más momentos en casa.", cta:"Compra ahora"}
+          ],
+          nota:"Las piezas <b>1 y 2</b> replican directamente las 2 referencias de base confirmadas. La <b>3 (Hogar limpio)</b> es un ángulo fuerte del gato según data previa — confirmar si sigue vigente antes de producirla."
+        }
+      ]
+    },
     { key:"luckyperros", nombre:"Lucky Perros", sector:"Snacks perros", emoji:"🦴", solicitudes:[] },
     { key:"luckygatos", nombre:"Lucky Gatos", sector:"Snacks gatos", emoji:"🐾", solicitudes:[] }
   ];
@@ -289,12 +327,14 @@
         <div class="big">⚽</div><h3>Estrategia en preparación</h3>
         <p>La solicitud de la campaña de Mundial se publicará aquí muy pronto.</p></div>`;
     } else {
-      const refs = s.referencias.map(r=>`
-        <div class="ref">
-          <img src="${r.img}" alt="${r.h}" loading="lazy" />
-          <div class="ref-cap"><span class="roas">${r.roas}</span>
-            <h4>${r.h}</h4><p>${r.p}</p></div>
-        </div>`).join('');
+      const refsBlock = (s.referencias && s.referencias.length) ? `
+        <div class="block-label">Referencias de diseño — replica el estilo y la intención, no el producto</div>
+        <div class="refs">${s.referencias.map(r=>`
+          <div class="ref">
+            <img src="${r.img}" alt="${r.h}" loading="lazy" />
+            <div class="ref-cap"><span class="roas">${r.roas}</span>
+              <h4>${r.h}</h4><p>${r.p}</p></div>
+          </div>`).join('')}</div>` : '';
 
       const piezas = s.piezas.map(pz=>`
         <div class="pieza ${pz.prio==='alta'?'alta':''}">
@@ -310,9 +350,9 @@
         </div>`).join('');
 
       bodyInner = `
+        ${s.intro ? `<div class="intro"><span class="lbl">Por qué esta solicitud</span><span class="t">${s.intro}</span></div>` : ''}
         <div class="regla"><span class="ic">🎯</span><p>${s.regla}</p></div>
-        <div class="block-label">Referencias de diseño — replica el estilo y la intención, no el producto</div>
-        <div class="refs">${refs}</div>
+        ${refsBlock}
         <div class="block-label">Piezas solicitadas · ${s.piezas.length}</div>
         ${piezas}
         ${s.nota ? `<div class="nota">${s.nota}</div>` : ''}`;
