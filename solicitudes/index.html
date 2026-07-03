@@ -110,6 +110,27 @@
     color:var(--lav);font-weight:700;margin-bottom:6px;position:relative;z-index:1}
   .intro span.t{position:relative;z-index:1}
 
+  /* COMPARACION base -> mundial */
+  .compara{border:1px solid #CFE9DA;border-radius:16px;padding:18px;margin:12px 0 6px;
+    background:linear-gradient(135deg,#EAF6EF,#F3EEFF)}
+  .compara .clbl{font-size:.66rem;letter-spacing:2px;text-transform:uppercase;color:#1C7A47;
+    font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+  .compara-row{display:grid;grid-template-columns:1fr auto 1fr;align-items:start;gap:12px}
+  .compara-col{text-align:center}
+  .compara-col img{width:100%;border-radius:12px;border:1px solid var(--line);display:block}
+  .compara-col .tag{display:inline-block;margin-top:9px;font-size:.58rem;font-weight:700;
+    letter-spacing:.5px;text-transform:uppercase;padding:4px 10px;border-radius:50px}
+  .compara-col .tag.base{background:#ECEDFF;color:var(--azul)}
+  .compara-col .tag.mundial{background:#E0F5E9;color:#1C7A47}
+  .compara-col h5{font-size:.78rem;color:var(--ink);margin-top:7px;
+    font-family:'Bricolage Grotesque',sans-serif;font-weight:600;line-height:1.25}
+  .compara-arrow{font-size:1.5rem;color:var(--peri);font-weight:700;padding-top:34%}
+  .compara-desc{font-size:.86rem;color:#3F4468;margin-top:15px;text-align:center;line-height:1.5}
+  @media(max-width:600px){
+    .compara-row{grid-template-columns:1fr;gap:6px}
+    .compara-arrow{transform:rotate(90deg);padding:2px 0}
+  }
+
   /* REGLA */
   .regla{display:flex;gap:12px;background:linear-gradient(135deg,#FDECF7,#F3EEFF);
     border:1px solid #F3CFE8;border-radius:14px;padding:16px 18px;margin:8px 0 22px}
@@ -256,7 +277,7 @@
           tag:"#001", titulo:"Campaña Mundial", subtitulo:"ADN ganador de base con temática Mundial",
           fecha:"03 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:true,
           intro:"Las piezas hechas para Mundial, aunque <b>sí venden</b>, no están alcanzando el ROAS que queremos. La idea de esta solicitud es <b>duplicar los anuncios que ya funcionan</b> —ya sea por diseño o por producto— y hacer su <b>versión Mundial</b>, para ver si le damos un giro que <b>mejore el ROAS de la campaña</b>.",
-          regla:"<b>Regla:</b> el Mundial de Nutrecat no se construye con sus piezas de Mundial: aunque tienen retorno, todavía no alcanzan el ROAS que buscamos (nuestros objetivos son más altos). Se replica la <b>estructura ganadora de la campaña base</b> — gato + producto + <b>checklist de beneficios</b> — y se le pone el <b>envoltorio Mundial</b> (“golazo”). Gato real protagonista, sin promesas absolutas.",
+          regla:"<b>Regla:</b> el Mundial de Nutrecat no se construye con sus piezas de Mundial: aunque tienen retorno, no alcanzan el ROAS esperado (&gt;3). Se replica la <b>estructura ganadora de la campaña base</b> — gato + producto + <b>checklist de beneficios</b> — y se le pone el <b>envoltorio Mundial</b> (“golazo”). Gato real protagonista, sin promesas absolutas.",
           referencias:[
             {img:"img/ncat-tilapia.png", roas:"Base · Adulto Tilapia ✅",
              h:"“Así se ve un gato bien alimentado con tilapia”", p:"Replica el <b>diseño y la intención</b>: gato protagonista, producto Tilapia y <b>checklist de beneficios</b> (peso saludable, ojos sanos, pelo brillante, sin bolas de pelo). Vístelo de Mundial."},
@@ -303,7 +324,41 @@
         }
       ]
     },
-    { key:"luckygatos", nombre:"Lucky Gatos", sector:"Snacks gatos", emoji:"🐾", solicitudes:[] }
+    {
+      key:"luckygatos", nombre:"Lucky Gatos", sector:"Alimento premium gatos", emoji:"🐾",
+      solicitudes:[
+        {
+          tag:"#001", titulo:"Campaña Mundial", subtitulo:"Versión Mundial del contenido que funciona en base",
+          fecha:"03 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:true,
+          intro:"La <b>campaña base de Lucky Gatos se mantiene estable</b> y no se toca. La idea es tomar el <b>contenido que ya funciona en base</b> —por diseño o por producto— y crear su <b>versión Mundial</b>, para sumar retorno sin arriesgar lo que ya rinde. Ya tenemos la prueba: la pieza de <b>mayor retorno en base</b> tiene una versión Mundial casi idéntica que viene <b>rindiendo bien</b> — es congruente pensar que llevar más de ese contenido probado al Mundial trae buenos resultados.",
+          comparacion:{
+            base:{img:"img/lucky-gatos-base-top.png", h:"“Nutrición con beneficios específicos por producto”"},
+            mundial:{img:"img/lucky-gatos-mundial-parecido.png", h:"“El secreto de toda estrella · estrategia personalizada”"},
+            desc:"Misma estructura (lineup premium de productos + beneficios), la de la derecha solo le suma el envoltorio Mundial. <b>La base es la de mayor retorno; su gemela Mundial ya viene rindiendo.</b>"
+          },
+          regla:"<b>Regla:</b> se replica la <b>estructura ganadora de base</b> (look premium de Lucky + producto + beneficio) con un <b>envoltorio Mundial</b>. Ojo: Lucky es marca <b>premium</b>, así que el guiño de Mundial debe ser <b>elegante y sutil</b>, sin saturar de fútbol ni romper el tono. Gato real protagonista, sin promesas absolutas.",
+          referencias:[
+            {img:"img/lucky-gatos-castrado.png", roas:"Base · Castrados ✅ (ROAS más alto)",
+             h:"“¿Lo castraste y su metabolismo cambió?”", p:"Replica el <b>diseño y la intención</b>: gato protagonista, Lucky Castrados visible, beneficio de peso/metabolismo tras la castración. Vístelo de Mundial con elegancia."},
+            {img:"img/lucky-gatos-beneficios.png", roas:"Base · Hipoalergénico ✅",
+             h:"“4 beneficios en un solo alimento”", p:"Replica el <b>diseño y la intención</b>: gato premium, checklist de beneficios (piel, pelaje, alergias, irritación). Envoltorio Mundial sutil."},
+            {img:"img/lucky-gatos-sugar.png", roas:"Base · Premium / exigente ✅",
+             h:"“Para los gatos más exigentes”", p:"Replica el <b>diseño y la intención</b>: posicionamiento premium / lifestyle del gato exigente. Envoltorio Mundial elegante (“estrella / exigencia”)."}
+          ],
+          piezas:[
+            {n:1, name:"LG_Castrado_Peso", formato:"Estático + Reel", prio:"alta",
+             concepto:"Ángulo ganador de base (mayor ROAS): castrado + control de peso/metabolismo. Gato protagonista, Lucky Castrados visible, envoltorio Mundial sutil.",
+             copy:"Castrado y con el metabolismo en su punto.", cta:"Compra ahora"},
+            {n:2, name:"LG_PielPelaje", formato:"Estático", prio:"alta",
+             concepto:"Ángulo ganador de base: checklist de beneficios de piel y pelaje (Hipoalergénico). Gato premium, beneficios claros, envoltorio Mundial sutil.",
+             copy:"Piel y pelaje al detalle, en un solo alimento.", cta:"Compra ahora"},
+            {n:3, name:"LG_Premium_Exigente", formato:"Estático", prio:"alta",
+             concepto:"Ángulo ganador de base: posicionamiento premium del gato exigente. Escena lifestyle, envoltorio Mundial elegante (estrella / altos niveles de exigencia).",
+             copy:"Para el gato más exigente de la casa.", cta:"Compra ahora"}
+          ]
+        }
+      ]
+    }
   ];
 
   const tabsEl = document.getElementById('tabs');
@@ -337,8 +392,8 @@
       document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));
       t.classList.add('active');
       p.classList.add('show');
-      // reajustar alturas de acordeones abiertos
-      p.querySelectorAll('.sol.open .sol-body').forEach(b=>b.style.maxHeight=b.scrollHeight+'px');
+      // acordeones abiertos del panel visible: altura libre para no recortar
+      p.querySelectorAll('.sol.open .sol-body').forEach(b=>b.style.maxHeight='none');
     });
   });
 
@@ -353,7 +408,7 @@
         <p>La solicitud de la campaña de Mundial se publicará aquí muy pronto.</p></div>`;
     } else {
       const refsBlock = (s.referencias && s.referencias.length) ? `
-        <div class="block-label">Referencias de diseño — replica el estilo y la intención, no el producto</div>
+        <div class="block-label">Referencias — replica lo que ya funciona</div>
         <div class="refs">${s.referencias.map(r=>`
           <div class="ref">
             <img src="${r.img}" alt="${r.h}" loading="lazy" />
@@ -374,8 +429,28 @@
           <div class="pz-cta">CTA <b>${pz.cta}</b></div>
         </div>`).join('');
 
+      const comparaBlock = s.comparacion ? `
+        <div class="compara">
+          <div class="clbl">✅ Prueba · lo de base ya está funcionando en Mundial</div>
+          <div class="compara-row">
+            <div class="compara-col">
+              <img src="${s.comparacion.base.img}" alt="Pieza base" loading="lazy" />
+              <div><span class="tag base">Mayor retorno · Base</span></div>
+              <h5>${s.comparacion.base.h}</h5>
+            </div>
+            <div class="compara-arrow">→</div>
+            <div class="compara-col">
+              <img src="${s.comparacion.mundial.img}" alt="Pieza Mundial" loading="lazy" />
+              <div><span class="tag mundial">Versión Mundial · rindiendo</span></div>
+              <h5>${s.comparacion.mundial.h}</h5>
+            </div>
+          </div>
+          <div class="compara-desc">${s.comparacion.desc}</div>
+        </div>` : '';
+
       bodyInner = `
         ${s.intro ? `<div class="intro"><span class="lbl">Por qué esta solicitud</span><span class="t">${s.intro}</span></div>` : ''}
+        ${comparaBlock}
         <div class="regla"><span class="ic">🎯</span><p>${s.regla}</p></div>
         ${refsBlock}
         <div class="block-label">Piezas solicitadas · ${s.piezas.length}</div>
@@ -395,12 +470,28 @@
     const head = card.querySelector('.sol-head');
     const body = card.querySelector('.sol-body');
     head.addEventListener('click', ()=>{
-      const isOpen = card.classList.contains('open');
-      if (isOpen){ card.classList.remove('open'); body.style.maxHeight=null; }
-      else { card.classList.add('open'); body.style.maxHeight=body.scrollHeight+'px'; }
+      if (card.classList.contains('open')){ card.classList.remove('open'); closeBody(body); }
+      else { card.classList.add('open'); openBody(body); }
     });
-    if (s.open) requestAnimationFrame(()=>{ body.style.maxHeight=body.scrollHeight+'px'; });
+    // si carga una imagen mientras está abierto, deja la altura libre para que no recorte
+    body.querySelectorAll('img').forEach(img=>{
+      img.addEventListener('load', ()=>{ if (card.classList.contains('open')) body.style.maxHeight='none'; });
+    });
+    if (s.open) requestAnimationFrame(()=> openBody(body));
     return card;
+  }
+
+  // Abre con animación y luego libera la altura (max-height:none) para que crezca con imágenes lazy.
+  function openBody(body){
+    body.style.maxHeight = body.scrollHeight + 'px';
+    const onEnd = e=>{ if (e.propertyName==='max-height'){ body.style.maxHeight='none'; body.removeEventListener('transitionend', onEnd); } };
+    body.addEventListener('transitionend', onEnd);
+  }
+  // Cierra: fija la altura actual y luego colapsa para poder animar desde 'none'.
+  function closeBody(body){
+    body.style.maxHeight = body.scrollHeight + 'px';
+    void body.offsetHeight;
+    body.style.maxHeight = null;
   }
 
   document.getElementById('anio').textContent = new Date().getFullYear();
