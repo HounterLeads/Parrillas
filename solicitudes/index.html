@@ -278,10 +278,31 @@
         }
       ]
     },
-    { key:"luckyperros", nombre:"Lucky Perros", sector:"Snacks perros", emoji:"🦴",
-      vacio:{ic:"✅", h:"Base estable — sin cambios este ciclo",
-        p:"La campaña base de Lucky Perros se mantiene con buen desempeño, así que se conserva lo que ya funciona. Sin solicitudes de contenido por ahora."},
-      solicitudes:[] },
+    {
+      key:"luckyperros", nombre:"Lucky Perros", sector:"Snacks premium perros", emoji:"🦴",
+      solicitudes:[
+        {
+          tag:"#001", titulo:"Campaña Mundial", subtitulo:"Versión Mundial del contenido que funciona en base",
+          fecha:"03 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:true,
+          intro:"La <b>campaña base de Lucky Perros se mantiene estable</b> y no se toca. La idea es tomar el <b>contenido que ya funciona en base</b> —por diseño o por producto— y crear su <b>versión Mundial</b>, para sumar retorno sin arriesgar lo que ya rinde.",
+          regla:"<b>Regla:</b> se replica la <b>estructura ganadora de base</b> (look premium de Lucky + producto + beneficio) con un <b>envoltorio Mundial</b>. Ojo: Lucky es una marca <b>premium</b>, así que el guiño de Mundial debe ser <b>elegante y sutil</b>, sin saturar de fútbol ni romper el tono. Perro real protagonista, sin promesas absolutas.",
+          referencias:[
+            {img:"img/lucky-perros-snack.png", roas:"Base · Snack nutrición ✅",
+             h:"“Un snack que va más allá de un premio: nutrición en cada bocado”", p:"Replica el <b>diseño y la intención</b>: perro protagonista, look premium (beige, limpio), snack Lucky visible y el beneficio “nutrición, no solo premio”. Vístelo de Mundial con elegancia."},
+            {img:"img/lucky-perros-dha.png", roas:"Base · Lucky Orgánico · DHA ✅",
+             h:"“Un ingrediente que marca la diferencia”", p:"Replica el <b>diseño y la intención</b>: cachorro protagonista, Lucky Orgánico visible, beneficio DHA (crecimiento y desarrollo). Envoltorio Mundial sutil."}
+          ],
+          piezas:[
+            {n:1, name:"LP_NutricionBocado", formato:"Estático + Reel", prio:"alta",
+             concepto:"Ángulo ganador de base: el snack como nutrición, no solo premio. Perro protagonista, look premium, snack Lucky visible, envoltorio Mundial elegante.",
+             copy:"Nutrición en cada bocado, no solo un premio.", cta:"Compra ahora"},
+            {n:2, name:"LP_DHA_Desarrollo", formato:"Estático + Reel", prio:"alta",
+             concepto:"Ángulo ganador de base: Lucky Orgánico + DHA para crecimiento y desarrollo (cachorro). Cachorro protagonista, producto visible, envoltorio Mundial sutil.",
+             copy:"El ingrediente que marca la diferencia.", cta:"Compra ahora"}
+          ]
+        }
+      ]
+    },
     { key:"luckygatos", nombre:"Lucky Gatos", sector:"Snacks gatos", emoji:"🐾", solicitudes:[] }
   ];
 
