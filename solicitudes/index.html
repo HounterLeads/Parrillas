@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Solicitudes de contenido · Mascotas Solla · Hounter Leads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#050347;
+    --azul:#2025C9;
+    --peri:#6670FF;
+    --lav:#B098F0;
+    --bg:#F4F5FF;
+    --white:#FFFFFF;
+    --ink:#0B0A2E;
+    --muted:#6A6E96;
+    --line:#E2E3F5;
+    /* acento marca mascota */
+    --magenta:#E5359E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh;
+  }
+  .wrap{max-width:960px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  /* HERO */
+  .hero{
+    background:linear-gradient(150deg,var(--navy) 0%,#0d0a63 55%,var(--azul) 130%);
+    color:#fff;padding:40px 24px 52px;position:relative;overflow:hidden;
+  }
+  .hero::before{content:"";position:absolute;top:-30%;right:-8%;width:46%;height:120%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);filter:blur(30px)}
+  .hero-in{position:relative;z-index:2;max-width:960px;margin:0 auto}
+  .back{display:inline-flex;align-items:center;gap:7px;color:#C9CCF2;text-decoration:none;
+    font-size:.85rem;font-weight:500;margin-bottom:26px;transition:color .2s}
+  .back:hover{color:#fff}
+  .pill{display:inline-block;padding:7px 16px;border:1px solid rgba(176,152,240,.5);
+    color:var(--lav);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;
+    border-radius:50px;margin-bottom:18px;font-weight:600}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:14px}
+  .hero h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--lav)}
+  .hero p{max-width:560px;color:#C9CCF2;font-size:1rem;font-weight:300}
+
+  /* TABS DE MARCA */
+  .tabs-sec{padding:30px 0 10px}
+  .tabs{display:flex;gap:12px;flex-wrap:wrap}
+  .tab{
+    display:flex;align-items:center;gap:10px;padding:14px 20px;border-radius:15px;
+    background:var(--white);border:1px solid var(--line);cursor:pointer;font-weight:600;
+    font-size:.95rem;color:var(--ink);transition:all .22s;user-select:none;
+  }
+  .tab .em{width:34px;height:34px;border-radius:10px;display:flex;align-items:center;
+    justify-content:center;font-size:1.15rem;background:linear-gradient(135deg,var(--peri),var(--lav))}
+  .tab small{display:block;font-size:.7rem;font-weight:500;color:var(--muted);margin-top:1px}
+  .tab:hover{border-color:var(--peri);transform:translateY(-2px)}
+  .tab.active{background:var(--navy);color:#fff;border-color:var(--navy);box-shadow:0 14px 30px rgba(5,3,71,.22)}
+  .tab.active small{color:#B9BCEB}
+
+  /* PANEL */
+  .panel-sec{padding:26px 0 80px}
+  .panel{display:none}
+  .panel.show{display:block;animation:fade .35s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+  .empty{
+    background:var(--white);border:1px dashed var(--line);border-radius:18px;
+    padding:56px 24px;text-align:center;color:var(--muted);
+  }
+  .empty .big{font-size:2.4rem;margin-bottom:10px}
+  .empty h3{font-family:'Bricolage Grotesque',sans-serif;color:var(--ink);font-size:1.2rem;margin-bottom:6px}
+
+  /* SOLICITUD (acordeón) */
+  .sol{background:var(--white);border:1px solid var(--line);border-radius:18px;
+    margin-bottom:16px;overflow:hidden;transition:box-shadow .3s,border-color .3s}
+  .sol.open{box-shadow:0 22px 50px rgba(32,37,201,.10);border-color:var(--peri)}
+  .sol-head{display:flex;align-items:center;gap:16px;padding:20px 22px;cursor:pointer;user-select:none}
+  .sol-tag{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.85rem;
+    color:var(--azul);background:#ECEDFF;padding:8px 12px;border-radius:11px;white-space:nowrap}
+  .sol-meta{flex:1;min-width:0}
+  .sol-meta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.1rem;
+    color:var(--ink);line-height:1.15}
+  .sol-meta .date{font-size:.8rem;color:var(--muted);margin-top:2px}
+  .estado{font-size:.6rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;
+    padding:4px 10px;border-radius:50px;white-space:nowrap}
+  .estado.pend{background:#FFF1D6;color:#9A6A12}
+  .estado.prod{background:#E0ECFF;color:#1D4ED8}
+  .estado.list{background:#E0F5E9;color:#1C7A47}
+  .estado.prox{background:#EEE;color:#888}
+  .chev{width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:flex;
+    align-items:center;justify-content:center;color:var(--azul);transition:transform .3s,background .3s;flex-shrink:0}
+  .sol.open .chev{transform:rotate(180deg);background:var(--azul);color:#fff;border-color:var(--azul)}
+  .sol-body{max-height:0;overflow:hidden;transition:max-height .45s ease}
+  .sol-body-in{padding:2px 22px 26px}
+
+  /* REGLA */
+  .regla{display:flex;gap:12px;background:linear-gradient(135deg,#FDECF7,#F3EEFF);
+    border:1px solid #F3CFE8;border-radius:14px;padding:16px 18px;margin:8px 0 22px}
+  .regla .ic{font-size:1.3rem;line-height:1}
+  .regla b{color:var(--magenta)}
+  .regla p{font-size:.9rem;color:#5A2E4E}
+
+  .block-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--azul);
+    font-weight:700;margin:26px 0 14px;display:flex;align-items:center;gap:10px}
+  .block-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  /* REFERENCIAS */
+  .refs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .ref{background:var(--bg);border:1px solid var(--line);border-radius:14px;overflow:hidden}
+  .ref img{width:100%;display:block;aspect-ratio:350/416;object-fit:cover}
+  .ref-cap{padding:12px 14px}
+  .ref-cap .roas{display:inline-block;font-size:.66rem;font-weight:700;letter-spacing:.5px;
+    text-transform:uppercase;color:#1C7A47;background:#E0F5E9;padding:3px 9px;border-radius:50px;margin-bottom:6px}
+  .ref-cap h4{font-family:'Bricolage Grotesque',sans-serif;font-size:.95rem;color:var(--ink);line-height:1.2}
+  .ref-cap p{font-size:.8rem;color:var(--muted);margin-top:3px}
+
+  /* PIEZAS */
+  .pieza{background:var(--white);border:1px solid var(--line);border-radius:15px;
+    padding:18px 20px;margin-bottom:12px;transition:border-color .2s,box-shadow .2s}
+  .pieza:hover{border-color:var(--peri);box-shadow:0 10px 26px rgba(32,37,201,.07)}
+  .pieza.alta{border-left:4px solid var(--magenta)}
+  .pz-top{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:10px}
+  .pz-num{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;font-size:.8rem;
+    color:#fff;background:var(--navy);width:26px;height:26px;border-radius:8px;
+    display:flex;align-items:center;justify-content:center;flex-shrink:0}
+  .pz-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1rem;color:var(--ink)}
+  .chip{font-size:.66rem;font-weight:600;padding:4px 9px;border-radius:50px;background:#ECEDFF;color:var(--azul)}
+  .prio{font-size:.62rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+    padding:4px 9px;border-radius:50px;margin-left:auto}
+  .prio.alta{background:#FDE7F4;color:var(--magenta)}
+  .prio.media{background:#FFF1D6;color:#9A6A12}
+  .prio.baja{background:#EEF0F5;color:#6A6E96}
+  .pz-row{display:flex;gap:8px;font-size:.86rem;margin-top:7px}
+  .pz-row .k{color:var(--muted);min-width:82px;font-weight:600;flex-shrink:0}
+  .pz-row .v{color:var(--ink)}
+  .pz-copy{background:var(--bg);border-radius:10px;padding:10px 13px;margin-top:11px;
+    font-size:.9rem;color:var(--ink);font-style:italic;border-left:3px solid var(--lav)}
+  .pz-copy span{display:block;font-size:.62rem;font-style:normal;letter-spacing:1px;
+    text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:3px}
+  .pz-cta{display:inline-flex;align-items:center;gap:6px;margin-top:11px;font-size:.8rem;
+    font-weight:600;color:var(--azul)}
+  .pz-cta b{background:var(--azul);color:#fff;padding:4px 11px;border-radius:50px;font-weight:600}
+
+  .nota{font-size:.82rem;color:var(--muted);margin-top:16px;padding:12px 14px;
+    background:#FFF8E7;border:1px solid #F3E4BE;border-radius:11px}
+  .nota b{color:#9A6A12}
+
+  footer{text-align:center;padding:38px 24px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer b{font-family:'Fraunces',serif;font-style:italic;color:var(--azul);font-weight:400}
+
+  @media(max-width:620px){
+    .refs{grid-template-columns:1fr}
+    .sol-head{padding:16px}
+    .sol-body-in{padding:2px 16px 20px}
+    .tab{flex:1;justify-content:center}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <a href="../#briefs" class="back">← Volver al hub</a>
+    <span class="pill">Briefs & retroalimentaciones</span>
+    <h1>Solicitudes de contenido<br><em>Mascotas Solla</em></h1>
+    <p>Elige una marca para ver sus solicitudes de contenido. Cada una se apila por fecha para que sepas exactamente cuál es.</p>
+  </div>
+</header>
+
+<section class="tabs-sec">
+  <div class="wrap">
+    <div class="tabs" id="tabs"></div>
+  </div>
+</section>
+
+<section class="panel-sec">
+  <div class="wrap" id="panels"></div>
+</section>
+
+<footer>
+  Hecho con <b>cariño</b> por Hounter Leads · <span id="anio"></span>
+</footer>
+
+<script>
+  /* ═══════════ DATA ═══════════
+     Para agregar una solicitud nueva a una marca: duplica un objeto en "solicitudes".
+     Para activar otra marca: pásale su array de solicitudes (hoy solo Nutrecan). */
+
+  const MARCAS = [
+    {
+      key:"nutrecan", nombre:"Nutrecan", sector:"Alimento perros", emoji:"🐕",
+      solicitudes:[
+        {
+          tag:"#001", titulo:"Campaña Conversiones Base", subtitulo:"Compras always-on",
+          fecha:"02 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:true,
+          regla:"<b>Regla (según data):</b> producto específico + beneficio + CTA a comprar. Cada pieza en Feed (1:1 / 4:5) y Reel/Story (9:16). Evitar testimonios y branding genérico. Perro real siempre protagonista.",
+          referencias:[
+            {img:"img/nutrecan-brillo.png", roas:"Ganadora · pelaje",
+             h:"“El brillo se nota”", p:"Replica el <b>diseño y la intención</b>: perro real protagonista, escena limpia, producto a un lado y palabra clave resaltada sobre un beneficio visible."},
+            {img:"img/nutrecan-ingredientes.png", roas:"Ganadora · ROAS 11.4",
+             h:"“¿Listo para ver su cola mover sin parar?”", p:"Replica el <b>diseño y la intención</b>: momento de antojo, titular grande con palabra clave y gancho emocional que provoca comprar."}
+          ],
+          piezas:[
+            {n:1, name:"NCAN_Ingredientes", formato:"Estático + Reel", prio:"alta",
+             concepto:"Lo nuevo de Nutrecan: close-up de croqueta/ingredientes resaltando la formulación (ángulo ganador, ROAS 11.4). El perro sigue siendo protagonista.",
+             copy:"Nutrición que se nota. Nuevos ingredientes para su mejor versión.", cta:"Compra ahora"},
+            {n:2, name:"NCAN_Salmon", formato:"Estático + Reel", prio:"alta",
+             concepto:"Salmón = pelaje: beneficio visible (pelaje brillante).",
+             copy:"Salmón, con el omega que su pelaje va a amar.", cta:"Compra ahora"},
+            {n:3, name:"NCAN_Cachorros", formato:"Estático + Reel", prio:"alta",
+             concepto:"Enfoque cachorro: perrito tierno comiendo, etapa de crecimiento. Empaque de la línea Cachorros visible.",
+             copy:"Para los que apenas empiezan. Nutrición pensada para su etapa cachorro.", cta:"Compra ahora"}
+          ],
+          nota:"Todos los CTA deben enlazar a la <b>página de producto</b> en plazacampo.com, no al home."
+        },
+        {
+          tag:"#002", titulo:"Campaña Mundial", subtitulo:"En preparación",
+          fecha:"Próximamente", estado:"prox", estadoTxt:"Próximamente", open:false,
+          placeholder:true
+        }
+      ]
+    },
+    { key:"nutrecat", nombre:"Nutrecat", sector:"Alimento gatos", emoji:"🐈", solicitudes:[] },
+    { key:"luckyperros", nombre:"Lucky Perros", sector:"Snacks perros", emoji:"🦴", solicitudes:[] },
+    { key:"luckygatos", nombre:"Lucky Gatos", sector:"Snacks gatos", emoji:"🐾", solicitudes:[] }
+  ];
+
+  const tabsEl = document.getElementById('tabs');
+  const panelsEl = document.getElementById('panels');
+
+  MARCAS.forEach((m, i) => {
+    // TAB
+    const t = document.createElement('div');
+    t.className = 'tab' + (i===0 ? ' active' : '');
+    t.dataset.key = m.key;
+    t.innerHTML = `<span class="em">${m.emoji}</span><span>${m.nombre}<small>${m.sector}</small></span>`;
+    tabsEl.appendChild(t);
+
+    // PANEL
+    const p = document.createElement('div');
+    p.className = 'panel' + (i===0 ? ' show' : '');
+    p.id = 'panel-' + m.key;
+
+    if (!m.solicitudes.length) {
+      p.innerHTML = `<div class="empty"><div class="big">${m.emoji}</div>
+        <h3>Aún no hay solicitudes para ${m.nombre}</h3>
+        <p>Se irán publicando aquí a medida que se soliciten.</p></div>`;
+    } else {
+      m.solicitudes.forEach(s => p.appendChild(buildSol(s)));
+    }
+    panelsEl.appendChild(p);
+
+    t.addEventListener('click', () => {
+      document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));
+      document.querySelectorAll('.panel').forEach(x=>x.classList.remove('show'));
+      t.classList.add('active');
+      p.classList.add('show');
+      // reajustar alturas de acordeones abiertos
+      p.querySelectorAll('.sol.open .sol-body').forEach(b=>b.style.maxHeight=b.scrollHeight+'px');
+    });
+  });
+
+  function buildSol(s){
+    const card = document.createElement('div');
+    card.className = 'sol' + (s.open ? ' open' : '');
+
+    let bodyInner = '';
+    if (s.placeholder){
+      bodyInner = `<div class="empty" style="margin-top:6px">
+        <div class="big">⚽</div><h3>Estrategia en preparación</h3>
+        <p>La solicitud de la campaña de Mundial se publicará aquí muy pronto.</p></div>`;
+    } else {
+      const refs = s.referencias.map(r=>`
+        <div class="ref">
+          <img src="${r.img}" alt="${r.h}" loading="lazy" />
+          <div class="ref-cap"><span class="roas">${r.roas}</span>
+            <h4>${r.h}</h4><p>${r.p}</p></div>
+        </div>`).join('');
+
+      const piezas = s.piezas.map(pz=>`
+        <div class="pieza ${pz.prio==='alta'?'alta':''}">
+          <div class="pz-top">
+            <span class="pz-num">${pz.n}</span>
+            <span class="pz-name">${pz.name}</span>
+            <span class="chip">${pz.formato}</span>
+            <span class="prio ${pz.prio}">${pz.prio==='alta'?'🔥 Alta':pz.prio.charAt(0).toUpperCase()+pz.prio.slice(1)}</span>
+          </div>
+          <div class="pz-row"><span class="k">Concepto</span><span class="v">${pz.concepto}</span></div>
+          <div class="pz-copy"><span>Copy sugerido</span>“${pz.copy}”</div>
+          <div class="pz-cta">CTA <b>${pz.cta}</b></div>
+        </div>`).join('');
+
+      bodyInner = `
+        <div class="regla"><span class="ic">🎯</span><p>${s.regla}</p></div>
+        <div class="block-label">Referencias de diseño — replica el estilo y la intención, no el producto</div>
+        <div class="refs">${refs}</div>
+        <div class="block-label">Piezas solicitadas · ${s.piezas.length}</div>
+        ${piezas}
+        <div class="nota">${s.nota}</div>`;
+    }
+
+    card.innerHTML = `
+      <div class="sol-head">
+        <span class="sol-tag">${s.tag}</span>
+        <div class="sol-meta"><h3>${s.titulo}</h3><div class="date">${s.subtitulo} · ${s.fecha}</div></div>
+        <span class="estado ${s.estado}">${s.estadoTxt}</span>
+        <span class="chev">▾</span>
+      </div>
+      <div class="sol-body"><div class="sol-body-in">${bodyInner}</div></div>`;
+
+    const head = card.querySelector('.sol-head');
+    const body = card.querySelector('.sol-body');
+    head.addEventListener('click', ()=>{
+      const isOpen = card.classList.contains('open');
+      if (isOpen){ card.classList.remove('open'); body.style.maxHeight=null; }
+      else { card.classList.add('open'); body.style.maxHeight=body.scrollHeight+'px'; }
+    });
+    if (s.open) requestAnimationFrame(()=>{ body.style.maxHeight=body.scrollHeight+'px'; });
+    return card;
+  }
+
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
