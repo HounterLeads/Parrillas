@@ -221,9 +221,21 @@
           nota:"Todos los CTA deben enlazar a la <b>página de producto</b> en plazacampo.com, no al home."
         },
         {
-          tag:"#002", titulo:"Campaña Mundial", subtitulo:"En preparación",
-          fecha:"Próximamente", estado:"prox", estadoTxt:"Próximamente", open:false,
-          placeholder:true
+          tag:"#002", titulo:"Campaña Mundial", subtitulo:"Producto cachorro con envoltorio Mundial",
+          fecha:"03 jul 2026", estado:"pend", estadoTxt:"Pendiente", open:false,
+          regla:"<b>Regla Mundial:</b> el Mundial va solo como envoltorio (metáfora o guiño en el copy); el cuerpo es <b>producto cachorro + beneficios</b>. La inversión pesa en <b>Remarketing</b>, que es donde de verdad convierte. Nada de piezas solo de fútbol.",
+          referencias:[
+            {img:"img/rmk-cachorro.png", roas:"RMK · Cachorro · 7 compras ✅ comprobada",
+             h:"“Partido controlado de principio a fin”", p:"Replica el <b>diseño y la intención</b>: cachorro protagonista, producto cachorro, el Mundial como metáfora (partido controlado) y un <b>checklist de beneficios</b> — funciona porque en remarketing el público ya conoce la marca y busca razones para decidir."}
+          ],
+          piezas:[
+            {n:1, name:"RMK_Cachorro_A", formato:"Estático + Reel", prio:"alta",
+             concepto:"Réplica fiel de la ganadora (7 compras): otra raza de cachorro, producto cachorro visible, metáfora Mundial (“partido controlado”) + checklist de 3 beneficios (buen apetito · digestión · energía).",
+             copy:"Partido controlado de principio a fin.", cta:"Compra ahora"},
+            {n:2, name:"RMK_Cachorro_B", formato:"Estático", prio:"alta",
+             concepto:"Ángulo palatabilidad (VAR): cachorro que se acaba el plato, producto cachorro deslactosado visible, mismo envoltorio Mundial. Tuvo mejor ROAS pero con poco volumen → producir y escalar para validar.",
+             copy:"Revisen el VAR del plato: no dejó ni una croqueta.", cta:"Compra ahora"}
+          ]
         }
       ]
     },
@@ -303,7 +315,7 @@
         <div class="refs">${refs}</div>
         <div class="block-label">Piezas solicitadas · ${s.piezas.length}</div>
         ${piezas}
-        <div class="nota">${s.nota}</div>`;
+        ${s.nota ? `<div class="nota">${s.nota}</div>` : ''}`;
     }
 
     card.innerHTML = `
