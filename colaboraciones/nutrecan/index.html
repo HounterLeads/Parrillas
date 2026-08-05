@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Análisis de colaboraciones · Nutrecan · Hounter Leads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#050347; --azul:#2025C9; --peri:#6670FF; --lav:#B098F0;
+    --bg:#F4F5FF; --white:#FFFFFF; --ink:#0B0A2E; --muted:#6A6E96; --line:#E2E3F5;
+    --magenta:#E5359E;
+    --ok:#1C7A47; --okbg:#E0F5E9;
+    --mid:#9A6A12; --midbg:#FFF1D6;
+    --bad:#C2185B; --badbg:#FDE7F4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  .hero{background:linear-gradient(150deg,var(--navy) 0%,#0d0a63 55%,var(--azul) 130%);
+    color:#fff;padding:40px 24px 52px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-30%;right:-8%;width:46%;height:120%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);filter:blur(30px)}
+  .hero-in{position:relative;z-index:2;max-width:1120px;margin:0 auto}
+  .back{display:inline-flex;align-items:center;gap:7px;color:#C9CCF2;text-decoration:none;
+    font-size:.85rem;font-weight:500;margin-bottom:26px;transition:color .2s}
+  .back:hover{color:#fff}
+  .pill{display:inline-block;padding:7px 16px;border:1px solid rgba(176,152,240,.5);
+    color:var(--lav);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;
+    border-radius:50px;margin-bottom:18px;font-weight:600}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:14px}
+  .hero h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--lav)}
+  .hero p{max-width:620px;color:#C9CCF2;font-size:1rem;font-weight:300}
+
+  .split{display:grid;grid-template-columns:minmax(300px,340px) 1fr;gap:30px;padding:34px 0 80px;align-items:start}
+  .col-video{position:sticky;top:22px}
+
+  .vcard{background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    box-shadow:0 18px 44px rgba(32,37,201,.09)}
+  .vcard .vtop{background:var(--navy);color:#fff;padding:15px 18px;position:relative;overflow:hidden}
+  .vcard .vtop::before{content:"";position:absolute;top:-50%;right:-10%;width:45%;height:210%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);filter:blur(22px)}
+  .vcard .vtop .l{position:relative;z-index:1;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--lav);font-weight:700}
+  .vcard .vtop h3{position:relative;z-index:1;font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;font-size:1.02rem;margin-top:3px}
+  .embed{background:#000;aspect-ratio:9/16}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  .vlink{display:block;text-align:center;padding:12px;font-size:.82rem;font-weight:600;
+    color:var(--azul);text-decoration:none;border-top:1px solid var(--line);transition:background .2s}
+  .vlink:hover{background:var(--bg)}
+
+  .vmeta{padding:14px 18px 16px}
+  .vmeta .hd{font-size:.6rem;letter-spacing:1.6px;text-transform:uppercase;color:var(--azul);
+    font-weight:700;margin:10px 0 6px;display:flex;align-items:center;gap:8px}
+  .vmeta .hd:first-child{margin-top:0}
+  .vmeta .hd::after{content:"";flex:1;height:1px;background:var(--line)}
+  .vmeta .r{display:flex;justify-content:space-between;gap:10px;font-size:.84rem;padding:6px 0;
+    border-bottom:1px solid var(--line)}
+  .vmeta .r:last-child{border-bottom:0}
+  .vmeta .k{color:var(--muted)}
+  .vmeta .v{font-weight:700;color:var(--ink);text-align:right}
+  .vmeta .v.ok{color:var(--ok)} .vmeta .v.bad{color:var(--bad)} .vmeta .v.mid{color:var(--mid)}
+  .vmeta .v.pend{color:var(--muted);font-weight:500;font-style:italic}
+  .vmeta .sub{font-size:.72rem;color:var(--muted);font-weight:400;display:block}
+
+  .creator{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:15px 17px;margin-top:14px}
+  .creator .l{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--azul);font-weight:700;margin-bottom:7px}
+  .creator h4{font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;color:var(--ink)}
+  .creator .sub{font-size:.8rem;color:var(--muted);margin-top:2px}
+  .creator .good{margin-top:10px;font-size:.79rem;color:#14532D;background:var(--okbg);
+    border:1px solid #BFE7CF;border-radius:10px;padding:9px 11px;line-height:1.45}
+  .creator .good b{color:var(--ok)}
+
+  .block-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--azul);
+    font-weight:700;margin:30px 0 14px;display:flex;align-items:center;gap:10px}
+  .block-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .verdict{display:flex;gap:16px;background:linear-gradient(135deg,#EAF6EF,#F3EEFF);
+    border:1px solid #CFE9DA;border-radius:18px;padding:20px 22px;align-items:flex-start}
+  .verdict .ic{font-size:1.7rem;line-height:1;flex-shrink:0}
+  .verdict h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.28rem;
+    color:var(--ink);line-height:1.2;margin-bottom:5px}
+  .verdict p{font-size:.92rem;color:#2F4A3B}
+
+  .sc{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:14px 17px;margin-bottom:10px;
+    transition:border-color .2s,box-shadow .2s}
+  .sc:hover{border-color:var(--peri);box-shadow:0 10px 26px rgba(32,37,201,.07)}
+  .sc-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+  .sc-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+  .badge{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:4px 10px;border-radius:50px;white-space:nowrap}
+  .badge.ok{background:var(--okbg);color:var(--ok)}
+  .badge.mid{background:var(--midbg);color:var(--mid)}
+  .badge.bad{background:var(--badbg);color:var(--bad)}
+  .badge.pend{background:#EEF0F5;color:var(--muted)}
+  .track{position:relative;background:#EEF0FA;border-radius:6px;height:26px}
+  .fill{position:absolute;left:0;top:0;height:100%;border-radius:6px;min-width:5px}
+  .fill.ok{background:linear-gradient(90deg,#2E9C60,#4FC98A)}
+  .fill.mid{background:linear-gradient(90deg,#C99320,#E8B85A)}
+  .fill.bad{background:linear-gradient(90deg,#A81450,var(--magenta))}
+  .fill.pend{background:repeating-linear-gradient(45deg,#DDE0EC,#DDE0EC 6px,#E8EAF3 6px,#E8EAF3 12px)}
+  .mk{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--navy);opacity:.45}
+  .sc-vals{display:flex;justify-content:space-between;gap:12px;margin-top:7px;font-size:.78rem;color:var(--muted)}
+  .sc-vals b{color:var(--ink)}
+
+  .tw{overflow-x:auto;background:var(--white);border:1px solid var(--line);border-radius:16px;margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;font-size:.86rem;min-width:460px}
+  th{background:var(--bg);color:var(--muted);text-align:left;padding:12px 15px;font-size:.64rem;
+    font-weight:700;letter-spacing:1.3px;text-transform:uppercase;white-space:nowrap}
+  td{padding:12px 15px;border-top:1px solid var(--line);color:var(--ink)}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  tr.hl td{background:#ECEDFF;font-weight:600}
+  tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--azul)}
+  .g{color:var(--ok);font-weight:700}.r{color:var(--bad);font-weight:700}.m{color:var(--mid);font-weight:700}
+  .pend{color:var(--muted);font-style:italic}
+
+  .minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:14px 0}
+  .mini{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
+  .mini.g{border-left:3px solid var(--ok)}
+  .mini.m{border-left:3px solid var(--mid)}
+  .mini.r{border-left:3px solid var(--magenta)}
+  .mini .t{font-size:.62rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:5px}
+  .mini .d{font-size:.85rem;color:var(--muted);line-height:1.5}
+  .mini .d b{color:var(--ink)}
+
+  .intro{background:var(--navy);color:#EDEEFF;border-radius:15px;padding:17px 21px;margin-bottom:14px;
+    font-size:.9rem;line-height:1.55;position:relative;overflow:hidden}
+  .intro::before{content:"";position:absolute;top:-40%;right:-6%;width:38%;height:180%;
+    background:radial-gradient(circle,rgba(102,112,255,.4) 0%,transparent 65%);filter:blur(24px)}
+  .intro b{color:var(--lav)}
+  .intro .lbl{display:block;font-size:.64rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--lav);font-weight:700;margin-bottom:6px;position:relative;z-index:1}
+  .intro span.t{position:relative;z-index:1}
+
+  .nota{font-size:.84rem;color:var(--muted);padding:13px 15px;background:#FFF8E7;
+    border:1px solid #F3E4BE;border-radius:12px;margin-top:14px;line-height:1.5}
+  .nota b{color:#9A6A12}
+
+  ul.lst{list-style:none;margin:10px 0}
+  ul.lst li{position:relative;padding-left:22px;margin:9px 0;font-size:.9rem;color:var(--muted);line-height:1.55}
+  ul.lst li::before{content:"";position:absolute;left:3px;top:9px;width:7px;height:7px;
+    border-radius:50%;background:var(--peri)}
+  ul.lst li b{color:var(--ink)}
+
+  footer{text-align:center;padding:38px 24px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer b{font-family:'Fraunces',serif;font-style:italic;color:var(--azul);font-weight:400}
+
+  @media(max-width:900px){
+    .split{grid-template-columns:1fr;gap:22px}
+    .col-video{position:static}
+    .embed{aspect-ratio:auto;min-height:520px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <a class="back" href="../">← Todas las colaboraciones</a>
+    <span class="pill">Briefs &amp; retroalimentaciones</span>
+    <h1>Análisis de colaboración<br><em>Nutrecan × @cocoandkiwi.aussies</em></h1>
+    <p>Qué entregó el reel del 9 de julio, medido sobre resultados orgánicos y contra el estándar de una creadora de 18.300 seguidores.</p>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="split">
+
+  <!-- ══════ VIDEO ══════ -->
+  <div class="col-video">
+    <div class="vcard">
+      <div class="vtop">
+        <span class="l">La pieza</span>
+        <h3>Reel colaborativo · 9 jul 2026</h3>
+      </div>
+      <div class="embed">
+        <iframe src="https://www.instagram.com/p/Dal1AOOOkcA/embed/" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
+      </div>
+      <a class="vlink" href="https://www.instagram.com/p/Dal1AOOOkcA/" target="_blank" rel="noopener">Ver en Instagram ↗</a>
+      <div class="vmeta">
+        <div class="hd">Resultado orgánico</div>
+        <div class="r"><span class="k">Alcance</span><span class="v bad">2.237</span></div>
+        <div class="r"><span class="k">Visualizaciones</span><span class="v">2.855</span></div>
+        <div class="r"><span class="k">Interacciones</span><span class="v ok">178</span></div>
+        <div class="r"><span class="k">Me gusta</span><span class="v">167</span></div>
+        <div class="r"><span class="k">Comentarios</span><span class="v">2</span></div>
+        <div class="r"><span class="k">Compartidos</span><span class="v">8</span></div>
+        <div class="r"><span class="k">Guardados</span><span class="v bad">0</span></div>
+        <div class="r"><span class="k">Seguimientos</span><span class="v bad">2</span></div>
+        <div class="r"><span class="k">Reproducción prom.</span><span class="v ok">10 s</span></div>
+
+        <div class="hd">Total con pauta encima</div>
+        <div class="r"><span class="k">Alcance<span class="sub">8.582 de anuncios</span></span><span class="v">11.100</span></div>
+        <div class="r"><span class="k">Visualizaciones<span class="sub">9.396 de anuncios</span></span><span class="v">12.251</span></div>
+        <div class="r"><span class="k">Interacciones<span class="sub">722 de anuncios</span></span><span class="v">900</span></div>
+        <div class="r"><span class="k">Seguimientos<span class="sub">2 de anuncios</span></span><span class="v">4</span></div>
+      </div>
+    </div>
+
+    <div class="creator">
+      <div class="l">La creadora</div>
+      <h4>@cocoandkiwi.aussies</h4>
+      <div class="sub">18.300 seguidores · Pastores australianos · Medellín</div>
+      <div class="good"><b>Audiencia afín:</b> es una cuenta de perros, en la ciudad correcta. El perfil encaja con Nutrecan.</div>
+    </div>
+  </div>
+
+  <!-- ══════ CONTENIDO ══════ -->
+  <div class="col-main">
+
+    <div class="verdict">
+      <div class="ic">📊</div>
+      <div>
+        <h2>Gustó mucho a quien lo vio, pero captó lo mismo que la de Lucky Gatos</h2>
+        <p>Con audiencia del nicho, la interacción llegó a <b>7,96%</b> — por encima del rango bueno del sector. Aun así captó <b>2 seguidores orgánicos</b>, exactamente los mismos que la colaboración con una creadora de lifestyle.</p>
+      </div>
+    </div>
+
+    <div class="intro">
+      <span class="lbl">Cómo se leen estos números</span>
+      <span class="t">Esta publicación <b>sí tuvo pauta encima</b>: de sus 12.251 visualizaciones, 9.396 vinieron de anuncios. Para poder compararla con otras colaboraciones, <b>todo el análisis se hace sobre la parte orgánica</b> — lo que la pieza logró por sí sola. Los totales quedan a la izquierda como referencia.</span>
+    </div>
+
+    <!-- HISTORICO -->
+    <div class="block-label">Contexto · crecimiento de la cuenta</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>De dónde salieron los seguidores de julio</th><th class="n">Cantidad</th><th class="n">Del total</th></tr>
+      <tr><td><b>Seguidores nuevos de la marca</b></td><td class="n"><b>235</b></td><td class="n">100%</td></tr>
+      <tr><td style="padding-left:26px">Desde publicaciones</td><td class="n">60</td><td class="n">26%</td></tr>
+      <tr><td style="padding-left:44px;color:var(--muted)">por publicaciones pautadas</td><td class="n">40</td><td class="n">17%</td></tr>
+      <tr class="hl"><td style="padding-left:44px">por publicaciones orgánicas</td><td class="n">20</td><td class="n">8,5%</td></tr>
+      <tr><td style="padding-left:26px;color:var(--muted)">Desde perfil, búsqueda y sugerencias</td><td class="n">175</td><td class="n">74%</td></tr>
+      <tr><td style="color:var(--bad)">Dejaron de seguir</td><td class="n r">94</td><td class="n">—</td></tr>
+    </table>
+    </div>
+
+    <div class="minis">
+      <div class="mini r">
+        <div class="t">El espacio real del contenido</div>
+        <div class="d">Solo <b>20 seguidores en todo julio</b> llegaron por contenido orgánico. La colaboración no compite contra 235: compite dentro de ese margen.</div>
+      </div>
+      <div class="mini m">
+        <div class="t">La captación se paga</div>
+        <div class="d">De los 60 que llegaron por publicaciones, <b>40 fueron comprados</b>. A $206.412 invertidos, salen a <b>$5.160 cada uno</b>.</div>
+      </div>
+      <div class="mini r">
+        <div class="t">Retención del 47%</div>
+        <div class="d">La cuenta perdió <b>94 seguidores</b> en el mismo período. Casi la mitad de lo que gana se va.</div>
+      </div>
+    </div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Mes</th><th class="n">Seguidores por pauta</th></tr>
+      <tr><td>Mayo</td><td class="n">21</td></tr>
+      <tr><td>Junio</td><td class="n">33</td></tr>
+      <tr class="hl"><td>Julio</td><td class="n">40</td></tr>
+    </table>
+    </div>
+
+    <div class="nota">
+      La inversión en captación viene subiendo mes a mes: de 21 seguidores comprados en mayo a 40 en julio. <b>Casi el doble en dos meses.</b>
+    </div>
+
+    <!-- VENTANA -->
+    <div class="block-label">La ventana · qué pasó el día de la colaboración</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Fecha</th><th class="n">Pauta seguidores</th><th class="n">Interacciones</th><th class="n">Compras y otras</th><th class="n">Seguidores nuevos</th></tr>
+      <tr><td>8 jul</td><td class="n">$14.238</td><td class="n">$18.363</td><td class="n">$108.822</td><td class="n">9</td></tr>
+      <tr class="hl"><td>9 jul <span style="font-size:.72rem;color:var(--muted);font-weight:400">(colaboración)</span></td><td class="n">$14.445</td><td class="n">$17.235</td><td class="n">$116.607</td><td class="n">12</td></tr>
+      <tr><td>10 jul</td><td class="n">$13.890</td><td class="n">$4.110</td><td class="n">$107.703</td><td class="n">2</td></tr>
+    </table>
+    </div>
+
+    <div class="minis">
+      <div class="mini g">
+        <div class="t">Comparación limpia</div>
+        <div class="d">El 8 y el 9 de julio tuvieron <b>casi la misma inversión</b> en las tres categorías. La única variable distinta fue la colaboración.</div>
+      </div>
+      <div class="mini m">
+        <div class="t">Diferencia</div>
+        <div class="d"><b>+3 seguidores</b> frente al día anterior. Contra el promedio del período (5,9/día), el excedente llega a <b>+6</b>.</div>
+      </div>
+      <div class="mini r">
+        <div class="t">Lo esperable</div>
+        <div class="d">Con una creadora del nicho y 18.300 seguidores, lo razonable eran <b>15 a 30 seguidores</b>.</div>
+      </div>
+    </div>
+
+    <!-- SCORECARD -->
+    <div class="block-label">Tarjeta de resultados · sobre alcance orgánico</div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:14px">La línea vertical marca lo esperable para una creadora de 18.300 seguidores.</p>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Alcance orgánico</span><span class="badge bad">39% de lo esperado</span></div>
+      <div class="track"><div class="fill bad" style="width:39%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>2.237 cuentas</b> (12,2% de su audiencia)</span><span>Estándar: 31% ≈ 5.700</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Interacción de quien sí lo vio</span><span class="badge ok">por encima del rango</span></div>
+      <div class="track"><div class="fill ok" style="width:99%"></div><div class="mk" style="left:63%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>7,96%</b></span><span>Rango bueno del sector: más de 6%</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Interacción sobre su audiencia</span><span class="badge bad">32% de lo esperado</span></div>
+      <div class="track"><div class="fill bad" style="width:32%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>0,97%</b></span><span>Estándar micro-influencer: 3% – 6%</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Tiempo de reproducción</span><span class="badge ok">por encima</span></div>
+      <div class="track"><div class="fill ok" style="width:99%"></div><div class="mk" style="left:86%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>10 segundos</b></span><span>El reel promedio de Instagram retiene 8,6 s</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Compartidos</span><span class="badge mid">en el límite</span></div>
+      <div class="track"><div class="fill mid" style="width:72%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>8</b> (0,36% del alcance)</span><span>Normal: 0,5% – 1%</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Guardados</span><span class="badge bad">0</span></div>
+      <div class="track"><div class="fill bad" style="width:2%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>0</b></span><span>Normal: 0,5% – 1% del alcance</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Seguidores captados</span><span class="badge bad">13% de lo esperado</span></div>
+      <div class="track"><div class="fill bad" style="width:13%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>2 orgánicos</b> (4 en total, 2 de pauta)</span><span>Esperable con creadora del nicho: 15 – 30</span></div>
+    </div>
+
+    <!-- COMPARATIVO -->
+    <div class="block-label">Comparativo · las dos colaboraciones de julio</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>&nbsp;</th><th class="n">Lucky Gatos</th><th class="n">Nutrecan</th></tr>
+      <tr><td>Creadora</td><td class="n">@marpinillaobr</td><td class="n">@cocoandkiwi.aussies</td></tr>
+      <tr><td>Seguidores de la creadora</td><td class="n">12.900</td><td class="n">18.300</td></tr>
+      <tr><td>Nicho</td><td class="n">Moda y lifestyle</td><td class="n g">Mascotas · perros</td></tr>
+      <tr><td>Alcance orgánico</td><td class="n">2.240</td><td class="n">2.237</td></tr>
+      <tr><td>Alcance sobre su audiencia</td><td class="n">17,4%</td><td class="n r">12,2%</td></tr>
+      <tr class="hl"><td>Interacción sobre alcance</td><td class="n">4,96%</td><td class="n g">7,96%</td></tr>
+      <tr><td>Tiempo de reproducción</td><td class="n">8 s</td><td class="n g">10 s</td></tr>
+      <tr><td>Guardados</td><td class="n">0</td><td class="n">0</td></tr>
+      <tr class="hl"><td>Seguidores captados</td><td class="n">2</td><td class="n">2</td></tr>
+      <tr class="hl"><td>Conversión de alcance a seguidor</td><td class="n">0,089%</td><td class="n">0,089%</td></tr>
+    </table>
+    </div>
+
+    <div class="minis">
+      <div class="mini g">
+        <div class="t">La afinidad sí mejora el consumo</div>
+        <div class="d">Con audiencia del nicho, la interacción sube de 4,96% a <b>7,96%</b> y la retención de 8 a <b>10 segundos</b>. La gente correcta disfruta más el contenido.</div>
+      </div>
+      <div class="mini r">
+        <div class="t">Pero no mejora la captación</div>
+        <div class="d">Las dos piezas captaron <b>exactamente 2 seguidores</b>, con alcance orgánico casi idéntico (2.237 y 2.240). <b>La misma tasa: 0,089%.</b></div>
+      </div>
+      <div class="mini r">
+        <div class="t">Lo que sorprende</div>
+        <div class="d">Pese a tener <b>42% más seguidores</b>, alcanzó lo mismo. En proporción a su audiencia, distribuyó peor.</div>
+      </div>
+    </div>
+
+    <div class="intro">
+      <span class="lbl">El hallazgo que deja el comparativo</span>
+      <span class="t">Elegir una creadora del nicho <b>mejoró la calidad del consumo</b> — gustó más y se vio por más tiempo — pero <b>no cambió nada en captación</b>. Dos audiencias completamente distintas, mismo resultado: 2 seguidores cada una, con la misma tasa de conversión. <b>El problema no está en a quién se le muestra la pieza, sino en que la pieza no pide seguir.</b></span>
+    </div>
+
+    <!-- LA REGLA -->
+    <div class="block-label">La regla · cuándo una métrica es buena o mala</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Métrica</th><th class="n">Malo</th><th class="n">Normal</th><th class="n">Bueno</th><th class="n">Este reel</th></tr>
+      <tr><td>Alcance sobre audiencia del creador</td><td class="n">&lt; 15%</td><td class="n">20 – 30%</td><td class="n">&gt; 35%</td><td class="n r">12,2%</td></tr>
+      <tr><td>Interacción sobre quien lo vio</td><td class="n">&lt; 2%</td><td class="n">3 – 5%</td><td class="n">&gt; 6%</td><td class="n g">7,96%</td></tr>
+      <tr><td>Interacción sobre audiencia del creador</td><td class="n">&lt; 1%</td><td class="n">3 – 6%</td><td class="n">&gt; 7%</td><td class="n r">0,97%</td></tr>
+      <tr><td>Tiempo de reproducción</td><td class="n">&lt; 5 s</td><td class="n">8 – 9 s</td><td class="n">&gt; 12 s</td><td class="n g">10 s</td></tr>
+      <tr><td>Compartidos sobre alcance</td><td class="n">&lt; 0,2%</td><td class="n">0,5 – 1%</td><td class="n">&gt; 1,5%</td><td class="n m">0,36%</td></tr>
+      <tr><td>Guardados sobre alcance</td><td class="n">0%</td><td class="n">0,5 – 1%</td><td class="n">&gt; 2%</td><td class="n r">0%</td></tr>
+      <tr><td>Seguidores sobre alcance</td><td class="n">&lt; 0,1%</td><td class="n">0,3 – 0,5%</td><td class="n">&gt; 1%</td><td class="n r">0,089%</td></tr>
+    </table>
+    </div>
+
+    <div class="minis">
+      <div class="mini g"><div class="t">2 bien</div><div class="d">Interacción de quien lo vio y tiempo de reproducción.</div></div>
+      <div class="mini m"><div class="t">1 en el límite</div><div class="d">Compartidos: por debajo de lo normal pero no en zona mala.</div></div>
+      <div class="mini r"><div class="t">4 por debajo</div><div class="d">Alcance, interacción sobre su audiencia, guardados y captación.</div></div>
+    </div>
+
+    <div class="nota">
+      <b>Los 2 seguidores en contexto:</b> en todo julio, solo <b>20 seguidores</b> llegaron a Nutrecan por contenido orgánico, repartidos entre 25 publicaciones propias más esta colaboración. La colaboración aportó <b>2 de esos 20</b> — un 10% del crecimiento orgánico del mes con una sola pieza.
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="block-label">Conclusión</div>
+
+    <div class="intro">
+      <span class="lbl">En una línea</span>
+      <span class="t">La afinidad de audiencia <b>sí se nota en la calidad</b>: esta pieza gustó más y se vio por más tiempo que la de Lucky Gatos. Pero captó <b>los mismos 2 seguidores</b>. Falló la <b>distribución</b> — llegó al 12% de la audiencia de la creadora — y falló la <b>conversión</b>, que es idéntica en ambas colaboraciones.</span>
+    </div>
+
+    <ul class="lst">
+      <li><b>El contenido funcionó.</b> 7,96% de interacción está por encima del rango bueno del sector, y 10 segundos de reproducción superan el promedio de Instagram.</li>
+      <li><b>El alcance orgánico se quedó corto:</b> 2.237 cuentas sobre una audiencia de 18.300. Es un 12%, cuando lo esperable era 31%.</li>
+      <li><b>Elegir del nicho sirvió para el consumo, no para la captación.</b> La interacción subió 60% y la retención 25% frente a Lucky Gatos, pero los seguidores captados fueron los mismos: 2 y 2, con idéntica tasa de conversión.</li>
+      <li><b>Cero guardados</b>, igual que en Lucky Gatos. Ninguna de las dos piezas dio motivo para volver.</li>
+      <li><b>Con todo, aportó el 10% del crecimiento orgánico del mes</b> con una sola pieza, en un espacio donde 25 publicaciones propias sumaron 18.</li>
+    </ul>
+
+    <div class="block-label">Recomendaciones · próximas colaboraciones</div>
+
+    <ul class="lst">
+      <li><b>El cambio de mayor impacto está en la pieza, no en la creadora.</b> Dos audiencias opuestas dieron el mismo resultado en seguidores. Hay que pedir un motivo explícito para seguir dentro del contenido.</li>
+      <li><b>Mantener el criterio de afinidad</b> igual: mejora medible en interacción y retención, y es el público que sí puede comprar.</li>
+      <li>Pedir <b>capturas de alcance de sus 3 últimos reels con el desglose orgánico vs anuncios</b>. Si el alcance que muestra es pauta, lo que se contrata no es su audiencia sino su presupuesto.</li>
+      <li><b>Pactar un mínimo de alcance orgánico</b> en el acuerdo, independiente de lo que después se amplifique.</li>
+      <li><b>Pedir algo que se guarde:</b> una guía, una lista, un tip aplicable. Cero guardados en dos colaboraciones seguidas es un patrón, no casualidad.</li>
+    </ul>
+
+  </div>
+</div>
+</div>
+
+<footer>
+  Hecho con <b>cariño</b> por Hounter Leads · <span id="anio"></span>
+</footer>
+
+<script>document.getElementById('anio').textContent=new Date().getFullYear();</script>
+</body>
+</html>
