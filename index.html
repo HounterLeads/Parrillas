@@ -147,6 +147,23 @@
   .brief{display:flex;align-items:center;gap:18px;text-decoration:none;background:var(--white);border:1px solid var(--line);border-radius:18px;padding:20px 24px;margin-bottom:14px;transition:box-shadow .3s,border-color .3s,transform .25s}
   .brief:hover{box-shadow:0 22px 50px rgba(32,37,201,.10);border-color:var(--peri);transform:translateX(4px)}
 
+  /* SUB-ACORDEON dentro de un grupo */
+  .subgrp{background:var(--bg);border:1px solid var(--line);border-radius:13px;margin-top:10px;overflow:hidden;transition:border-color .25s}
+  .subgrp.open{border-color:var(--peri);background:#fff}
+  .subgrp-head{display:flex;align-items:center;gap:16px;padding:18px 20px;cursor:pointer;user-select:none}
+  .subgrp-head:hover .go{opacity:1}
+  .subgrp-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+  .subgrp-body-in{padding:0 16px 14px}
+  .subgrp .chevron{width:30px;height:30px;font-size:.85rem}
+  .subgrp.open .chevron{transform:rotate(180deg);background:var(--azul);color:#fff;border-color:var(--azul)}
+  .subitem{display:flex;align-items:center;gap:14px;text-decoration:none;padding:14px 16px;
+    border-radius:11px;background:var(--white);border:1px solid var(--line);margin-top:9px;transition:all .22s}
+  .subitem:hover{border-color:var(--peri);transform:translateX(4px);box-shadow:0 8px 20px rgba(32,37,201,.07)}
+  .subitem.off{opacity:.55;pointer-events:none}
+  .subitem-ic{width:38px;height:38px;border-radius:10px;background:var(--bg);border:1px solid var(--line);
+    display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+  .estado.prox{background:#EEF0F5;color:#6A6E96}
+
   /* FOOTER */
   footer{
     text-align:center;padding:40px 24px;color:var(--muted);font-size:.82rem;
@@ -318,36 +335,130 @@
     fb.style.maxHeight = fb.scrollHeight + 'px';
   }
 
-  // ─── Briefs / retroalimentaciones (agregar uno = duplicar objeto) ───
+  /* ─── Briefs / retroalimentaciones ───
+     Estructura: GRUPOS (cliente) → items. Un item puede ser un enlace directo (url)
+     o un sub-acordeón si trae "sub" (lista de marcas). Agregar = duplicar objeto. */
   const BRIEFS = [
     {
-      emoji: "📥",
-      titulo: "Solicitudes de contenido · Mascotas Solla",
-      desc: "Nutrecan, Nutrecat, Lucky Perros y Lucky Gatos · piezas por marca y campaña",
-      url: "./solicitudes/",
-      estado: "activa"
-    },
-    {
-      emoji: "🍗",
-      titulo: "Delichicks · Reels de receta",
-      desc: "Diagnóstico visual, cosas por mejorar, 2 comparativos y 2 guiones plantilla",
-      url: "./briefs/delichicks/",
-      estado: "activa"
+      grupo: "Solla",
+      sector: "Mascotas · Nutrecan, Nutrecat, Lucky y Delichicks",
+      emoji: "🐾",
+      items: [
+        {
+          emoji: "📥",
+          titulo: "Solicitudes de contenido",
+          desc: "Nutrecan, Nutrecat, Lucky Perros y Lucky Gatos · piezas por marca y campaña",
+          url: "./solicitudes/",
+          estado: "activa"
+        },
+        {
+          emoji: "🍗",
+          titulo: "Delichicks · Reels de receta",
+          desc: "Diagnóstico visual, cosas por mejorar, 2 comparativos y 2 guiones plantilla",
+          url: "./briefs/delichicks/",
+          estado: "activa"
+        },
+        {
+          emoji: "🤝",
+          titulo: "Análisis de colaboraciones",
+          desc: "Qué entregó cada colaboración con creadoras, medida contra el estándar del sector",
+          sub: [
+            { emoji: "🐾", titulo: "Lucky Gatos", desc: "Reel con @marpinillaobr · 22 jul 2026",
+              url: "./colaboraciones/lucky-gatos/", estado: "activa" },
+            { emoji: "🐕", titulo: "Nutrecan", desc: "Sin colaboraciones analizadas", estado: "prox" },
+            { emoji: "🐈", titulo: "Nutrecat", desc: "Sin colaboraciones analizadas", estado: "prox" },
+            { emoji: "🦴", titulo: "Lucky Perros", desc: "Sin colaboraciones analizadas", estado: "prox" }
+          ]
+        }
+      ]
     }
   ];
+
+  const badge = e =>
+    e === 'activa' ? '<span class="estado activa">Activa</span>'
+    : e === 'prox' ? '<span class="estado prox">Próximamente</span>'
+    : '<span class="estado borrador">Borrador</span>';
+
   const lb = document.getElementById('lista-briefs');
-  BRIEFS.forEach(b => {
-    const a = document.createElement('a');
-    a.className = 'brief';
-    a.href = b.url;
-    a.innerHTML = `
-      <div class="marca-ic">${b.emoji}</div>
-      <div class="parrilla-info">
-        <h4>${b.titulo} <span class="estado ${b.estado === 'activa' ? 'activa' : 'borrador'}">${b.estado === 'activa' ? 'Activa' : 'Borrador'}</span></h4>
-        <p>${b.desc}</p>
+
+  BRIEFS.forEach(g => {
+    const itemsHTML = g.items.map(it => {
+      if (it.sub) {
+        const subs = it.sub.map(s => `
+          <a class="subitem ${s.url ? '' : 'off'}" ${s.url ? `href="${s.url}"` : ''}>
+            <div class="subitem-ic">${s.emoji}</div>
+            <div class="parrilla-info">
+              <h4>${s.titulo} ${badge(s.estado)}</h4>
+              <p>${s.desc}</p>
+            </div>
+            <span class="go">→</span>
+          </a>`).join('');
+        return `
+          <div class="subgrp">
+            <div class="subgrp-head">
+              <div class="parrilla-ic">${it.emoji}</div>
+              <div class="parrilla-info">
+                <h4>${it.titulo} <span class="marca-count">${it.sub.length} marcas</span></h4>
+                <p>${it.desc}</p>
+              </div>
+              <span class="chevron">▾</span>
+            </div>
+            <div class="subgrp-body"><div class="subgrp-body-in">${subs}</div></div>
+          </div>`;
+      }
+      return `
+        <a class="parrilla" href="${it.url}">
+          <div class="parrilla-ic">${it.emoji}</div>
+          <div class="parrilla-info">
+            <h4>${it.titulo} ${badge(it.estado)}</h4>
+            <p>${it.desc}</p>
+          </div>
+          <span class="go">→</span>
+        </a>`;
+    }).join('');
+
+    const card = document.createElement('div');
+    card.className = 'marca';
+    card.innerHTML = `
+      <div class="marca-head">
+        <div class="marca-ic">${g.emoji}</div>
+        <div class="marca-meta">
+          <h3>${g.grupo}</h3>
+          <div class="sector">${g.sector}</div>
+        </div>
+        <span class="marca-count">${g.items.length} secciones</span>
+        <span class="chevron">▾</span>
       </div>
-      <span class="go">→</span>`;
-    lb.appendChild(a);
+      <div class="marca-body"><div class="marca-body-in">${itemsHTML}</div></div>`;
+    lb.appendChild(card);
+
+    const head = card.querySelector('.marca-head');
+    const body = card.querySelector('.marca-body');
+    const recalc = () => { if (card.classList.contains('open')) body.style.maxHeight = body.scrollHeight + 'px'; };
+
+    head.addEventListener('click', () => {
+      const isOpen = card.classList.contains('open');
+      card.classList.toggle('open', !isOpen);
+      body.style.maxHeight = isOpen ? null : body.scrollHeight + 'px';
+    });
+
+    // sub-acordeones
+    card.querySelectorAll('.subgrp').forEach(sg => {
+      const sh = sg.querySelector('.subgrp-head');
+      const sb = sg.querySelector('.subgrp-body');
+      sh.addEventListener('click', e => {
+        e.stopPropagation();
+        const open = sg.classList.contains('open');
+        sg.classList.toggle('open', !open);
+        sb.style.maxHeight = open ? null : sb.scrollHeight + 'px';
+        setTimeout(recalc, 10);
+        setTimeout(() => { if (card.classList.contains('open')) body.style.maxHeight = 'none'; }, 450);
+      });
+    });
+
+    // abrir el grupo por defecto
+    card.classList.add('open');
+    requestAnimationFrame(() => { body.style.maxHeight = body.scrollHeight + 'px'; });
   });
 
   document.getElementById('anio').textContent = new Date().getFullYear();

@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Análisis de colaboraciones · Mascotas Solla · Hounter Leads</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#050347; --azul:#2025C9; --peri:#6670FF; --lav:#B098F0;
+    --bg:#F4F5FF; --white:#FFFFFF; --ink:#0B0A2E; --muted:#6A6E96; --line:#E2E3F5;
+    --magenta:#E5359E;
+    --ok:#1C7A47; --okbg:#E0F5E9;
+    --mid:#9A6A12; --midbg:#FFF1D6;
+    --bad:#C2185B; --badbg:#FDE7F4;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+  a{color:inherit}
+
+  /* HERO */
+  .hero{background:linear-gradient(150deg,var(--navy) 0%,#0d0a63 55%,var(--azul) 130%);
+    color:#fff;padding:40px 24px 52px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-30%;right:-8%;width:46%;height:120%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);filter:blur(30px)}
+  .hero-in{position:relative;z-index:2;max-width:1120px;margin:0 auto}
+  .back{display:inline-flex;align-items:center;gap:7px;color:#C9CCF2;text-decoration:none;
+    font-size:.85rem;font-weight:500;margin-bottom:26px;transition:color .2s}
+  .back:hover{color:#fff}
+  .pill{display:inline-block;padding:7px 16px;border:1px solid rgba(176,152,240,.5);
+    color:var(--lav);font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;
+    border-radius:50px;margin-bottom:18px;font-weight:600}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(1.9rem,4.6vw,2.9rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:14px}
+  .hero h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--lav)}
+  .hero p{max-width:620px;color:#C9CCF2;font-size:1rem;font-weight:300}
+
+  /* LAYOUT 2 COLUMNAS */
+  .split{display:grid;grid-template-columns:minmax(300px,340px) 1fr;gap:30px;padding:34px 0 80px;align-items:start}
+  .col-video{position:sticky;top:22px}
+
+  /* FICHA VIDEO */
+  .vcard{background:var(--white);border:1px solid var(--line);border-radius:20px;overflow:hidden;
+    box-shadow:0 18px 44px rgba(32,37,201,.09)}
+  .vcard .vtop{background:var(--navy);color:#fff;padding:15px 18px;position:relative;overflow:hidden}
+  .vcard .vtop::before{content:"";position:absolute;top:-50%;right:-10%;width:45%;height:210%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);filter:blur(22px)}
+  .vcard .vtop .l{position:relative;z-index:1;font-size:.62rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--lav);font-weight:700}
+  .vcard .vtop h3{position:relative;z-index:1;font-family:'Bricolage Grotesque',sans-serif;
+    font-weight:700;font-size:1.02rem;margin-top:3px}
+  .embed{background:#000;aspect-ratio:9/16;display:flex;align-items:center;justify-content:center;position:relative}
+  .embed iframe{width:100%;height:100%;border:0;display:block}
+  .embed .ph{color:#8E93C4;text-align:center;padding:26px;font-size:.85rem;line-height:1.5}
+  .embed .ph .ic{font-size:2.4rem;display:block;margin-bottom:10px}
+  .vlink{display:block;text-align:center;padding:12px;font-size:.82rem;font-weight:600;
+    color:var(--azul);text-decoration:none;border-top:1px solid var(--line);transition:background .2s}
+  .vlink:hover{background:var(--bg)}
+
+  .vmeta{padding:16px 18px 18px}
+  .vmeta .r{display:flex;justify-content:space-between;gap:10px;font-size:.85rem;padding:7px 0;
+    border-bottom:1px solid var(--line)}
+  .vmeta .r:last-child{border-bottom:0}
+  .vmeta .k{color:var(--muted)}
+  .vmeta .v{font-weight:700;color:var(--ink);text-align:right}
+  .vmeta .v.ok{color:var(--ok)} .vmeta .v.bad{color:var(--bad)} .vmeta .v.mid{color:var(--mid)}
+
+  .creator{background:var(--bg);border:1px solid var(--line);border-radius:16px;padding:15px 17px;margin-top:14px}
+  .creator .l{font-size:.62rem;letter-spacing:2px;text-transform:uppercase;color:var(--azul);font-weight:700;margin-bottom:7px}
+  .creator h4{font-family:'Bricolage Grotesque',sans-serif;font-size:1rem;color:var(--ink)}
+  .creator .sub{font-size:.8rem;color:var(--muted);margin-top:2px}
+  .creator .warn{margin-top:10px;font-size:.79rem;color:#5A2E4E;background:#FDECF7;
+    border:1px solid #F3CFE8;border-radius:10px;padding:9px 11px;line-height:1.45}
+  .creator .warn b{color:var(--magenta)}
+
+  /* CONTENIDO */
+  .block-label{font-size:.7rem;letter-spacing:2.5px;text-transform:uppercase;color:var(--azul);
+    font-weight:700;margin:30px 0 14px;display:flex;align-items:center;gap:10px}
+  .block-label:first-of-type{margin-top:0}
+  .block-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .verdict{display:flex;gap:16px;background:linear-gradient(135deg,#FDECF7,#F3EEFF);
+    border:1px solid #F3CFE8;border-radius:18px;padding:20px 22px;align-items:flex-start}
+  .verdict .ic{font-size:1.7rem;line-height:1;flex-shrink:0}
+  .verdict h2{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.28rem;
+    color:var(--ink);line-height:1.2;margin-bottom:5px}
+  .verdict p{font-size:.92rem;color:#5A2E4E}
+
+  .card{background:var(--white);border:1px solid var(--line);border-radius:16px;padding:18px 20px;margin-bottom:13px}
+  .card.alta{border-left:4px solid var(--magenta)}
+
+  /* SCORECARD */
+  .sc{background:var(--white);border:1px solid var(--line);border-radius:15px;padding:14px 17px;margin-bottom:10px;
+    transition:border-color .2s,box-shadow .2s}
+  .sc:hover{border-color:var(--peri);box-shadow:0 10px 26px rgba(32,37,201,.07)}
+  .sc-top{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:9px}
+  .sc-name{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:.95rem;color:var(--ink)}
+  .badge{font-size:.6rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:4px 10px;border-radius:50px;white-space:nowrap}
+  .badge.ok{background:var(--okbg);color:var(--ok)}
+  .badge.mid{background:var(--midbg);color:var(--mid)}
+  .badge.bad{background:var(--badbg);color:var(--bad)}
+  .track{position:relative;background:#EEF0FA;border-radius:6px;height:26px}
+  .fill{position:absolute;left:0;top:0;height:100%;border-radius:6px;min-width:5px}
+  .fill.ok{background:linear-gradient(90deg,#2E9C60,#4FC98A)}
+  .fill.mid{background:linear-gradient(90deg,#C99320,#E8B85A)}
+  .fill.bad{background:linear-gradient(90deg,#A81450,var(--magenta))}
+  .mk{position:absolute;top:-4px;bottom:-4px;width:2px;background:var(--navy);opacity:.45}
+  .sc-vals{display:flex;justify-content:space-between;gap:12px;margin-top:7px;font-size:.78rem;color:var(--muted)}
+  .sc-vals b{color:var(--ink)}
+
+  /* TABLAS */
+  .tw{overflow-x:auto;background:var(--white);border:1px solid var(--line);border-radius:16px;margin-bottom:14px}
+  table{border-collapse:collapse;width:100%;font-size:.86rem;min-width:460px}
+  th{background:var(--bg);color:var(--muted);text-align:left;padding:12px 15px;font-size:.64rem;
+    font-weight:700;letter-spacing:1.3px;text-transform:uppercase;white-space:nowrap}
+  td{padding:12px 15px;border-top:1px solid var(--line);color:var(--ink)}
+  td.n,th.n{text-align:right;font-variant-numeric:tabular-nums}
+  tr.hl td{background:#ECEDFF;font-weight:600}
+  tr.hl td:first-child{box-shadow:inset 3px 0 0 var(--azul)}
+  .g{color:var(--ok);font-weight:700}.r{color:var(--bad);font-weight:700}.m{color:var(--mid);font-weight:700}
+
+  /* BARRAS SIMPLES */
+  .bl{display:flex;align-items:center;gap:12px;margin:8px 0;font-size:.86rem}
+  .bl .lb{width:110px;color:var(--muted);flex-shrink:0;font-weight:500}
+  .bl .tr{flex:1;display:block;background:#EEF0FA;border-radius:5px;height:22px}
+  .bl .fl{display:block;height:100%;border-radius:5px;background:linear-gradient(90deg,var(--peri),var(--lav))}
+  .bl .fl.on{background:linear-gradient(90deg,var(--azul),var(--peri))}
+  .bl .vl{width:88px;text-align:right;font-weight:700;color:var(--ink);flex-shrink:0}
+
+  /* MINI CARDS */
+  .minis{display:grid;grid-template-columns:repeat(auto-fit,minmax(215px,1fr));gap:12px;margin:14px 0}
+  .mini{background:var(--white);border:1px solid var(--line);border-radius:14px;padding:15px 17px}
+  .mini.g{border-left:3px solid var(--ok)}
+  .mini.m{border-left:3px solid var(--mid)}
+  .mini.r{border-left:3px solid var(--magenta)}
+  .mini .t{font-size:.62rem;letter-spacing:1.4px;text-transform:uppercase;color:var(--muted);font-weight:700;margin-bottom:5px}
+  .mini .d{font-size:.85rem;color:var(--muted);line-height:1.5}
+  .mini .d b{color:var(--ink)}
+
+  .intro{background:var(--navy);color:#EDEEFF;border-radius:15px;padding:17px 21px;margin-bottom:14px;
+    font-size:.9rem;line-height:1.55;position:relative;overflow:hidden}
+  .intro::before{content:"";position:absolute;top:-40%;right:-6%;width:38%;height:180%;
+    background:radial-gradient(circle,rgba(102,112,255,.4) 0%,transparent 65%);filter:blur(24px)}
+  .intro b{color:var(--lav)}
+  .intro .lbl{display:block;font-size:.64rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--lav);font-weight:700;margin-bottom:6px;position:relative;z-index:1}
+  .intro span.t{position:relative;z-index:1}
+
+  .nota{font-size:.84rem;color:var(--muted);padding:13px 15px;background:#FFF8E7;
+    border:1px solid #F3E4BE;border-radius:12px;margin-top:14px;line-height:1.5}
+  .nota b{color:#9A6A12}
+
+  ul.lst{list-style:none;margin:10px 0}
+  ul.lst li{position:relative;padding-left:22px;margin:9px 0;font-size:.9rem;color:var(--muted);line-height:1.55}
+  ul.lst li::before{content:"";position:absolute;left:3px;top:9px;width:7px;height:7px;
+    border-radius:50%;background:var(--peri)}
+  ul.lst li b{color:var(--ink)}
+
+  footer{text-align:center;padding:38px 24px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer b{font-family:'Fraunces',serif;font-style:italic;color:var(--azul);font-weight:400}
+
+  @media(max-width:900px){
+    .split{grid-template-columns:1fr;gap:22px}
+    .col-video{position:static}
+    .embed{aspect-ratio:auto;min-height:520px}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <a class="back" href="../../#briefs">← Volver al hub</a>
+    <span class="pill">Briefs &amp; retroalimentaciones</span>
+    <h1>Análisis de colaboración<br><em>Lucky Gatos × @marpinillaobr</em></h1>
+    <p>Qué entregó el reel del 22 de julio, medido contra el estándar del sector y contra el histórico de la cuenta. Sirve como referencia para decidir las próximas colaboraciones.</p>
+  </div>
+</header>
+
+<div class="wrap">
+<div class="split">
+
+  <!-- ══════ COLUMNA VIDEO ══════ -->
+  <div class="col-video">
+    <div class="vcard">
+      <div class="vtop">
+        <span class="l">La pieza</span>
+        <h3>Reel colaborativo · 22 jul 2026</h3>
+      </div>
+      <div class="embed">
+        <iframe src="https://www.instagram.com/reel/DbHN5ddp7Yh/embed/" allowtransparency="true" scrolling="no" allowfullscreen></iframe>
+      </div>
+      <a class="vlink" href="https://www.instagram.com/reel/DbHN5ddp7Yh/" target="_blank" rel="noopener">Ver en Instagram ↗</a>
+      <div class="vmeta">
+        <div class="r"><span class="k">Alcance</span><span class="v bad">2.240</span></div>
+        <div class="r"><span class="k">Visualizaciones</span><span class="v mid">3.379</span></div>
+        <div class="r"><span class="k">De no seguidores</span><span class="v ok">69%</span></div>
+        <div class="r"><span class="k">Interacciones</span><span class="v">111</span></div>
+        <div class="r"><span class="k">Me gusta</span><span class="v">104</span></div>
+        <div class="r"><span class="k">Comentarios</span><span class="v">1</span></div>
+        <div class="r"><span class="k">Compartidos</span><span class="v bad">5</span></div>
+        <div class="r"><span class="k">Guardados</span><span class="v bad">0</span></div>
+        <div class="r"><span class="k">Seguimientos</span><span class="v bad">2</span></div>
+        <div class="r"><span class="k">Reproducción prom.</span><span class="v mid">8 s</span></div>
+      </div>
+    </div>
+
+    <div class="creator">
+      <div class="l">La creadora</div>
+      <h4>@marpinillaobr</h4>
+      <div class="sub">12.900 seguidores · Moda, lifestyle y medicina</div>
+      <div class="warn"><b>Ojo:</b> no es creadora de mascotas. Su audiencia la sigue a ella, no al nicho — es la variable que más pesa en el resultado.</div>
+    </div>
+  </div>
+
+  <!-- ══════ COLUMNA CONTENIDO ══════ -->
+  <div class="col-main">
+
+    <div class="verdict">
+      <div class="ic">📉</div>
+      <div>
+        <h2>Rindió por debajo de lo esperable</h2>
+        <p>Llegó a poco más de la mitad de la gente que debería alcanzar un reel de una cuenta de este tamaño. El contenido gustó a quien lo vio, pero se vio poco.</p>
+      </div>
+    </div>
+
+    <!-- HISTORICO -->
+    <div class="block-label">Lo primero · el mes no se comportó distinto</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Mes</th><th class="n">Seguidores nuevos</th><th class="n">Por pauta</th><th class="n">Orgánico</th><th class="n">Orgánico/día</th></tr>
+      <tr><td>Mayo</td><td class="n">82</td><td class="n">42</td><td class="n">40</td><td class="n">1,29</td></tr>
+      <tr><td>Junio</td><td class="n">126</td><td class="n">75</td><td class="n">51</td><td class="n">1,70</td></tr>
+      <tr class="hl"><td>Julio <span style="font-size:.72rem;color:var(--muted);font-weight:400">(con colaboración)</span></td><td class="n">88</td><td class="n">37</td><td class="n">51</td><td class="n">1,65</td></tr>
+    </table>
+    </div>
+
+    <div class="bl"><span class="lb">Mayo</span><span class="tr"><span class="fl" style="width:76%"></span></span><span class="vl">1,29 / día</span></div>
+    <div class="bl"><span class="lb">Junio</span><span class="tr"><span class="fl" style="width:100%"></span></span><span class="vl">1,70 / día</span></div>
+    <div class="bl"><span class="lb">Julio</span><span class="tr"><span class="fl on" style="width:97%"></span></span><span class="vl">1,65 / día</span></div>
+
+    <div class="minis">
+      <div class="mini m"><div class="t">Sin salto</div><div class="d">Julio creció <b>igual que junio</b>: 51 orgánicos en ambos meses. La colaboración no alteró la tendencia.</div></div>
+      <div class="mini g"><div class="t">Lo bueno de julio</div><div class="d">Mismo orgánico <b>con la mitad de la pauta</b>: 37 seguidores comprados frente a 75 en junio.</div></div>
+      <div class="mini r"><div class="t">Aporte de la colab</div><div class="d"><b>2 de los 51</b> orgánicos del mes. Un 4%: dentro del ruido normal.</div></div>
+    </div>
+
+    <!-- SCORECARD -->
+    <div class="block-label">Tarjeta de resultados · cada métrica contra su estándar</div>
+    <p style="font-size:.85rem;color:var(--muted);margin-bottom:14px">La línea vertical marca lo esperable para una creadora de 12.900 seguidores.</p>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Alcance</span><span class="badge bad">56% de lo esperado</span></div>
+      <div class="track"><div class="fill bad" style="width:56%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>2.240 cuentas</b></span><span>Estándar: 31% de su audiencia ≈ 3.900</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Visualizaciones</span><span class="badge mid">85% de lo esperado</span></div>
+      <div class="track"><div class="fill mid" style="width:85%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>3.379</b></span><span>Meta lo marcó como <i>menos vistas</i> que sus reels recientes</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Interacción sobre su audiencia</span><span class="badge bad">29% de lo esperado</span></div>
+      <div class="track"><div class="fill bad" style="width:29%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>0,86%</b></span><span>Estándar micro-influencer: 3% – 6%</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Interacción de quien sí lo vio</span><span class="badge ok">dentro del rango</span></div>
+      <div class="track"><div class="fill ok" style="width:99%"></div><div class="mk" style="left:80%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>4,96%</b></span><span>El contenido gustó</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Llegada a público nuevo</span><span class="badge ok">por encima</span></div>
+      <div class="track"><div class="fill ok" style="width:99%"></div><div class="mk" style="left:80%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>69%</b> de vistas de no seguidores</span><span>2.330 personas nuevas</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Tiempo de reproducción</span><span class="badge ok">en el promedio</span></div>
+      <div class="track"><div class="fill ok" style="width:93%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>8 segundos</b></span><span>El reel promedio de Instagram retiene 8,6 s</span></div>
+    </div>
+
+    <div class="sc">
+      <div class="sc-top"><span class="sc-name">Seguidores captados</span><span class="badge bad">2</span></div>
+      <div class="track"><div class="fill bad" style="width:7%"></div><div class="mk" style="left:99%"></div></div>
+      <div class="sc-vals"><span>Obtenido <b>2 seguidores</b></span><span>Esperable con creadora del nicho: 20 – 45</span></div>
+    </div>
+
+    <!-- POR QUE -->
+    <div class="block-label">Por qué · dos causas distintas</div>
+
+    <div class="minis">
+      <div class="mini r"><div class="t">Se vio poco</div><div class="d">Alcanzó al <b>17%</b> de la audiencia de la creadora, cuando el estándar es <b>31%</b>. Es un tema de distribución: el algoritmo no lo empujó.</div></div>
+      <div class="mini r"><div class="t">No convirtió</div><div class="d">Su audiencia es de <b>moda y lifestyle</b>, no de mascotas. Quien sigue a una modelo no se vuelve seguidor de una marca de comida para gatos.</div></div>
+    </div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Perfil de creadora · 12.900 seguidores</th><th class="n">Alcance</th><th class="n">Seguidores</th></tr>
+      <tr><td>Del nicho de mascotas</td><td class="n">3.900 – 4.600</td><td class="n">20 – 45</td></tr>
+      <tr class="hl"><td>De lifestyle <span style="font-size:.72rem;color:var(--muted);font-weight:400">(este caso)</span></td><td class="n">2.240 real</td><td class="n">2 real</td></tr>
+    </table>
+    </div>
+
+    <!-- LA REGLA -->
+    <div class="block-label">La regla · cuándo una métrica es buena o mala</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Métrica</th><th class="n">Malo</th><th class="n">Normal</th><th class="n">Bueno</th><th class="n">Este reel</th></tr>
+      <tr><td>Alcance sobre audiencia del creador</td><td class="n">&lt; 15%</td><td class="n">20 – 30%</td><td class="n">&gt; 35%</td><td class="n r">17%</td></tr>
+      <tr><td>Vistas de no seguidores</td><td class="n">&lt; 40%</td><td class="n">50 – 60%</td><td class="n">&gt; 65%</td><td class="n g">69%</td></tr>
+      <tr><td>Interacción sobre quien lo vio</td><td class="n">&lt; 2%</td><td class="n">3 – 5%</td><td class="n">&gt; 6%</td><td class="n m">4,96%</td></tr>
+      <tr><td>Interacción sobre audiencia del creador</td><td class="n">&lt; 1%</td><td class="n">3 – 6%</td><td class="n">&gt; 7%</td><td class="n r">0,86%</td></tr>
+      <tr><td>Tiempo de reproducción</td><td class="n">&lt; 5 s</td><td class="n">8 – 9 s</td><td class="n">&gt; 12 s</td><td class="n m">8 s</td></tr>
+      <tr><td>Compartidos sobre alcance</td><td class="n">&lt; 0,2%</td><td class="n">0,5 – 1%</td><td class="n">&gt; 1,5%</td><td class="n r">0,22%</td></tr>
+      <tr><td>Guardados sobre alcance</td><td class="n">0%</td><td class="n">0,5 – 1%</td><td class="n">&gt; 2%</td><td class="n r">0%</td></tr>
+      <tr><td>Seguidores sobre público nuevo</td><td class="n">&lt; 0,1%</td><td class="n">0,3 – 0,5%</td><td class="n">&gt; 1%</td><td class="n r">0,09%</td></tr>
+    </table>
+    </div>
+
+    <div class="minis">
+      <div class="mini g"><div class="t">2 bien</div><div class="d">Llegada a público nuevo y contenido que gusta a quien lo ve.</div></div>
+      <div class="mini m"><div class="t">2 en el promedio</div><div class="d">Interacción y tiempo de reproducción: <b>ni bien ni mal</b>.</div></div>
+      <div class="mini r"><div class="t">4 por debajo</div><div class="d">Alcance, interacción sobre su audiencia, compartidos, guardados y captación.</div></div>
+    </div>
+
+    <!-- QUE EXIGIR -->
+    <div class="block-label">Para la próxima · qué exigir según el objetivo</div>
+
+    <div class="tw">
+    <table>
+      <tr><th>Si contratas para…</th><th>Métrica que importa</th><th class="n">Mínimo aceptable</th></tr>
+      <tr><td><b>Notoriedad</b> · que te conozcan</td><td>Alcance y % de no seguidores</td><td class="n">25% de su audiencia<br>60% no seguidores</td></tr>
+      <tr class="hl"><td><b>Comunidad</b> · ganar seguidores</td><td>Seguidores captados</td><td class="n">0,5% del público nuevo<br>≈ 20 con 12.900 seg.</td></tr>
+      <tr><td><b>Contenido</b> · piezas para pautar</td><td>Interacción y guardados</td><td class="n">5% interacción<br>1% guardados</td></tr>
+      <tr><td><b>Ventas</b></td><td>Clics o código de descuento</td><td class="n">Medible aparte, con enlace propio</td></tr>
+    </table>
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="block-label">Conclusión</div>
+
+    <div class="intro">
+      <span class="lbl">En una línea</span>
+      <span class="t">El problema no es que el video aburra — quien lo abrió lo vio el tiempo promedio de Instagram y reaccionó en rango normal. <b>El problema es que se vio poco</b>, y que la audiencia de la creadora no tiene relación con el nicho de mascotas.</span>
+    </div>
+
+    <ul class="lst">
+      <li><b>El mes no cambió.</b> Julio creció orgánicamente igual que junio (51 y 51). No hay salto atribuible a la colaboración.</li>
+      <li><b>Las métricas no están dentro de lo normal:</b> 4 por debajo, 2 en el promedio, 2 bien. El alcance quedó en la mitad de lo esperable.</li>
+      <li><b>Cero guardados y pocos compartidos</b> son la señal más honesta: gustó al pasar, pero nadie lo consideró digno de guardar ni de mostrarle a alguien.</li>
+      <li><b>Los 2 seguidores son consecuencia del perfil elegido</b>, no del desempeño. Con una creadora de mascotas del mismo tamaño, lo razonable eran 20 a 45.</li>
+    </ul>
+
+    <div class="block-label">Recomendaciones · próximas colaboraciones</div>
+
+    <ul class="lst">
+      <li>Pedir <b>capturas de alcance de sus 3 últimos reels</b>. Es el filtro más rápido: si no llegan al 25% de su audiencia, la cuenta no está distribuyendo bien.</li>
+      <li>Elegir por <b>afinidad de audiencia, no por tamaño</b>. Una creadora de mascotas con 3.000 seguidores convierte más que una de lifestyle con 12.900.</li>
+      <li>Pactar un <b>mínimo de alcance garantizado</b> y definir el objetivo antes de firmar, según la tabla de arriba.</li>
+    </ul>
+
+  </div>
+</div>
+</div>
+
+<footer>
+  Hecho con <b>cariño</b> por Hounter Leads · <span id="anio"></span>
+</footer>
+
+<script>document.getElementById('anio').textContent=new Date().getFullYear();</script>
+</body>
+</html>
