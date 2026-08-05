@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Análisis de colaboraciones · Mascotas Solla</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@300;400;500;600;700&family=Fraunces:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --navy:#050347; --azul:#2025C9; --peri:#6670FF; --lav:#B098F0;
+    --bg:#F4F5FF; --white:#FFFFFF; --ink:#0B0A2E; --muted:#6A6E96; --line:#E2E3F5;
+    --magenta:#E5359E;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',sans-serif;background:var(--bg);color:var(--ink);
+    line-height:1.6;-webkit-font-smoothing:antialiased;min-height:100vh}
+  .wrap{max-width:920px;margin:0 auto;padding:0 24px}
+
+  .hero{background:linear-gradient(150deg,var(--navy) 0%,#0d0a63 55%,var(--azul) 130%);
+    color:#fff;padding:64px 24px 60px;position:relative;overflow:hidden}
+  .hero::before{content:"";position:absolute;top:-30%;right:-8%;width:46%;height:120%;
+    background:radial-gradient(circle,rgba(102,112,255,.45) 0%,transparent 65%);filter:blur(30px)}
+  .hero::after{content:"";position:absolute;bottom:-40%;left:-6%;width:40%;height:120%;
+    background:radial-gradient(circle,rgba(176,152,240,.30) 0%,transparent 65%);filter:blur(30px)}
+  .hero-in{position:relative;z-index:2;max-width:920px;margin:0 auto}
+  .brand-row{display:flex;align-items:center;gap:12px;margin-bottom:34px}
+  .brand-logo{font-family:'Fraunces',serif;font-style:italic;font-size:1.4rem;color:#fff;letter-spacing:-.5px}
+  .brand-logo b{font-weight:400}
+  .brand-logo span{font-weight:300;opacity:.85;font-style:normal;font-family:'Inter',sans-serif;font-size:1rem}
+  .pill{display:inline-block;padding:7px 16px;border:1px solid rgba(176,152,240,.5);
+    color:var(--lav);font-size:.72rem;letter-spacing:2.5px;text-transform:uppercase;
+    border-radius:50px;margin-bottom:20px;font-weight:600}
+  .hero h1{font-family:'Bricolage Grotesque',sans-serif;font-weight:800;
+    font-size:clamp(2rem,5vw,3.1rem);line-height:1.04;letter-spacing:-.02em;margin-bottom:16px}
+  .hero h1 em{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--lav)}
+  .hero p{max-width:560px;color:#C9CCF2;font-size:1rem;font-weight:300}
+
+  .sec{padding:50px 0 90px}
+  .sec-label{font-size:.72rem;letter-spacing:3px;text-transform:uppercase;color:var(--azul);
+    font-weight:700;margin-bottom:22px;display:flex;align-items:center;gap:12px}
+  .sec-label::after{content:"";flex:1;height:1px;background:var(--line)}
+
+  .marca{display:flex;align-items:center;gap:18px;text-decoration:none;background:var(--white);
+    border:1px solid var(--line);border-radius:18px;padding:22px 24px;margin-bottom:14px;
+    transition:box-shadow .3s,border-color .3s,transform .25s}
+  .marca:hover{box-shadow:0 22px 50px rgba(32,37,201,.10);border-color:var(--peri);transform:translateX(5px)}
+  .marca.off{opacity:.5;pointer-events:none}
+  .marca-ic{width:56px;height:56px;border-radius:14px;flex-shrink:0;display:flex;
+    align-items:center;justify-content:center;font-size:1.7rem;
+    background:linear-gradient(135deg,var(--peri),var(--lav))}
+  .marca.off .marca-ic{background:linear-gradient(135deg,#C9CCE4,#DDDFEF)}
+  .marca-meta{flex:1;min-width:0}
+  .marca-meta h3{font-family:'Bricolage Grotesque',sans-serif;font-weight:700;font-size:1.25rem;
+    color:var(--ink);line-height:1.1;display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+  .marca-meta .sector{font-size:.85rem;color:var(--muted);margin-top:3px}
+  .estado{font-size:.6rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;
+    padding:3px 9px;border-radius:50px}
+  .estado.activa{background:#E0F5E9;color:#1C7A47}
+  .estado.prox{background:#EEF0F5;color:#6A6E96}
+  .go{color:var(--azul);font-size:1.35rem;flex-shrink:0;opacity:.5;transition:opacity .25s}
+  .marca:hover .go{opacity:1}
+
+  .intro{background:var(--navy);color:#EDEEFF;border-radius:16px;padding:20px 24px;margin-bottom:26px;
+    font-size:.94rem;line-height:1.6;position:relative;overflow:hidden}
+  .intro::before{content:"";position:absolute;top:-40%;right:-6%;width:38%;height:180%;
+    background:radial-gradient(circle,rgba(102,112,255,.4) 0%,transparent 65%);filter:blur(24px)}
+  .intro b{color:var(--lav)}
+  .intro .lbl{display:block;font-size:.66rem;letter-spacing:2px;text-transform:uppercase;
+    color:var(--lav);font-weight:700;margin-bottom:7px;position:relative;z-index:1}
+  .intro span.t{position:relative;z-index:1}
+
+  footer{text-align:center;padding:40px 24px;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line)}
+  footer b{font-family:'Fraunces',serif;font-style:italic;color:var(--azul);font-weight:400}
+
+  @media(max-width:600px){.marca{padding:18px 16px;gap:14px}.marca-ic{width:48px;height:48px;font-size:1.4rem}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-in">
+    <div class="brand-row">
+      <span class="brand-logo"><b>Hounter</b> <span>leads</span></span>
+    </div>
+    <span class="pill">Briefs &amp; retroalimentaciones</span>
+    <h1>Análisis de<br><em>colaboraciones</em></h1>
+    <p>Qué entregó cada colaboración con creadoras de contenido, medida contra el estándar del sector y contra el histórico de cada cuenta.</p>
+  </div>
+</header>
+
+<section class="sec">
+  <div class="wrap">
+
+    <div class="intro">
+      <span class="lbl">Cómo leer estos análisis</span>
+      <span class="t">Cada colaboración se evalúa contra <b>dos referencias</b>: el estándar del sector para una creadora de ese tamaño, y el crecimiento histórico de la cuenta. Así se separa lo que aportó la colaboración de lo que ya venía pasando por la pauta y el contenido propio.</span>
+    </div>
+
+    <div class="sec-label">Marcas</div>
+    <div id="lista"></div>
+
+  </div>
+</section>
+
+<footer>
+  Hecho con <b>cariño</b> por Hounter Leads · <span id="anio"></span>
+</footer>
+
+<script>
+  /* Agregar una marca con análisis = poner su url y estado "activa" */
+  const MARCAS = [
+    { nombre:"Lucky Gatos", sector:"Reel con @marpinillaobr · 22 jul 2026", emoji:"🐾",
+      url:"./lucky-gatos/", estado:"activa" },
+    { nombre:"Nutrecan", sector:"Sin colaboraciones analizadas", emoji:"🐕", estado:"prox" },
+    { nombre:"Nutrecat", sector:"Sin colaboraciones analizadas", emoji:"🐈", estado:"prox" },
+    { nombre:"Lucky Perros", sector:"Sin colaboraciones analizadas", emoji:"🦴", estado:"prox" }
+  ];
+
+  const lista = document.getElementById('lista');
+  MARCAS.forEach(m => {
+    const a = document.createElement('a');
+    a.className = 'marca' + (m.url ? '' : ' off');
+    if (m.url) a.href = m.url;
+    a.innerHTML = `
+      <div class="marca-ic">${m.emoji}</div>
+      <div class="marca-meta">
+        <h3>${m.nombre}
+          <span class="estado ${m.estado === 'activa' ? 'activa' : 'prox'}">${m.estado === 'activa' ? 'Publicado' : 'Próximamente'}</span>
+        </h3>
+        <div class="sector">${m.sector}</div>
+      </div>
+      <span class="go">→</span>`;
+    lista.appendChild(a);
+  });
+
+  document.getElementById('anio').textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
