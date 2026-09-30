@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amalia · Parrilla Noviembre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cafe:#3B2A1D; --cafe2:#54402E; --caramelo:#96683C; --miel:#D8B78C; --mantequilla:#EFDCC0;
+  --terracota:#A8603F; --bg:#F8F3EA; --paper:#FFFDF9; --ink:#33261C; --muted:#7A6553; --dim:#A99580; --line:#EADFCE;
+  --p1:#A8603F; --p2:#96683C; --p3:#6E7F4E;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:var(--ink)}
+em.f{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--caramelo)}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--caramelo)}
+
+/* top */
+.top{position:sticky;top:0;z-index:20;background:rgba(248,243,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:700}
+.brand img{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;object-fit:contain}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{font-size:12.5px;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:99px}
+.top nav a:hover{background:var(--mantequilla);color:var(--cafe)}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero h1{font-size:clamp(36px,6vw,74px);line-height:1;font-weight:800;margin:14px 0 18px}
+.hero p.lead{font-size:clamp(16px,1.6vw,20px);color:var(--muted);max-width:760px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.stat b{display:block;font-family:'Bricolage Grotesque';font-size:34px;font-weight:800;color:var(--cafe);line-height:1}
+.stat span{font-size:13px;color:var(--muted)}
+
+section{padding:46px 0}
+section > .wrap > h2{font-size:clamp(26px,3.4vw,40px);font-weight:800;margin:8px 0 10px}
+section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
+
+/* pilares */
+.pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pilar{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;border-top:5px solid var(--c)}
+.pilar h3{font-size:20px;margin-bottom:6px}
+.pilar p{font-size:14px;color:var(--muted)}
+.pilar .n{font-size:12px;font-weight:700;color:var(--c);margin-top:12px}
+
+/* calendario */
+.cal-block{margin-bottom:22px}
+.cal-block h3{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);text-align:center;padding:4px 0}
+.day{min-height:78px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:7px;font-size:12px;position:relative}
+.day.empty{background:transparent;border:none}
+.day .d{font-weight:700;color:var(--dim)}
+.day.fest{background:#F3E7D6}
+.day .tag{font-size:10px;color:var(--terracota);font-weight:600}
+.day a.chip{display:block;margin-top:5px;font-size:11px;font-weight:600;color:#fff;background:var(--c);border-radius:8px;padding:4px 6px;text-decoration:none;line-height:1.25}
+.cal-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+.cal-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:6px;vertical-align:middle}
+
+/* filtros */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{font:600 13px 'Inter';border:1px solid var(--line);background:var(--paper);color:var(--muted);padding:8px 14px;border-radius:99px;cursor:pointer}
+.filters button.on{background:var(--cafe);color:#fff;border-color:var(--cafe)}
+
+/* cards */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;margin-bottom:14px;overflow:hidden;border-left:6px solid var(--c)}
+.card summary{list-style:none;cursor:pointer;padding:18px 20px;display:grid;grid-template-columns:92px 1fr auto;gap:16px;align-items:center}
+.card summary::-webkit-details-marker{display:none}
+.date{text-align:center;background:var(--bg);border-radius:14px;padding:8px 4px}
+.date b{display:block;font-family:'Bricolage Grotesque';font-size:28px;font-weight:800;line-height:1;color:var(--cafe)}
+.date span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.card h3{font-size:19px;line-height:1.25}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.pill{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.pill.p{background:var(--c);color:#fff;border-color:var(--c)}
+.pill.warn{background:#FBEAD9;color:var(--terracota);border-color:#F0CFB1}
+.pill.oct{background:var(--cafe);color:var(--mantequilla);border-color:var(--cafe)}
+.chev{font-size:20px;color:var(--dim);transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.body{padding:0 20px 22px;display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.field p,.field li{font-size:14px}
+.field ul{padding-left:18px}
+.copy{background:var(--bg);border:1px dashed var(--miel);border-radius:14px;padding:14px 16px;white-space:pre-wrap;font-size:14px;position:relative}
+mark{background:#F6DFC6;color:var(--terracota);border-radius:4px;padding:0 3px}
+.cpbtn{position:absolute;top:8px;right:8px;font:600 11px 'Inter';background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 8px;cursor:pointer;color:var(--muted)}
+.portada{background:var(--cafe);color:var(--mantequilla);border-radius:14px;padding:16px;font-family:'Bricolage Grotesque';font-weight:800;font-size:20px;line-height:1.15}
+.portada small{display:block;font-family:'Inter';font-weight:500;font-size:12px;color:var(--miel);margin-top:8px}
+.note{background:#FBEAD9;border-radius:12px;padding:10px 12px;font-size:13px;color:#7a4428;margin-top:8px}
+
+/* tablas */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:14px}
+.tbl th{background:var(--cafe);color:var(--mantequilla);text-align:left;font:700 11px 'Inter';letter-spacing:.1em;text-transform:uppercase;padding:12px 14px}
+.tbl td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+.tbl-wrap{overflow-x:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
+.box h3{font-size:18px;margin-bottom:8px}
+.box ul{padding-left:18px;font-size:14px}
+.box li{margin-bottom:6px}
+.callout{background:var(--cafe);color:var(--mantequilla);border-radius:20px;padding:24px 26px}
+.callout h3{color:#fff;font-size:20px;margin-bottom:8px}
+.callout p,.callout li{font-size:14.5px;color:var(--mantequilla)}
+.callout ol{padding-left:20px}
+.callout li{margin-bottom:6px}
+footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
+
+@media(max-width:860px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pilares,.grid2,.body{grid-template-columns:1fr}
+  .card summary{grid-template-columns:70px 1fr auto;gap:12px}
+  .day{min-height:64px;padding:5px}
+  .day a.chip{font-size:9.5px;padding:3px 4px}
+  .top nav{display:none}
+}
+@media(max-width:520px){
+  .cal{gap:3px}
+  .cal .dow{font-size:9px}
+  .day .tag{display:none}
+}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="brand"><img src="logo-amalia.png" alt="Amalia">Amalia · Parrilla 01</div>
+  <nav>
+    <a href="#pilares">Pilares</a><a href="#calendario">Calendario</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Parrilla de contenido 01 · Orgánico · Instagram, Facebook y TikTok</div>
+  <h1>Noviembre en <em class="f">Amalia</em></h1>
+  <p class="lead">El primer mes con línea propia. Ocho publicaciones en noviembre, dos videos que salen antes en octubre (aniversario y Halloween) y una historia al día. El gelato va al centro, y cada pieza muestra quién está detrás, cómo se hace y por qué vale la pena venir a las dos sedes.</p>
+  <div class="stats">
+    <div class="stat"><b>10</b><span>piezas en total</span></div>
+    <div class="stat"><b>2</b><span>videos anticipados en octubre</span></div>
+    <div class="stat"><b>8</b><span>publicaciones en noviembre · martes y viernes</span></div>
+    <div class="stat"><b>1</b><span>historia al día, con banco base</span></div>
+  </div>
+</div></header>
+
+<section id="pilares"><div class="wrap">
+  <div class="kicker">La línea</div>
+  <h2>Tres pilares, un solo foco: el gelato</h2>
+  <p class="sub">Cada pieza pertenece a un pilar. El oficio pesa más este mes porque es lo que le muestra a una gelatería o a una pastelería que Amalia tiene con qué responderle.</p>
+  <div class="pilares">
+    <div class="pilar" style="--c:var(--p1)"><h3>01 · La cara de Amalia</h3><p>Quién está detrás, las manos que madrugan, los años en Copacabana. Es lo que hoy no existe en el perfil y lo que más conecta.</p><div class="n">3 piezas</div></div>
+    <div class="pilar" style="--c:var(--p2)"><h3>02 · El oficio</h3><p>Qué hace distinto a un gelato de verdad y a un buen hojaldre. Proceso, maquinaria y capacidad para producir también para otros negocios.</p><div class="n">4 piezas</div></div>
+    <div class="pilar" style="--c:var(--p3)"><h3>03 · Producto y momentos</h3><p>Sabores, combinaciones y planes. Antojo y ganas de ir a las dos sedes: el parque y La Asunción.</p><div class="n">3 piezas</div></div>
+  </div>
+</div></section>
+
+<section id="calendario"><div class="wrap">
+  <div class="kicker">Calendario</div>
+  <h2>Cuándo sale cada pieza</h2>
+  <p class="sub">En noviembre se publica martes y viernes. El martes lleva oficio y equipo, y el viernes lleva producto y antojo para el fin de semana. Toca una pieza para ver el detalle.</p>
+  <div id="cal"></div>
+  <div class="cal-legend">
+    <span><i style="--c:var(--p1)"></i>La cara de Amalia</span>
+    <span><i style="--c:var(--p2)"></i>El oficio</span>
+    <span><i style="--c:var(--p3)"></i>Producto y momentos</span>
+    <span><i style="--c:#F3E7D6;border:1px solid var(--line)"></i>Festivo</span>
+  </div>
+</div></section>
+
+<section id="piezas"><div class="wrap">
+  <div class="kicker">Pieza por pieza</div>
+  <h2>Las 10 piezas</h2>
+  <p class="sub">Cada pieza trae el copy listo para publicar, la portada y lo que se necesita grabar. Lo que está <mark style="background:#F6DFC6;color:#A8603F;border-radius:4px;padding:0 3px">[entre corchetes]</mark> sale de la sesión de historia de marca o se confirma con Amalia.</p>
+  <div class="filters" id="filters"></div>
+  <div id="cards"></div>
+</div></section>
+
+<section id="historias"><div class="wrap">
+  <div class="kicker">Historias</div>
+  <h2>Una historia al día, sin repetir la semana</h2>
+  <p class="sub">Las historias salen de un banco base que rota, más los videos cortos de la jornada. Lo del día a día (una tanda recién salida, un sabor nuevo en vitrina) lo manda Amalia por WhatsApp y nosotros lo montamos.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Día</th><th>Historia</th><th>De dónde sale</th></tr>
+    <tr><td><b>Lunes</b></td><td>Sede del parque: dirección, horario y qué hay hoy en vitrina</td><td>Banco base</td></tr>
+    <tr><td><b>Martes</b></td><td>Repost de la publicación del día con sticker de pregunta o encuesta</td><td>Publicación</td></tr>
+    <tr><td><b>Miércoles</b></td><td>Recién salido: pan o gelato en el momento</td><td>Material de Amalia por WhatsApp</td></tr>
+    <tr><td><b>Jueves</b></td><td>Encuesta: "¿pan o gelato?", "¿cuál sabor pruebas este fin de semana?"</td><td>Banco base</td></tr>
+    <tr><td><b>Viernes</b></td><td>Repost de la publicación del día y llamado al fin de semana</td><td>Publicación</td></tr>
+    <tr><td><b>Sábado</b></td><td>Sede La Asunción: dirección, horario y plan de fin de semana</td><td>Banco base</td></tr>
+    <tr><td><b>Domingo</b></td><td>Detrás de cámaras de la jornada o "para negocios: también producimos para ti"</td><td>Jornada / banco base (alternan)</td></tr>
+  </table></div>
+</div></section>
+
+<section id="produccion"><div class="wrap">
+  <div class="kicker">Producción</div>
+  <h2>Una jornada en octubre, antes del aniversario</h2>
+  <p class="sub">Todo el mes se graba en una sola salida que cubre las dos sedes. Tiene que ser en la primera quincena de octubre, porque de ahí salen también los dos videos anticipados.</p>
+  <div class="grid2">
+    <div class="box"><h3>Bloque 1 · Producción (arranca a primera hora)</h3>
+      <ul>
+        <li>Horno encendido, primera tanda y apertura del local (N1)</li>
+        <li>La máquina de gelato trabajando, de principio a fin (N3)</li>
+        <li>Laminado y horneado del hojaldre, con audio del crujido (N8)</li>
+        <li>Planos cerrados de textura del gelato para el carrusel (N2)</li>
+        <li>Planos de volumen: bandejas, producción para negocios (N7)</li>
+      </ul></div>
+    <div class="box"><h3>Bloque 2 · Sedes y equipo</h3>
+      <ul>
+        <li>Vitrina completa, sabor por sabor (N6)</li>
+        <li>Las tres combinaciones de pan y gelato (N4)</li>
+        <li>Toma de Halloween en la sede del parque (O2)</li>
+        <li>Fachadas de las dos sedes, equipo y clientes para el aniversario (O1)</li>
+        <li>Retrato y frase de una persona del equipo (N5)</li>
+      </ul></div>
+  </div>
+  <div class="note" style="margin-top:14px">Para el video del aniversario pedimos a Amalia fotos antiguas del negocio (primer local, primeras tandas, el equipo de los primeros años). Son las que más conectan.</div>
+</div></section>
+
+<section id="pendientes"><div class="wrap">
+  <div class="callout">
+    <h3>Lo que necesitamos de Amalia para cerrar la parrilla</h3>
+    <ol>
+      <li><b>Sesión de historia de marca</b> (hora y media, con quien fundó Amalia). De ahí salen el origen, los nombres y las frases del equipo.</li>
+      <li><b>Fecha exacta del aniversario</b> y si cumplieron 9 o 10 años.</li>
+      <li><b>Halloween:</b> si tendrán productos temáticos y el horario del sábado 31.</li>
+      <li><b>Sabores de la vitrina</b> y cuáles se venden más en cada sede.</li>
+      <li><b>Capacidad de producción</b> para negocios (gelato y hojaldre) y el canal para pedidos mayoristas.</li>
+      <li><b>Nombre oficial:</b> el logo dice "Panadería y repostería" y el Instagram "Panadería y gelatería".</li>
+      <li><b>Origen de los insumos del gelato:</b> mientras no se confirme, los copys dicen solo "importados".</li>
+      <li><b>Logo en alta resolución</b> para portadas y piezas.</li>
+      <li><b>Aprobación de la parrilla</b> y quién sale a cámara.</li>
+    </ol>
+  </div>
+</div></section>
+
+<footer>Parrilla 01 · Amalia Panadería y Gelatería · Preparada por Hounter Leads · 2026</footer>
+
+<script>
+const PILAR = {
+  1:{n:"La cara de Amalia", c:"var(--p1)"},
+  2:{n:"El oficio", c:"var(--p2)"},
+  3:{n:"Producto y momentos", c:"var(--p3)"}
+};
+const PIEZAS = [
+  {id:"O1", mes:"oct", dia:"Por definir", dnum:"★", dow:"Octubre", fecha:null, pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Recordación y cariño de la comunidad",
+   titulo:"Aniversario: [9] años horneando en Copacabana",
+   concepto:"Un recorrido de antes y ahora: fotos antiguas del negocio que se funden con tomas de hoy en las dos sedes, el equipo y los clientes de siempre. Cierra con un gracias a Copacabana.",
+   copy:"[Nueve] años horneando en Copacabana 🤎\nHace [nueve] años abrimos nuestras puertas, y hoy los esperamos en dos sedes: el parque y La Asunción.\nTodo esto lo construimos con ustedes: los que vuelven cada semana, los que nos recomiendan y los que llegan por primera vez.\nGracias por estos años. Lo mejor está por venir.\n\n#Amalia #Copacabana #Aniversario",
+   cta:"Etiqueta a quien siempre te acompaña a Amalia",
+   portada:"[9] años de Amalia", portadaNota:"Foto antigua del local a medio fundirse con la de hoy",
+   ref:"Transición foto antigua → misma toma hoy. Música emotiva suave, 20–30 s, texto en pantalla corto.",
+   prod:"Fotos antiguas que envía Amalia + tomas de fachadas, equipo y clientes en la jornada.",
+   pend:"Fecha exacta del aniversario y cuántos años cumplen."},
+  {id:"O2", mes:"oct", dia:"29 oct", dnum:"29", dow:"Jueves", fecha:"2026-10-29", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Tráfico a las sedes el fin de semana de Halloween",
+   titulo:"¿Truco o gelato?",
+   concepto:"Una mano toca la vitrina como quien toca una puerta en Halloween y la respuesta es una copa de gelato. Si hay productos temáticos, se muestran; si no, el equipo sirve con un detalle de disfraz.",
+   copy:"¿Truco o gelato? 🎃\nEste Halloween la parada es en Amalia: pan, gelato y algo dulce para toda la familia.\nLos esperamos este sábado en nuestras dos sedes, en el parque y en La Asunción.\n\n#Halloween #Copacabana #Amalia",
+   cta:"Visítanos este sábado en cualquiera de las dos sedes",
+   portada:"¿Truco o gelato? 🎃", portadaNota:"Copa de gelato en primer plano con fondo de vitrina",
+   ref:"Reel corto de 10–15 s con remate de humor. Audio en tendencia de Halloween.",
+   prod:"Se graba en la jornada de octubre, en la sede del parque.",
+   pend:"Productos de Halloween y horario del sábado 31."},
+  {id:"N1", mes:"nov", dia:"3 nov", dnum:"3", dow:"Martes", fecha:"2026-11-03", pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Ponerle cara a la marca",
+   titulo:"Así empieza un día en Amalia",
+   concepto:"El amanecer en la panadería: luces que se encienden, el horno, la primera tanda, la vitrina que se llena y la puerta que se abre. Sin voz, con sonido ambiente.",
+   copy:"Antes de que Copacabana despierte, en Amalia ya huele a pan 🥖\nAsí empieza cada día en nuestras dos sedes: el horno encendido, la primera tanda y la vitrina lista para ustedes.\nSíguenos para conocer a las personas que hacen esto posible.\n\n#Amalia #Copacabana #PanRecienHecho",
+   cta:"Síguenos para conocer al equipo",
+   portada:"Así empieza un día en Amalia", portadaNota:"Pan saliendo del horno, luz cálida de madrugada",
+   ref:"Estilo 'morning routine' de negocio: cortes rápidos al ritmo, 15–20 s, sonido real del horno.",
+   prod:"Primer bloque de la jornada, a la hora real de apertura.",
+   pend:"Hora a la que arranca la producción."},
+  {id:"N2", mes:"nov", dia:"6 nov", dnum:"6", dow:"Viernes", fecha:"2026-11-06", pilar:2, formato:"Carrusel", redes:"IG · FB · TikTok (modo foto)",
+   objetivo:"Educar y que lo guarden",
+   titulo:"Gelato y helado no son lo mismo: 4 diferencias",
+   concepto:"Carrusel educativo de 5 láminas. 1 · Portada. 2 · Tiene menos aire: es más denso y cremoso. 3 · Se sirve menos frío: el sabor se siente más. 4 · Se bate lento: textura sedosa. 5 · Así lo hacemos en Amalia: maquinaria profesional e insumos importados.",
+   copy:"¿Gelato o helado? Parecen lo mismo, y en la cuchara se siente la diferencia 🍨\nTe dejamos las 4 claves para reconocer un gelato de verdad. Guárdalo para tu próxima visita.\nEn Amalia lo preparamos con maquinaria profesional de gelatería e insumos importados.\n\n#Gelato #Amalia #Copacabana",
+   cta:"Guárdalo y compártelo con quien ama el gelato",
+   portada:"Gelato ≠ helado\n4 diferencias", portadaNota:"Primer plano de la textura del gelato en la cuchara",
+   ref:"Carrusel limpio: foto de textura de fondo + una idea por lámina, tipografía grande.",
+   prod:"Planos cerrados de textura en la jornada + diseño.",
+   pend:null},
+  {id:"N3", mes:"nov", dia:"10 nov", dnum:"10", dow:"Martes", fecha:"2026-11-10", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Mostrar el proceso y la capacidad",
+   titulo:"Así nace un gelato en Amalia",
+   concepto:"Del insumo a la vitrina: ingredientes, la máquina batiendo, el gelato saliendo, la bandeja decorada y su llegada a la vitrina. Le habla al cliente y también al dueño de una gelatería.",
+   copy:"Así nace un gelato en Amalia ✨\nDel insumo a la vitrina, todo pasa por nuestras manos y por nuestra maquinaria profesional de gelatería.\nEste es el gelato que llega a nuestras sedes y a los negocios que confían en nosotros.\n\n#Gelato #HechoEnCopacabana #Amalia",
+   cta:"Visítanos y pruébalo recién hecho",
+   portada:"Así nace un gelato", portadaNota:"El gelato saliendo de la máquina",
+   ref:"Formato de proceso con sonido real (ASMR), 20–25 s, sin voz.",
+   prod:"Bloque de producción: la máquina trabajando de principio a fin.",
+   pend:null},
+  {id:"N4", mes:"nov", dia:"13 nov", dnum:"13", dow:"Viernes", fecha:"2026-11-13", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Tráfico a las sedes en el puente festivo",
+   titulo:"Plan de puente: pan + gelato",
+   concepto:"Tres combinaciones de pan recién hecho con gelato, armadas en la vitrina. Llega el viernes antes del festivo del lunes 16.",
+   copy:"Plan de puente festivo: pan recién hecho y gelato 🤎\nTe mostramos tres combinaciones para que armes la tuya en cualquiera de nuestras sedes.\n¿Con cuál empiezas? Cuéntanos en comentarios.\n\n#Amalia #Copacabana #PuenteFestivo",
+   cta:"Cuéntanos en comentarios con cuál empiezas",
+   portada:"3 combinaciones para este puente", portadaNota:"Pan abierto con gelato encima",
+   ref:"Listado rápido 1-2-3 con texto en pantalla, 15 s.",
+   prod:"Bloque de sedes: armar las tres combinaciones.",
+   pend:"Qué combinaciones se venden o se pueden armar en el punto."},
+  {id:"N5", mes:"nov", dia:"17 nov", dnum:"17", dow:"Martes", fecha:"2026-11-17", pilar:1, formato:"Post", redes:"IG · FB",
+   objetivo:"Ponerle cara a la marca",
+   titulo:"Las manos de Amalia: [nombre]",
+   concepto:"Retrato de una persona del equipo con una frase suya, textual. La primera de una serie que se repite cada mes.",
+   copy:"Ella es [Nombre] y lleva [X] años en Amalia 🤎\n\"[Frase textual de la persona]\"\nCada [pan / gelato] que llega a la vitrina pasa por sus manos. Hoy queremos que la conozcas.\n\n#Amalia #Copacabana #NuestroEquipo",
+   cta:"Déjale un mensaje en comentarios",
+   portada:"Las manos de Amalia", portadaNota:"Retrato con luz natural en el lugar de trabajo",
+   ref:"Retrato editorial cálido, sin posar: la persona en su puesto.",
+   prod:"Bloque de equipo: retrato y una frase en audio o texto.",
+   pend:"Sale de la sesión de historia de marca: quién sale, nombre, años y frase."},
+  {id:"N6", mes:"nov", dia:"20 nov", dnum:"20", dow:"Viernes", fecha:"2026-11-20", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Interacción y antojo",
+   titulo:"Recorrido por la vitrina",
+   concepto:"Un paseo por toda la vitrina de gelato, sabor por sabor, con el nombre de cada uno en pantalla. Termina con la pregunta de cuál es el favorito.",
+   copy:"Pasamos por toda la vitrina para que elijas tu favorito 🍨\n[Sabores de la vitrina]\n¿Cuál es el tuyo? Te leemos en comentarios.\n\n#Gelato #Amalia #Copacabana",
+   cta:"Comenta tu sabor favorito",
+   portada:"¿Cuál es tu sabor?", portadaNota:"Vitrina completa vista desde arriba",
+   ref:"Plano secuencia lento sobre la vitrina, nombre de cada sabor en texto.",
+   prod:"Bloque de sedes: vitrina completa.",
+   pend:"Lista de sabores."},
+  {id:"N7", mes:"nov", dia:"24 nov", dnum:"24", dow:"Martes", fecha:"2026-11-24", pilar:2, formato:"Carrusel", redes:"IG · FB",
+   objetivo:"Mostrar que también producen para otros negocios",
+   titulo:"¿Tienes una gelatería o una pastelería?",
+   concepto:"Carrusel de 5 láminas. 1 · Portada. 2 · Gelato para gelaterías. 3 · Masa de hojaldre para pastelerías y reposterías. 4 · Capacidad y calidad: [dato de producción]. 5 · Cómo trabajar con nosotros.",
+   copy:"Además de nuestras dos sedes, producimos para otros negocios 🤝\nGelato para gelaterías y masa de hojaldre para pastelerías y reposterías, con la misma calidad que servimos en nuestra vitrina.\nSi tienes un negocio y quieres trabajar con nosotros, escríbenos por mensaje directo.\n\n#Proveedores #Gelato #Hojaldre #Amalia",
+   cta:"Escríbenos por mensaje directo",
+   portada:"¿Tienes una gelatería o una pastelería?", portadaNota:"Bandejas de producción en volumen",
+   ref:"Carrusel sobrio, estilo catálogo de proveedor, fotos reales de producción.",
+   prod:"Bloque de producción: planos de volumen y bandejas.",
+   pend:"Capacidad de producción y canal para pedidos mayoristas."},
+  {id:"N8", mes:"nov", dia:"27 nov", dnum:"27", dow:"Viernes", fecha:"2026-11-27", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Mostrar el oficio con antojo",
+   titulo:"Capa por capa: nuestro hojaldre",
+   concepto:"El laminado de la masa, el horno y el crujido al partir la pieza recién horneada. Muestra la segunda línea que Amalia produce para otros negocios.",
+   copy:"Capa por capa, así se hace nuestro hojaldre 🥐\nEs la misma masa que preparamos para nuestras vitrinas y para las pastelerías que trabajan con nosotros.\nSube el volumen para escuchar el crujido 🔊\n\n#Hojaldre #Amalia #Copacabana",
+   cta:"Visítanos y pruébalo recién horneado",
+   portada:"Capa por capa", portadaNota:"Corte del hojaldre mostrando las capas",
+   ref:"Proceso con sonido real, cierre en cámara lenta del crujido, 15–20 s.",
+   prod:"Bloque de producción: laminado, horno y corte.",
+   pend:null}
+];
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const hl = s => esc(s).replace(/\[([^\]]+)\]/g,'<mark>[$1]</mark>');
+
+function card(p){
+  const pi = PILAR[p.pilar];
+  return `<details class="card" id="${p.id}" data-pilar="${p.pilar}" style="--c:${pi.c}">
+  <summary>
+    <div class="date"><b>${p.dnum}</b><span>${p.dia==="Por definir"?"Octubre":p.dow}</span></div>
+    <div>
+      <h3>${hl(p.titulo)}</h3>
+      <div class="meta">
+        ${p.mes==="oct"?'<span class="pill oct">Anticipado · octubre</span>':''}
+        <span class="pill p">${pi.n}</span>
+        <span class="pill">${p.formato}</span>
+        <span class="pill">${p.redes}</span>
+        ${p.pend?'<span class="pill warn">Falta un dato</span>':''}
+      </div>
+    </div>
+    <span class="chev">⌄</span>
+  </summary>
+  <div class="body">
+    <div>
+      <div class="field"><label>Fecha</label><p>${p.dia==="Por definir"?"Octubre · fecha por definir con Amalia":p.dow+" "+p.dia}</p></div>
+      <div class="field"><label>Objetivo</label><p>${p.objetivo}</p></div>
+      <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
+      <div class="field"><label>Copy</label><div class="copy"><button class="cpbtn" data-copy="${p.id}">Copiar</button>${hl(p.copy)}</div></div>
+      <div class="field"><label>Llamado a la acción</label><p>${p.cta}</p></div>
+    </div>
+    <div>
+      <div class="field"><label>Portada</label><div class="portada">${hl(p.portada).replace(/\n/g,"<br>")}<small>${p.portadaNota}</small></div></div>
+      <div class="field"><label>Referencia visual</label><p>${p.ref}</p></div>
+      <div class="field"><label>Producción</label><p>${p.prod}</p></div>
+      ${p.pend?`<div class="note"><b>Pendiente:</b> ${p.pend}</div>`:''}
+    </div>
+  </div>
+</details>`;
+}
+
+function renderCards(f){
+  document.getElementById("cards").innerHTML = PIEZAS.filter(p=>f==="all"||String(p.pilar)===f).map(card).join("");
+  document.querySelectorAll(".cpbtn").forEach(b=>b.onclick=e=>{
+    e.preventDefault();
+    const p = PIEZAS.find(x=>x.id===b.dataset.copy);
+    const done=()=>{b.textContent="Copiado ✓";setTimeout(()=>b.textContent="Copiar",1500)};
+    try{navigator.clipboard.writeText(p.copy).then(done,()=>{})}catch(err){}
+  });
+}
+const F = [["all","Todas"],["1","La cara de Amalia"],["2","El oficio"],["3","Producto y momentos"]];
+document.getElementById("filters").innerHTML = F.map(([k,n],i)=>`<button data-f="${k}" class="${i?"":"on"}">${n}</button>`).join("");
+document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#filters button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); renderCards(b.dataset.f);
+});
+renderCards("all");
+
+// calendario
+function month(y,m,titulo,festivos,extra){
+  const first = new Date(y,m,1), days = new Date(y,m+1,0).getDate();
+  const offset = (first.getDay()+6)%7; // lunes primero
+  let h = `<div class="cal-block"><h3>${titulo}</h3><div class="cal">`;
+  ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"].forEach(d=>h+=`<div class="dow">${d}</div>`);
+  for(let i=0;i<offset;i++) h+=`<div class="day empty"></div>`;
+  for(let d=1; d<=days; d++){
+    const iso = `${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
+    const ps = PIEZAS.filter(p=>p.fecha===iso);
+    const fest = festivos[d];
+    h += `<div class="day${fest?" fest":""}"><span class="d">${d}</span>${fest?`<div class="tag">${fest}</div>`:""}${(extra[d]||"")}`+
+      ps.map(p=>`<a class="chip" href="#${p.id}" data-open="${p.id}" style="--c:${PILAR[p.pilar].c}">${p.formato} · ${esc(p.titulo.replace(/\[|\]/g,""))}</a>`).join("")+`</div>`;
+  }
+  return h+`</div></div>`;
+}
+document.getElementById("cal").innerHTML =
+  month(2026,9,'Octubre · 2 videos anticipados <span class="pill oct">Aniversario: fecha por definir</span>',{12:"Festivo",31:"Halloween"},{}) +
+  month(2026,10,"Noviembre · 8 publicaciones",{2:"Festivo",16:"Festivo"},{});
+document.addEventListener("click",e=>{
+  const a = e.target.closest("[data-open]"); if(!a) return;
+  document.querySelectorAll("#filters button")[0].click();
+  const el = document.getElementById(a.dataset.open); if(el) el.open = true;
+});
+</script>
+</body>
+</html>
