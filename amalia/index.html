@@ -80,6 +80,15 @@ section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
 .meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
 .pill{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
 .pill.p{background:var(--c);color:#fff;border-color:var(--c)}
+.pill.objp{background:var(--mantequilla);color:var(--cafe);border-color:var(--miel)}
+.objs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.obj{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.obj .num{font-family:'Fraunces',serif;font-style:italic;font-size:30px;color:var(--caramelo);line-height:1}
+.obj h3{font-size:17px;margin:6px 0 6px}
+.obj p{font-size:13px;color:var(--muted)}
+.obj .ps{font-size:12px;font-weight:600;color:var(--cafe);margin-top:10px}
+@media(max-width:860px){.objs{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.objs{grid-template-columns:1fr}}
 .pill.warn{background:#FBEAD9;color:var(--terracota);border-color:#F0CFB1}
 .pill.oct{background:var(--cafe);color:var(--mantequilla);border-color:var(--cafe)}
 .chev{font-size:20px;color:var(--dim);transition:transform .2s}
@@ -133,7 +142,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 <div class="top"><div class="wrap">
   <div class="brand"><img src="logo-amalia.png" alt="Amalia">Amalia · Parrilla 01</div>
   <nav>
-    <a href="#pilares">Pilares</a><a href="#calendario">Calendario</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
+    <a href="#objetivos">Objetivos</a><a href="#pilares">Pilares</a><a href="#calendario">Calendario</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
   </nav>
 </div></div>
 
@@ -148,6 +157,13 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
     <div class="stat"><b>1</b><span>historia al día, con banco base</span></div>
   </div>
 </div></header>
+
+<section id="objetivos"><div class="wrap">
+  <div class="kicker">Para qué publicamos</div>
+  <h2>Cuatro objetivos, cada uno con su medida</h2>
+  <p class="sub">Trabajamos varios objetivos a la vez, pero cada pieza tiene uno principal y una forma clara de medirlo. Así el informe de cada mes muestra qué está funcionando en cada frente.</p>
+  <div class="objs" id="objs"></div>
+</div></section>
 
 <section id="pilares"><div class="wrap">
   <div class="kicker">La línea</div>
@@ -247,8 +263,14 @@ const PILAR = {
   2:{n:"El oficio", c:"var(--p2)"},
   3:{n:"Producto y momentos", c:"var(--p3)"}
 };
+const OBJ = {
+  1:{n:"Ponerle cara a Amalia", m:"Comentarios, mensajes y crecimiento de seguidores"},
+  2:{n:"Mostrar el valor real", m:"Guardados y compartidos"},
+  3:{n:"Llevar gente a las dos sedes", m:"Alcance local, visitas al perfil y toques en la dirección"},
+  4:{n:"Atraer negocios que compran", m:"Mensajes de negocios y visitas al perfil"}
+};
 const PIEZAS = [
-  {id:"O1", mes:"oct", dia:"Por definir", dnum:"★", dow:"Octubre", fecha:null, pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"O1", obj:1, obj2:null, mes:"oct", dia:"Por definir", dnum:"★", dow:"Octubre", fecha:null, pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Recordación y cariño de la comunidad",
    titulo:"Aniversario: [9] años horneando en Copacabana",
    concepto:"Un recorrido de antes y ahora: fotos antiguas del negocio que se funden con tomas de hoy en las dos sedes, el equipo y los clientes de siempre. Cierra con un gracias a Copacabana.",
@@ -258,21 +280,17 @@ const PIEZAS = [
    ref:"Transición foto antigua → misma toma hoy. Música emotiva suave, 20–30 s, texto en pantalla corto.",
    prod:"Fotos antiguas que envía Amalia + tomas de fachadas, equipo y clientes en la jornada.",
    pend:"Fecha exacta del aniversario y cuántos años cumplen."},
-  {id:"O2", mes:"oct", dia:"16 oct", dnum:"16", dow:"Viernes", fecha:"2026-10-16", pilar:3, formato:"Reel corto", redes:"IG · FB · TikTok",
+  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"16 oct", dnum:"16", dow:"Viernes", fecha:"2026-10-16", pilar:3, formato:"Reel corto", redes:"IG · FB · TikTok",
    objetivo:"Dar a conocer el sabor de temporada mientras está en vitrina",
    titulo:"Llegó el sabor de Halloween: [nombre del sabor]",
    concepto:"Video corto de 8 a 10 segundos con tres tomas: el sabor nuevo en la vitrina, la cuchara entrando en el gelato y la copa servida. Texto en pantalla con el nombre del sabor. Sale apenas el sabor llega a vitrina, para que se venda toda la temporada y no solo el 31.",
-   copy:"Llegó el sabor de Halloween 🎃
-[Nombre del sabor], solo por esta temporada.
-Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
-
-#Halloween #Gelato #Amalia",
+   copy:"Llegó el sabor de Halloween 🎃\n[Nombre del sabor], solo por esta temporada.\nVen a probarlo en nuestras dos sedes, en el parque y en La Asunción.\n\n#Halloween #Gelato #Amalia",
    cta:"Ven a probarlo en cualquiera de las dos sedes",
    portada:"Sabor de Halloween 🎃", portadaNota:"La cuchara entrando en el gelato de temporada",
    ref:"Revelación rápida en 3 cortes, 8–10 s, audio en tendencia de Halloween. Se edita en minutos.",
    prod:"3 tomas de celular. Si el sabor sale antes de la jornada, las puede grabar el equipo de Amalia y enviarlas por WhatsApp.",
    pend:"Nombre del sabor y fecha en que llega a vitrina (si sale antes del 16, se publica ese mismo día)."},
-  {id:"N1", mes:"nov", dia:"3 nov", dnum:"3", dow:"Martes", fecha:"2026-11-03", pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N1", obj:1, obj2:null, mes:"nov", dia:"3 nov", dnum:"3", dow:"Martes", fecha:"2026-11-03", pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Ponerle cara a la marca",
    titulo:"Así empieza un día en Amalia",
    concepto:"El amanecer en la panadería: luces que se encienden, el horno, la primera tanda, la vitrina que se llena y la puerta que se abre. Sin voz, con sonido ambiente.",
@@ -282,7 +300,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Estilo 'morning routine' de negocio: cortes rápidos al ritmo, 15–20 s, sonido real del horno.",
    prod:"Primer bloque de la jornada, a la hora real de apertura.",
    pend:"Hora a la que arranca la producción."},
-  {id:"N2", mes:"nov", dia:"6 nov", dnum:"6", dow:"Viernes", fecha:"2026-11-06", pilar:2, formato:"Carrusel", redes:"IG · FB · TikTok (modo foto)",
+  {id:"N2", obj:2, obj2:null, mes:"nov", dia:"6 nov", dnum:"6", dow:"Viernes", fecha:"2026-11-06", pilar:2, formato:"Carrusel", redes:"IG · FB · TikTok (modo foto)",
    objetivo:"Educar y que lo guarden",
    titulo:"Gelato y helado no son lo mismo: 4 diferencias",
    concepto:"Carrusel educativo de 5 láminas. 1 · Portada. 2 · Tiene menos aire: es más denso y cremoso. 3 · Se sirve menos frío: el sabor se siente más. 4 · Se bate lento: textura sedosa. 5 · Así lo hacemos en Amalia: maquinaria profesional e insumos importados.",
@@ -292,7 +310,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Carrusel limpio: foto de textura de fondo + una idea por lámina, tipografía grande.",
    prod:"Planos cerrados de textura en la jornada + diseño.",
    pend:null},
-  {id:"N3", mes:"nov", dia:"10 nov", dnum:"10", dow:"Martes", fecha:"2026-11-10", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N3", obj:2, obj2:4, mes:"nov", dia:"10 nov", dnum:"10", dow:"Martes", fecha:"2026-11-10", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Mostrar el proceso y la capacidad",
    titulo:"Así nace un gelato en Amalia",
    concepto:"Del insumo a la vitrina: ingredientes, la máquina batiendo, el gelato saliendo, la bandeja decorada y su llegada a la vitrina. Le habla al cliente y también al dueño de una gelatería.",
@@ -302,7 +320,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Formato de proceso con sonido real (ASMR), 20–25 s, sin voz.",
    prod:"Bloque de producción: la máquina trabajando de principio a fin.",
    pend:null},
-  {id:"N4", mes:"nov", dia:"13 nov", dnum:"13", dow:"Viernes", fecha:"2026-11-13", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N4", obj:3, obj2:null, mes:"nov", dia:"13 nov", dnum:"13", dow:"Viernes", fecha:"2026-11-13", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Tráfico a las sedes en el puente festivo",
    titulo:"Plan de puente: pan + gelato",
    concepto:"Tres combinaciones de pan recién hecho con gelato, armadas en la vitrina. Llega el viernes antes del festivo del lunes 16.",
@@ -312,7 +330,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Listado rápido 1-2-3 con texto en pantalla, 15 s.",
    prod:"Bloque de sedes: armar las tres combinaciones.",
    pend:"Qué combinaciones se venden o se pueden armar en el punto."},
-  {id:"N5", mes:"nov", dia:"17 nov", dnum:"17", dow:"Martes", fecha:"2026-11-17", pilar:1, formato:"Post", redes:"IG · FB",
+  {id:"N5", obj:1, obj2:null, mes:"nov", dia:"17 nov", dnum:"17", dow:"Martes", fecha:"2026-11-17", pilar:1, formato:"Post", redes:"IG · FB",
    objetivo:"Ponerle cara a la marca",
    titulo:"Las manos de Amalia: [nombre]",
    concepto:"Retrato de una persona del equipo con una frase suya, textual. La primera de una serie que se repite cada mes.",
@@ -322,7 +340,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Retrato editorial cálido, sin posar: la persona en su puesto.",
    prod:"Bloque de equipo: retrato y una frase en audio o texto.",
    pend:"Sale de la sesión de historia de marca: quién sale, nombre, años y frase."},
-  {id:"N6", mes:"nov", dia:"20 nov", dnum:"20", dow:"Viernes", fecha:"2026-11-20", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N6", obj:3, obj2:null, mes:"nov", dia:"20 nov", dnum:"20", dow:"Viernes", fecha:"2026-11-20", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Interacción y antojo",
    titulo:"Recorrido por la vitrina",
    concepto:"Un paseo por toda la vitrina de gelato, sabor por sabor, con el nombre de cada uno en pantalla. Termina con la pregunta de cuál es el favorito.",
@@ -332,7 +350,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Plano secuencia lento sobre la vitrina, nombre de cada sabor en texto.",
    prod:"Bloque de sedes: vitrina completa.",
    pend:"Lista de sabores."},
-  {id:"N7", mes:"nov", dia:"24 nov", dnum:"24", dow:"Martes", fecha:"2026-11-24", pilar:2, formato:"Carrusel", redes:"IG · FB",
+  {id:"N7", obj:4, obj2:null, mes:"nov", dia:"24 nov", dnum:"24", dow:"Martes", fecha:"2026-11-24", pilar:2, formato:"Carrusel", redes:"IG · FB",
    objetivo:"Mostrar que también producen para otros negocios",
    titulo:"¿Tienes una gelatería o una pastelería?",
    concepto:"Carrusel de 5 láminas. 1 · Portada. 2 · Gelato para gelaterías. 3 · Masa de hojaldre para pastelerías y reposterías. 4 · Capacidad y calidad: [dato de producción]. 5 · Cómo trabajar con nosotros.",
@@ -342,7 +360,7 @@ Ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.
    ref:"Carrusel sobrio, estilo catálogo de proveedor, fotos reales de producción.",
    prod:"Bloque de producción: planos de volumen y bandejas.",
    pend:"Capacidad de producción y canal para pedidos mayoristas."},
-  {id:"N8", mes:"nov", dia:"27 nov", dnum:"27", dow:"Viernes", fecha:"2026-11-27", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N8", obj:2, obj2:4, mes:"nov", dia:"27 nov", dnum:"27", dow:"Viernes", fecha:"2026-11-27", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Mostrar el oficio con antojo",
    titulo:"Capa por capa: nuestro hojaldre",
    concepto:"El laminado de la masa, el horno y el crujido al partir la pieza recién horneada. Muestra la segunda línea que Amalia produce para otros negocios.",
@@ -366,6 +384,7 @@ function card(p){
       <h3>${hl(p.titulo)}</h3>
       <div class="meta">
         ${p.mes==="oct"?'<span class="pill oct">Anticipado · octubre</span>':''}
+        <span class="pill objp">Obj. ${String(p.obj).padStart(2,"0")}</span>
         <span class="pill p">${pi.n}</span>
         <span class="pill">${p.formato}</span>
         <span class="pill">${p.redes}</span>
@@ -377,7 +396,7 @@ function card(p){
   <div class="body">
     <div>
       <div class="field"><label>Fecha</label><p>${p.dia==="Por definir"?"Octubre · fecha por definir con Amalia":p.dow+" "+p.dia}</p></div>
-      <div class="field"><label>Objetivo</label><p>${p.objetivo}</p></div>
+      <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p><p style="color:var(--muted);font-size:13px;margin-top:4px">Se mide en: ${OBJ[p.obj].m}</p></div>
       <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
       <div class="field"><label>Copy</label><div class="copy"><button class="cpbtn" data-copy="${p.id}">Copiar</button>${hl(p.copy)}</div></div>
       <div class="field"><label>Llamado a la acción</label><p>${p.cta}</p></div>
@@ -408,6 +427,10 @@ document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{
   b.classList.add("on"); renderCards(b.dataset.f);
 });
 renderCards("all");
+document.getElementById("objs").innerHTML = Object.entries(OBJ).map(([k,o])=>{
+  const pr = PIEZAS.filter(p=>p.obj==k).map(p=>p.id), se = PIEZAS.filter(p=>p.obj2==k).map(p=>p.id);
+  return `<div class="obj"><div class="num">0${k}</div><h3>${o.n}</h3><p>Se mide en: ${o.m}</p><div class="ps">${pr.length} pieza${pr.length>1?"s":""}: ${pr.join(" · ")}${se.length?`<br><span style="color:var(--muted);font-weight:500">También lo apoyan: ${se.join(" · ")}</span>`:""}</div></div>`;
+}).join("");
 
 // calendario
 function month(y,m,titulo,festivos,extra){
