@@ -372,13 +372,13 @@ const PILAR = {
 const OBJ = {
   1:{n:"Ponerle cara a Amalia", m:"Comentarios, mensajes y crecimiento de seguidores"},
   2:{n:"Mostrar el valor real", m:"Guardados y compartidos"},
-  3:{n:"Que Copacabana reconozca a Amalia", m:"Alcance, reproducciones y seguidores nuevos"},
+  3:{n:"Que a Amalia se le reconozca por su gelato y su calidad", m:"Guardados, compartidos y comentarios en las piezas de gelato"},
   4:{n:"Posicionarse como proveedor de gelato", m:"Visitas al perfil y mensajes de negocios"}
 };
 const OBJ_WHY = {
   1:"Hoy el perfil muestra producto, pero no a la gente. Estas piezas cuentan quién hace Amalia y quién la visita.",
   2:"Mostrar cómo se hace y por qué es distinto, para que la calidad se entienda sola.",
-  3:"Que Amalia sea el nombre que se le viene a la cabeza a la gente de Copacabana y del norte del Valle cuando piensa en un antojo: gelato, pan, tortas y café.",
+  3:"Copacabana ya conoce a Amalia, sobre todo como panadería. El objetivo es que también la reconozcan por su gelato y por la calidad de todo lo que hace.",
   4:"Que una gelatería, un café o un restaurante que llegue al perfil reconozca a Amalia como proveedor de gelato."
 };
 const PIEZAS = [
@@ -576,7 +576,7 @@ function renderCards(f){
     try{navigator.clipboard.writeText(p.copy).then(done,()=>{})}catch(err){}
   });
 }
-const F = [["all","Todas"],["1","01 · Ponerle cara"],["2","02 · Valor real"],["3","03 · Reconocimiento"],["4","04 · Proveedor de gelato"]];
+const F = [["all","Todas"],["1","01 · Ponerle cara"],["2","02 · Valor real"],["3","03 · Gelato y calidad"],["4","04 · Proveedor de gelato"]];
 document.getElementById("filters").innerHTML = F.map(([k,n],i)=>`<button data-f="${k}" class="${i?"":"on"}">${n}</button>`).join("");
 document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#filters button").forEach(x=>x.classList.remove("on"));
