@@ -184,7 +184,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
   <div class="stats">
     <div class="stat"><b>10</b><span>piezas en total</span></div>
     <div class="stat"><b>2</b><span>videos anticipados en octubre</span></div>
-    <div class="stat"><b>8</b><span>publicaciones en noviembre · fechas por definir</span></div>
+    <div class="stat"><b>8</b><span>publicaciones en noviembre</span></div>
     <div class="stat"><b>1</b><span>historia al día, con banco base</span></div>
   </div>
 </div></header>
@@ -250,7 +250,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 </div></section>
 
 <section id="perfil"><div class="wrap">
-  <div class="kicker">Paso 0 · Primera semana de octubre</div>
+  <div class="kicker">Paso 0 · Antes de publicar</div>
   <h2>Antes de publicar: ordenar el perfil</h2>
   <p class="sub">Todo lo que se publique va a llevar gente al perfil. Por eso lo primero es que el perfil responda solo: dónde queda cada sede, a qué hora abren, qué hay en la carta y cómo pedir. Empezamos por las historias destacadas: se ordenan, se quita la información vieja, se actualiza y todas llevan portada nueva con la misma línea.</p>
   <div class="tbl-wrap"><table class="tbl">
@@ -292,7 +292,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 <section id="objetivos"><div class="wrap">
   <div class="kicker">La parrilla por objetivos</div>
   <h2>Qué busca cada pieza</h2>
-  <p class="sub">Los cuatro objetivos son de reconocimiento y posicionamiento de marca: que Amalia se vea, se entienda y se recuerde. Cada pieza tiene uno principal. Las fechas se definen cuando cuadremos la grabación. Toca una pieza para ver el detalle.</p>
+  <p class="sub">Los cuatro objetivos son de reconocimiento y posicionamiento de marca: que Amalia se vea, se entienda y se recuerde. Cada pieza tiene uno principal. Toca una pieza para ver el detalle.</p>
   <div class="objs" id="objs"></div>
 </div></section>
 
@@ -394,7 +394,7 @@ const PIEZAS = [
    ref:"Por definir",
    prod:"Por definir",
    pend:"Conversar con Liz cómo quiere celebrar el aniversario, la fecha y cuántos años cumplen."},
-  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"Octubre, antes del 31 · fecha por definir", dnum:"Oct", dow:"Antes del 31", fecha:null, pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"Octubre, antes del 31 · fecha por definir", dnum:"🎃", dow:"Octubre", fecha:null, pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Dar a conocer el gelato de temporada y asociar a Amalia con los sabores de temporada",
    titulo:"Llegó el gelato de temporada de Halloween",
    concepto:"Anuncio del gelato de temporada con un guion corto que confirma que llegó, lo describe de forma apetecible y le pone fecha límite: solo hasta el 31 de octubre. Voz en off o una persona del equipo a cámara, con el texto en pantalla. Sale apenas el sabor llega a vitrina, para que se venda toda la temporada.",
@@ -551,7 +551,7 @@ function card(p){
   </summary>
   <div class="body">
     <div>
-      <div class="field"><label>Fecha</label><p>${p.dia}</p></div>
+      
       <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p>${OBJ[p.obj].m?`<p style="color:var(--muted);font-size:13px;margin-top:4px">Se mide en: ${OBJ[p.obj].m}</p>`:""}</div>
       <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
       ${p.guion?`<div class="field"><label>Guion</label><div class="copy">${hl(p.guion)}</div></div>`:""}
