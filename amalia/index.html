@@ -336,7 +336,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
         <li>Horno encendido, primera tanda y apertura del local (N1)</li>
         <li>La máquina de gelato trabajando, de principio a fin (N3)</li>
         <li>Laminado y horneado del hojaldre, con audio del crujido (N8)</li>
-        <li>Planos cerrados de textura del gelato para el carrusel (N2)</li>
+        <li>Intro a cámara y planos cerrados de textura, ingredientes y vitrina (N2)</li>
         <li>Planos de volumen: bandejas, producción para negocios (N7)</li>
       </ul></div>
     <div class="box"><h3>Bloque 2 · Sedes y equipo</h3>
@@ -419,16 +419,21 @@ const PIEZAS = [
    ref:"Estilo 'morning routine' de negocio: cortes rápidos al ritmo, 15–20 s, sonido real del horno.",
    prod:"Primer bloque de la jornada, a la hora real de apertura.",
    pend:"Hora a la que arranca la producción."},
-  {id:"N2", obj:2, obj2:null, mes:"nov", dia:"6 nov", dnum:"6", dow:"Viernes", fecha:"2026-11-06", pilar:2, formato:"Carrusel", redes:"IG · FB · TikTok (modo foto)",
-   objetivo:"Educar y que lo guarden",
-   titulo:"Gelato y helado no son lo mismo: 4 diferencias",
-   concepto:"Carrusel educativo de 5 láminas. 1 · Portada. 2 · Tiene menos aire: es más denso y cremoso. 3 · Se sirve menos frío: el sabor se siente más. 4 · Se bate lento: textura sedosa. 5 · Así lo hacemos en Amalia: maquinaria profesional e insumos importados.",
-   copy:"¿Gelato o helado? Parecen lo mismo, y en la cuchara se siente la diferencia 🍨\nTe dejamos las 4 claves para reconocer un gelato de verdad. Guárdalo para tu próxima visita.\nEn Amalia lo preparamos con maquinaria profesional de gelatería e insumos importados.\n\n#Gelato #Amalia #Copacabana",
-   cta:"Guárdalo y compártelo con quien ama el gelato",
-   portada:"Gelato ≠ helado\n4 diferencias", portadaNota:"Primer plano de la textura del gelato en la cuchara",
-   ref:"Carrusel limpio: foto de textura de fondo + una idea por lámina, tipografía grande.",
-   prod:"Planos cerrados de textura en la jornada + diseño.",
-   pend:null},
+  {id:"N2", obj:2, obj2:null, mes:"nov", dia:"6 nov", dnum:"6", dow:"Viernes", fecha:"2026-11-06", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Educar sobre el gelato y que lo guarden",
+   titulo:"Gelato y helado no son lo mismo",
+   concepto:"Arranca con una interrupción directa a cámara (\"hey, para, para\") para frenar el scroll, lanza la pregunta de en qué se diferencian y responde con las tres diferencias en un resumen rápido. Cierra con cómo lo hacemos en Amalia.",
+   guion:"Hey, para, para. Esto no es helado tradicional, es gelato.\n\n¿Y en qué se diferencian?\n\nPrimero, el gelato se bate lento y por eso tiene menos aire: es más denso, más cremoso y su sabor es mucho más intenso.\n\nSegundo, generalmente tiene menos grasa que un helado tradicional, así los ingredientes se sienten mucho más.\n\nY tercero, se sirve a una temperatura un poco más alta, para que disfrutes todo su sabor desde la primera cucharada.\n\nEn Amalia lo preparamos con maquinaria profesional de gelatería e insumos importados. Ven a probar la diferencia en nuestras dos sedes.",
+   copy:"¿Gelato o helado? Parecen lo mismo, y en la cuchara se siente la diferencia 🍨\nTe contamos en qué se diferencian. Guárdalo para tu próxima visita.\nEn Amalia lo preparamos con maquinaria profesional de gelatería e insumos importados.\n\n#Gelato #Amalia #Copacabana",
+   cta:"Guárdalo y ven a probar la diferencia",
+   portada:"Gelato ≠ helado", portadaNota:"La mano que frena la cámara, con el gelato en primer plano",
+   ref:"Intro: una persona del equipo frena la cámara con la mano y muestra el gelato. Luego una toma por diferencia: la cuchara entrando en el gelato denso (menos aire), los ingredientes (menos grasa) y la paleta sirviendo en vitrina (temperatura). Texto en pantalla con cada diferencia. 20–30 s.",
+   refs:[
+     {img:"refs/DT04ElekdtP.jpg", url:"https://www.instagram.com/reel/DT04ElekdtP/", t:"Referencia de intro", d:"Dolce Helado Artesanal: el arranque que frena el scroll."},
+     {img:"refs/DatXaE3xSHG.jpg", video:"refs/ref-contenido-siletto.mp4", url:"https://www.instagram.com/reel/DatXaE3xSHG/", t:"Referencia de contenido", d:"Siletto: las tres diferencias entre gelato y helado."}
+   ],
+   prod:"Bloque de producción: persona a cámara para el intro y planos cerrados de textura, ingredientes y vitrina.",
+   pend:"Confirmar con Amalia si su gelato es base leche (para sostener lo de menos grasa) y si es sin conservantes ni colorantes: si lo es, se suma como cuarta diferencia."},
   {id:"N3", obj:2, obj2:4, mes:"nov", dia:"10 nov", dnum:"10", dow:"Martes", fecha:"2026-11-10", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Mostrar el proceso y la capacidad",
    titulo:"Así nace un gelato en Amalia",
