@@ -109,10 +109,10 @@ section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
 @media(max-width:600px){.bench{grid-template-columns:1fr}.amalia-hoy{grid-template-columns:1fr}}
 .refs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .ref{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ink)}
-.ref img{width:100%;aspect-ratio:9/12;object-fit:cover;display:block}
+.ref img,.ref video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
 .ref span{padding:8px 10px;font-size:12.5px;line-height:1.35}
 .ref b{display:block;font-size:13px;margin-bottom:2px}
-.ref em{display:block;font-style:normal;color:var(--caramelo);font-weight:600;margin-top:4px}
+.ref span a{display:block;color:var(--caramelo);font-weight:600;margin-top:4px;text-decoration:none}
 .pill.warn{background:#FBEAD9;color:var(--terracota);border-color:#F0CFB1}
 .pill.oct{background:var(--cafe);color:var(--mantequilla);border-color:var(--cafe)}
 .chev{font-size:20px;color:var(--dim);transition:transform .2s}
@@ -404,8 +404,8 @@ const PIEZAS = [
    portada:"Gelato de temporada 🎃\nsolo hasta el 31", portadaNota:"Primer plano del gelato con sus ingredientes alrededor",
    ref:"Tomas en primer plano extremo del gelato, con los ingredientes del sabor alrededor (fruta, toppings), para que se vea la textura y el color. Luego la paleta sacando la bola y el gelato servido en mano. 15–20 s.",
    refs:[
-     {img:"refs/Dc6ImgIx5lD.jpg", url:"https://www.instagram.com/reel/Dc6ImgIx5lD/", t:"Referencia de guion", d:"La idea del texto: anunciar que llegó, describirlo y crear urgencia."},
-     {img:"refs/DairuyoJR8m.jpg", url:"https://www.instagram.com/reel/DairuyoJR8m/", t:"Referencia de tomas", d:"Pasión Gelato · gelato del mes: primer plano de textura con la fruta alrededor."}
+     {img:"refs/Dc6ImgIx5lD.jpg", video:"refs/ref-guion-mivassi.mp4", url:"https://www.instagram.com/reel/Dc6ImgIx5lD/", t:"Referencia de guion", d:"La idea del texto: anunciar que llegó, describirlo y crear urgencia."},
+     {img:"refs/DairuyoJR8m.jpg", video:"refs/ref-tomas-pasion.mp4", url:"https://www.instagram.com/reel/DairuyoJR8m/", t:"Referencia de tomas", d:"Pasión Gelato · gelato del mes: primer plano de textura con la fruta alrededor."}
    ],
    prod:"Se graba en la jornada de octubre o apenas el sabor llegue a vitrina. Necesita los ingredientes del sabor a la mano para armar el primer plano.",
    pend:"Nombre del sabor, sus ingredientes, fecha en que llega a vitrina y horario de las sedes."},
@@ -524,7 +524,7 @@ function card(p){
     <div>
       <div class="field"><label>Portada</label><div class="portada">${hl(p.portada).replace(/\n/g,"<br>")}<small>${p.portadaNota}</small></div></div>
       <div class="field"><label>Referencia visual</label><p>${p.ref}</p></div>
-      ${p.refs?`<div class="field"><label>Referencias</label><div class="refs">${p.refs.map(r=>`<a class="ref" href="${r.url}" target="_blank" rel="noopener"><img src="${r.img}" alt="${r.t}" loading="lazy"><span><b>${r.t}</b>${r.d}<em>Ver en Instagram ↗</em></span></a>`).join("")}</div></div>`:""}
+      ${p.refs?`<div class="field"><label>Referencias</label><div class="refs">${p.refs.map(r=>`<div class="ref">${r.video?`<video src="${r.video}" poster="${r.img}" controls playsinline preload="none"></video>`:`<img src="${r.img}" alt="${r.t}" loading="lazy">`}<span><b>${r.t}</b>${r.d}<a href="${r.url}" target="_blank" rel="noopener">Ver en Instagram ↗</a></span></div>`).join("")}</div></div>`:""}
       <div class="field"><label>Producción</label><p>${p.prod}</p></div>
       ${p.pend?`<div class="note"><b>Pendiente:</b> ${p.pend}</div>`:''}
     </div>
