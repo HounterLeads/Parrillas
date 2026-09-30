@@ -94,6 +94,19 @@ section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
 .hl-ring{width:78px;height:78px;border-radius:50%;padding:3px;border:1.5px solid var(--line)}
 .hl-c{width:100%;height:100%;border-radius:50%;background:var(--mantequilla);display:flex;align-items:center;justify-content:center}
 .hl span{font-size:12px;color:var(--ink);text-align:center;white-space:nowrap}
+.bench{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.bc{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.bc img{width:100%;height:420px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line)}
+.bc-b{padding:16px}
+.bc-h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.bc-h h3{font-size:18px}
+.bc-n{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.bc p{font-size:13.5px;margin-bottom:8px}
+.bc .take{background:var(--bg);border-radius:10px;padding:9px 11px;border-left:3px solid var(--caramelo)}
+.amalia-hoy{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start}
+.amalia-hoy img{width:100%;border-radius:12px;border:1px solid var(--line)}
+@media(max-width:980px){.bench{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.bench{grid-template-columns:1fr}.amalia-hoy{grid-template-columns:1fr}}
 .pill.warn{background:#FBEAD9;color:var(--terracota);border-color:#F0CFB1}
 .pill.oct{background:var(--cafe);color:var(--mantequilla);border-color:var(--cafe)}
 .chev{font-size:20px;color:var(--dim);transition:transform .2s}
@@ -147,7 +160,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 <div class="top"><div class="wrap">
   <div class="brand"><img src="logo-amalia.png" alt="Amalia">Amalia · Parrilla 01</div>
   <nav>
-    <a href="#perfil">Perfil</a><a href="#objetivos">Objetivos</a><a href="#pilares">Pilares</a><a href="#calendario">Calendario</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
+    <a href="#benchmark">Benchmark</a><a href="#perfil">Perfil</a><a href="#objetivos">Objetivos</a><a href="#pilares">Pilares</a><a href="#calendario">Calendario</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
   </nav>
 </div></div>
 
@@ -162,6 +175,66 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
     <div class="stat"><b>1</b><span>historia al día, con banco base</span></div>
   </div>
 </div></header>
+
+<section id="benchmark"><div class="wrap">
+  <div class="kicker">Paso previo · Benchmark</div>
+  <h2>Qué están haciendo las gelaterías de Medellín y el norte del Valle</h2>
+  <p class="sub">Revisamos seis gelaterías: cuatro de la zona (Centro, Los Colores, Laureles y Bello), un referente de calidad en El Poblado y la heladería con más audiencia de Bello. Miramos cómo se presentan, qué publican y qué le sirve a Amalia.</p>
+  <div class="bench">
+    <article class="bc"><img src="bench/aldana_gelatos.jpg" alt="Perfil de Instagram de Aldana Gelatos" loading="lazy"><div class="bc-b">
+      <div class="bc-h"><h3>Aldana Gelatos</h3><span class="pill">Centro · CC Tres Vías</span></div>
+      <div class="bc-n"><b>2.602</b> seguidores · <b>112</b> publicaciones</div>
+      <p><b>Qué hacen:</b> reels con una presentadora dentro del local, el precio en pantalla ($18.900, $9.900) y una promo fija por día ("los martes a $9.900"). Repiten dónde quedan en casi todos los videos.</p>
+      <p class="take"><b>Para Amalia:</b> la promo del día con precio en pantalla. Es justo lo que va en la destacada "Promo del día".</p></div></article>
+    <article class="bc"><img src="bench/koalagelato.jpg" alt="Perfil de Instagram de Koala Gelateria" loading="lazy"><div class="bc-b">
+      <div class="bc-h"><h3>Koala Gelateria</h3><span class="pill">Los Colores</span></div>
+      <div class="bc-n"><b>1.435</b> seguidores · <b>9</b> publicaciones</div>
+      <p><b>Qué hacen:</b> perfil nuevo con muy pocas publicaciones, pero con la bio ordenada: qué venden, horario por días y barrio. Consiguen alcance apareciendo en festivales de postres y con creadoras de contenido.</p>
+      <p class="take"><b>Para Amalia:</b> una bio que responde sola (qué, cuándo, dónde) y las colaboraciones como forma de llegar a gente nueva.</p></div></article>
+    <article class="bc"><img src="bench/dolce_gelo.jpg" alt="Perfil de Instagram de Dolce Gelo" loading="lazy"><div class="bc-b">
+      <div class="bc-h"><h3>Dolce Gelo</h3><span class="pill">Laureles</span></div>
+      <div class="bc-n"><b>128 mil</b> seguidores · <b>554</b> publicaciones</div>
+      <p><b>Qué hacen:</b> casi todo es reel. Sabores que despiertan nostalgia o curiosidad (Milo, Klim, Quipitos, aguardiente, pétalos de rosa) con frases de humor paisa en pantalla, y se suben a los eventos de la ciudad como la Feria de las Flores.</p>
+      <p class="take"><b>Para Amalia:</b> el sabor con historia es el gancho. Un sabor de temporada bien contado genera conversación por sí solo.</p></div></article>
+    <article class="bc"><img src="bench/pasiongelato.jpg" alt="Perfil de Instagram de Pasión Gelato" loading="lazy"><div class="bc-b">
+      <div class="bc-h"><h3>Pasión Gelato</h3><span class="pill">Bello · 2 sedes</span></div>
+      <div class="bc-n"><b>5.456</b> seguidores · <b>259</b> publicaciones</div>
+      <p><b>Qué hacen:</b> el competidor más parecido a Amalia: norte del Valle, dos sedes y un tamaño similar. Foto de producto muy cuidada, portadas con la misma tipografía, una serie fija de "Gelato del mes", lanzamientos (smoothies, sodas, cold brew) y personas del equipo a cámara.</p>
+      <p class="take"><b>Para Amalia:</b> una línea gráfica constante y una serie mensual reconocible. Es el estándar mínimo para verse igual de ordenados.</p></div></article>
+    <article class="bc"><img src="bench/amoracuya.jpg" alt="Perfil de Instagram de Amoracuyá" loading="lazy"><div class="bc-b">
+      <div class="bc-h"><h3>Amoracuyá</h3><span class="pill">El Poblado · referente</span></div>
+      <div class="bc-n"><b>98,3 mil</b> seguidores · <b>814</b> publicaciones</div>
+      <p><b>Qué hacen:</b> la gelatería más premiada de Medellín (puesto 48 del ranking mundial del Gelato Festival). Su contenido es oficio puro: manos, proceso, texturas y la vitrina. Casi sin texto en pantalla, y los premios van en la bio.</p>
+      <p class="take"><b>Para Amalia:</b> el proceso y la textura comunican calidad sin decirla. En el norte del Valle nadie lo está haciendo, así que ese espacio está libre.</p></div></article>
+    <article class="bc"><img src="bench/heladeria_dulcescaprichos.jpg" alt="Perfil de Instagram de Dulces Caprichos" loading="lazy"><div class="bc-b">
+      <div class="bc-h"><h3>Dulces Caprichos</h3><span class="pill">Bello · Niquía</span></div>
+      <div class="bc-n"><b>44 mil</b> seguidores · <b>365</b> publicaciones</div>
+      <p><b>Qué hacen:</b> la heladería con más audiencia de Bello. Una misma persona sale en casi todos los videos, con reacciones y porciones abundantes (copas familiares, ensaladas de frutas). La cara recurrente es su sello.</p>
+      <p class="take"><b>Para Amalia:</b> una cara que se repite construye confianza local. Va con el pilar "La cara de Amalia".</p></div></article>
+  </div>
+
+  <div class="grid2" style="margin-top:22px">
+    <div class="box amalia-hoy">
+      <img src="bench/amaliapanaderia.jpg" alt="Perfil de Instagram de Amalia" loading="lazy">
+      <div><h3>Amalia hoy</h3><div class="bc-n"><b>6.103</b> seguidores · <b>438</b> publicaciones</div>
+      <ul style="margin-top:8px">
+        <li>Más seguidores que Pasión Gelato, Aldana y Koala.</li>
+        <li>Mezcla café, tortas y gelato sin una línea que los una.</li>
+        <li>Ya probó un gelato de temporada (guayaba, arequipe y queso): la serie tiene de dónde arrancar.</li>
+        <li>El logo dice "repostería" y el perfil dice "gelatería".</li>
+      </ul></div>
+    </div>
+    <div class="callout"><h3>Lo que nos llevamos para Amalia</h3>
+      <ol>
+        <li><b>Territorio propio:</b> ninguna muestra panadería, gelato y producción para otros negocios al mismo tiempo.</li>
+        <li><b>El oficio está libre en el norte:</b> solo Amoracuyá muestra proceso, y está en El Poblado.</li>
+        <li><b>Una cara que se repite</b> genera confianza local.</li>
+        <li><b>Serie mensual de gelato de temporada,</b> con nombre y portada fija.</li>
+        <li><b>Promo del día con precio en pantalla</b> y una bio que responde sola.</li>
+      </ol></div>
+  </div>
+  <p style="font-size:12px;color:var(--dim);margin-top:12px">Datos públicos de Instagram al 29 de septiembre de 2026. Las interacciones por publicación no se incluyen porque Instagram no las muestra sin sesión.</p>
+</div></section>
 
 <section id="perfil"><div class="wrap">
   <div class="kicker">Paso 0 · Primera semana de octubre</div>
