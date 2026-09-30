@@ -372,7 +372,7 @@ const PILAR = {
 const OBJ = {
   1:{n:"Ponerle cara a Amalia", m:"Comentarios, mensajes y crecimiento de seguidores"},
   2:{n:"Mostrar el valor real", m:"Guardados y compartidos"},
-  3:{n:"Que a Amalia se le reconozca por su gelato y su calidad", m:"Guardados, compartidos y comentarios en las piezas de gelato"},
+  3:{n:"Que a Amalia se le reconozca por su gelato y su calidad", m:""},
   4:{n:"Posicionarse como proveedor de gelato", m:"Visitas al perfil y mensajes de negocios"}
 };
 const OBJ_WHY = {
@@ -550,7 +550,7 @@ function card(p){
   <div class="body">
     <div>
       <div class="field"><label>Fecha</label><p>${p.dia}</p></div>
-      <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p><p style="color:var(--muted);font-size:13px;margin-top:4px">Se mide en: ${OBJ[p.obj].m}</p></div>
+      <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p>${OBJ[p.obj].m?`<p style="color:var(--muted);font-size:13px;margin-top:4px">Se mide en: ${OBJ[p.obj].m}</p>`:""}</div>
       <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
       ${p.guion?`<div class="field"><label>Guion</label><div class="copy">${hl(p.guion)}</div></div>`:""}
       <div class="field"><label>Copy</label><div class="copy"><button class="cpbtn" data-copy="${p.id}">Copiar</button>${hl(p.copy)}</div></div>
@@ -586,7 +586,7 @@ renderCards("all");
 const chipP = p => `<a class="ochip" href="#${p.id}" data-open="${p.id}" style="--c:${PILAR[p.pilar].c}"><small>${p.mes==="oct"?"Octubre":"Noviembre"} · ${p.formato}</small>${esc(p.titulo.replace(/\[|\]/g,""))}</a>`;
 document.getElementById("objs").innerHTML = Object.entries(OBJ).map(([k,o])=>{
   const pr = PIEZAS.filter(p=>p.obj==k), se = PIEZAS.filter(p=>p.obj2==k);
-  return `<div class="obj"><div class="num">0${k}</div><h3>${o.n}</h3><p>${OBJ_WHY[k]}</p><p class="med">Se mide en: ${o.m}</p><div class="ps">${pr.length} pieza${pr.length>1?"s":""}</div>${pr.map(chipP).join("")}${se.length?`<div class="ps sec">También lo apoyan</div>${se.map(chipP).join("")}`:""}</div>`;
+  return `<div class="obj"><div class="num">0${k}</div><h3>${o.n}</h3><p>${OBJ_WHY[k]}</p>${o.m?`<p class="med">Se mide en: ${o.m}</p>`:""}<div class="ps">${pr.length} pieza${pr.length>1?"s":""}</div>${pr.map(chipP).join("")}${se.length?`<div class="ps sec">También lo apoyan</div>${se.map(chipP).join("")}`:""}</div>`;
 }).join("");
 
 document.addEventListener("click",e=>{
