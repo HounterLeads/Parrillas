@@ -11,7 +11,7 @@
 :root{
   --cafe:#3B2A1D; --cafe2:#54402E; --caramelo:#96683C; --miel:#D8B78C; --mantequilla:#EFDCC0;
   --terracota:#A8603F; --bg:#F8F3EA; --paper:#FFFDF9; --ink:#33261C; --muted:#7A6553; --dim:#A99580; --line:#EADFCE;
-  --p1:#A8603F; --p2:#96683C; --p3:#6E7F4E;
+  --p1:#A8603F; --p2:#96683C; --p3:#5A3E2B;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
@@ -112,7 +112,9 @@ section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
 .amalia-hoy img{width:100%;border-radius:12px;border:1px solid var(--line)}
 @media(max-width:980px){.bench{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.bench{grid-template-columns:1fr}.amalia-hoy{grid-template-columns:1fr}}
-.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
+.refs-wide{padding:0 20px 22px}
+.refs-wide label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,320px));gap:14px}
 .ref{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ink)}
 .ref img,.ref video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
 .ref span{padding:8px 10px;font-size:12.5px;line-height:1.35}
@@ -290,7 +292,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 <section id="objetivos"><div class="wrap">
   <div class="kicker">La parrilla por objetivos</div>
   <h2>Qué busca cada pieza</h2>
-  <p class="sub">Los cuatro objetivos son de reconocimiento y posicionamiento de marca: que Amalia se vea, se entienda y se recuerde. Cada pieza tiene uno principal y una forma clara de medirlo, así el informe de cada mes muestra qué está funcionando en cada frente. Las fechas se definen cuando cuadremos la grabación. Toca una pieza para ver el detalle.</p>
+  <p class="sub">Los cuatro objetivos son de reconocimiento y posicionamiento de marca: que Amalia se vea, se entienda y se recuerde. Cada pieza tiene uno principal. Las fechas se definen cuando cuadremos la grabación. Toca una pieza para ver el detalle.</p>
   <div class="objs" id="objs"></div>
 </div></section>
 
@@ -370,10 +372,10 @@ const PILAR = {
   3:{n:"Producto y momentos", c:"var(--p3)"}
 };
 const OBJ = {
-  1:{n:"Ponerle cara a Amalia", m:"Comentarios, mensajes y crecimiento de seguidores"},
-  2:{n:"Mostrar el valor real", m:"Guardados y compartidos"},
+  1:{n:"Ponerle cara a Amalia", m:""},
+  2:{n:"Mostrar el valor real", m:""},
   3:{n:"Que a Amalia se le reconozca por su gelato y su calidad", m:""},
-  4:{n:"Posicionarse como proveedor de gelato", m:"Visitas al perfil y mensajes de negocios"}
+  4:{n:"Posicionarse como proveedor de gelato", m:""}
 };
 const OBJ_WHY = {
   1:"Hoy el perfil muestra producto, pero no a la gente. Estas piezas cuentan quién hace Amalia y quién la visita.",
@@ -559,11 +561,12 @@ function card(p){
     <div>
       <div class="field"><label>Portada</label><div class="portada">${hl(p.portada).replace(/\n/g,"<br>")}<small>${p.portadaNota}</small></div></div>
       <div class="field"><label>Referencia visual</label><p>${p.ref}</p></div>
-      ${p.refs?`<div class="field"><label>Referencias</label><div class="refs">${p.refs.map(r=>`<div class="ref">${r.video?`<video src="${r.video}" poster="${r.img}" controls playsinline preload="none"></video>`:`<img src="${r.img}" alt="${r.t}" loading="lazy">`}<span><b>${r.t}</b>${r.d}<a href="${r.url}" target="_blank" rel="noopener">Ver en Instagram ↗</a></span></div>`).join("")}</div></div>`:""}
+      
       <div class="field"><label>Producción</label><p>${p.prod}</p></div>
       ${p.pend?`<div class="note"><b>Pendiente:</b> ${p.pend}</div>`:''}
     </div>
   </div>
+  ${p.refs?`<div class="refs-wide"><label>Referencias</label><div class="refs">${p.refs.map(r=>`<div class="ref">${r.video?`<video src="${r.video}" poster="${r.img}" controls playsinline preload="none"></video>`:`<img src="${r.img}" alt="${r.t}" loading="lazy">`}<span><b>${r.t}</b>${r.d}<a href="${r.url}" target="_blank" rel="noopener">Ver en Instagram ↗</a></span></div>`).join("")}</div></div>`:""}
 </details>`;
 }
 
