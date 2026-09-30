@@ -107,6 +107,12 @@ section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
 .amalia-hoy img{width:100%;border-radius:12px;border:1px solid var(--line)}
 @media(max-width:980px){.bench{grid-template-columns:1fr 1fr}}
 @media(max-width:600px){.bench{grid-template-columns:1fr}.amalia-hoy{grid-template-columns:1fr}}
+.refs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.ref{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ink)}
+.ref img{width:100%;aspect-ratio:9/12;object-fit:cover;display:block}
+.ref span{padding:8px 10px;font-size:12.5px;line-height:1.35}
+.ref b{display:block;font-size:13px;margin-bottom:2px}
+.ref em{display:block;font-style:normal;color:var(--caramelo);font-weight:600;margin-top:4px}
 .pill.warn{background:#FBEAD9;color:var(--terracota);border-color:#F0CFB1}
 .pill.oct{background:var(--cafe);color:var(--mantequilla);border-color:var(--cafe)}
 .chev{font-size:20px;color:var(--dim);transition:transform .2s}
@@ -351,7 +357,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
     <ol>
       <li><b>Sesión de historia de marca</b> (hora y media, con quien fundó Amalia). De ahí salen el origen, los nombres y las frases del equipo.</li>
       <li><b>Fecha exacta del aniversario</b> y si cumplieron 9 o 10 años.</li>
-      <li><b>Sabor de Halloween:</b> nombre y fecha en que llega a vitrina.</li>
+      <li><b>Gelato de temporada:</b> nombre del sabor, ingredientes, fecha en que llega a vitrina y horario de las sedes.</li>
       <li><b>Sabores de la vitrina</b> y cuáles se venden más en cada sede.</li>
       <li><b>Capacidad de producción</b> para negocios (gelato y hojaldre) y el canal para pedidos mayoristas.</li>
       <li><b>Nombre oficial:</b> el logo dice "Panadería y repostería" y el Instagram "Panadería y gelatería".</li>
@@ -388,16 +394,21 @@ const PIEZAS = [
    ref:"Transición foto antigua → misma toma hoy. Música emotiva suave, 20–30 s, texto en pantalla corto.",
    prod:"Fotos antiguas que envía Amalia + tomas de fachadas, equipo y clientes en la jornada.",
    pend:"Fecha exacta del aniversario y cuántos años cumplen."},
-  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"16 oct", dnum:"16", dow:"Viernes", fecha:"2026-10-16", pilar:3, formato:"Reel corto", redes:"IG · FB · TikTok",
-   objetivo:"Dar a conocer el sabor de temporada mientras está en vitrina",
-   titulo:"Llegó el sabor de Halloween: [nombre del sabor]",
-   concepto:"Video corto de 8 a 10 segundos con tres tomas: el sabor nuevo en la vitrina, la cuchara entrando en el gelato y la copa servida. Texto en pantalla con el nombre del sabor. Sale apenas el sabor llega a vitrina, para que se venda toda la temporada y no solo el 31.",
-   copy:"Llegó el sabor de Halloween 🎃\n[Nombre del sabor], solo por esta temporada.\nVen a probarlo en nuestras dos sedes, en el parque y en La Asunción.\n\n#Halloween #Gelato #Amalia",
-   cta:"Ven a probarlo en cualquiera de las dos sedes",
-   portada:"Sabor de Halloween 🎃", portadaNota:"La cuchara entrando en el gelato de temporada",
-   ref:"Revelación rápida en 3 cortes, 8–10 s, audio en tendencia de Halloween. Se edita en minutos.",
-   prod:"3 tomas de celular. Si el sabor sale antes de la jornada, las puede grabar el equipo de Amalia y enviarlas por WhatsApp.",
-   pend:"Nombre del sabor y fecha en que llega a vitrina (si sale antes del 16, se publica ese mismo día)."},
+  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"16 oct", dnum:"16", dow:"Viernes", fecha:"2026-10-16", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Dar a conocer el gelato de temporada y llevar gente a las sedes antes del 31",
+   titulo:"Llegó el gelato de temporada de Halloween",
+   concepto:"Anuncio del gelato de temporada con un guion corto que confirma que llegó, lo describe de forma apetecible y le pone fecha límite: solo hasta el 31 de octubre. Voz en off o una persona del equipo a cámara, con el texto en pantalla. Sale apenas el sabor llega a vitrina, para que se venda toda la temporada.",
+   guion:"Confirmamos: nuestro gelato de temporada ya llegó a Amalia 🎃\n\nEs [nombre del sabor]: [descripción apetecible del gelato: textura, ingrediente estrella y el toque que lo hace especial].\n\nLo malo es que solo lo tendremos hasta el 31 de octubre, así que corran a probarlo.\n\nLos esperamos en nuestras dos sedes, en el parque y en La Asunción, de [hora de apertura] a [hora de cierre].",
+   copy:"Llegó nuestro gelato de temporada 🎃\n[Nombre del sabor]: [descripción corta y apetecible].\nLo tenemos solo hasta el 31 de octubre, así que ven a probarlo en nuestras dos sedes, en el parque y en La Asunción.\n🕐 [Horario]\n\n#Halloween #Gelato #Amalia",
+   cta:"Corran a probarlo antes del 31 de octubre",
+   portada:"Gelato de temporada 🎃\nsolo hasta el 31", portadaNota:"Primer plano del gelato con sus ingredientes alrededor",
+   ref:"Tomas en primer plano extremo del gelato, con los ingredientes del sabor alrededor (fruta, toppings), para que se vea la textura y el color. Luego la paleta sacando la bola y el gelato servido en mano. 15–20 s.",
+   refs:[
+     {img:"refs/Dc6ImgIx5lD.jpg", url:"https://www.instagram.com/reel/Dc6ImgIx5lD/", t:"Referencia de guion", d:"La idea del texto: anunciar que llegó, describirlo y crear urgencia."},
+     {img:"refs/DairuyoJR8m.jpg", url:"https://www.instagram.com/reel/DairuyoJR8m/", t:"Referencia de tomas", d:"Pasión Gelato · gelato del mes: primer plano de textura con la fruta alrededor."}
+   ],
+   prod:"Se graba en la jornada de octubre o apenas el sabor llegue a vitrina. Necesita los ingredientes del sabor a la mano para armar el primer plano.",
+   pend:"Nombre del sabor, sus ingredientes, fecha en que llega a vitrina y horario de las sedes."},
   {id:"N1", obj:1, obj2:null, mes:"nov", dia:"3 nov", dnum:"3", dow:"Martes", fecha:"2026-11-03", pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Ponerle cara a la marca",
    titulo:"Así empieza un día en Amalia",
@@ -506,12 +517,14 @@ function card(p){
       <div class="field"><label>Fecha</label><p>${p.dia==="Por definir"?"Octubre · fecha por definir con Amalia":p.dow+" "+p.dia}</p></div>
       <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p><p style="color:var(--muted);font-size:13px;margin-top:4px">Se mide en: ${OBJ[p.obj].m}</p></div>
       <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
+      ${p.guion?`<div class="field"><label>Guion</label><div class="copy">${hl(p.guion)}</div></div>`:""}
       <div class="field"><label>Copy</label><div class="copy"><button class="cpbtn" data-copy="${p.id}">Copiar</button>${hl(p.copy)}</div></div>
       <div class="field"><label>Llamado a la acción</label><p>${p.cta}</p></div>
     </div>
     <div>
       <div class="field"><label>Portada</label><div class="portada">${hl(p.portada).replace(/\n/g,"<br>")}<small>${p.portadaNota}</small></div></div>
       <div class="field"><label>Referencia visual</label><p>${p.ref}</p></div>
+      ${p.refs?`<div class="field"><label>Referencias</label><div class="refs">${p.refs.map(r=>`<a class="ref" href="${r.url}" target="_blank" rel="noopener"><img src="${r.img}" alt="${r.t}" loading="lazy"><span><b>${r.t}</b>${r.d}<em>Ver en Instagram ↗</em></span></a>`).join("")}</div></div>`:""}
       <div class="field"><label>Producción</label><p>${p.prod}</p></div>
       ${p.pend?`<div class="note"><b>Pendiente:</b> ${p.pend}</div>`:''}
     </div>
