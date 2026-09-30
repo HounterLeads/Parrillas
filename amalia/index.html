@@ -81,13 +81,18 @@ section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
 .pill{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
 .pill.p{background:var(--c);color:#fff;border-color:var(--c)}
 .pill.objp{background:var(--mantequilla);color:var(--cafe);border-color:var(--miel)}
-.objs{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.objs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
 .obj{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
 .obj .num{font-family:'Fraunces',serif;font-style:italic;font-size:30px;color:var(--caramelo);line-height:1}
 .obj h3{font-size:17px;margin:6px 0 6px}
 .obj p{font-size:13px;color:var(--muted)}
-.obj .ps{font-size:12px;font-weight:600;color:var(--cafe);margin-top:10px}
-@media(max-width:860px){.objs{grid-template-columns:1fr 1fr}}
+.obj .ps{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:14px 0 6px}
+.obj .ps.sec{margin-top:12px}
+.obj .med{font-size:12.5px;color:var(--caramelo);font-weight:600;margin-top:6px}
+.ochip{display:block;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:8px 11px;margin-top:6px;font-size:14px;font-weight:600;line-height:1.3}
+.ochip small{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.ochip:hover{background:var(--mantequilla)}
+@media(max-width:860px){.objs{grid-template-columns:1fr}}
 @media(max-width:520px){.objs{grid-template-columns:1fr}}
 .hl-row{display:flex;gap:18px;overflow-x:auto;padding:18px 18px 12px;background:#fff;border:1px solid var(--line);border-radius:18px;margin-top:10px}
 .hl{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:7px;width:84px}
@@ -166,7 +171,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 <div class="top"><div class="wrap">
   <div class="brand"><img src="logo-amalia.png" alt="Amalia">Amalia · Parrilla 01</div>
   <nav>
-    <a href="#benchmark">Benchmark</a><a href="#perfil">Perfil</a><a href="#objetivos">Objetivos</a><a href="#pilares">Pilares</a><a href="#calendario">Calendario</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
+    <a href="#benchmark">Benchmark</a><a href="#perfil">Perfil</a><a href="#pilares">Pilares</a><a href="#objetivos">Objetivos</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
   </nav>
 </div></div>
 
@@ -177,7 +182,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
   <div class="stats">
     <div class="stat"><b>10</b><span>piezas en total</span></div>
     <div class="stat"><b>2</b><span>videos anticipados en octubre</span></div>
-    <div class="stat"><b>8</b><span>publicaciones en noviembre · martes y viernes</span></div>
+    <div class="stat"><b>8</b><span>publicaciones en noviembre · fechas por definir</span></div>
     <div class="stat"><b>1</b><span>historia al día, con banco base</span></div>
   </div>
 </div></header>
@@ -271,13 +276,6 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
   </div>
 </div></section>
 
-<section id="objetivos"><div class="wrap">
-  <div class="kicker">Para qué publicamos</div>
-  <h2>Cuatro objetivos, cada uno con su medida</h2>
-  <p class="sub">Trabajamos varios objetivos a la vez, pero cada pieza tiene uno principal y una forma clara de medirlo. Así el informe de cada mes muestra qué está funcionando en cada frente.</p>
-  <div class="objs" id="objs"></div>
-</div></section>
-
 <section id="pilares"><div class="wrap">
   <div class="kicker">La línea</div>
   <h2>Tres pilares, un solo foco: el gelato</h2>
@@ -289,17 +287,11 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
   </div>
 </div></section>
 
-<section id="calendario"><div class="wrap">
-  <div class="kicker">Calendario</div>
-  <h2>Cuándo sale cada pieza</h2>
-  <p class="sub">En noviembre se publica martes y viernes. El martes lleva oficio y equipo, y el viernes lleva producto y antojo para el fin de semana. Toca una pieza para ver el detalle.</p>
-  <div id="cal"></div>
-  <div class="cal-legend">
-    <span><i style="--c:var(--p1)"></i>La cara de Amalia</span>
-    <span><i style="--c:var(--p2)"></i>El oficio</span>
-    <span><i style="--c:var(--p3)"></i>Producto y momentos</span>
-    <span><i style="--c:#F3E7D6;border:1px solid var(--line)"></i>Festivo</span>
-  </div>
+<section id="objetivos"><div class="wrap">
+  <div class="kicker">La parrilla por objetivos</div>
+  <h2>Qué busca cada pieza</h2>
+  <p class="sub">Trabajamos cuatro objetivos a la vez. Cada pieza tiene uno principal y una forma clara de medirlo, así el informe de cada mes muestra qué está funcionando en cada frente. Las fechas se definen cuando cuadremos la grabación. Toca una pieza para ver el detalle.</p>
+  <div class="objs" id="objs"></div>
 </div></section>
 
 <section id="piezas"><div class="wrap">
@@ -328,8 +320,8 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
 
 <section id="produccion"><div class="wrap">
   <div class="kicker">Producción</div>
-  <h2>Una jornada en octubre, antes del aniversario</h2>
-  <p class="sub">Todo el mes se graba en una sola salida que cubre las dos sedes. Tiene que ser en la primera quincena de octubre, porque de ahí salen también los dos videos anticipados.</p>
+  <h2>Lo que hay que grabar</h2>
+  <p class="sub">La forma de grabar está por definir. Esta es la lista de tomas del mes, agrupada para aprovechar cada salida a las dos sedes.</p>
   <div class="grid2">
     <div class="box"><h3>Bloque 1 · Producción (arranca a primera hora)</h3>
       <ul>
@@ -345,7 +337,7 @@ footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
         <li>Las tres combinaciones de pan y gelato (N4)</li>
         <li>Sabor de Halloween en vitrina, si ya salió (O2)</li>
         <li>Aniversario: se define cuando Liz decida cómo celebrarlo (O1)</li>
-        <li>Retrato y frase de una persona del equipo (N5)</li>
+        <li>Fotos de 6 u 8 clientes probando productos, con su permiso (N5)</li>
       </ul></div>
   </div>
   
@@ -383,8 +375,14 @@ const OBJ = {
   3:{n:"Llevar gente a las dos sedes", m:"Alcance local, visitas al perfil y toques en la dirección"},
   4:{n:"Atraer negocios que compran", m:"Mensajes de negocios y visitas al perfil"}
 };
+const OBJ_WHY = {
+  1:"Hoy el perfil muestra producto, pero no a la gente. Estas piezas cuentan quién hace Amalia y quién la visita.",
+  2:"Mostrar cómo se hace y por qué es distinto, para que la calidad se entienda sola.",
+  3:"Antojo, planes y fechas que den una razón para ir hoy al parque o a La Asunción.",
+  4:"Que una gelatería, un café o un restaurante que llegue al perfil entienda que Amalia también produce para ellos."
+};
 const PIEZAS = [
-  {id:"O1", obj:1, obj2:null, mes:"oct", dia:"Por definir", dnum:"★", dow:"Octubre", fecha:null, pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"O1", obj:1, obj2:null, mes:"oct", dia:"Octubre · fecha por definir con Liz", dnum:"★", dow:"Octubre", fecha:null, pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Por definir con Liz",
    titulo:"Aniversario de Amalia",
    concepto:"[Por definir: depende de cómo quiera celebrarlo Liz]",
@@ -394,7 +392,7 @@ const PIEZAS = [
    ref:"Por definir",
    prod:"Por definir",
    pend:"Conversar con Liz cómo quiere celebrar el aniversario, la fecha y cuántos años cumplen."},
-  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"16 oct", dnum:"16", dow:"Viernes", fecha:"2026-10-16", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"O2", obj:3, obj2:null, mes:"oct", dia:"Octubre, antes del 31 · fecha por definir", dnum:"Oct", dow:"Antes del 31", fecha:null, pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Dar a conocer el gelato de temporada y llevar gente a las sedes antes del 31",
    titulo:"Llegó el gelato de temporada de Halloween",
    concepto:"Anuncio del gelato de temporada con un guion corto que confirma que llegó, lo describe de forma apetecible y le pone fecha límite: solo hasta el 31 de octubre. Voz en off o una persona del equipo a cámara, con el texto en pantalla. Sale apenas el sabor llega a vitrina, para que se venda toda la temporada.",
@@ -409,7 +407,7 @@ const PIEZAS = [
    ],
    prod:"Se graba en la jornada de octubre o apenas el sabor llegue a vitrina. Necesita los ingredientes del sabor a la mano para armar el primer plano.",
    pend:"Nombre del sabor, sus ingredientes, fecha en que llega a vitrina y horario de las sedes."},
-  {id:"N1", obj:3, obj2:null, mes:"nov", dia:"3 nov", dnum:"3", dow:"Martes", fecha:"2026-11-03", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N1", obj:3, obj2:null, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"01", dow:"Noviembre", fecha:null, pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Antojar el desayuno en Amalia y llevar gente a las sedes en la mañana",
    titulo:"Las mañanas deberían empezar así",
    concepto:"Video sin voz, solo imagen y sonido: el producto estrella del desayuno servido sobre el mostrador junto a un café, con la cámara acercándose despacio, una mano que lo parte o le echa el toque final y el detalle del relleno o la textura. El texto en pantalla es una sola frase.",
@@ -423,7 +421,7 @@ const PIEZAS = [
    ],
    prod:"Primer bloque de la jornada, con la luz de la mañana: producto estrella del desayuno recién hecho, un café servido y el mostrador limpio.",
    pend:"Elegir con Liz el producto estrella del desayuno y cómo se sirve."},
-  {id:"N2", obj:2, obj2:null, mes:"nov", dia:"6 nov", dnum:"6", dow:"Viernes", fecha:"2026-11-06", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N2", obj:2, obj2:null, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"02", dow:"Noviembre", fecha:null, pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Educar sobre el gelato y que lo guarden",
    titulo:"Gelato y helado no son lo mismo",
    concepto:"Arranca con una interrupción directa a cámara (\"hey, para, para\") para frenar el scroll, lanza la pregunta de en qué se diferencian y responde con las diferencias en un resumen rápido. Cierra con cómo lo hacemos en Amalia.",
@@ -438,7 +436,7 @@ const PIEZAS = [
    ],
    prod:"Bloque de producción: persona a cámara para el intro y planos cerrados de textura, ingredientes y vitrina.",
    pend:"Confirmar con Amalia si su gelato es base leche (para sostener lo de menos grasa)."},
-  {id:"N3", obj:2, obj2:4, mes:"nov", dia:"10 nov", dnum:"10", dow:"Martes", fecha:"2026-11-10", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N3", obj:2, obj2:4, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"03", dow:"Noviembre", fecha:null, pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Mostrar el proceso con un sabor que la gente ya quiere probar",
    titulo:"Así hacemos el sabor que todos están pidiendo",
    concepto:"El proceso de un sabor en tendencia, de principio a fin: los ingredientes, la máquina, el gelato saliendo cremoso, la decoración en la bandeja y la llegada a la vitrina. Sin voz, con sonido real y el texto en pantalla. Le habla al cliente y también al dueño de una gelatería.",
@@ -452,7 +450,7 @@ const PIEZAS = [
    ],
    prod:"Bloque de producción: grabar el sabor elegido de principio a fin, con el ingrediente principal y el topping a la mano.",
    pend:"Preguntar a Liz si tienen pistacho: si lo tienen, va pistacho; si no, otro sabor en tendencia que produzcan. Definir también el topping."},
-  {id:"N4", obj:3, obj2:null, mes:"nov", dia:"13 nov", dnum:"13", dow:"Viernes", fecha:"2026-11-13", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N4", obj:3, obj2:null, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"04", dow:"Noviembre", fecha:null, pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Tráfico a las sedes en el puente festivo",
    titulo:"Plan de puente: pan + gelato",
    concepto:"Tres combinaciones de pan recién hecho con gelato, armadas en la vitrina. Llega el viernes antes del festivo del lunes 16.",
@@ -462,17 +460,21 @@ const PIEZAS = [
    ref:"Listado rápido 1-2-3 con texto en pantalla, 15 s.",
    prod:"Bloque de sedes: armar las tres combinaciones.",
    pend:"Qué combinaciones se venden o se pueden armar en el punto."},
-  {id:"N5", obj:1, obj2:null, mes:"nov", dia:"17 nov", dnum:"17", dow:"Martes", fecha:"2026-11-17", pilar:1, formato:"Post", redes:"IG · FB",
-   objetivo:"Ponerle cara a la marca",
-   titulo:"Las manos de Amalia: [nombre]",
-   concepto:"Retrato de una persona del equipo con una frase suya, textual. La primera de una serie que se repite cada mes.",
-   copy:"Ella es [Nombre] y lleva [X] años en Amalia 🤎\n\"[Frase textual de la persona]\"\nCada [pan / gelato] que llega a la vitrina pasa por sus manos. Hoy queremos que la conozcas.\n\n#Amalia #Copacabana #NuestroEquipo",
-   cta:"Déjale un mensaje en comentarios",
-   portada:"Las manos de Amalia", portadaNota:"Retrato con luz natural en el lugar de trabajo",
-   ref:"Retrato editorial cálido, sin posar: la persona en su puesto.",
-   prod:"Bloque de equipo: retrato y una frase en audio o texto.",
-   pend:"Sale de la sesión de historia de marca: quién sale, nombre, años y frase."},
-  {id:"N6", obj:3, obj2:1, mes:"nov", dia:"20 nov", dnum:"20", dow:"Viernes", fecha:"2026-11-20", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N5", obj:1, obj2:null, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"05", dow:"Noviembre", fecha:null, pilar:1, formato:"Carrusel", redes:"IG · FB",
+   objetivo:"Ponerle cara a la comunidad de Amalia",
+   titulo:"Esto es Amalia: la gente que vuelve",
+   concepto:"Carrusel de fotos reales de clientes de Amalia probando gelato y pan en las dos sedes, sin texto sobre las fotos. El copy cuenta por qué la gente llega y por qué se queda, y quién está detrás.",
+   guion:"Láminas (6 a 8 fotos, sin texto encima):\n\n1 · Un cliente de siempre probando gelato, con el local de fondo.\n2 a 7 · Clientes distintos (familias, jóvenes, adultos mayores) con su gelato, su pan o su café.\n8 · El equipo de Amalia detrás del mostrador.",
+   copy:"Los que vienen a Amalia llegan por un antojo 🤎 y se quedan porque encuentran algo que se siente de casa.\n\nGelato hecho aquí mismo, con maquinaria profesional de gelatería, insumos importados, sin conservantes y con ingredientes naturales. Pan que sale del horno cada mañana. [Lo que hace único a Amalia, en palabras de Liz].\n\nY detrás, [un equipo / una familia] de Copacabana que lleva [9] años haciendo esto con cariño.\n\nGracias a todos los que hacen parte de Amalia. Esto es Amalia 🤎\n\n#Amalia #Copacabana",
+   cta:"Etiqueta a quien siempre te acompaña a Amalia",
+   portada:"Foto de un cliente de siempre probando gelato", portadaNota:"Sin texto: la foto real es la portada, como en la referencia",
+   ref:"Fotos espontáneas, a la altura de los ojos, de la persona probando: la cuchara en la boca, la sonrisa, el producto en la mano. Luz natural del local y la marca de fondo cuando se pueda.",
+   refs:[
+     {img:"refs/Dd5EWCNjba4.jpg", url:"https://www.instagram.com/p/Dd5EWCNjba4/", t:"Referencia", d:"Klea · carrusel de clientes reales probando el producto, con un copy sobre la comunidad y la familia detrás."}
+   ],
+   prod:"Bloque de sedes: fotografiar a 6 u 8 clientes durante la jornada, en las dos sedes. Pedirles permiso para publicar su foto antes de tomarla.",
+   pend:"Lo que hace único a Amalia en palabras de Liz, si hay una familia detrás del negocio y cuántos años cumplen."},
+  {id:"N6", obj:3, obj2:1, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"06", dow:"Noviembre", fecha:null, pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Dar a conocer los productos y antojar la visita a las sedes",
    titulo:"Miniserie · Día 1 de 5 probando nuestros productos",
    concepto:"Arranca una miniserie que se sigue mes a mes: una persona del equipo prueba 2 o 3 productos de Amalia y los describe de forma que den ganas de ir por ellos. En noviembre sale el Día 1; los días 2 a 5 continúan en las próximas parrillas.",
@@ -486,7 +488,7 @@ const PIEZAS = [
    ],
    prod:"Bloque de sedes: la persona del equipo que sale a cámara y los 2 o 3 productos listos para probar. Conviene que sea la misma persona en toda la serie.",
    pend:"Elegir los productos del Día 1 y quién los presenta."},
-  {id:"N7", obj:4, obj2:null, mes:"nov", dia:"24 nov", dnum:"24", dow:"Martes", fecha:"2026-11-24", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N7", obj:4, obj2:null, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"07", dow:"Noviembre", fecha:null, pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Mostrar que Amalia es proveedora de gelato para otros negocios",
    titulo:"¿Tienes una gelatería, un café o un restaurante?",
    concepto:"Sigue la estructura de la referencia: pregunta directa al dueño del negocio, lo que gana trabajando con Amalia (un producto que sus clientes repiten, sin complicarse la operación) y cómo se hace el gelato. Cierra con vender más y diferenciarse, e invita a escribir.",
@@ -500,7 +502,7 @@ const PIEZAS = [
    ],
    prod:"Bloque de producción: bodegón de sabores, la máquina, bandejas en volumen y empaque para entrega.",
    pend:"Sabores y presentaciones para negocios, pedido mínimo si lo hay, zona de entrega y el canal para pedidos mayoristas."},
-  {id:"N8", obj:2, obj2:4, mes:"nov", dia:"27 nov", dnum:"27", dow:"Viernes", fecha:"2026-11-27", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+  {id:"N8", obj:2, obj2:4, mes:"nov", dia:"Noviembre · fecha por definir", dnum:"08", dow:"Noviembre", fecha:null, pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
    objetivo:"Mostrar el oficio con antojo",
    titulo:"Capa por capa: nuestro hojaldre",
    concepto:"El laminado de la masa, el horno y el crujido al partir la pieza recién horneada. Muestra la segunda línea que Amalia produce para otros negocios.",
@@ -519,7 +521,7 @@ function card(p){
   const pi = PILAR[p.pilar];
   return `<details class="card" id="${p.id}" data-pilar="${p.pilar}" style="--c:${pi.c}">
   <summary>
-    <div class="date"><b>${p.dnum}</b><span>${p.dia==="Por definir"?"Octubre":p.dow}</span></div>
+    <div class="date"><b>${p.dnum}</b><span>${p.dow}</span></div>
     <div>
       <h3>${hl(p.titulo)}</h3>
       <div class="meta">
@@ -535,7 +537,7 @@ function card(p){
   </summary>
   <div class="body">
     <div>
-      <div class="field"><label>Fecha</label><p>${p.dia==="Por definir"?"Octubre · fecha por definir con Amalia":p.dow+" "+p.dia}</p></div>
+      <div class="field"><label>Fecha</label><p>${p.dia}</p></div>
       <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p><p style="color:var(--muted);font-size:13px;margin-top:4px">Se mide en: ${OBJ[p.obj].m}</p></div>
       <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
       ${p.guion?`<div class="field"><label>Guion</label><div class="copy">${hl(p.guion)}</div></div>`:""}
@@ -554,7 +556,7 @@ function card(p){
 }
 
 function renderCards(f){
-  document.getElementById("cards").innerHTML = PIEZAS.filter(p=>f==="all"||String(p.pilar)===f).map(card).join("");
+  document.getElementById("cards").innerHTML = PIEZAS.filter(p=>f==="all"||String(p.obj)===f).map(card).join("");
   document.querySelectorAll(".cpbtn").forEach(b=>b.onclick=e=>{
     e.preventDefault();
     const p = PIEZAS.find(x=>x.id===b.dataset.copy);
@@ -562,37 +564,19 @@ function renderCards(f){
     try{navigator.clipboard.writeText(p.copy).then(done,()=>{})}catch(err){}
   });
 }
-const F = [["all","Todas"],["1","La cara de Amalia"],["2","El oficio"],["3","Producto y momentos"]];
+const F = [["all","Todas"],["1","01 · Ponerle cara"],["2","02 · Valor real"],["3","03 · Llevar gente a las sedes"],["4","04 · Negocios"]];
 document.getElementById("filters").innerHTML = F.map(([k,n],i)=>`<button data-f="${k}" class="${i?"":"on"}">${n}</button>`).join("");
 document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{
   document.querySelectorAll("#filters button").forEach(x=>x.classList.remove("on"));
   b.classList.add("on"); renderCards(b.dataset.f);
 });
 renderCards("all");
+const chipP = p => `<a class="ochip" href="#${p.id}" data-open="${p.id}" style="--c:${PILAR[p.pilar].c}"><small>${p.mes==="oct"?"Octubre":"Noviembre"} · ${p.formato}</small>${esc(p.titulo.replace(/\[|\]/g,""))}</a>`;
 document.getElementById("objs").innerHTML = Object.entries(OBJ).map(([k,o])=>{
-  const pr = PIEZAS.filter(p=>p.obj==k).map(p=>p.id), se = PIEZAS.filter(p=>p.obj2==k).map(p=>p.id);
-  return `<div class="obj"><div class="num">0${k}</div><h3>${o.n}</h3><p>Se mide en: ${o.m}</p><div class="ps">${pr.length} pieza${pr.length>1?"s":""}: ${pr.join(" · ")}${se.length?`<br><span style="color:var(--muted);font-weight:500">También lo apoyan: ${se.join(" · ")}</span>`:""}</div></div>`;
+  const pr = PIEZAS.filter(p=>p.obj==k), se = PIEZAS.filter(p=>p.obj2==k);
+  return `<div class="obj"><div class="num">0${k}</div><h3>${o.n}</h3><p>${OBJ_WHY[k]}</p><p class="med">Se mide en: ${o.m}</p><div class="ps">${pr.length} pieza${pr.length>1?"s":""}</div>${pr.map(chipP).join("")}${se.length?`<div class="ps sec">También lo apoyan</div>${se.map(chipP).join("")}`:""}</div>`;
 }).join("");
 
-// calendario
-function month(y,m,titulo,festivos,extra){
-  const first = new Date(y,m,1), days = new Date(y,m+1,0).getDate();
-  const offset = (first.getDay()+6)%7; // lunes primero
-  let h = `<div class="cal-block"><h3>${titulo}</h3><div class="cal">`;
-  ["Lun","Mar","Mié","Jue","Vie","Sáb","Dom"].forEach(d=>h+=`<div class="dow">${d}</div>`);
-  for(let i=0;i<offset;i++) h+=`<div class="day empty"></div>`;
-  for(let d=1; d<=days; d++){
-    const iso = `${y}-${String(m+1).padStart(2,"0")}-${String(d).padStart(2,"0")}`;
-    const ps = PIEZAS.filter(p=>p.fecha===iso);
-    const fest = festivos[d];
-    h += `<div class="day${fest?" fest":""}"><span class="d">${d}</span>${fest?`<div class="tag">${fest}</div>`:""}${(extra[d]||"")}`+
-      ps.map(p=>`<a class="chip" href="#${p.id}" data-open="${p.id}" style="--c:${PILAR[p.pilar].c}">${p.formato} · ${esc(p.titulo.replace(/\[|\]/g,""))}</a>`).join("")+`</div>`;
-  }
-  return h+`</div></div>`;
-}
-document.getElementById("cal").innerHTML =
-  month(2026,9,'Octubre · 2 videos anticipados <span class="pill oct">Aniversario: fecha por definir</span>',{12:"Festivo",31:"Halloween"},{}) +
-  month(2026,10,"Noviembre · 8 publicaciones",{2:"Festivo",16:"Festivo"},{});
 document.addEventListener("click",e=>{
   const a = e.target.closest("[data-open]"); if(!a) return;
   document.querySelectorAll("#filters button")[0].click();
