@@ -21,6 +21,8 @@ em.f{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--
 header{padding:32px 0 18px}
 header h1{font-size:clamp(30px,7vw,48px);line-height:1.02;font-weight:800;margin:10px 0 10px}
 header p{color:var(--muted);font-size:15px}
+.videos{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.videos span{font-size:12.5px;font-weight:600;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
 .progress{position:sticky;top:0;z-index:10;background:rgba(248,243,234,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 0}
 .progress .wrap{display:flex;align-items:center;gap:12px}
 .bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
@@ -33,14 +35,19 @@ section > .wrap > p.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
 .box{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px}
 .box h3{font-size:17px;margin-bottom:8px}
 .box ul{padding-left:18px;font-size:14.5px}
-.box li{margin-bottom:6px}
-.warn{background:#FBEAD9;border-color:#F0CFB1}
-.warn h3{color:var(--terracota)}
+.box li{margin-bottom:7px}
+.liz{background:var(--cafe);border-color:var(--cafe);color:var(--mantequilla)}
+.liz h3{color:#fff;font-size:20px}
+.liz p{font-size:14px;margin-bottom:10px}
+.liz li{color:var(--mantequilla)}
+.liz b{color:#fff}
 .block{background:var(--paper);border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden;border-left:6px solid var(--c,var(--caramelo))}
 .block-h{padding:14px 18px 6px}
 .block-h .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--c,var(--caramelo));color:#fff;border-radius:99px;padding:3px 10px}
 .block-h h3{font-size:19px;margin:8px 0 2px}
 .block-h p{font-size:13.5px;color:var(--muted)}
+.need{margin:6px 18px 4px;background:#FBEAD9;border-radius:10px;padding:9px 12px;font-size:13.5px;color:#6e3d24}
+.need b{color:var(--terracota)}
 .shots{list-style:none;padding:6px 10px 12px}
 .shot{display:flex;gap:12px;align-items:flex-start;padding:10px 8px;border-radius:12px;cursor:pointer}
 .shot:hover{background:var(--bg)}
@@ -50,7 +57,7 @@ section > .wrap > p.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
 .shot.done .txt{opacity:.45;text-decoration:line-through}
 .txt b{display:block;font-size:15px}
 .txt span{font-size:13px;color:var(--muted)}
-.txt .for{display:inline-block;font-size:11px;font-weight:700;color:var(--cacao);background:var(--mantequilla);border-radius:6px;padding:1px 7px;margin-top:4px}
+.txt .for{display:inline-block;font-size:11px;font-weight:700;font-style:normal;color:var(--cacao);background:var(--mantequilla);border-radius:6px;padding:1px 7px;margin-top:4px}
 .script{margin:0 18px 16px;background:var(--bg);border:1px dashed var(--miel);border-radius:12px;padding:12px 14px;font-size:14.5px;white-space:pre-line}
 .script small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;white-space:normal}
 .order{counter-reset:o;list-style:none}
@@ -70,7 +77,10 @@ footer a{color:var(--caramelo)}
 <header><div class="wrap">
   <div class="kicker">Amalia · Plan de grabación</div>
   <h1>Martes 6 de octubre: <em class="f">sede La Asunción</em></h1>
-  <p>📍 Cra. 56 #51-19, La Asunción, Copacabana. Tomas urgentes y todo lo que necesita el centro de producción. Marca cada toma cuando quede grabada. Todo se graba en vertical (9:16) y, si se puede, también un plano abierto en 4:5.</p>
+  <p>📍 Cra. 56 #51-19, La Asunción, Copacabana. Mañana grabamos siete videos en una sola jornada.</p>
+  <div class="videos">
+    <span>🎂 Aniversario</span><span>🎃 Gelato de Halloween</span><span>Gelato y helado no son lo mismo</span><span>💚 Gelato de pistacho</span><span>Amalia existe gracias a…</span><span>Proveedores de gelato</span><span>🍫 ¿Sabes qué te quita lo triste?</span>
+  </div>
 </div></header>
 
 <div class="progress"><div class="wrap">
@@ -79,52 +89,70 @@ footer a{color:var(--caramelo)}
 </div></div>
 
 <section><div class="wrap">
-  <div class="box warn">
-    <h3>Confirmar hoy con Liz</h3>
+  <div class="box liz">
+    <h3>Liz, esto es lo que necesitamos listo para mañana</h3>
+    <p>Con esto la jornada fluye y no tenemos que esperar a que salga un producto o a que alguien esté disponible.</p>
     <ul>
-      <li><b>Sabor de temporada de Halloween:</b> cuál es, sus ingredientes y si ya está listo para grabarlo.</li>
-            <li><b>"¿Sabes qué te quita lo triste?":</b> ¿gelato o torta? Si es gelato, se graba mañana en la planta.</li>
-      <li><b>Quién sale a cámara</b> para el intro de "Gelato y helado no son lo mismo" y el anuncio de Halloween.</li>
-      <li><b>A qué hora está la máquina trabajando,</b> para llegar justo cuando arranca la producción.</li>
+      <li><b>Producción de gelato de pistacho</b> mañana, y avisarnos a qué hora arranca la máquina, para llegar justo a esa hora.</li>
+      <li><b>La mezcla de la torta de chocolate</b> mañana, y a qué hora la van a preparar.</li>
+      <li><b>El gelato de temporada de Halloween listo</b>, con sus ingredientes a la mano para ponerlos alrededor en las fotos.</li>
+      <li><b>Varios sabores servidos y bandejas listas</b> para el video de proveedores, y el gelato en las presentaciones que entregan a negocios.</li>
+      <li><b>El equipo de La Asunción</b>: saber quiénes van a estar, sus nombres y qué hace cada uno. Cada persona sale en su puesto.</li>
+      <li><b>Una persona que salga a cámara</b> para hablar en dos videos (puedes ser tú). Abajo están los guiones para que los lea antes.</li>
+      <li><b>Fotos antiguas de Amalia</b> para el aniversario: el primer local, las primeras tandas, el equipo de los primeros años.</li>
+      <li><b>La vitrina y el mostrador limpios</b>, y cucharas, paletas, vasos y copas bonitos a la mano.</li>
     </ul>
   </div>
   <div class="box">
-    <h3>Qué llevar</h3>
+    <h3>Lo que llevamos nosotros</h3>
     <ul>
-      <li>Celular con batería llena y espacio, trípode y luz de apoyo.</li>
-      <li>Micrófono para las tomas a cámara.</li>
-      <li>Paños limpios para la vitrina, el mostrador y las bandejas.</li>
-      <li>Pedirle a la planta: cucharas, paletas, vasos y copas bonitos, y los ingredientes de cada sabor a la mano.</li>
+      <li>Cámara, trípode, luz y micrófono.</li>
+      <li>Un marco de cartulina blanca para el video del equipo.</li>
     </ul>
   </div>
 </div></section>
 
 <section><div class="wrap">
   <div class="kicker">Orden del día</div>
-  <h2>Cómo aprovechar la jornada</h2>
-  <p class="sub">El proceso de la máquina se graba una sola vez y sirve para tres videos. Por eso va primero.</p>
+  <h2>Cómo va la jornada</h2>
+  <p class="sub">Primero lo que depende de la producción, porque la máquina y la mezcla tienen su hora. Después el resto, y al final las tomas a cámara.</p>
   <div class="box"><ol class="order">
-    <li><b>La máquina trabajando, de principio a fin</b> con el gelato de pistacho. Sirve para el video de proceso, el de proveedores y el de gelato vs. helado.</li>
-    <li><b>Bandejas recién salidas</b>: decoración a mano, textura y volumen.</li>
-    <li><b>Halloween</b>: primeros planos del sabor de temporada con sus ingredientes alrededor.</li>
-    <li><b>Bodegón de sabores</b> para proveedores.</li>
-    <li><b>"¿Sabes qué te quita lo triste?"</b> si va con gelato.</li>
-    <li><b>Tomas a cámara al final</b>: el intro de gelato vs. helado y el anuncio de Halloween, con el producto ya listo de fondo.</li>
+    <li><b>La máquina con el pistacho, de principio a fin.</b> Se graba una vez y sirve para tres videos.</li>
+    <li><b>Bandejas recién salidas:</b> decoración, textura y volumen.</li>
+    <li><b>La mezcla de la torta de chocolate,</b> a la hora en que la preparen.</li>
+    <li><b>Gelato de Halloween</b> con sus ingredientes alrededor.</li>
+    <li><b>Sabores servidos</b> para el video de proveedores.</li>
+    <li><b>El equipo de La Asunción</b> con el marco, una persona a la vez.</li>
+    <li><b>Aniversario:</b> el local, el equipo, los clientes y las fotos antiguas.</li>
+    <li><b>Tomas a cámara:</b> gelato vs. helado y el anuncio de Halloween.</li>
   </ol></div>
 </div></section>
 
 <section><div class="wrap">
   <div class="kicker">Lista de tomas</div>
-  <h2>Toma por toma</h2>
+  <h2>Video por video</h2>
 
   <div class="block" style="--c:var(--terracota)">
-    <div class="block-h"><span class="tag">Urgente</span><h3>Llegó el gelato de temporada (Halloween)</h3><p>Tiene que salir antes del 31 de octubre. Referencia: Pasión Gelato, gelato del mes.</p></div>
+    <div class="block-h"><span class="tag">Octubre</span><h3>🎂 Aniversario de Amalia</h3><p>El guion lo definimos contigo. Mañana grabamos el material para que, decidas lo que decidas, ya esté listo.</p></div>
+    <div class="need"><b>Para tener listo:</b> fotos antiguas del negocio y el equipo disponible para una foto de grupo.</div>
     <ul class="shots">
-      <li class="shot"><input type="checkbox" data-k="h1"><div class="txt"><b>Primer plano extremo del gelato con sus ingredientes alrededor</b><span>Fruta o toppings del sabor puestos al lado, para que se vea la textura y el color. Movimiento lento.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="h2"><div class="txt"><b>La paleta sacando la bola</b><span>De cerca, que se vea lo cremoso.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="h3"><div class="txt"><b>El gelato servido en mano</b><span>Vaso o cono, con fondo limpio.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="h4"><div class="txt"><b>Portada: primer plano limpio</b><span>Para poner encima "Gelato de temporada 🎃 solo hasta el 31".</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="h5"><div class="txt"><b>Guion a cámara o en voz en off</b><span>Grabar 2 o 3 tomas completas.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="a1"><div class="txt"><b>Fachada de La Asunción con el letrero</b><span>Plano abierto y uno más cerca del logo.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="a2"><div class="txt"><b>El local por dentro con gente</b><span>Mesas, vitrina, el movimiento normal de la sede.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="a3"><div class="txt"><b>El equipo junto, sonriendo a cámara</b><span>Foto y video corto de todos los de La Asunción.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="a4"><div class="txt"><b>Clientes disfrutando</b><span>Con su permiso: gelato, pan, café.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="a5"><div class="txt"><b>Fotos antiguas del negocio</b><span>El primer local, las primeras tandas y el equipo de los primeros años.</span></div></li>
+    </ul>
+  </div>
+
+  <div class="block" style="--c:var(--terracota)">
+    <div class="block-h"><span class="tag">Urgente · Octubre</span><h3>🎃 Llegó el gelato de temporada (Halloween)</h3><p>Tiene que salir antes del 31 de octubre.</p></div>
+    <div class="need"><b>Para tener listo:</b> el gelato de temporada y sus ingredientes; nombre del sabor y horario de las sedes para el guion.</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="h1"><div class="txt"><b>Primer plano del gelato con sus ingredientes alrededor</b><span>Que se vea la textura y el color.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="h2"><div class="txt"><b>La paleta sacando la bola</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="h3"><div class="txt"><b>El gelato servido en mano</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="h4"><div class="txt"><b>Portada: primer plano limpio</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="h5"><div class="txt"><b>Guion a cámara o en voz en off</b><span>Dos o tres tomas completas.</span></div></li>
     </ul>
     <div class="script"><small>Guion</small>Confirmamos que nuestro gelato de temporada ya llegó.
 Es un delicioso gelato [descripción apetecible del gelato].
@@ -133,29 +161,29 @@ Estamos de [hora] a [hora].</div>
   </div>
 
   <div class="block" style="--c:var(--caramelo)">
-    <div class="block-h"><span class="tag">Producción</span><h3>Así hacemos nuestro gelato de pistacho</h3><p>Sin voz, con sonido real. Referencia: Velatti Gelato.</p></div>
+    <div class="block-h"><span class="tag">Producción</span><h3>💚 Así hacemos nuestro gelato de pistacho</h3><p>Sin voz, con el sonido real del proceso.</p></div>
+    <div class="need"><b>Para tener listo:</b> producción de pistacho mañana, el pistacho a la mano y el topping con el que terminan la bandeja.</div>
     <ul class="shots">
-      <li class="shot"><input type="checkbox" data-k="p1"><div class="txt"><b>El pistacho</b><span>Cayendo en el recipiente o en la mano. Que suene.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="p2"><div class="txt"><b>La base entrando a la máquina</b><span>Plano cerrado del vertido.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="p3"><div class="txt"><b>La máquina batiendo</b><span>Plano fijo de 10 a 15 segundos; sirve también para los otros videos.</span><em class="for">También: proveedores · gelato vs. helado</em></div></li>
-      <li class="shot"><input type="checkbox" data-k="p4"><div class="txt"><b>El gelato saliendo cremoso de la máquina</b><span>El momento estrella: de cerca y en cámara lenta si se puede.</span><em class="for">También: proveedores</em></div></li>
-      <li class="shot"><input type="checkbox" data-k="p5"><div class="txt"><b>Decoración a mano en la bandeja con el topping</b></div></li>
-      <li class="shot"><input type="checkbox" data-k="p6"><div class="txt"><b>La paleta pasando por la bandeja terminada</b><span>Toma final y portada.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="p1"><div class="txt"><b>El pistacho</b><span>Cayendo en el recipiente o en la mano.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="p2"><div class="txt"><b>La base entrando a la máquina</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="p3"><div class="txt"><b>La máquina batiendo</b><span>Plano fijo de 10 a 15 segundos.</span><em class="for">También sirve para proveedores y gelato vs. helado</em></div></li>
+      <li class="shot"><input type="checkbox" data-k="p4"><div class="txt"><b>El gelato saliendo cremoso de la máquina</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="p5"><div class="txt"><b>Decoración a mano en la bandeja</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="p6"><div class="txt"><b>La paleta pasando por la bandeja terminada</b></div></li>
     </ul>
-    <div class="script"><small>Texto en pantalla (se pone en edición)</small>Así hacemos nuestro gelato de pistacho, uno de los sabores que todos están pidiendo.
-Pistacho de verdad. · Batido lento en nuestra máquina de gelatería. · Terminado a mano con [topping]. · Directo a nuestra vitrina.</div>
   </div>
 
   <div class="block" style="--c:var(--caramelo)">
-    <div class="block-h"><span class="tag">Producción</span><h3>Gelato y helado no son lo mismo</h3><p>Persona a cámara para el intro y una toma por cada diferencia.</p></div>
+    <div class="block-h"><span class="tag">Producción</span><h3>Gelato y helado no son lo mismo</h3><p>Una persona a cámara para el inicio y una toma por cada diferencia.</p></div>
+    <div class="need"><b>Para tener listo:</b> la persona que sale a cámara (que lea el guion antes) y los ingredientes del gelato sobre una mesa.</div>
     <ul class="shots">
-      <li class="shot"><input type="checkbox" data-k="g1"><div class="txt"><b>Intro: la mano que frena la cámara</b><span>"Hey, para, para. Esto no es helado tradicional, es gelato", mostrando el gelato.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="g2"><div class="txt"><b>La cuchara entrando en el gelato denso</b><span>Para "menos aire, más cremoso".</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="g3"><div class="txt"><b>Los ingredientes naturales</b><span>Leche, fruta y los insumos sobre la mesa. Para "menos grasa" y "sin conservantes".</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="g4"><div class="txt"><b>La paleta sirviendo</b><span>Para "se sirve a una temperatura un poco más alta".</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="g5"><div class="txt"><b>Cierre con la máquina o la vitrina</b><span>Para "maquinaria profesional e insumos importados". Se puede usar la toma de la máquina.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="g1"><div class="txt"><b>Inicio: la mano que frena la cámara</b><span>"Hey, para, para. Esto no es helado tradicional, es gelato."</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="g2"><div class="txt"><b>La cuchara entrando en el gelato</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="g3"><div class="txt"><b>Los ingredientes naturales sobre la mesa</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="g4"><div class="txt"><b>La paleta sirviendo</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="g5"><div class="txt"><b>Cierre con la máquina o la vitrina</b><em class="for">Se reusa la toma de la máquina</em></div></li>
     </ul>
-    <div class="script"><small>Guion completo para quien sale a cámara</small>Hey, para, para. Esto no es helado tradicional, es gelato.
+    <div class="script"><small>Guion para quien sale a cámara</small>Hey, para, para. Esto no es helado tradicional, es gelato.
 ¿Y en qué se diferencian?
 Para empezar, el gelato es originario de Italia.
 Primero, se bate lento y por eso tiene menos aire: es más denso, más cremoso y su sabor es mucho más intenso.
@@ -166,43 +194,56 @@ En Amalia lo preparamos con maquinaria profesional de gelatería e insumos impor
   </div>
 
   <div class="block" style="--c:var(--caramelo)">
-    <div class="block-h"><span class="tag">Producción</span><h3>¿Tienes una gelatería, un café o un restaurante?</h3><p>Proveedores de gelato. Referencia: Kathe Suárez.</p></div>
+    <div class="block-h"><span class="tag">Producción</span><h3>¿Tienes una gelatería, un café o un restaurante?</h3><p>El video para negocios que quieren comprar gelato.</p></div>
+    <div class="need"><b>Para tener listo:</b> varios sabores para servir, bandejas listas y el gelato en las presentaciones que entregan a negocios.</div>
     <ul class="shots">
-      <li class="shot"><input type="checkbox" data-k="v1"><div class="txt"><b>Bodegón de sabores sobre una mesa</b><span>Varios sabores servidos, vistos desde arriba. Es la toma de arranque y la portada.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="v2"><div class="txt"><b>Bandejas en volumen</b><span>Varias bandejas listas, para mostrar capacidad.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="v3"><div class="txt"><b>Empaque listo para entregar</b><span>El gelato en sus presentaciones para negocios.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="v4"><div class="txt"><b>La máquina y el gelato saliendo</b><span>Ya grabadas en el bloque de proceso.</span><em class="for">Reusar del video de proceso</em></div></li>
+      <li class="shot"><input type="checkbox" data-k="v1"><div class="txt"><b>Varios sabores servidos sobre una mesa</b><span>Vistos desde arriba.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="v2"><div class="txt"><b>Bandejas en volumen</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="v3"><div class="txt"><b>Empaque listo para entregar</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="v4"><div class="txt"><b>La máquina y el gelato saliendo</b><em class="for">Se reusa del video de pistacho</em></div></li>
     </ul>
   </div>
 
   <div class="block" style="--c:var(--cacao)">
-    <div class="block-h"><span class="tag">Si Liz elige gelato</span><h3>¿Sabes qué te quita lo triste?</h3><p>Primeros planos lentos con sonido real. Referencia: The Sweet Shop.</p></div>
+    <div class="block-h"><span class="tag">Producción</span><h3>🍫 ¿Sabes qué te quita lo triste?</h3><p>Solo tomas de la mezcla de la torta de chocolate, muy de cerca.</p></div>
+    <div class="need"><b>Para tener listo:</b> la mezcla de la torta de chocolate mañana, y avisarnos la hora.</div>
     <ul class="shots">
-      <li class="shot"><input type="checkbox" data-k="t1"><div class="txt"><b>La paleta entrando en la bandeja</b><span>Muy de cerca, que suene.</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="t2"><div class="txt"><b>La textura cremosa estirándose</b></div></li>
-      <li class="shot"><input type="checkbox" data-k="t3"><div class="txt"><b>La bola formándose</b></div></li>
-      <li class="shot"><input type="checkbox" data-k="t4"><div class="txt"><b>La copa servida</b><span>Toma final, para "Un gelato de Amalia 🤎".</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="t1"><div class="txt"><b>La espátula entrando en la mezcla</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="t2"><div class="txt"><b>Los remolinos y el brillo del chocolate</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="t3"><div class="txt"><b>La espátula levantando la mezcla, que cae en hilo</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="t4"><div class="txt"><b>La mezcla cayendo en el molde</b></div></li>
+    </ul>
+  </div>
+
+  <div class="block" style="--c:var(--terracota)">
+    <div class="block-h"><span class="tag">Equipo</span><h3>Amalia existe gracias a… · equipo de La Asunción</h3><p>Con un marco de cartulina vamos encuadrando a cada persona en su puesto. El equipo del parque se graba en otra jornada.</p></div>
+    <div class="need"><b>Para tener listo:</b> los nombres del equipo de La Asunción y qué hace cada uno.</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="e1"><div class="txt"><b>El marco mostrando el local</b><span>"Amalia existe gracias a…"</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="e2"><div class="txt"><b>Quien hornea, en su puesto</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="e3"><div class="txt"><b>Quien prepara el gelato, en su puesto</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="e4"><div class="txt"><b>Quien atiende en La Asunción</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="e5"><div class="txt"><b>Las demás personas de la sede</b><span>Una toma por persona.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="e6"><div class="txt"><b>Cierre: el marco encuadrando a los clientes</b><span>"…y a ustedes, que vuelven cada semana 🤎"</span></div></li>
     </ul>
   </div>
 </div></section>
 
 <section><div class="wrap">
-  <div class="kicker">Para otra jornada</div>
-  <h2>Lo que no se graba mañana</h2>
+  <div class="kicker">Próxima jornada</div>
+  <h2>Lo que grabamos después</h2>
   <div class="later">
-    <div><b>Las mañanas deberían empezar así</b>Necesita luz de mañana en la sede y el producto del desayuno.</div>
-    <div><b>Amalia existe gracias a…</b>Necesita al equipo en las dos sedes y el marco de cartulina.</div>
-    <div><b>Llegué por un antojo…</b>Necesita un cliente en la sede, pan, brownies y el sabor de temporada.</div>
-    <div><b>Miniserie Día 1</b>Faltan los productos que elija Liz.</div>
-    <div><b>Aniversario</b>En blanco hasta que Liz decida cómo celebrarlo.</div>
-    <div><b>Si va con torta</b>"¿Sabes qué te quita lo triste?" también se puede grabar mañana en La Asunción, si hay una torta entera lista.</div>
+    <div><b>Amalia existe gracias a… · equipo del parque</b>El equipo de la sede del parque.</div>
+    <div><b>Las mañanas deberían empezar así</b>Con luz de mañana y el producto estrella del desayuno.</div>
+    <div><b>Llegué por un antojo…</b>Un cliente, pan, brownies y el sabor de temporada.</div>
+    <div><b>Miniserie Día 1</b>Cuando elijas los productos.</div>
   </div>
 </div></section>
 
 <footer>Amalia · Plan de grabación · Preparado por Hounter Leads · <a href="./">Ver la parrilla completa</a></footer>
 
 <script>
-const KEY = "amalia-grabacion-06oct";
+const KEY = "amalia-grabacion-06oct-v2";
 let state = {};
 try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
 const boxes = [...document.querySelectorAll('.shot input')];
