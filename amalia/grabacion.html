@@ -67,6 +67,13 @@ section > .wrap > p.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
 .later{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .later div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px}
 .later b{display:block;font-size:14px}
+.rl{margin:8px 18px 4px;display:flex;flex-direction:column;gap:6px}
+.rl small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.rl-i{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px}
+.rl-i b{flex-basis:100%}
+.rl-i a{font-size:12.5px;font-weight:600;color:var(--cafe);background:var(--mantequilla);text-decoration:none;border-radius:99px;padding:4px 11px}
+.rl:has(.rl-i)~.script, .need~.script{margin-top:10px}
+.rl:not(:has(.rl-i)){display:none}
 footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:12.5px}
 footer a{color:var(--caramelo)}
 @media(max-width:560px){.later{grid-template-columns:1fr}}
@@ -135,6 +142,8 @@ footer a{color:var(--caramelo)}
   <div class="block" style="--c:var(--terracota)">
     <div class="block-h"><span class="tag">Octubre</span><h3>🎂 Aniversario de Amalia</h3><p>El guion lo definimos contigo. Mañana grabamos el material para que, decidas lo que decidas, ya esté listo.</p></div>
     <div class="need"><b>Para tener listo:</b> fotos antiguas del negocio y el equipo disponible para una foto de grupo.</div>
+    <div class="rl"><small>Referencias</small></div>
+    <div class="script"><small>Guion</small>En construcción…</div>
     <ul class="shots">
       <li class="shot"><input type="checkbox" data-k="a1"><div class="txt"><b>Fachada de La Asunción con el letrero</b><span>Plano abierto y uno más cerca del logo.</span></div></li>
       <li class="shot"><input type="checkbox" data-k="a2"><div class="txt"><b>El local por dentro con gente</b><span>Mesas, vitrina, el movimiento normal de la sede.</span></div></li>
@@ -147,6 +156,11 @@ footer a{color:var(--caramelo)}
   <div class="block" style="--c:var(--terracota)">
     <div class="block-h"><span class="tag">Urgente · Octubre</span><h3>🎃 Llegó el gelato de temporada (Halloween)</h3><p>Tiene que salir antes del 31 de octubre.</p></div>
     <div class="need"><b>Para tener listo:</b> el gelato de temporada y sus ingredientes; nombre del sabor y horario de las sedes para el guion.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Guion · Mivassi</b><a href="https://www.instagram.com/reel/Dc6ImgIx5lD/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-guion-mivassi.mp4" target="_blank" rel="noopener">Ver video ▶</a></div><div class="rl-i"><b>Tomas · Pasión Gelato</b><a href="https://www.instagram.com/reel/DairuyoJR8m/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-tomas-pasion.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="script"><small>Guion</small>Confirmamos que nuestro gelato de temporada ya llegó.
+Es un delicioso gelato [descripción apetecible del gelato].
+Pero lo malo es que solo lo tendremos hasta el 31 de octubre, así que corran a probarlo.
+Estamos de [hora] a [hora].</div>
     <ul class="shots">
       <li class="shot"><input type="checkbox" data-k="h1"><div class="txt"><b>Primer plano del gelato con sus ingredientes alrededor</b><span>Que se vea la textura y el color.</span></div></li>
       <li class="shot"><input type="checkbox" data-k="h2"><div class="txt"><b>La paleta sacando la bola</b></div></li>
@@ -154,15 +168,18 @@ footer a{color:var(--caramelo)}
       <li class="shot"><input type="checkbox" data-k="h4"><div class="txt"><b>Portada: primer plano limpio</b></div></li>
       <li class="shot"><input type="checkbox" data-k="h5"><div class="txt"><b>Guion a cámara o en voz en off</b><span>Dos o tres tomas completas.</span></div></li>
     </ul>
-    <div class="script"><small>Guion</small>Confirmamos que nuestro gelato de temporada ya llegó.
-Es un delicioso gelato [descripción apetecible del gelato].
-Pero lo malo es que solo lo tendremos hasta el 31 de octubre, así que corran a probarlo.
-Estamos de [hora] a [hora].</div>
+    
   </div>
 
   <div class="block" style="--c:var(--caramelo)">
     <div class="block-h"><span class="tag">Producción</span><h3>💚 Así hacemos nuestro gelato de pistacho</h3><p>Sin voz, con el sonido real del proceso.</p></div>
     <div class="need"><b>Para tener listo:</b> producción de pistacho mañana, el pistacho a la mano y el topping con el que terminan la bandeja.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Velatti Gelato</b><a href="https://www.instagram.com/reel/DaTPgOzKMF8/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-proceso-velatti.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="script"><small>Guion · texto en pantalla</small>Así hacemos nuestro gelato de pistacho, uno de los sabores que todos están pidiendo.
+Pistacho de verdad.
+Batido lento en nuestra máquina de gelatería.
+Terminado a mano con [topping].
+Directo a nuestra vitrina. Ven a probarlo en el parque y en La Asunción.</div>
     <ul class="shots">
       <li class="shot"><input type="checkbox" data-k="p1"><div class="txt"><b>El pistacho</b><span>Cayendo en el recipiente o en la mano.</span></div></li>
       <li class="shot"><input type="checkbox" data-k="p2"><div class="txt"><b>La base entrando a la máquina</b></div></li>
@@ -176,13 +193,7 @@ Estamos de [hora] a [hora].</div>
   <div class="block" style="--c:var(--caramelo)">
     <div class="block-h"><span class="tag">Producción</span><h3>Gelato y helado no son lo mismo</h3><p>Una persona a cámara para el inicio y una toma por cada diferencia.</p></div>
     <div class="need"><b>Para tener listo:</b> la persona que sale a cámara (que lea el guion antes) y los ingredientes del gelato sobre una mesa.</div>
-    <ul class="shots">
-      <li class="shot"><input type="checkbox" data-k="g1"><div class="txt"><b>Inicio: la mano que frena la cámara</b><span>"Hey, para, para. Esto no es helado tradicional, es gelato."</span></div></li>
-      <li class="shot"><input type="checkbox" data-k="g2"><div class="txt"><b>La cuchara entrando en el gelato</b></div></li>
-      <li class="shot"><input type="checkbox" data-k="g3"><div class="txt"><b>Los ingredientes naturales sobre la mesa</b></div></li>
-      <li class="shot"><input type="checkbox" data-k="g4"><div class="txt"><b>La paleta sirviendo</b></div></li>
-      <li class="shot"><input type="checkbox" data-k="g5"><div class="txt"><b>Cierre con la máquina o la vitrina</b><em class="for">Se reusa la toma de la máquina</em></div></li>
-    </ul>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Inicio · Dolce Helado Artesanal</b><a href="https://www.instagram.com/reel/DT04ElekdtP/" target="_blank" rel="noopener">Instagram ↗</a></div><div class="rl-i"><b>Contenido · Siletto</b><a href="https://www.instagram.com/reel/DatXaE3xSHG/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-contenido-siletto.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
     <div class="script"><small>Guion para quien sale a cámara</small>Hey, para, para. Esto no es helado tradicional, es gelato.
 ¿Y en qué se diferencian?
 Para empezar, el gelato es originario de Italia.
@@ -191,11 +202,25 @@ Segundo, generalmente tiene menos grasa que un helado tradicional, así los ingr
 Y tercero, se sirve a una temperatura un poco más alta, para que disfrutes todo su sabor desde la primera cucharada.
 Y por último, el helado tradicional normalmente lleva conservantes, colorantes y saborizantes. Nuestro gelato es sin conservantes y lo hacemos con ingredientes naturales.
 En Amalia lo preparamos con maquinaria profesional de gelatería e insumos importados. Ven a probar la diferencia en nuestras dos sedes.</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="g1"><div class="txt"><b>Inicio: la mano que frena la cámara</b><span>"Hey, para, para. Esto no es helado tradicional, es gelato."</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="g2"><div class="txt"><b>La cuchara entrando en el gelato</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="g3"><div class="txt"><b>Los ingredientes naturales sobre la mesa</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="g4"><div class="txt"><b>La paleta sirviendo</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="g5"><div class="txt"><b>Cierre con la máquina o la vitrina</b><em class="for">Se reusa la toma de la máquina</em></div></li>
+    </ul>
+    
   </div>
 
   <div class="block" style="--c:var(--caramelo)">
     <div class="block-h"><span class="tag">Producción</span><h3>¿Tienes una gelatería, un café o un restaurante?</h3><p>El video para negocios que quieren comprar gelato.</p></div>
     <div class="need"><b>Para tener listo:</b> varios sabores para servir, bandejas listas y el gelato en las presentaciones que entregan a negocios.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Kathe Suárez</b><a href="https://www.instagram.com/reel/DWxLuAGxnNh/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-proveedores-kathe.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="script"><small>Guion para quien sale a cámara o en voz en off</small>¿Tienes una gelatería, un café o un restaurante y quieres ofrecer un gelato de verdad?
+En Amalia te ayudamos a tener en tu carta un gelato que tus clientes van a querer repetir.
+Lo producimos en Copacabana con maquinaria profesional de gelatería e insumos importados, sin conservantes y con ingredientes naturales.
+Tú te dedicas a vender y nosotros a producir: sin complicarte la operación y con la misma calidad que servimos en nuestras dos sedes.
+Si quieres vender más y diferenciarte con un gelato realmente especial, escríbenos y hablemos de tu pedido.</div>
     <ul class="shots">
       <li class="shot"><input type="checkbox" data-k="v1"><div class="txt"><b>Varios sabores servidos sobre una mesa</b><span>Vistos desde arriba.</span></div></li>
       <li class="shot"><input type="checkbox" data-k="v2"><div class="txt"><b>Bandejas en volumen</b></div></li>
@@ -207,6 +232,10 @@ En Amalia lo preparamos con maquinaria profesional de gelatería e insumos impor
   <div class="block" style="--c:var(--cacao)">
     <div class="block-h"><span class="tag">Producción</span><h3>🍫 ¿Sabes qué te quita lo triste?</h3><p>Solo tomas de la mezcla de la torta de chocolate, muy de cerca.</p></div>
     <div class="need"><b>Para tener listo:</b> la mezcla de la torta de chocolate mañana, y avisarnos la hora.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>The Sweet Shop</b><a href="https://www.instagram.com/reel/DceH4Tcvk23/" target="_blank" rel="noopener">Instagram ↗</a></div></div>
+    <div class="script"><small>Guion · texto en pantalla</small>¿Sabes qué te quita lo triste?
+(Tomas de la mezcla de chocolate)
+Un pedazo de torta de chocolate de Amalia 🤎</div>
     <ul class="shots">
       <li class="shot"><input type="checkbox" data-k="t1"><div class="txt"><b>La espátula entrando en la mezcla</b></div></li>
       <li class="shot"><input type="checkbox" data-k="t2"><div class="txt"><b>Los remolinos y el brillo del chocolate</b></div></li>
@@ -218,6 +247,13 @@ En Amalia lo preparamos con maquinaria profesional de gelatería e insumos impor
   <div class="block" style="--c:var(--terracota)">
     <div class="block-h"><span class="tag">Equipo</span><h3>Amalia existe gracias a… · equipo de La Asunción</h3><p>Con un marco de cartulina vamos encuadrando a cada persona en su puesto. El equipo del parque se graba en otra jornada.</p></div>
     <div class="need"><b>Para tener listo:</b> los nombres del equipo de La Asunción y qué hace cada uno.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Café del Art</b><a href="https://www.instagram.com/reel/DdeNUFftHRw/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-equipo-cafedelart.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="script"><small>Guion · texto escrito en el marco</small>Amalia existe gracias a…
+…[Nombre], que madruga a hornear el pan
+…[Nombre], que prepara nuestro gelato
+…[Nombre], que te atiende en La Asunción
+…[Nombre], que [lo que hace]
+…y a ustedes, que vuelven cada semana 🤎</div>
     <ul class="shots">
       <li class="shot"><input type="checkbox" data-k="e1"><div class="txt"><b>El marco mostrando el local</b><span>"Amalia existe gracias a…"</span></div></li>
       <li class="shot"><input type="checkbox" data-k="e2"><div class="txt"><b>Quien hornea, en su puesto</b></div></li>
