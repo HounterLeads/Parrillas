@@ -74,6 +74,10 @@ section > .wrap > p.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
 .rl-i a{font-size:12.5px;font-weight:600;color:var(--cafe);background:var(--mantequilla);text-decoration:none;border-radius:99px;padding:4px 11px}
 .rl:has(.rl-i)~.script, .need~.script{margin-top:10px}
 .rl:not(:has(.rl-i)){display:none}
+.vbtn{font:600 12.5px 'Inter';color:var(--cafe);background:var(--mantequilla);border:none;border-radius:99px;padding:4px 11px;cursor:pointer}
+.vbtn.on{background:var(--cafe);color:var(--mantequilla)}
+.rl-v{flex-basis:100%;margin:6px 0 4px}
+.rl-v video{display:block;width:100%;max-width:320px;aspect-ratio:9/16;background:#000;border-radius:12px}
 footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:12.5px}
 footer a{color:var(--caramelo)}
 @media(max-width:560px){.later{grid-template-columns:1fr}}
@@ -143,7 +147,7 @@ footer a{color:var(--caramelo)}
   <div class="block" style="--c:var(--terracota)">
     <div class="block-h"><span class="tag">Urgente · Octubre</span><h3>🎃 Llegó el gelato de temporada (Halloween)</h3><p>Tiene que salir antes del 31 de octubre.</p></div>
     <div class="need"><b>Necesario para la grabación:</b> el gelato de temporada de Halloween y sus ingredientes; el nombre del sabor y el horario de las sedes para el guion.</div>
-    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Guion · Mivassi</b><a href="https://www.instagram.com/reel/Dc6ImgIx5lD/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-guion-mivassi.mp4" target="_blank" rel="noopener">Ver video ▶</a></div><div class="rl-i"><b>Tomas · Pasión Gelato</b><a href="https://www.instagram.com/reel/DairuyoJR8m/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-tomas-pasion.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Guion · Mivassi</b><a href="https://www.instagram.com/reel/Dc6ImgIx5lD/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-guion-mivassi.mp4">Ver video ▶</button></div><div class="rl-i"><b>Tomas · Pasión Gelato</b><a href="https://www.instagram.com/reel/DairuyoJR8m/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-tomas-pasion.mp4">Ver video ▶</button></div></div>
     <div class="script"><small>Guion</small>Confirmamos que nuestro gelato de temporada ya llegó.
 Es un delicioso gelato [descripción apetecible del gelato].
 Pero lo malo es que solo lo tendremos hasta el 31 de octubre, así que corran a probarlo.
@@ -161,7 +165,7 @@ Estamos de [hora] a [hora].</div>
   <div class="block" style="--c:var(--caramelo)">
     <div class="block-h"><span class="tag">Producción</span><h3>💚 Así hacemos nuestro gelato de pistacho</h3><p>Sin voz, con el sonido real del proceso.</p></div>
     <div class="need"><b>Necesario para la grabación:</b> producción de gelato de pistacho desde las 9:00 a. m., el pistacho a la mano y el topping con el que terminan la bandeja.</div>
-    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Velatti Gelato</b><a href="https://www.instagram.com/reel/DaTPgOzKMF8/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-proceso-velatti.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Velatti Gelato</b><a href="https://www.instagram.com/reel/DaTPgOzKMF8/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-proceso-velatti.mp4">Ver video ▶</button></div></div>
     <div class="script"><small>Guion · texto en pantalla</small>Así hacemos nuestro gelato de pistacho, uno de los sabores que todos están pidiendo.
 Pistacho de verdad.
 Batido lento en nuestra máquina de gelatería.
@@ -180,7 +184,7 @@ Directo a nuestra vitrina. Ven a probarlo en el parque y en La Asunción.</div>
   <div class="block" style="--c:var(--caramelo)">
     <div class="block-h"><span class="tag">Producción</span><h3>Gelato y helado no son lo mismo</h3><p>Una persona a cámara para el inicio y una toma por cada diferencia.</p></div>
     <div class="need"><b>Necesario para la grabación:</b> una persona que salga a cámara (que lea el guion antes) y los ingredientes del gelato.</div>
-    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Inicio · Dolce Helado Artesanal</b><a href="https://www.instagram.com/reel/DT04ElekdtP/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-intro-dolce.mp4" target="_blank" rel="noopener">Ver video ▶</a></div><div class="rl-i"><b>Contenido · Siletto</b><a href="https://www.instagram.com/reel/DatXaE3xSHG/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-contenido-siletto.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Inicio · Dolce Helado Artesanal</b><a href="https://www.instagram.com/reel/DT04ElekdtP/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-intro-dolce.mp4">Ver video ▶</button></div><div class="rl-i"><b>Contenido · Siletto</b><a href="https://www.instagram.com/reel/DatXaE3xSHG/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-contenido-siletto.mp4">Ver video ▶</button></div></div>
     <div class="script"><small>Guion para quien sale a cámara</small>Hey, para, para. Esto no es helado tradicional, es gelato.
 ¿Y en qué se diferencian?
 Para empezar, el gelato es originario de Italia.
@@ -202,7 +206,7 @@ En Amalia lo preparamos con maquinaria profesional de gelatería e insumos impor
   <div class="block" style="--c:var(--caramelo)">
     <div class="block-h"><span class="tag">Producción</span><h3>¿Tienes una gelatería, un café o un restaurante?</h3><p>El video para negocios que quieren comprar gelato.</p></div>
     <div class="need"><b>Necesario para la grabación:</b> varios sabores para servir, bandejas listas y el gelato en las presentaciones que entregan a negocios.</div>
-    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Kathe Suárez</b><a href="https://www.instagram.com/reel/DWxLuAGxnNh/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-proveedores-kathe.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Kathe Suárez</b><a href="https://www.instagram.com/reel/DWxLuAGxnNh/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-proveedores-kathe.mp4">Ver video ▶</button></div></div>
     <div class="script"><small>Guion para quien sale a cámara o en voz en off</small>¿Tienes una gelatería, un café o un restaurante y quieres ofrecer un gelato de verdad?
 En Amalia te ayudamos a tener en tu carta un gelato que tus clientes van a querer repetir.
 Lo producimos en Copacabana con maquinaria profesional de gelatería e insumos importados, sin conservantes y con ingredientes naturales.
@@ -219,7 +223,7 @@ Si quieres vender más y diferenciarte con un gelato realmente especial, escríb
   <div class="block" style="--c:var(--cacao)">
     <div class="block-h"><span class="tag">Producción</span><h3>🍫 ¿Sabes qué te quita lo triste?</h3><p>Solo tomas de la mezcla de la torta de chocolate, muy de cerca.</p></div>
     <div class="need"><b>Necesario para la grabación:</b> preparación de la mezcla de la torta de chocolate.</div>
-    <div class="rl"><small>Referencias</small><div class="rl-i"><b>The Sweet Shop</b><a href="https://www.instagram.com/reel/DceH4Tcvk23/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-triste-sweetshop.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>The Sweet Shop</b><a href="https://www.instagram.com/reel/DceH4Tcvk23/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-triste-sweetshop.mp4">Ver video ▶</button></div></div>
     <div class="script"><small>Guion · texto en pantalla</small>¿Sabes qué te quita lo triste?
 (Tomas de la mezcla de chocolate)
 Un pedazo de torta de chocolate de Amalia 🤎</div>
@@ -234,7 +238,7 @@ Un pedazo de torta de chocolate de Amalia 🤎</div>
   <div class="block" style="--c:var(--terracota)">
     <div class="block-h"><span class="tag">Equipo</span><h3>Amalia existe gracias a… · equipo de La Asunción</h3><p>Con un marco de cartulina vamos encuadrando a cada persona en su puesto. El equipo del parque se graba en otra jornada.</p></div>
     <div class="need"><b>Necesario para la grabación:</b> tomas al equipo presente de la sede La Asunción, en clips cortos.</div>
-    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Café del Art</b><a href="https://www.instagram.com/reel/DdeNUFftHRw/" target="_blank" rel="noopener">Instagram ↗</a><a href="refs/ref-equipo-cafedelart.mp4" target="_blank" rel="noopener">Ver video ▶</a></div></div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Café del Art</b><a href="https://www.instagram.com/reel/DdeNUFftHRw/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-equipo-cafedelart.mp4">Ver video ▶</button></div></div>
     <div class="script"><small>Guion · texto escrito en el marco</small>Amalia existe gracias a…
 …[Nombre], que madruga a hornear el pan
 …[Nombre], que prepara nuestro gelato
@@ -298,6 +302,16 @@ document.querySelectorAll('.shot').forEach(li => li.addEventListener('click', e 
   const b = li.querySelector('input'); b.checked = !b.checked; b.dispatchEvent(new Event('change'));
 }));
 document.getElementById("reset").onclick = () => { state = {}; save(); boxes.forEach(b => b.checked = false); update(); };
+document.querySelectorAll('.vbtn').forEach(btn => btn.addEventListener('click', () => {
+  const row = btn.closest('.rl-i');
+  const open = row.querySelector('.rl-v');
+  if (open) { open.remove(); btn.classList.remove('on'); btn.textContent = 'Ver video ▶'; return; }
+  const box = document.createElement('div'); box.className = 'rl-v';
+  const v = document.createElement('video'); v.src = btn.dataset.v; v.controls = true; v.playsInline = true; v.setAttribute('playsinline', '');
+  box.appendChild(v); row.appendChild(box);
+  btn.classList.add('on'); btn.textContent = 'Cerrar video ✕';
+  v.play().catch(() => {});
+}));
 update();
 </script>
 </body>
