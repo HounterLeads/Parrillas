@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amalia · Grabación sede parque</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Inter:wght@400;500;600;700&family=Fraunces:ital@1&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cafe:#3B2A1D; --caramelo:#96683C; --miel:#D8B78C; --mantequilla:#EFDCC0; --terracota:#A8603F;
+  --bg:#F8F3EA; --paper:#FFFDF9; --ink:#33261C; --muted:#7A6553; --dim:#A99580; --line:#EADFCE; --cacao:#5A3E2B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans-serif;line-height:1.5;-webkit-font-smoothing:antialiased}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px}
+h1,h2,h3{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em}
+em.f{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--caramelo)}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--caramelo)}
+header{padding:32px 0 18px}
+header h1{font-size:clamp(30px,7vw,48px);line-height:1.02;font-weight:800;margin:10px 0 10px}
+header p{color:var(--muted);font-size:15px}
+.videos{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.videos span{font-size:12.5px;font-weight:600;background:var(--paper);border:1px solid var(--line);border-radius:99px;padding:5px 11px}
+.progress{position:sticky;top:0;z-index:10;background:rgba(248,243,234,.92);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line);padding:10px 0}
+.progress .wrap{display:flex;align-items:center;gap:12px}
+.bar{flex:1;height:8px;background:var(--line);border-radius:99px;overflow:hidden}
+.bar i{display:block;height:100%;width:0;background:var(--caramelo);transition:width .25s}
+.progress b{font-size:13px;white-space:nowrap}
+.reset{font:600 12px 'Inter';background:none;border:1px solid var(--line);border-radius:99px;padding:5px 10px;color:var(--muted);cursor:pointer}
+section{padding:22px 0}
+section > .wrap > h2{font-size:24px;font-weight:800;margin:6px 0 6px}
+section > .wrap > p.sub{color:var(--muted);font-size:14px;margin-bottom:14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:16px;padding:16px 18px;margin-bottom:12px}
+.box h3{font-size:17px;margin-bottom:8px}
+.box ul{padding-left:18px;font-size:14.5px}
+.box li{margin-bottom:7px}
+.liz{background:var(--cafe);border-color:var(--cafe);color:var(--mantequilla)}
+.liz h3{color:#fff;font-size:20px}
+.liz p{font-size:14px;margin-bottom:10px}
+.liz li{color:var(--mantequilla)}
+.liz b{color:#fff}
+.block{background:var(--paper);border:1px solid var(--line);border-radius:18px;margin-bottom:14px;overflow:hidden;border-left:6px solid var(--c,var(--caramelo))}
+.block-h{padding:14px 18px 6px}
+.block-h .tag{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;background:var(--c,var(--caramelo));color:#fff;border-radius:99px;padding:3px 10px}
+.block-h h3{font-size:19px;margin:8px 0 2px}
+.block-h p{font-size:13.5px;color:var(--muted)}
+.need{margin:6px 18px 4px;background:#FBEAD9;border-radius:10px;padding:9px 12px;font-size:13.5px;color:#6e3d24}
+.need b{color:var(--terracota)}
+.shots{list-style:none;padding:6px 10px 12px}
+.shot{display:flex;gap:12px;align-items:flex-start;padding:10px 8px;border-radius:12px;cursor:pointer}
+.shot:hover{background:var(--bg)}
+.shot input{appearance:none;-webkit-appearance:none;flex:0 0 24px;width:24px;height:24px;border:2px solid var(--miel);border-radius:7px;margin-top:1px;cursor:pointer;display:grid;place-content:center;background:#fff}
+.shot input:checked{background:var(--caramelo);border-color:var(--caramelo)}
+.shot input:checked::after{content:"✓";color:#fff;font-weight:800;font-size:15px}
+.shot.done .txt{opacity:.45;text-decoration:line-through}
+.txt b{display:block;font-size:15px}
+.txt span{font-size:13px;color:var(--muted)}
+.txt .for{display:inline-block;font-size:11px;font-weight:700;font-style:normal;color:var(--cacao);background:var(--mantequilla);border-radius:6px;padding:1px 7px;margin-top:4px}
+.script{margin:0 18px 16px;background:var(--bg);border:1px dashed var(--miel);border-radius:12px;padding:12px 14px;font-size:14.5px;white-space:pre-line}
+.script small{display:block;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin-bottom:6px;white-space:normal}
+.order{counter-reset:o;list-style:none}
+.order li{counter-increment:o;position:relative;padding:8px 0 8px 40px;border-bottom:1px solid var(--line);font-size:14.5px}
+.order li:last-child{border-bottom:none}
+.order li::before{content:counter(o);position:absolute;left:0;top:7px;width:28px;height:28px;border-radius:50%;background:var(--cafe);color:var(--mantequilla);font:800 14px 'Bricolage Grotesque';display:grid;place-content:center}
+.later{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.later div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:10px 12px;font-size:13.5px}
+.later b{display:block;font-size:14px}
+.rl{margin:8px 18px 4px;display:flex;flex-direction:column;gap:6px}
+.rl small{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim)}
+.rl-i{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font-size:13.5px}
+.rl-i b{flex-basis:100%}
+.rl-i a{font-size:12.5px;font-weight:600;color:var(--cafe);background:var(--mantequilla);text-decoration:none;border-radius:99px;padding:4px 11px}
+.rl:has(.rl-i)~.script, .need~.script{margin-top:10px}
+.rl:not(:has(.rl-i)){display:none}
+.vbtn{font:600 12.5px 'Inter';color:var(--cafe);background:var(--mantequilla);border:none;border-radius:99px;padding:4px 11px;cursor:pointer}
+.vbtn.on{background:var(--cafe);color:var(--mantequilla)}
+.rl-v{flex-basis:100%;margin:6px 0 4px}
+.rl-v video{display:block;width:100%;max-width:320px;aspect-ratio:9/16;background:#000;border-radius:12px}
+footer{padding:30px 0 50px;text-align:center;color:var(--dim);font-size:12.5px}
+footer a{color:var(--caramelo)}
+@media(max-width:560px){.later{grid-template-columns:1fr}}
+.rl-v.imgs{display:flex;gap:8px;overflow-x:auto;padding-bottom:4px}
+.rl-v.imgs img{flex:0 0 auto;width:200px;border-radius:10px;border:1px solid var(--line)}
+</style>
+</head>
+<body>
+
+<header><div class="wrap">
+  <div class="kicker">Amalia · Plan de grabación 2</div>
+  <h1>Segunda grabación: <em class="f">sede del parque</em></h1>
+  <p>📍 Calle 49 #49-31, parque de Copacabana · 🗓️ Fecha por confirmar. Los videos que quedaron de la primera grabación.</p>
+  <div class="videos">
+    <span>☕ Las mañanas deberían empezar así</span><span>Llegué por un antojo, pero me quedé por…</span><span>Miniserie · Día 1 de 5</span><span>Amalia existe gracias a… · parque</span>
+  </div>
+</div></header>
+
+<div class="progress"><div class="wrap">
+  <div class="bar"><i id="bar"></i></div><b id="count">0 de 0</b>
+  <button class="reset" id="reset">Reiniciar</button>
+</div></div>
+
+<section><div class="wrap">
+  <div class="kicker">Orden del día</div>
+  <h2>Cómo va la jornada</h2>
+  <p class="sub">Arrancamos temprano con lo que necesita luz de mañana y producto recién hecho. Después los videos con personas, y al final el banco de tomas.</p>
+  <div class="box"><ol class="order">
+    <li><b>Las mañanas deberían empezar así:</b> el producto del desayuno y el café, con la luz de la mañana.</li>
+    <li><b>Llegué por un antojo…:</b> el pan recién horneado, el gelato, los brownies y el gelato de temporada.</li>
+    <li><b>Miniserie · Día 1:</b> la persona del equipo probando los productos.</li>
+    <li><b>Llegué por un antojo…:</b> la foto del cliente probando gelato, cuando haya gente en la sede.</li>
+    <li><b>El equipo del parque</b> con el marco, en clips cortos.</li>
+    <li><b>Adicionales:</b> el punto de venta del parque y los productos.</li>
+  </ol></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="kicker">Lista de tomas</div>
+  <h2>Video por video</h2>
+
+  <div class="block" style="--c:var(--cacao)">
+    <div class="block-h"><span class="tag">Noviembre</span><h3>☕ Las mañanas deberían empezar así</h3><p>Video sin voz, solo imagen y música suave.</p></div>
+    <div class="need"><b>Necesario para la grabación:</b> el producto estrella del desayuno recién hecho, un café servido y el mostrador limpio. Se graba a primera hora, con la luz de la mañana.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>La Moo</b><a href="https://www.instagram.com/reel/DTvOTXZgJCg/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-mananas-lamoo.mp4">Ver video ▶</button></div></div>
+    <div class="script"><small>Guion · texto en pantalla</small>Las mañanas deberían empezar así ✨</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="m1"><div class="txt"><b>El producto servido en el mostrador con el café al lado</b><span>Plano con el local desenfocado de fondo.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="m2"><div class="txt"><b>Acercamiento lento de la cámara al plato</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="m3"><div class="txt"><b>La mano que lo parte o le pone el toque final</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="m4"><div class="txt"><b>El detalle del relleno o la textura</b><span>Muy de cerca.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="m5"><div class="txt"><b>Portada: el producto y el café, con luz de mañana</b></div></li>
+    </ul>
+  </div>
+
+  <div class="block" style="--c:var(--terracota)">
+    <div class="block-h"><span class="tag">Noviembre · Carrusel</span><h3>Llegué por un antojo, pero me quedé por…</h3><p>Cinco fotos. Cada una lleva una parte de la frase en letra manuscrita.</p></div>
+    <div class="need"><b>Necesario para la grabación:</b> un cliente que acepte salir en la foto, gelato, pan recién horneado, brownies y el gelato de temporada.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Klea</b><a href="https://www.instagram.com/p/Dd5EWCNjba4/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-imgs="refs/klea-1.jpg,refs/klea-2.jpg,refs/klea-3.jpg,refs/klea-4.jpg,refs/klea-5.jpg">Ver láminas ▶</button></div></div>
+    <div class="script"><small>Guion · texto de cada foto</small>1 · Llegué por un antojo, pero me quedé por…
+2 · …el gelato hecho aquí mismo, sin conservantes,
+3 · …el pan que sale del horno cada mañana,
+4 · …sus brownies,
+5 · …y el gelato de temporada [sabor].</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="l1"><div class="txt"><b>Foto 1: el cliente probando gelato en la sede</b><span>Pedirle permiso antes de la foto. A la altura de los ojos, con la cuchara en la boca.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="l2"><div class="txt"><b>Foto 2: primer plano del gelato con sus ingredientes</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="l3"><div class="txt"><b>Foto 3: el pan recién horneado en la bandeja</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="l4"><div class="txt"><b>Foto 4: un brownie recién cortado</b><span>O con gelato encima, como el que ya venden.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="l5"><div class="txt"><b>Foto 5: el gelato de temporada servido</b></div></li>
+    </ul>
+  </div>
+
+  <div class="block" style="--c:var(--caramelo)">
+    <div class="block-h"><span class="tag">Noviembre · Serie</span><h3>Miniserie · Día 1 de 5 probando nuestros productos</h3><p>Una persona del equipo prueba 2 o 3 productos y los describe. La serie sigue mes a mes.</p></div>
+    <div class="need"><b>Necesario para la grabación:</b> los 2 o 3 productos que elija Liz y la persona que los presenta. Lo ideal es que sea la misma persona en toda la serie.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Bake at Store</b><a href="https://www.instagram.com/reel/DM5c_1YsYyQ/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-serie-bakeat.mp4">Ver video ▶</button></div></div>
+    <div class="script"><small>Guion para quien presenta</small>Día 1 de 5 probando los productos que tenemos en Amalia.
+Los elegidos de hoy son [producto 1], [producto 2] y [producto 3].
+Empiezo por [producto 1]: [qué es, de qué está hecho y cómo sabe]. Si tú eres fan de [algo que todos conocen], este es para ti.
+Sigo con [producto 2]: [descripción que llame la atención]. [Una frase honesta que lo haga creíble].
+Y cierro con [producto 3]: [descripción].
+Si aún no los conoces, te estás perdiendo algo muy bueno. Te esperamos en el parque y en La Asunción.</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="s1"><div class="txt"><b>Inicio a cámara: "Día 1 de 5…"</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="s2"><div class="txt"><b>Cada producto en primer plano</b><span>Al partirlo o servirlo.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="s3"><div class="txt"><b>La persona probando cada producto</b><span>Reacción honesta.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="s4"><div class="txt"><b>Un momento espontáneo</b><span>Como el bailito de la referencia.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="s5"><div class="txt"><b>Cierre a cámara</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="s6"><div class="txt"><b>Portada: la persona con el primer producto en la mano</b></div></li>
+    </ul>
+  </div>
+
+  <div class="block" style="--c:var(--terracota)">
+    <div class="block-h"><span class="tag">Equipo</span><h3>Amalia existe gracias a… · equipo del parque</h3><p>La segunda parte del video: el equipo de la sede del parque, con el marco de cartulina.</p></div>
+    <div class="need"><b>Necesario para la grabación:</b> tomas al equipo presente de la sede del parque, en clips cortos.</div>
+    <div class="rl"><small>Referencias</small><div class="rl-i"><b>Café del Art</b><a href="https://www.instagram.com/reel/DdeNUFftHRw/" target="_blank" rel="noopener">Instagram ↗</a><button type="button" class="vbtn" data-v="refs/ref-equipo-cafedelart.mp4">Ver video ▶</button></div></div>
+    <div class="script"><small>Guion · texto escrito en el marco</small>…[Nombre], que te atiende en el parque
+…[Nombre], que [lo que hace]
+…y a ustedes, que vuelven cada semana 🤎</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="e1"><div class="txt"><b>Quien atiende en el parque, en su puesto</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="e2"><div class="txt"><b>Las demás personas de la sede</b><span>Una toma por persona.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="e3"><div class="txt"><b>Cierre: el marco encuadrando a los clientes en las mesas</b><span>"…y a ustedes, que vuelven cada semana 🤎"</span></div></li>
+    </ul>
+  </div>
+
+  <div class="block" style="--c:var(--cacao)">
+    <div class="block-h"><span class="tag">Adicionales</span><h3>Banco de tomas · sede del parque</h3><p>Material de apoyo para historias, destacadas y próximos videos.</p></div>
+    <div class="need"><b>Necesario para la grabación:</b> la vitrina llena y los productos del día.</div>
+    <ul class="shots">
+      <li class="shot"><input type="checkbox" data-k="x1"><div class="txt"><b>Punto de venta del parque</b><span>Fachada, letrero, mostrador, mesas y el ambiente con gente.</span><em class="for">También: destacada Sedes · aniversario</em></div></li>
+      <li class="shot"><input type="checkbox" data-k="x2"><div class="txt"><b>Gelatos en la vitrina del parque</b><span>La vitrina completa y cada sabor de cerca.</span></div></li>
+      <li class="shot"><input type="checkbox" data-k="x3"><div class="txt"><b>Productos, tortas y pastelería del día</b></div></li>
+      <li class="shot"><input type="checkbox" data-k="x4"><div class="txt"><b>Clientes disfrutando</b><span>Con su permiso.</span></div></li>
+    </ul>
+  </div>
+</div></section>
+
+<footer>Amalia · Plan de grabación 2 · Preparado por Hounter Leads · <a href="grabacion.html">Plan de la primera grabación</a> · <a href="./">Ver la parrilla completa</a></footer>
+
+<script>
+const KEY = "amalia-grabacion-parque";
+let state = {};
+try { state = JSON.parse(localStorage.getItem(KEY) || "{}"); } catch (e) { state = {}; }
+const boxes = [...document.querySelectorAll('.shot input')];
+function save(){ try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) {} }
+function update(){
+  const done = boxes.filter(b => b.checked).length;
+  document.getElementById("count").textContent = done + " de " + boxes.length;
+  document.getElementById("bar").style.width = (boxes.length ? done / boxes.length * 100 : 0) + "%";
+  boxes.forEach(b => b.closest('.shot').classList.toggle('done', b.checked));
+}
+boxes.forEach(b => {
+  b.checked = !!state[b.dataset.k];
+  b.addEventListener('change', () => { state[b.dataset.k] = b.checked; save(); update(); });
+});
+document.querySelectorAll('.shot').forEach(li => li.addEventListener('click', e => {
+  if (e.target.tagName === 'INPUT') return;
+  const b = li.querySelector('input'); b.checked = !b.checked; b.dispatchEvent(new Event('change'));
+}));
+document.getElementById("reset").onclick = () => { state = {}; save(); boxes.forEach(b => b.checked = false); update(); };
+document.querySelectorAll('.vbtn').forEach(btn => btn.addEventListener('click', () => {
+  const row = btn.closest('.rl-i');
+  const label = btn.dataset.imgs ? 'Ver láminas ▶' : 'Ver video ▶';
+  const open = row.querySelector('.rl-v');
+  if (open) { open.remove(); btn.classList.remove('on'); btn.textContent = label; return; }
+  const box = document.createElement('div'); box.className = 'rl-v';
+  if (btn.dataset.imgs) {
+    box.classList.add('imgs');
+    btn.dataset.imgs.split(',').forEach(src => { const im = document.createElement('img'); im.src = src; im.alt = 'Lámina de referencia'; box.appendChild(im); });
+  } else {
+    const v = document.createElement('video'); v.src = btn.dataset.v; v.controls = true; v.playsInline = true; v.setAttribute('playsinline', '');
+    box.appendChild(v); v.play().catch(() => {});
+  }
+  row.appendChild(box);
+  btn.classList.add('on'); btn.textContent = btn.dataset.imgs ? 'Cerrar láminas ✕' : 'Cerrar video ✕';
+}));
+update();
+</script>
+</body>
+</html>
