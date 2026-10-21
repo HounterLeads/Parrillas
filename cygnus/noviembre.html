@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cygnus — Parrilla Noviembre 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAF7F4;
+    color: #3D3533;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 80px 30px 55px;
+    background: linear-gradient(180deg, #F0EBE5 0%, #FAF7F4 100%);
+    border-bottom: 1px solid #E8E0D8;
+  }
+  .header .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #B8956A;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3em;
+    font-weight: 300;
+    color: #3D3533;
+    line-height: 1.2;
+  }
+  .header p { font-size: 0.95em; color: #8A7E76; margin-top: 14px; }
+  .header .doc-tag {
+    display: inline-block;
+    border: 1px solid #D4C8BC;
+    color: #8A7E76;
+    padding: 6px 22px;
+    border-radius: 50px;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    margin-top: 22px;
+  }
+
+  /* SECTION HEADER */
+  .section-head { text-align: center; margin: 70px 0 10px; }
+  .section-head .eyebrow {
+    font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase;
+    color: #B8956A; font-weight: 500;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.3em; font-weight: 300; color: #3D3533; margin-top: 6px;
+  }
+  .section-head p { color: #8A7E76; font-size: 0.9em; margin-top: 6px; }
+  .divider { width: 60px; height: 1px; background: #D4C8BC; margin: 22px auto 40px; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+  /* CARD */
+  .card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid #E8E0D8;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .card:hover { box-shadow: 0 8px 30px rgba(184,149,106,0.14); transform: translateY(-2px); }
+
+  /* MEDIA */
+  .card-media {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    background: #17120E;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card-media video, .card-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  /* CARRUSEL */
+  .carousel { position: relative; width: 100%; height: 100%; }
+  .carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .35s; display: flex; align-items: center; justify-content: center; }
+  .carousel .slide.active { opacity: 1; }
+  .carousel .slide img, .carousel .slide video { width: 100%; height: 100%; object-fit: contain; }
+  .car-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.85); color: #3D3533; border: none;
+    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+    font-size: 1.3em; line-height: 1; display: flex; align-items: center; justify-content: center;
+    z-index: 3; transition: background .2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .car-btn:hover { background: #fff; }
+  .car-prev { left: 10px; }
+  .car-next { right: 10px; }
+  .car-count {
+    position: absolute; top: 12px; right: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 0.72em; font-weight: 500;
+    padding: 3px 11px; border-radius: 50px; letter-spacing: 0.5px;
+  }
+  .car-dots { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; gap: 6px; justify-content: center; z-index: 3; }
+  .car-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.5); transition: all .2s; }
+  .car-dots span.on { background: #fff; width: 18px; border-radius: 4px; }
+
+  .media-type {
+    position: absolute; top: 12px; left: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 0.68em; font-weight: 500;
+    padding: 4px 11px; border-radius: 50px; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* BODY */
+  .card-body { padding: 22px 24px 20px; display: flex; flex-direction: column; flex: 1; }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .card-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4em; color: #D4C8BC; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5em; font-weight: 500;
+    color: #3D3533; line-height: 1.2; margin-bottom: 10px;
+  }
+  .card-desc { color: #5A5250; font-size: 0.88em; font-weight: 300; flex: 1; }
+  .card-script {
+    white-space: pre-line; background: #FAF7F4; border-left: 2px solid #D4C8BC;
+    padding: 12px 16px; border-radius: 8px; font-size: 0.82em; color: #5A5250;
+    margin-top: 10px; font-style: italic;
+  }
+  .card-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid #F0EBE5;
+  }
+  .card-ref { color: #B8956A; text-decoration: none; font-size: 0.8em; font-weight: 500; letter-spacing: 0.3px; }
+  .card-ref:hover { color: #8A6D45; }
+
+  /* TAGS */
+  .tags { display: flex; gap: 8px; align-items: center; }
+  .tag { display: inline-block; padding: 4px 13px; border-radius: 50px; font-size: 0.72em; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; }
+  .tag-reel { background: #F0EBE5; color: #B8956A; }
+  .tag-carrusel { background: #EDE8E3; color: #8A7E76; }
+  .tag-status { background: #FFF8F0; color: #C4956A; border: 1px solid #F0DAD5; font-size: 0.72em; padding: 4px 12px; border-radius: 50px; }
+  .tag-future { background: #F0F0F5; color: #7E7EA0; border: 1px solid #E2E2EC; font-size: 0.72em; padding: 4px 12px; border-radius: 50px; }
+
+  /* SUMMARY */
+  .summary {
+    display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;
+    margin: 40px 0 10px; padding: 30px; background: #FFFCF9;
+    border: 1px solid #E8E0D8; border-radius: 16px;
+  }
+  .summary .stat { text-align: center; }
+  .summary .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2.6em; color: #B8956A; line-height: 1; }
+  .summary .stat .lbl { font-size: 0.75em; letter-spacing: 1.5px; text-transform: uppercase; color: #8A7E76; margin-top: 8px; }
+
+  /* FOOTER */
+  /* OBJETIVO / INTRO */
+  .objetivo {
+    background: #FFFCF9;
+    border: 1px solid #E8E0D8;
+    border-radius: 18px;
+    padding: 44px 48px;
+    margin: 44px 0 10px;
+  }
+  .objetivo .eyebrow { font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase; color: #B8956A; font-weight: 500; }
+  .objetivo h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.9em; font-weight: 300;
+    color: #3D3533; margin: 6px 0 18px;
+  }
+  .objetivo .lead {
+    font-size: 1em; color: #5A5250; font-weight: 300; line-height: 1.8;
+    border-left: 2px solid #D4C8BC; padding-left: 20px; margin-bottom: 26px;
+  }
+  .objetivo h4 { font-size: 0.82em; letter-spacing: 1.5px; text-transform: uppercase; color: #B8956A; font-weight: 500; margin-bottom: 16px; }
+  .ejes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .eje { background: #FFFFFF; border: 1px solid #F0EBE5; border-radius: 12px; padding: 20px 22px; }
+  .eje .eje-t { font-family: 'Cormorant Garamond', serif; font-size: 1.25em; color: #3D3533; margin-bottom: 8px; }
+  .eje .eje-d { font-size: 0.82em; color: #5A5250; font-weight: 300; }
+  .eje .eje-d em { color: #8A7E76; font-style: italic; }
+  .objetivo .cierre {
+    margin-top: 26px; text-align: center; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35em; font-weight: 300; font-style: italic; color: #6B5E54; line-height: 1.5;
+  }
+  @media (max-width: 760px) { .ejes { grid-template-columns: 1fr; } .objetivo { padding: 30px 26px; } }
+
+  .footer { text-align: center; padding: 60px 20px 50px; color: #A89E96; font-size: 0.8em; }
+  .footer .brand-f { font-family: 'Cormorant Garamond', serif; letter-spacing: 6px; text-transform: uppercase; color: #B8956A; font-size: 1.1em; margin-bottom: 8px; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2em; }
+    .summary { gap: 28px; }
+    .card-media { height: 380px; }
+  }
+</style>
+<style>
+  .rows { margin-top: 14px; border-top: 1px solid #F0EBE5; }
+  .row { display: flex; gap: 14px; padding: 7px 0; border-bottom: 1px solid #F6F2EE; font-size: 0.8em; }
+  .row .k { flex: 0 0 128px; color: #B8956A; font-weight: 500; letter-spacing: .3px; }
+  .row .v { color: #5A5250; }
+  .lst { margin-top: 14px; }
+  .lst-t { font-size: 0.72em; letter-spacing: 1.5px; text-transform: uppercase; color: #B8956A; font-weight: 500; margin-bottom: 6px; }
+  .lst ol { padding-left: 20px; font-size: 0.83em; color: #5A5250; }
+  .lst ol li { padding: 2px 0; }
+  .checks { display: flex; flex-wrap: wrap; gap: 6px; }
+  .checks span { background: #F6F1EB; color: #6B5E54; font-size: 0.78em; padding: 3px 11px; border-radius: 50px; }
+  .card-script { font-style: normal; font-size: 0.84em; line-height: 1.65; }
+  .note { margin-top: 12px; font-size: 0.8em; color: #6B5E54; background: #FAF7F4; border-radius: 10px; padding: 10px 14px; }
+  .card.urgent { border-color: #E6C3B4; }
+  .tag-urg { background: #F7E3DA; color: #A5583C; }
+  .card-ref-txt { color: #8A7E76; font-size: 0.75em; text-align: right; max-width: 60%; }
+  .card-media.empty { background: #F0EBE5; }
+  .empty-t { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.6em; color: #B8A796; line-height: 1.3; }
+  .empty-t span { font-family: 'Inter', sans-serif; font-size: .5em; letter-spacing: 2px; text-transform: uppercase; }
+  .card-media { height: 480px; }
+  .section-head.pauta .eyebrow { color: #8A6D45; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Cygnus Wellness House</div>
+  <h1>Parrilla de Contenido</h1>
+  <p>Orgánico + Pauta · Noviembre 2026</p>
+  <div class="doc-tag">Propuesta para revisión · referencias reproducibles</div>
+</div>
+
+<div class="container">
+
+  <div class="summary">
+    <div class="stat"><div class="num">9<span style="font-size:.45em;color:#C9B8A6"> / 14</span></div><div class="lbl">Piezas orgánicas</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">Reels</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Carruseles</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">Posts</div></div>
+    <div class="stat"><div class="num">8</div><div class="lbl">Piezas de pauta</div></div>
+    <div class="stat"><div class="num">1</div><div class="lbl">Plus</div></div>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">Sección 01</div>
+    <h2>Orgánico</h2>
+    <p>Contenido para el feed de Cygnus · 9 de 14 piezas definidas</p>
+  </div>
+  <div class="divider"></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><div class="carousel"><div class="slide active"><img src="cygnus-noviembre-media/30off-1.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/30off-2.jpg" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-reel">Pieza gráfica (post)</span></div></div>
+        <div class="card-title">30% descuento octubre</div>
+        <div class="card-desc">Todos los planes mensuales con 30% de descuento en la sede Cygnus Wellness House, del 15 al 31 de octubre. Pilates, Barre, Wunda, Funcional y Sculpt.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div></div>
+        <div class="note">Pieza flash: se publicó en orgánico y en pauta. Cuenta dentro de las 14 piezas.</div>
+        <div class="card-foot"><span class="tag-status">Publicada (flash)</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-03.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~10 s)</span></div></div>
+        <div class="card-title">Tu nuevo lugar favorito · Casa Wellness</div>
+        <div class="card-desc">Mismo referente del reel de Cygnus "Pov: Encuentras el mejor estudio de pilates en Medellín": recorrido de cámara por los espacios con un solo texto en pantalla. Esta vez se recorre la Casa Wellness de El Poblado.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Encuentras tu nuevo lugar favorito en medellin”</span></div></div>
+        
+        <div class="card-foot"><span class="tag-status">Por grabar</span><a class="card-ref" href="https://www.instagram.com/p/DHGy3LFRnWk/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media empty"><span class="media-type">Sin referencia aún</span><div class="empty-t">Reel<br><span>Referencia por definir</span></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">03</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~60 s) · clips del evento + voz en off de los CEOs</span></div></div>
+        <div class="card-title">Recap inauguración Cygnus Wellness House</div>
+        <div class="card-desc">Recap emocional de la inauguración del 10 de octubre: clips reales del día con la voz en off de los CEOs de fondo.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Marcas aliadas</span><span class="v">Beauty Mood (cejas, pestañas y uñas) · Vitalita (masajes) · Naxe Drala (reflexología podal)</span></div></div>
+        <div class="lst"><div class="lst-t">Guion · voz en off de los CEOs</div><div class="card-script">Todo empezó con un sueño y muchas ganas de crear algo propio. Con la certeza de que moverse le cambia la vida a las personas.
+
+Cada clase, cada persona que volvió, cada mañana de seis a. m. nos fue mostrando el camino. Ustedes nos enseñaron que Cygnus es un lugar al que siempre se vuelve. Y muchos y muchas de ustedes nos pidieron otra sede.
+
+Así, ese sueño se convirtió en casa. Una casa llena de luz, con salones para todas las formas de moverse, con sauna, con lugar para coworking y espacio para quedarse un ratito más.
+
+El 10 de octubre abrimos sus puertas y ustedes la llenaron de vida: de risas, de abrazos, de energía, de primeras clases.
+
+Gracias también a Beauty Mood, a Vitalita y a Naxe Drala, que se sumaron a este sueño y nos acompañaron ese día consintiendo a todos con cejas, pestañas, uñas, masajes y reflexología podal. Con ustedes, la celebración fue completa.
+
+Hoy miramos todo lo que vivimos ese día y lo que sentimos es gratitud. Esta casa la construimos pensando en ustedes, y desde hoy también es suya.
+
+Gracias por creer con nosotros. Bienvenidos a Cygnus Wellness House, tu nuevo lugar favorito en Medellín.</div></div>
+        <div class="card-foot"><span class="tag-status">Guion en revisión</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-noviembre-media/ref-04/01.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-04/02.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-04/03.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-04/04.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-04/05.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-04/06.jpg" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">04</span><div class="tags"><span class="tag tag-carrusel">Carrusel 4:5 (7 slides)</span></div></div>
+        <div class="card-title">De 0 a 100%: la Casa antes y después</div>
+        <div class="card-desc">Mismo formato del referente: cada slide partida en dos, arriba el espacio terminado con el texto "Lo que ustedes ven:" y abajo la misma toma en obra con una frase del proceso. Salón por salón de Cygnus Wellness House.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto fijo arriba</span><span class="v">“Lo que ustedes ven:”</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li><b>Recepción</b> · Cómo todo empezó:</li><li><b>Salón de Pilates</b> · Las horas que le pusimos a cada detalle:</li><li><b>Salón de Barre</b> · El trabajo detrás:</li><li><b>Salón de Funcional</b> · Las veces que lo soñamos antes de verlo:</li><li><b>Sala de estar</b> · Quienes hicieron de esta casa algo más que un sueño:</li><li><b>Sauna</b> · Las mil reuniones con proveedores:</li><li><b>Baños</b> · Todo lo que aprendimos en el proceso:</li></ol></div>
+        <div class="card-foot"><span class="tag-status">Por diseñar (definir salones y fotos)</span><a class="card-ref" href="https://www.instagram.com/p/DcZMhx6CdPw/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media empty"><span class="media-type">Sin referencia aún</span><div class="empty-t">Reel<br><span>Referencia por definir</span></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">05</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">Vibes de día vs. de noche</div>
+        <div class="card-desc">Las mismas clases, dos energías. De día: clases tranquilas, luz natural, movimientos lentos y controlados, respiración. De noche: clases con más intensidad, luces cálidas, ritmo rápido y sudor. Son las mismas clases; el reel transmite la vibra distinta de cada horario.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Venir de día tiene vibes diferentes a la noche”</span></div></div>
+        <div class="note"><b>Producción:</b> Día: luz natural, tomas lentas, audio suave. Noche: luces encendidas, cortes rápidos al beat, audio con más energía. El cambio de audio marca el paso del día a la noche.</div>
+        <div class="card-foot"><span class="tag-status">Por grabar · falta referencia</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-06.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">06</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~12 s)</span></div></div>
+        <div class="card-title">Clase de Wunda</div>
+        <div class="card-desc">Mismo formato del referente (Moon Pilates, "Inside a Moon Flow class"): tomas cortas y estéticas de una clase de Wunda, con un texto pequeño que abre ("Así es una clase de Wunda") y una etiqueta mínima sobre cada elemento o estación que aparece. Luz natural, cortes al ritmo del audio.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Así es una clase de Wunda + etiqueta pequeña en cada estación”</span></div></div>
+        <div class="note">Posible pauta: se decide después de ver cómo le va en orgánico.</div>
+        <div class="card-foot"><span class="tag-status">Por grabar</span><a class="card-ref" href="https://www.instagram.com/p/DeZS0c5AOth/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card urgent">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-07.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">07</span><div class="tags"><span class="tag tag-urg">Urgente</span><span class="tag tag-reel">Reel 9:16 (~10 s)</span></div></div>
+        <div class="card-title">2 meses para trabajar en ti</div>
+        <div class="card-desc">Mismo formato del referente ("3 meses para trabajar en ti"): tomas de entrenamiento con textos cortos centrados. Como sale a fin de octubre, se adapta a los 2 meses que quedan del año.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Marca (por confirmar sede de grabación)</span></div><div class="row"><span class="k">Publicar</span><span class="v">Finales de octubre</span></div></div>
+        <div class="lst"><div class="lst-t">Textos en pantalla</div><ol><li>2 meses.</li><li>Noviembre / Diciembre</li><li>Tómate los próximos 2 meses</li><li>y comprométete con las acciones</li><li>que crearán esa versión de ti misma.</li></ol></div><div class="note"><b>Producción:</b> La toma de los meses (en el referente, el pin de la pila de pesas con Octubre/Noviembre/Diciembre) se adapta a Cygnus: la mano cambiando los resortes del reformer o tomando mancuernas, con "Noviembre / Diciembre" en pantalla.</div>
+        <div class="card-foot"><span class="tag-status">URGENTE · por grabar esta semana</span><a class="card-ref" href="https://www.instagram.com/p/DeVHVkFsJfK/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-08.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">08</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~30 s)</span></div></div>
+        <div class="card-title">Este estudio wellness cumple con todas tus necesidades</div>
+        <div class="card-desc">Mismo formato del referente (Zania Studio): una chica frente a cámara va marcando en el aire una lista de chulos que aparece en pantalla con todo lo que tiene la casa; luego un recorrido rápido por cada espacio al ritmo del audio.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Este estudio wellness cumple con todas tus necesidades”</span></div></div>
+        <div class="lst"><div class="lst-t">Checklist en pantalla</div><div class="checks"><span>✓ Pilates Reformer</span><span>✓ Barre</span><span>✓ Wunda</span><span>✓ Funcional</span><span>✓ Sculpt</span><span>✓ Sauna</span><span>✓ Coworking / sala de estar</span><span>✓ Vestier y baños</span></div></div>
+        <div class="card-foot"><span class="tag-status">Por grabar</span><a class="card-ref" href="https://www.tiktok.com/@zaniastudio.mx/video/7576453862559665425" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card urgent">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-noviembre-media/ref-09/01.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-09/02.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-09/03.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-09/04.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-09/05.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-09/06.jpg" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">09</span><div class="tags"><span class="tag tag-urg">Urgente</span><span class="tag tag-carrusel">Carrusel gráfico 4:5 (6 slides)</span></div></div>
+        <div class="card-title">Disfraces fáciles para tu clase de pilates</div>
+        <div class="card-desc">Mismo formato del referente (Studiofit): portada "Disfraces fáciles para tu clase de pilates" y una slide por disfraz, armado como flat lay con las prendas recortadas y etiquetas a mano (conjunto, calcetas, accesorio, peinado). Se diseña con la paleta y la letra de Cygnus.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Marca</span></div><div class="row"><span class="k">Publicar</span><span class="v">Antes del 31 de octubre (Halloween)</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li>Portada: Disfraces fáciles para tu clase de pilates</li><li>Pilates Princess</li><li>Caperucita Roja</li><li>Barbie</li><li>Bruja</li><li>Ángel</li></ol></div><div class="note"><b>Copy sugerido:</b> ¿Disfraz de Halloween sin faltar a tu clase? 🎃🤍 Te dejamos ideas fáciles para hacer las dos cosas. ¿Cuál usarías?</div>
+        <div class="card-foot"><span class="tag-status">URGENTE · por diseñar</span><a class="card-ref" href="https://www.instagram.com/p/DeHqUaoCUaj/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head pauta">
+    <div class="eyebrow">Sección 02</div>
+    <h2>Pauta</h2>
+    <p>Creativos para Meta Ads · 8 piezas</p>
+  </div>
+  <div class="divider"></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><div class="carousel"><div class="slide active"><img src="cygnus-noviembre-media/30off-1.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/30off-2.jpg" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-reel">Pieza gráfica (2 versiones: listones y etiqueta)</span></div></div>
+        <div class="card-title">30% descuento octubre</div>
+        <div class="card-desc"></div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Campaña</span><span class="v">261016_WPP_30OFF_POBLADO · WhatsApp · $20.000/día · hasta el 31 oct</span></div><div class="row"><span class="k">Públicos</span><span class="v">Frío, Lookalike y Remarketing</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">“Hola , quiero aprovechar la promo del 30%OFF en la sede Poblado”</span></div></div>
+        <div class="note">Misma pieza del orgánico.</div>
+        <div class="card-foot"><span class="tag-status">Activa (flash)</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/semana-prueba.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (20 s) con textos</span></div></div>
+        <div class="card-title">Semana de Prueba</div>
+        <div class="card-desc">6 clases para elegir entre Pilates Reformer, Barre, Wunda y Entrenamiento Funcional por $120.000.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Campaña</span><span class="v">261016_WPP_30OFF_POBLADO (anuncio agregado el 19 oct) · WhatsApp</span></div><div class="row"><span class="k">Públicos</span><span class="v">Frío, Lookalike y Remarketing</span></div><div class="row"><span class="k">Título del anuncio</span><span class="v">Semana de Prueba: 6 clases por $120.000</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">“Hola, quiero la Semana de Prueba en la sede Poblado”</span></div></div>
+        <div class="note">Además se entregó la base del video SIN textos para que el cliente la envíe a Miranda Discoteca.</div>
+        <div class="card-foot"><span class="tag-status">Activa</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-03.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">03</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~10 s)</span></div></div>
+        <div class="card-title">Tu nuevo lugar favorito · Casa Wellness</div>
+        <div class="card-desc">Mismo referente del reel de Cygnus "Pov: Encuentras el mejor estudio de pilates en Medellín": recorrido de cámara por los espacios con un solo texto en pantalla. Esta vez se recorre la Casa Wellness de El Poblado.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Encuentras tu nuevo lugar favorito en medellin”</span></div><div class="row"><span class="k">Campaña</span><span class="v">Por definir</span></div><div class="row"><span class="k">Públicos</span><span class="v">Por definir</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">Por definir</span></div></div>
+        
+        <div class="card-foot"><span class="tag-status">Por grabar</span><a class="card-ref" href="https://www.instagram.com/p/DHGy3LFRnWk/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-agenda.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">04</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~20 s)</span></div></div>
+        <div class="card-title">Clase de prueba Pilates Reformer · Poblado</div>
+        <div class="card-desc">Misma fórmula del anuncio ganador V_AGENDA1 (Laureles): llegada al estudio caminando, entrada, y clase de Pilates Reformer, con el texto fijo "CLASE DE PRUEBA / Pilates Reformer / POR SOLO $[precio]" durante todo el video.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“CLASE DE PRUEBA · Pilates Reformer · POR SOLO $[precio]”</span></div><div class="row"><span class="k">Campaña</span><span class="v">261019_WPP_PILATES_POBLADO · WhatsApp</span></div><div class="row"><span class="k">Públicos</span><span class="v">Frío, Lookalike y Remarketing</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">Por definir</span></div></div>
+        
+        <div class="card-foot"><span class="tag-status">Por grabar</span><span class="card-ref-txt">Anuncio V_AGENDA1 (Meta): 1.429 conversaciones a ~$1.630 c/u entre jun y oct 2026</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-agenda.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">05</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~20 s)</span></div></div>
+        <div class="card-title">Clase de prueba Barre · Poblado</div>
+        <div class="card-desc">Misma fórmula del anuncio ganador V_AGENDA1 (Laureles): llegada al estudio caminando, entrada, y clase de Barre, con el texto fijo "CLASE DE PRUEBA / Barre / POR SOLO $[precio]" durante todo el video.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“CLASE DE PRUEBA · Barre · POR SOLO $[precio]”</span></div><div class="row"><span class="k">Campaña</span><span class="v">261019_WPP_BARRE_POBLADO · WhatsApp</span></div><div class="row"><span class="k">Públicos</span><span class="v">Frío, Lookalike y Remarketing</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">Por definir</span></div></div>
+        
+        <div class="card-foot"><span class="tag-status">Por grabar</span><span class="card-ref-txt">Anuncio V_AGENDA1 (Meta): 1.429 conversaciones a ~$1.630 c/u entre jun y oct 2026</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-agenda.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">06</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~20 s)</span></div></div>
+        <div class="card-title">Clase de prueba Wunda · Poblado</div>
+        <div class="card-desc">Misma fórmula del anuncio ganador V_AGENDA1 (Laureles): llegada al estudio caminando, entrada, y clase de Wunda, con el texto fijo "CLASE DE PRUEBA / Wunda / POR SOLO $[precio]" durante todo el video.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“CLASE DE PRUEBA · Wunda · POR SOLO $[precio]”</span></div><div class="row"><span class="k">Campaña</span><span class="v">261019_WPP_BARRE_POBLADO · WhatsApp</span></div><div class="row"><span class="k">Públicos</span><span class="v">Frío, Lookalike y Remarketing</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">Por definir</span></div></div>
+        
+        <div class="card-foot"><span class="tag-status">Por grabar</span><span class="card-ref-txt">Anuncio V_AGENDA1 (Meta): 1.429 conversaciones a ~$1.630 c/u entre jun y oct 2026</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Pieza</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-agenda.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">07</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~20 s)</span></div></div>
+        <div class="card-title">Clase de prueba Funcional · Poblado</div>
+        <div class="card-desc">Misma fórmula del anuncio ganador V_AGENDA1 (Laureles): llegada al estudio caminando, entrada, y clase de Funcional, con el texto fijo "CLASE DE PRUEBA / Funcional / POR SOLO $[precio]" durante todo el video.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“CLASE DE PRUEBA · Funcional · POR SOLO $[precio]”</span></div><div class="row"><span class="k">Campaña</span><span class="v">261019_WPP_BARRE_POBLADO · WhatsApp</span></div><div class="row"><span class="k">Públicos</span><span class="v">Frío, Lookalike y Remarketing</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">Por definir</span></div></div>
+        
+        <div class="card-foot"><span class="tag-status">Por grabar</span><span class="card-ref-txt">Anuncio V_AGENDA1 (Meta): 1.429 conversaciones a ~$1.630 c/u entre jun y oct 2026</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline><source src="cygnus-noviembre-media/ref-08.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">08</span><div class="tags"><span class="tag tag-reel">Reel 9:16 (~30 s)</span></div></div>
+        <div class="card-title">Este estudio wellness cumple con todas tus necesidades</div>
+        <div class="card-desc">Mismo formato del referente (Zania Studio): una chica frente a cámara va marcando en el aire una lista de chulos que aparece en pantalla con todo lo que tiene la casa; luego un recorrido rápido por cada espacio al ritmo del audio.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">El Poblado (Cygnus Wellness House)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Este estudio wellness cumple con todas tus necesidades”</span></div><div class="row"><span class="k">Campaña</span><span class="v">Por definir</span></div><div class="row"><span class="k">Públicos</span><span class="v">Por definir</span></div><div class="row"><span class="k">Mensaje WhatsApp</span><span class="v">Por definir</span></div></div>
+        <div class="lst"><div class="lst-t">Checklist en pantalla</div><div class="checks"><span>✓ Pilates Reformer</span><span>✓ Barre</span><span>✓ Wunda</span><span>✓ Funcional</span><span>✓ Sculpt</span><span>✓ Sauna</span><span>✓ Coworking / sala de estar</span><span>✓ Vestier y baños</span></div></div>
+        <div class="card-foot"><span class="tag-status">Por grabar</span><a class="card-ref" href="https://www.tiktok.com/@zaniastudio.mx/video/7576453862559665425" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">Plus</div>
+    <h2>Piezas adicionales</h2>
+    <p>Fuera de las 14 piezas del mes</p>
+  </div>
+  <div class="divider"></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-noviembre-media/ref-10/01.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-10/02.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-10/03.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-10/04.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-10/05.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-10/06.jpg" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-noviembre-media/ref-10/07.jpg" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-carrusel">Carrusel 4:5 (7 slides) · posible con IA</span></div></div>
+        <div class="card-title">Mi top 5 de películas de terror (versión pilates)</div>
+        <div class="card-desc">Pieza PLUS (fuera de las 14). Un personaje de terror con túnica haciendo pilates en el estudio, de noche y con luz tenue; cada slide es un "miedo" de la clase en texto grande centrado.</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Marca</span></div><div class="row"><span class="k">Publicar</span><span class="v">Antes del 31 de octubre (Halloween)</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li>Mi top 5 de películas de terror (versión pilates)</li><li>Los pulsitos</li><li>Los segundos de la coach</li><li>Repetir todo del otro lado</li><li>Cuando se acerca la coach a corregirte y ahora arde más</li><li>"Ya es la última"</li><li>¿Cuál de estas te asusta más? · Etiqueta a tu coach</li></ol></div><div class="note">Con IA: usar un fantasma genérico (sábana o túnica con capucha) en lugar de la máscara de Scream del referente, que es un personaje con derechos. Fondo: fotos reales de los salones de Cygnus.</div>
+        <div class="card-foot"><span class="tag-status">Plus · por producir (intentar con IA)</span><a class="card-ref" href="https://www.instagram.com/p/DeChw-CoOMD/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="footer">
+  <div class="brand-f">Cygnus</div>
+  Parrilla de contenido · Noviembre 2026
+</div>
+
+<script>
+  document.querySelectorAll('.carousel').forEach(function(car){
+    var slides = car.querySelectorAll('.slide');
+    if (slides.length <= 1) return;
+    var idx = 0;
+
+    var count = document.createElement('div');
+    count.className = 'car-count';
+    car.appendChild(count);
+
+    var prev = document.createElement('button');
+    prev.className = 'car-btn car-prev'; prev.innerHTML = '‹';
+    var next = document.createElement('button');
+    next.className = 'car-btn car-next'; next.innerHTML = '›';
+    car.appendChild(prev); car.appendChild(next);
+
+    var dots = document.createElement('div');
+    dots.className = 'car-dots';
+    slides.forEach(function(){ dots.appendChild(document.createElement('span')); });
+    car.appendChild(dots);
+    var dotEls = dots.querySelectorAll('span');
+
+    function render(){
+      slides.forEach(function(s,i){
+        s.classList.toggle('active', i === idx);
+        if (i !== idx) { var v = s.querySelector('video'); if (v) v.pause(); }
+      });
+      dotEls.forEach(function(d,i){ d.classList.toggle('on', i === idx); });
+      count.textContent = (idx+1) + ' / ' + slides.length;
+    }
+    prev.addEventListener('click', function(){ idx = (idx - 1 + slides.length) % slides.length; render(); });
+    next.addEventListener('click', function(){ idx = (idx + 1) % slides.length; render(); });
+    render();
+  });
+</script>
+</body>
+</html>
