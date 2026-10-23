@@ -126,6 +126,8 @@
     color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;
   }
   .parrilla-info p{font-size:.82rem;color:var(--muted);margin-top:2px}
+  .grupo-t{font-family:'Bricolage Grotesque',sans-serif;font-size:.72rem;letter-spacing:1.6px;text-transform:uppercase;font-weight:700;color:var(--azul);margin:18px 4px 2px}
+  .grupo-t:first-child{margin-top:8px}
   .estado{
     font-size:.6rem;letter-spacing:1px;text-transform:uppercase;font-weight:700;
     padding:3px 9px;border-radius:50px;
@@ -310,10 +312,12 @@
         },
         {
           titulo: "Parrilla de contenido · Octubre – Noviembre 2026",
-          desc: "Orgánico + pauta + plus · Casa Wellness El Poblado, clases de prueba y Halloween",
+          desc: "Orgánico + pauta · Casa Wellness El Poblado, clases de prueba y piezas de los CEOs",
           url: "./cygnus/noviembre.html",
           estado: "activa"
-        },
+        }
+      ],
+      informes: [
         {
           titulo: "Plan de trabajo · Propuesta para los CEOs",
           desc: "Proceso, tiempos de entrega, propuesta de cambios, adicionales y términos",
@@ -326,9 +330,9 @@
 
   const lista = document.getElementById('lista');
   MARCAS.forEach((m, i) => {
-    const parrillasHTML = m.parrillas.map(p => `
+    const item = (p, ic) => `
       <a class="parrilla" href="${p.url}" ${p.externa ? 'target="_blank" rel="noopener"' : ''}>
-        <div class="parrilla-ic">📋</div>
+        <div class="parrilla-ic">${ic}</div>
         <div class="parrilla-info">
           <h4>${p.titulo}
             <span class="estado ${p.estado === 'activa' ? 'activa' : 'borrador'}">${p.estado === 'activa' ? 'Activa' : 'Borrador'}</span>
@@ -338,7 +342,11 @@
         </div>
         <span class="go">→</span>
       </a>
-    `).join('');
+    `;
+    const inf = m.informes || [];
+    const parrillasHTML = inf.length
+      ? `<div class="grupo-t">📋 Parrillas</div>${m.parrillas.map(p => item(p, '📋')).join('')}<div class="grupo-t">📊 Informes</div>${inf.map(p => item(p, '📊')).join('')}`
+      : m.parrillas.map(p => item(p, '📋')).join('');
 
     const card = document.createElement('div');
     card.className = 'marca';
@@ -349,7 +357,7 @@
           <h3>${m.nombre}</h3>
           <div class="sector">${m.sector}</div>
         </div>
-        <span class="marca-count">${m.parrillas.length} parrilla${m.parrillas.length > 1 ? 's' : ''}</span>
+        <span class="marca-count">${m.parrillas.length} parrilla${m.parrillas.length > 1 ? 's' : ''}${inf.length ? ` · ${inf.length} informe${inf.length > 1 ? 's' : ''}` : ''}</span>
         <span class="chevron">▾</span>
       </div>
       <div class="marca-body"><div class="marca-body-in">${parrillasHTML}</div></div>
