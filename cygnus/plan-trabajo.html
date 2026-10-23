@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cygnus — Plan de Trabajo</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Inter:wght@300;400;500;600&family=Fredoka:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Fredoka:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
   :root { --bg:#FAF7F4; --card:#FFFFFF; --soft:#FFFCF9; --line:#E8E0D8; --line2:#F0EBE5; --ink:#3D3533; --txt:#5A5250; --mut:#8A7E76; --gold:#B8956A; --gold2:#8A6D45; --ok:#5E8B6A; --urg:#A5583C; }
   * { margin:0; padding:0; box-sizing:border-box; }
@@ -22,16 +22,16 @@
   .wrap { max-width:980px; margin:0 auto; padding:34px 16px 70px; }
   .pane { display:none; } .pane.on { display:block; animation:fade .3s; }
   @keyframes fade { from { opacity:0; transform:translateY(6px);} to { opacity:1; transform:none; } }
-  h2 { font-family:'Cormorant Garamond',serif; font-weight:300; font-size:2.1em; line-height:1.2; }
+  h2 { font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.9em; line-height:1.2; }
   .eyebrow { font-size:.74em; letter-spacing:3px; text-transform:uppercase; color:var(--gold); font-weight:500; }
   .lead { color:var(--txt); font-size:1em; margin:10px 0 26px; max-width:760px; }
   .box { background:var(--card); border:1px solid var(--line); border-radius:16px; padding:24px 26px; margin-bottom:18px; }
-  .box h3 { font-family:'Cormorant Garamond',serif; font-weight:500; font-size:1.4em; margin-bottom:8px; }
+  .box h3 { font-family:'Fredoka',sans-serif; font-weight:500; font-size:1.25em; margin-bottom:8px; }
   .box p, .box li { color:var(--txt); font-size:.9em; }
   .box ul, .box ol { padding-left:20px; } .box li { margin:4px 0; }
   .steps { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin:8px 0 20px; }
   .step { background:var(--card); border:1px solid var(--line); border-radius:14px; padding:16px 16px 14px; position:relative; }
-  .step .n { font-family:'Cormorant Garamond',serif; font-size:1.9em; color:#D4C8BC; line-height:1; }
+  .step .n { font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.6em; color:#D4C8BC; line-height:1; }
   .step .t { font-weight:600; font-size:.88em; margin-top:6px; }
   .step .d { font-size:.8em; color:var(--txt); margin-top:4px; }
   .step .time { display:inline-block; margin-top:8px; font-size:.72em; font-weight:600; color:var(--gold2); background:#F6F1EB; padding:3px 10px; border-radius:50px; }
@@ -47,15 +47,15 @@
   .det { font-size:.78em; color:var(--mut); margin-top:4px; line-height:1.4; }
   .kpis { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:12px; margin-bottom:18px; }
   .kpi { background:var(--soft); border:1px solid var(--line); border-radius:14px; padding:18px; text-align:center; }
-  .kpi .v { font-family:'Cormorant Garamond',serif; font-size:2.3em; color:var(--gold); line-height:1; }
+  .kpi .v { font-family:'Fredoka',sans-serif; font-weight:600; font-size:2.2em; color:var(--gold); line-height:1; }
   .kpi .l { font-size:.72em; letter-spacing:1.2px; text-transform:uppercase; color:var(--mut); margin-top:8px; }
   .callout { background:#F6F1EB; border-left:3px solid var(--gold); border-radius:10px; padding:16px 20px; color:var(--ink); font-size:.92em; margin:16px 0; }
-  .decide { font-family:'Cormorant Garamond',serif; font-size:1.35em; font-style:italic; color:#6B5E54; text-align:center; margin:22px 0 6px; }
+  .decide { font-family:'Fredoka',sans-serif; font-weight:500; font-size:1.25em; color:#6B5E54; text-align:center; margin:22px 0 6px; }
   .btn { display:inline-block; background:var(--ink); color:#fff; text-decoration:none; font-size:.85em; padding:11px 22px; border-radius:50px; margin-top:6px; }
   .btn:hover { background:#000; }
   .clause { counter-reset:c; }
   .clause .box { position:relative; padding-left:64px; }
-  .clause .box::before { counter-increment:c; content:counter(c); position:absolute; left:22px; top:20px; font-family:'Cormorant Garamond',serif; font-size:2em; color:var(--gold); }
+  .clause .box::before { counter-increment:c; content:counter(c); position:absolute; left:22px; top:20px; font-family:'Fredoka',sans-serif; font-weight:600; font-size:1.7em; color:var(--gold); }
   .draft { display:inline-block; font-size:.72em; font-weight:600; letter-spacing:.6px; text-transform:uppercase; background:#F7E3DA; color:var(--urg); padding:4px 12px; border-radius:50px; margin-bottom:10px; }
   .footer { text-align:center; color:#A89E96; font-size:.78em; padding:20px 0 40px; }
   @media (max-width:640px) { .logo { width:180px; height:52px; } .steps { grid-template-columns:1fr 1fr; } h1 { font-size:2.5em; } h2 { font-size:1.7em; } .box { padding:20px; } .clause .box { padding-left:52px; } .clause .box::before { left:16px; } th, td { padding:8px 6px; } }
