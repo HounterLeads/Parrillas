@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Amalia · Parrilla Diciembre</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&family=Fraunces:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --cafe:#3B2A1D; --cafe2:#54402E; --caramelo:#96683C; --miel:#D8B78C; --mantequilla:#EFDCC0;
+  --terracota:#A8603F; --bg:#F8F3EA; --paper:#FFFDF9; --ink:#33261C; --muted:#7A6553; --dim:#A99580; --line:#EADFCE;
+  --p1:#A8603F; --p2:#96683C; --p3:#5A3E2B;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--ink);font-family:'Inter',-apple-system,'Segoe UI',sans-serif;line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+h1,h2,h3,h4{font-family:'Bricolage Grotesque',sans-serif;letter-spacing:-.02em;color:var(--ink)}
+em.f{font-family:'Fraunces',serif;font-style:italic;font-weight:400;color:var(--caramelo)}
+.kicker{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--caramelo)}
+
+/* top */
+.top{position:sticky;top:0;z-index:20;background:rgba(248,243,234,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;padding-top:12px;padding-bottom:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-family:'Bricolage Grotesque';font-weight:700}
+.brand img{width:34px;height:34px;border-radius:9px;border:1px solid var(--line);background:#fff;object-fit:contain}
+.top nav{display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{font-size:12.5px;font-weight:600;color:var(--muted);text-decoration:none;padding:6px 11px;border-radius:99px}
+.top nav a:hover{background:var(--mantequilla);color:var(--cafe)}
+
+/* hero */
+.hero{padding:64px 0 40px}
+.hero h1{font-size:clamp(36px,6vw,74px);line-height:1;font-weight:800;margin:14px 0 18px}
+.hero p.lead{font-size:clamp(16px,1.6vw,20px);color:var(--muted);max-width:760px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:34px}
+.stat{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.stat b{display:block;font-family:'Bricolage Grotesque';font-size:34px;font-weight:800;color:var(--cafe);line-height:1}
+.stat span{font-size:13px;color:var(--muted)}
+
+section{padding:46px 0}
+section > .wrap > h2{font-size:clamp(26px,3.4vw,40px);font-weight:800;margin:8px 0 10px}
+section > .wrap > p.sub{color:var(--muted);max-width:760px;margin-bottom:24px}
+
+/* pilares */
+.pilares{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.pilar{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:22px;border-top:5px solid var(--c)}
+.pilar h3{font-size:20px;margin-bottom:6px}
+.pilar p{font-size:14px;color:var(--muted)}
+.pilar .n{font-size:12px;font-weight:700;color:var(--c);margin-top:12px}
+
+/* calendario */
+.cal-block{margin-bottom:22px}
+.cal-block h3{font-size:17px;margin-bottom:10px;display:flex;align-items:center;gap:10px}
+.cal{display:grid;grid-template-columns:repeat(7,1fr);gap:6px}
+.cal .dow{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--dim);text-align:center;padding:4px 0}
+.day{min-height:78px;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:7px;font-size:12px;position:relative}
+.day.empty{background:transparent;border:none}
+.day .d{font-weight:700;color:var(--dim)}
+.day.fest{background:#F3E7D6}
+.day .tag{font-size:10px;color:var(--terracota);font-weight:600}
+.day a.chip{display:block;margin-top:5px;font-size:11px;font-weight:600;color:#fff;background:var(--c);border-radius:8px;padding:4px 6px;text-decoration:none;line-height:1.25}
+.cal-legend{display:flex;gap:16px;flex-wrap:wrap;font-size:12.5px;color:var(--muted);margin-top:10px}
+.cal-legend i{display:inline-block;width:10px;height:10px;border-radius:3px;background:var(--c);margin-right:6px;vertical-align:middle}
+
+/* filtros */
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+.filters button{font:600 13px 'Inter';border:1px solid var(--line);background:var(--paper);color:var(--muted);padding:8px 14px;border-radius:99px;cursor:pointer}
+.filters button.on{background:var(--cafe);color:#fff;border-color:var(--cafe)}
+
+/* cards */
+.card{background:var(--paper);border:1px solid var(--line);border-radius:20px;margin-bottom:14px;overflow:hidden;border-left:6px solid var(--c)}
+.card summary{list-style:none;cursor:pointer;padding:18px 20px;display:grid;grid-template-columns:92px 1fr auto;gap:16px;align-items:center}
+.card summary::-webkit-details-marker{display:none}
+.date{text-align:center;background:var(--bg);border-radius:14px;padding:8px 4px}
+.date b{display:block;font-family:'Bricolage Grotesque';font-size:28px;font-weight:800;line-height:1;color:var(--cafe)}
+.date span{font-size:11px;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+.card h3{font-size:19px;line-height:1.25}
+.meta{display:flex;gap:6px;flex-wrap:wrap;margin-top:7px}
+.pill{font-size:11.5px;font-weight:600;padding:3px 9px;border-radius:99px;background:var(--bg);color:var(--muted);border:1px solid var(--line)}
+.pill.p{background:var(--c);color:#fff;border-color:var(--c)}
+.pill.objp{background:var(--mantequilla);color:var(--cafe);border-color:var(--miel)}
+.objs{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.obj{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px}
+.obj .num{font-family:'Fraunces',serif;font-style:italic;font-size:30px;color:var(--caramelo);line-height:1}
+.obj h3{font-size:17px;margin:6px 0 6px}
+.obj p{font-size:13px;color:var(--muted)}
+.obj .ps{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);margin:14px 0 6px}
+.obj .ps.sec{margin-top:12px}
+.obj .med{font-size:12.5px;color:var(--caramelo);font-weight:600;margin-top:6px}
+.ochip{display:block;text-decoration:none;color:var(--ink);background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--c);border-radius:10px;padding:8px 11px;margin-top:6px;font-size:14px;font-weight:600;line-height:1.3}
+.ochip small{display:block;font-size:11px;font-weight:600;color:var(--muted);margin-bottom:2px}
+.ochip:hover{background:var(--mantequilla)}
+@media(max-width:860px){.objs{grid-template-columns:1fr}}
+@media(max-width:520px){.objs{grid-template-columns:1fr}}
+.hl-row{display:flex;gap:18px;overflow-x:auto;padding:18px 18px 12px;background:#fff;border:1px solid var(--line);border-radius:18px;margin-top:10px}
+.hl{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:7px;width:84px}
+.hl-ring{width:78px;height:78px;border-radius:50%;padding:3px;border:1.5px solid var(--line)}
+.hl-c{width:100%;height:100%;border-radius:50%;background:var(--mantequilla);display:flex;align-items:center;justify-content:center}
+.hl span{font-size:12px;color:var(--ink);text-align:center;white-space:nowrap}
+.bench{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.bc{background:var(--paper);border:1px solid var(--line);border-radius:18px;overflow:hidden;display:flex;flex-direction:column}
+.bc img{width:100%;height:420px;object-fit:cover;object-position:top;display:block;border-bottom:1px solid var(--line)}
+.bc-b{padding:16px}
+.bc-h{display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap}
+.bc-h h3{font-size:18px}
+.bc-n{font-size:13px;color:var(--muted);margin:4px 0 10px}
+.bc p{font-size:13.5px;margin-bottom:8px}
+.bc .take{background:var(--bg);border-radius:10px;padding:9px 11px;border-left:3px solid var(--caramelo)}
+.amalia-hoy{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:start}
+.amalia-hoy img{width:100%;border-radius:12px;border:1px solid var(--line)}
+@media(max-width:980px){.bench{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.bench{grid-template-columns:1fr}.amalia-hoy{grid-template-columns:1fr}}
+.refs-wide{padding:0 20px 22px}
+.refs-wide label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:8px}
+.refs{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,320px));gap:14px}
+.ref{display:flex;flex-direction:column;background:var(--bg);border:1px solid var(--line);border-radius:12px;overflow:hidden;text-decoration:none;color:var(--ink)}
+.ref img,.ref video{width:100%;aspect-ratio:9/16;object-fit:cover;display:block;background:#000}
+.ref span{padding:8px 10px;font-size:12.5px;line-height:1.35}
+.ref b{display:block;font-size:13px;margin-bottom:2px}
+.ref span a{display:block;color:var(--caramelo);font-weight:600;margin-top:4px;text-decoration:none}
+.pill.warn{background:#FBEAD9;color:var(--terracota);border-color:#F0CFB1}
+.pill.oct{background:var(--cafe);color:var(--mantequilla);border-color:var(--cafe)}
+.chev{font-size:20px;color:var(--dim);transition:transform .2s}
+details[open] .chev{transform:rotate(180deg)}
+.body{padding:0 20px 22px;display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.field{margin-bottom:14px}
+.field label{display:block;font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin-bottom:4px}
+.field p,.field li{font-size:14px}
+.field ul{padding-left:18px}
+.copy{background:var(--bg);border:1px dashed var(--miel);border-radius:14px;padding:14px 16px;white-space:pre-wrap;font-size:14px;position:relative}
+mark{background:#F6DFC6;color:var(--terracota);border-radius:4px;padding:0 3px}
+.cpbtn{position:absolute;top:8px;right:8px;font:600 11px 'Inter';background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 8px;cursor:pointer;color:var(--muted)}
+.portada{background:var(--cafe);color:var(--mantequilla);border-radius:14px;padding:16px;font-family:'Bricolage Grotesque';font-weight:800;font-size:20px;line-height:1.15}
+.portada small{display:block;font-family:'Inter';font-weight:500;font-size:12px;color:var(--miel);margin-top:8px}
+.note{background:#FBEAD9;border-radius:12px;padding:10px 12px;font-size:13px;color:#7a4428;margin-top:8px}
+
+/* tablas */
+.tbl{width:100%;border-collapse:separate;border-spacing:0;background:var(--paper);border:1px solid var(--line);border-radius:16px;overflow:hidden;font-size:14px}
+.tbl th{background:var(--cafe);color:var(--mantequilla);text-align:left;font:700 11px 'Inter';letter-spacing:.1em;text-transform:uppercase;padding:12px 14px}
+.tbl td{padding:12px 14px;border-top:1px solid var(--line);vertical-align:top}
+.tbl-wrap{overflow-x:auto}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.box{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:20px}
+.box h3{font-size:18px;margin-bottom:8px}
+.box ul{padding-left:18px;font-size:14px}
+.box li{margin-bottom:6px}
+.callout{background:var(--cafe);color:var(--mantequilla);border-radius:20px;padding:24px 26px}
+.callout h3{color:#fff;font-size:20px;margin-bottom:8px}
+.callout p,.callout li{font-size:14.5px;color:var(--mantequilla)}
+.callout ol{padding-left:20px}
+.callout li{margin-bottom:6px}
+footer{padding:40px 0 60px;color:var(--dim);font-size:13px;text-align:center}
+
+@media(max-width:860px){
+  .stats{grid-template-columns:repeat(2,1fr)}
+  .pilares,.grid2,.body{grid-template-columns:1fr}
+  .card summary{grid-template-columns:70px 1fr auto;gap:12px}
+  .day{min-height:64px;padding:5px}
+  .day a.chip{font-size:9.5px;padding:3px 4px}
+  .top nav{display:none}
+}
+@media(max-width:520px){
+  .cal{gap:3px}
+  .cal .dow{font-size:9px}
+  .day .tag{display:none}
+}
+.reflink{display:flex;align-items:center;gap:10px;background:var(--bg);border:1px solid var(--line);border-left:4px solid var(--caramelo);border-radius:12px;padding:12px 14px;text-decoration:none;color:var(--ink);font-size:13px;line-height:1.35}
+.reflink b{display:block;font-size:13.5px}
+.reflink:hover{background:var(--mantequilla)}
+.reflinks{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <div class="brand"><img src="logo-amalia.png" alt="Amalia">Amalia · Parrilla 02</div>
+  <nav>
+    <a href="#pilares">Pilares</a><a href="#objetivos">Objetivos</a><a href="#piezas">Piezas</a><a href="#historias">Historias</a><a href="#produccion">Producción</a><a href="#pendientes">Pendientes</a>
+  </nav>
+</div></div>
+
+<header class="hero"><div class="wrap">
+  <div class="kicker">Parrilla de contenido 02 · Orgánico · Instagram, Facebook y TikTok</div>
+  <h1>Diciembre en <em class="f">Amalia</em></h1>
+  <p class="lead">Un mes con dos frentes. El primero es el gelato: que más negocios conozcan a Amalia como proveedor y que el público venga por sus sabores. El segundo es la Navidad: los panettones como el regalo que se lleva a casa y los encargos para reuniones y celebraciones. Dos videos salen antes, en noviembre, para arrancar la temporada.</p>
+  <div class="stats">
+    <div class="stat"><b>10</b><span>piezas en total</span></div>
+    <div class="stat"><b>2</b><span>videos anticipados en noviembre</span></div>
+    <div class="stat"><b>8</b><span>publicaciones en diciembre</span></div>
+    <div class="stat"><b>1</b><span>historia al día</span></div>
+  </div>
+</div></header>
+
+<section id="pilares"><div class="wrap">
+  <div class="kicker">La línea</div>
+  <h2>Tres pilares para diciembre</h2>
+  <p class="sub">El gelato sigue al centro, la panadería muestra lo que la hace distinta y la Navidad pone el sentimiento de la temporada.</p>
+  <div class="pilares">
+    <div class="pilar" style="--c:var(--p1)"><h3>01 · Gelato</h3><p>Sabores que sorprenden, la vitrina y el gelato como producto para otros negocios.</p><div class="n">5 piezas</div></div>
+    <div class="pilar" style="--c:var(--p2)"><h3>02 · Panadería y equipo</h3><p>Las personas que hacen Amalia y los productos que la gente pide una y otra vez.</p><div class="n">3 piezas</div></div>
+    <div class="pilar" style="--c:var(--p3)"><h3>03 · Navidad y encargos</h3><p>El panettone como regalo tradicional y los pedidos para reuniones y celebraciones.</p><div class="n">2 piezas</div></div>
+  </div>
+</div></section>
+
+<section id="objetivos"><div class="wrap">
+  <div class="kicker">La parrilla por objetivos</div>
+  <h2>Qué busca cada pieza</h2>
+  <p class="sub">Los cuatro objetivos son de reconocimiento y posicionamiento de marca. Cada pieza tiene uno principal. Toca una pieza para ver el detalle.</p>
+  <div class="objs" id="objs"></div>
+</div></section>
+
+<section id="piezas"><div class="wrap">
+  <div class="kicker">Pieza por pieza</div>
+  <h2>Las 10 piezas</h2>
+  <p class="sub">Cada pieza trae el guion o las láminas, el copy y lo que se necesita grabar. Lo que está <mark style="background:#F6DFC6;color:#A8603F;border-radius:4px;padding:0 3px">[entre corchetes]</mark> se confirma con Amalia. El orden de publicación se define cuando la parrilla esté aprobada.</p>
+  <div class="filters" id="filters"></div>
+  <div id="cards"></div>
+</div></section>
+
+<section id="historias"><div class="wrap">
+  <div class="kicker">Historias</div>
+  <h2>Una historia al día</h2>
+  <p class="sub">Las historias acompañan las publicaciones del mes y siguen la misma línea gráfica: fondo crema, títulos en café tostado y la banda miel.</p>
+  <div class="tbl-wrap"><table class="tbl">
+    <tr><th>Historia</th><th>Para qué</th></tr>
+    <tr><td><b>Encuesta del rollo de canela</b>: "¿Se queda en los recomendados?" y luego los resultados</td><td>Acompaña la votación del reel de noviembre</td></tr>
+    <tr><td><b>Frío &amp; cremoso</b>: sabores que tienes que probar</td><td>Gelato en vitrina</td></tr>
+    <tr><td><b>¿Ya pasaste por tu pan?</b></td><td>Panadería del día</td></tr>
+    <tr><td><b>Hoy es un buen día para pasarte por un postrecito</b></td><td>Antojo de la tarde</td></tr>
+    <tr><td><b>Panettones disponibles</b>: sabores y cómo encargarlos</td><td>Temporada</td></tr>
+    <tr><td><b>Agenda tu pedido</b>: tortas personalizadas y panadería para reuniones</td><td>Encargos</td></tr>
+    <tr><td><b>Gelato para tu negocio</b>: repost del reel de proveedores con el contacto</td><td>Proveedores</td></tr>
+    <tr><td><b>Lo del día a día</b>: una tanda recién salida o un sabor en vitrina, con el material que Amalia manda por WhatsApp</td><td>Cercanía</td></tr>
+  </table></div>
+</div></section>
+
+<section id="produccion"><div class="wrap">
+  <div class="kicker">Producción</div>
+  <h2>Lo que hay que grabar</h2>
+  <p class="sub">La lista de tomas del mes, agrupada para aprovechar cada jornada.</p>
+  <div class="grid2">
+    <div class="box"><h3>Jornada 1 · Gelato</h3>
+      <ul>
+        <li>Vitrina recién montada: paneo completo y un plano corto por sabor (09)</li>
+        <li>Tomas antojadoras: cuchara, salsas, toppings y la bola en cono o copa (07)</li>
+        <li>3 fotos en secuencia del gelato de [rollo de canela o alfajor] con la cuchara (05)</li>
+        <li>Gelato de rollo de canela para el reel de votación, si falta grabarlo (N-B)</li>
+      </ul></div>
+    <div class="box"><h3>Jornada 2 · Panadería y equipo</h3>
+      <ul>
+        <li>3 o 4 personas del equipo con el producto que recomiendan (04)</li>
+        <li>Productos partidos y tibios: croissant de chocolate, rollo de canela, pastel de arequipe, croissant de salami y queso, palito de queso y guayaba (08)</li>
+        <li>Fotos para "Hoy te recomendamos": café de especialidad, combinación 100/10, gelato y panadería (06)</li>
+      </ul></div>
+    <div class="box"><h3>Jornada 3 · Navidad</h3>
+      <ul>
+        <li>Panettone envuelto para regalo, una puerta, una mesa navideña y 2 o 3 personas (03)</li>
+        <li>Manos partiendo y repartiendo tajadas, chocolate o café caliente (03)</li>
+      </ul></div>
+    <div class="box"><h3>Video animado · Pedidos</h3>
+      <ul>
+        <li>Se arma con fotos reales de Amalia, texto animado y voz en off (10)</li>
+        <li>Fotos de tortas personalizadas ya hechas y de panadería en bandejas</li>
+        <li>No necesita jornada de grabación</li>
+      </ul></div>
+  </div>
+</div></section>
+
+<section id="pendientes"><div class="wrap">
+  <div class="callout">
+    <h3>Lo que necesitamos de Amalia para cerrar la parrilla</h3>
+    <ol>
+      <li><b>Aprobación de las 10 piezas</b> y de quién sale a cámara.</li>
+      <li><b>Panettones:</b> tamaños, precios, cómo se encargan y hasta qué fecha.</li>
+      <li><b>Proveedores:</b> a qué negocios se les vende, el canal de contacto y qué sabores están disponibles para negocios.</li>
+      <li><b>Pedidos:</b> con cuántos días se agenda, por dónde se pide y fotos de tortas personalizadas ya hechas.</li>
+      <li><b>Rollo de canela:</b> cómo es el gelato (base, trozos, glaseado) y si ya está grabado.</li>
+      <li><b>Equipo:</b> quiénes salen, de qué sede y qué recomienda cada uno.</li>
+      <li><b>"Hoy te recomendamos":</b> qué es la combinación 100/10, qué café de especialidad mostramos y qué sabor de gelato.</li>
+      <li><b>"¿Cómo le explicas este sentimiento?":</b> rollo de canela o alfajor.</li>
+    </ol>
+  </div>
+</div></section>
+
+<footer>Parrilla 02 · Amalia Panadería y Gelatería · Preparada por Hounter Leads · 2026</footer>
+
+<script>
+const PILAR = {
+  1:{n:"Gelato", c:"var(--p1)"},
+  2:{n:"Panadería y equipo", c:"var(--p2)"},
+  3:{n:"Navidad y encargos", c:"var(--p3)"}
+};
+const OBJ = {
+  1:{n:"Posicionarse como proveedor de gelato", m:""},
+  2:{n:"Que a Amalia se le reconozca por su gelato", m:""},
+  3:{n:"Ponerle cara a Amalia y mostrar su panadería", m:""},
+  4:{n:"Acompañar la Navidad y los encargos", m:""}
+};
+const OBJ_WHY = {
+  1:"Que una gelatería, un café o un restaurante que llegue al perfil vea la vitrina de Amalia y quiera esos sabores en su negocio.",
+  2:"Sabores que sorprenden y tomas que antojan, para que el gelato sea la primera razón para venir.",
+  3:"Las personas que hacen Amalia y los productos de panadería que la hacen distinta.",
+  4:"El panettone como el regalo tradicional de Navidad y Amalia como la opción para reuniones y celebraciones."
+};
+const SEDES = "📍 Parque: Calle 49 #49-31\n📍 La Asunción: Cra. 56 #51-19";
+const PIEZAS = [
+  {id:"NA", obj:2, obj2:null, mes:"nov", dnum:"N-A", dow:"Noviembre", pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Lanzar el gelato de temporada de diciembre. Se sube en noviembre y el sabor va todo diciembre.",
+   titulo:"Llegó el gelato de temporada: natilla y buñuelo",
+   concepto:"El video ya está grabado. Anuncia el sabor de la Navidad paisa convertido en gelato, disponible todo diciembre.",
+   copy:"Llegó nuestro gelato de temporada: natilla y buñuelo 🎄\nEl sabor de la Navidad paisa, ahora en gelato.\nLo tenemos durante todo diciembre, ven a probarlo.\n\n"+SEDES,
+   cta:"Ven a probarlo durante diciembre",
+   portada:"Gelato de temporada\nnatilla y buñuelo 🎄", portadaNota:"Primer plano del gelato servido",
+   ref:"Video ya grabado. Se edita con el estilo de la marca y subtítulos.",
+   prod:"Ya grabado.",
+   pend:null},
+  {id:"NB", obj:2, obj2:null, mes:"nov", dnum:"N-B", dow:"Noviembre", pilar:1, formato:"Reel + encuesta en historias", redes:"IG · FB · TikTok",
+   objetivo:"Que la gente venga a probar el gelato de rollo de canela y vote si se queda en los recomendados de Amalia.",
+   titulo:"Gelato de rollo de canela: tú decides si se queda",
+   concepto:"Una votación: la gente lo prueba en las sedes y decide en comentarios y en la encuesta de historias si el sabor se queda en los recomendados.",
+   guion:"Tenemos un sabor nuevo y necesitamos tu ayuda.\n\nEs nuestro gelato de rollo de canela: [descripción: base, trozos de rollo, glaseado].\n\nQueremos dejarlo en los recomendados de Amalia, y la decisión es tuya.\n\nVen, pruébalo y cuéntanos en los comentarios: ¿se queda en los recomendados?",
+   copy:"Tú decides 🤎\nNuestro gelato de rollo de canela quiere quedarse en los recomendados de Amalia.\nVen a probarlo y vota en comentarios: ¿se queda?\n\n"+SEDES,
+   cta:"Pruébalo y vota en comentarios",
+   portada:"¿Se queda o se va?\nGelato de rollo de canela", portadaNota:"La cuchara sacando el gelato con los trozos de rollo a la vista",
+   ref:"Persona del equipo a cámara con el gelato en la mano, primer plano de la textura y la cuchara. 15–20 s.",
+   prod:"Jornada de gelato, si todavía falta grabarlo.",
+   pend:"Descripción del gelato de rollo de canela y si ya está grabado."},
+  {id:"D1", obj:4, obj2:null, mes:"dic", dnum:"01", dow:"Diciembre", pilar:3, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Contar lo que significa el panettone en Navidad: el regalo que se lleva a una casa y se comparte en familia.",
+   titulo:"Lo que se comparte en Navidad",
+   concepto:"Una pieza emocional, sin precios ni llamado a comprar. El panettone como pretexto para estar juntos: alguien llega a una casa con un detalle en las manos, se abre en la mesa y se comparte en familia.",
+   guion:"Tomas:\n\n1 · Unas manos envolviendo un panettone con una cinta, sin prisa.\n2 · Una puerta que se abre y alguien que sonríe al ver quién llegó.\n3 · Un abrazo largo; el panettone pasa de unas manos a otras.\n4 · La mesa con la familia: alguien lo parte y reparte las tajadas.\n5 · Detalles: una taza de chocolate humeante, risas, una mano de abuela sirviendo.\n6 · Cierre: la mesa vista desde arriba, todos alrededor, y el logo de Amalia muy sutil.\n\nTexto en pantalla, una frase por toma:\n\nEn Navidad, llegar a una casa es llevar un pedacito de ti.\nUn detalle en las manos.\nUna mesa que se llena.\nY una familia que se reúne alrededor de lo mismo.\nPorque lo más bonito de la Navidad se comparte.",
+   copy:"Hay tradiciones que se llevan en las manos 🤍\nLlegar a casa de los que quieres con un panettone es una forma de decir \"pensé en ti\". Luego se abre en la mesa, se parte en tajadas y se comparte entre todos.\nEso es la Navidad: estar juntos.\n\nDe nuestra casa a la tuya, feliz Navidad.\nAmalia Panadería",
+   cta:"De nuestra casa a la tuya, feliz Navidad",
+   portada:"Lo que se comparte\nen Navidad", portadaNota:"El panettone envuelto pasando de unas manos a otras",
+   ref:"Luz cálida, tomas lentas y música suave. Personas reales (familia o equipo de Amalia), sin actuación forzada. 20–30 s.",
+   refs:[{url:"https://www.instagram.com/p/DRpQbSfkenp/", t:"Reel de panettones del año pasado", d:"Pistacho, chocolate y tradicional"}],
+   prod:"Jornada de Navidad: 2 o 3 personas, una puerta, una mesa decorada de Navidad, un panettone envuelto para regalo y chocolate caliente.",
+   pend:"Tamaños, precios, cómo se encargan los panettones y hasta qué fecha (para historias y la pieza de pedidos)."},
+  {id:"D2", obj:3, obj2:2, mes:"dic", dnum:"02", dow:"Diciembre", pilar:2, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Ponerle cara al equipo y mostrar los productos de Amalia desde quienes los hacen.",
+   titulo:"Si es la primera vez que vienes a Amalia, ¿qué te recomendamos?",
+   concepto:"3 o 4 personas del equipo responden la pregunta, cada una con su producto favorito en la mano. Al menos una recomienda un gelato de los sabores que sorprenden.",
+   guion:"Texto en pantalla:\n\nSi es la primera vez que vienes a Amalia, ¿qué te recomendamos?\n\nCada persona, a cámara:\n\n\"Yo soy [nombre] y te recomiendo [producto], porque [frase corta y natural].\"\n(Corte a primer plano del producto)\n\nCierre, todos juntos o la vitrina:\n\n¿Cuál pruebas primero?",
+   copy:"Le preguntamos al equipo qué te recomienda si es tu primera vez en Amalia 🤎\n¿Con cuál empiezas?\n\n"+SEDES,
+   cta:"Cuéntanos en comentarios con cuál empiezas",
+   portada:"¿Qué te recomendamos?", portadaNota:"El equipo junto, cada uno con su producto",
+   ref:"Una pregunta en pantalla y cada persona respondiendo en su puesto, con corte al producto. Ritmo rápido. 20–30 s.",
+   refs:[{url:"https://www.instagram.com/reel/DZIN4RsxP_D/", t:"Referencia", d:"Momu · ¿qué me recomendarías?"}],
+   prod:"Jornada de panadería y equipo: 3 o 4 personas con el producto que recomiendan.",
+   pend:"Quiénes salen, de qué sede y qué recomienda cada uno."},
+  {id:"D3", obj:2, obj2:1, mes:"dic", dnum:"03", dow:"Diciembre", pilar:1, formato:"Carrusel 1:1", redes:"IG · FB",
+   objetivo:"Que el gelato se antoje con humor y se comparta.",
+   titulo:"¿Cómo le explicas este sentimiento… al team salado?",
+   concepto:"Tres fotos en secuencia del mismo gelato, con la misma luz, y una frase que se completa lámina por lámina.",
+   glabel:"Láminas",
+   guion:"1 · No es por ofender, pero…\n(El gelato servido en copa o vaso, entero)\n\n2 · ¿Cómo le explicas este sentimiento…\n(La cuchara entrando y sacando una bola cremosa)\n\n3 · …al team salado?\n(La cuchara levantada, con el gelato chorreando o con los trozos)",
+   copy:"Hay cosas que se prueban para entenderlas 🤤\nGelato de [rollo de canela / alfajor] en nuestras dos sedes.\n\n"+SEDES,
+   cta:"Etiqueta a alguien del team salado",
+   portada:"No es por ofender, pero…", portadaNota:"El gelato servido, primera foto de la secuencia",
+   ref:"Fotos con luz natural, mismo plano en las tres láminas. Texto blanco centrado. Formato 1:1.",
+   refs:[{url:"https://www.instagram.com/p/DeuUdysEYt8/", t:"Referencia", d:"¿Cómo le explicas este sentimiento?"}],
+   prod:"Jornada de gelato: 3 fotos en secuencia con la cuchara.",
+   pend:"Elegir el sabor: rollo de canela o alfajor."},
+  {id:"D4", obj:3, obj2:2, mes:"dic", dnum:"04", dow:"Diciembre", pilar:2, formato:"Carrusel 1:1", redes:"IG · FB",
+   objetivo:"Mostrar las formas de disfrutar Amalia: café, gelato, combinaciones y panadería.",
+   titulo:"Hoy te recomendamos…",
+   concepto:"Una forma de disfrutar Amalia por lámina, escrita como acción, con la etiqueta del producto encima.",
+   glabel:"Láminas",
+   guion:"1 · Hoy te recomendamos…\n(Mesa con varios productos de Amalia)\n\n2 · Empezar el día con un café de especialidad\n[bebida]\n\n3 · Pedir una combinación 100/10\n[producto]\n\n4 · Darte el gusto de un gelato\n[sabor]\n\n5 · Llevarte algo para compartir en casa\n[panadería o panettone]",
+   copy:"A veces la mejor recomendación es salir de la rutina. Desliza y descubre algunas formas de disfrutar Amalia 🤍\n\n"+SEDES,
+   cta:"Guárdalo para tu próxima visita",
+   portada:"Hoy te recomendamos…", portadaNota:"Mesa con varios productos de Amalia",
+   ref:"Fotos de producto con luz natural, la frase de acción y una etiqueta pequeña con el nombre del producto. Formato 1:1.",
+   refs:[{url:"https://www.instagram.com/p/Dbqa5yvkb-Z/", t:"Referencia", d:"Momu · Hoy te recomendamos"}],
+   prod:"Jornada de panadería: fotos del café, la combinación 100/10, el gelato y la panadería.",
+   pend:"Qué es la combinación 100/10, qué café de especialidad mostramos, qué sabor de gelato y si van más láminas."},
+  {id:"D5", obj:2, obj2:1, mes:"dic", dnum:"05", dow:"Diciembre", pilar:1, formato:"Reel", redes:"IG · FB · TikTok",
+   objetivo:"Tomas que antojan para que el gelato se comparta y se etiquete.",
+   titulo:"Te invito a invitarme a un gelato",
+   concepto:"Primeros planos muy antojadores del gelato con una sola frase en pantalla, pensada para etiquetar a alguien.",
+   guion:"Tomas (primeros planos, lentas, con luz cálida):\n\n1 · La cuchara entrando en la bandeja y sacando una bola cremosa.\n2 · Salsa de chocolate o arequipe cayendo sobre el gelato.\n3 · Trozos o toppings cayendo encima.\n4 · La bola puesta en el cono o la copa.\n5 · La cuchara llena acercándose a la cámara.\n6 · Cierre: alguien recibe el gelato en la mano.\n\nTexto en pantalla:\n\nTe invito a invitarme a un gelato 🍨",
+   copy:"La mejor invitación que te puedo hacer 😏\nEtiqueta a quien te debe un gelato.\n\n"+SEDES,
+   cta:"Etiqueta a quien te debe un gelato",
+   portada:"Te invito a invitarme\na un gelato", portadaNota:"La cuchara llena acercándose a la cámara",
+   ref:"Tomas lentas y muy cerca, con sonido real. 10–15 s.",
+   refs:[{url:"https://www.instagram.com/reel/DeF5pcpCTLz/", t:"Referencia", d:"Te invito a invitarme a un gelato"}],
+   prod:"Jornada de gelato, con la vitrina recién montada y los toppings listos.",
+   pend:null},
+  {id:"D6", obj:3, obj2:null, mes:"dic", dnum:"06", dow:"Diciembre", pilar:2, formato:"Carrusel 1:1", redes:"IG · FB",
+   objetivo:"Mostrar lo que hace diferente a la panadería de Amalia, con humor.",
+   titulo:"Esa es la idea",
+   concepto:"Cada lámina tiene arriba una \"queja\" sobre un bloque café tostado y abajo la foto del producto con \"ESA ES LA IDEA\" en una banda miel.",
+   glabel:"Láminas",
+   guion:"1 · \"El croissant de chocolate tiene demasiado chocolate\"\n(Croissant partido a la mitad, con el chocolate derretido saliendo)\n\n2 · \"El rollo de canela tiene demasiadas capas\"\n(Rollo desenrollándose, con la canela y los frutos secos a la vista)\n\n3 · \"El pastel de arequipe tiene mucho arequipe\"\n(Pastel partido, con el arequipe escurriendo)\n\n4 · \"El croissant de salami y queso derrite demasiado queso\"\n(Croissant abierto, con el queso estirándose)\n\n5 · \"El palito de queso y guayaba se desborda de guayaba\"\n(Palito partido, con la guayaba brillante)\n\nEn cada foto: ESA ES LA IDEA",
+   copy:"Esa es la idea… ¡siempre! 🥐\nPanadería Amalia, hecha para antojarte.\n\n"+SEDES,
+   cta:"Etiqueta a quien se come el croissant de chocolate",
+   portada:"\"El croissant de chocolate tiene demasiado chocolate\"\nESA ES LA IDEA", portadaNota:"Bloque café tostado arriba y la foto del croissant partido abajo",
+   ref:"Bloque de color arriba con la queja en Poppins ExtraBold color crema y foto abajo. Formato 1:1.",
+   refs:[{url:"https://www.instagram.com/p/Dfcml1toGhE/", t:"Referencia", d:"Gusto Gourmet · Esa es la idea"}],
+   prod:"Jornada de panadería: cada producto partido, abierto o estirado, mejor tibio y con luz natural.",
+   pend:null},
+  {id:"D7", obj:1, obj2:2, mes:"dic", dnum:"07", dow:"Diciembre", pilar:1, formato:"Reel · voz en off", redes:"IG · FB · TikTok",
+   objetivo:"Que un negocio vea los gelatos de Amalia en vitrina y quiera tenerlos en su carta.",
+   titulo:"Gelato Amalia para tu negocio",
+   concepto:"Voz en off sobre tomas de los gelatos y la vitrina de Amalia. Muestra los sabores que sorprenden y cómo se ven en vitrina, e invita a los negocios a escribir.",
+   guion:"¿Tu vitrina necesita algo que haga que la gente se detenga?\n\nEste es el gelato de Amalia. Auténtico gelato italiano, cremoso, con colores y texturas que se antojan desde lejos.\n\nSabores que sorprenden: queso y bocadillo, yogurt amarena, quipitos, alfajor, pistacho, ferrero y nuestro sabor de la casa.\n\nAsí se ve en vitrina: lleno, brillante y listo para servir.\n\nLlevamos el gelato de Amalia a tu negocio. [Cafés, restaurantes y heladerías] ya pueden tenerlo.\n\nEscríbenos y cuéntanos qué sabores quieres para tu vitrina.",
+   copy:"¿Buscas un gelato que se robe la vitrina de tu negocio? 🍨\nAuténtico gelato italiano con sabores que sorprenden.\nEscríbenos [canal] y llevamos Amalia a tu negocio.",
+   cta:"Escríbenos y cuéntanos qué sabores quieres para tu vitrina",
+   portada:"Gelato Amalia\npara tu negocio", portadaNota:"La vitrina completa de Amalia",
+   ref:"Gancho con la cuchara entrando lento en el gelato. Luego texturas, un plano corto por sabor con su nombre en pantalla, paneo de la vitrina completa y el gelato servido sobre una mesa de café. Cierre con el logo. 20–30 s.",
+   prod:"Jornada de gelato: vitrina llena, un plano por sabor y una mesa de café para la toma final.",
+   pend:"A qué negocios se les vende, el canal de contacto y qué sabores están disponibles para negocios."},
+  {id:"D8", obj:4, obj2:null, mes:"dic", dnum:"08", dow:"Diciembre", pilar:3, formato:"Video animado · voz en off", redes:"IG · FB · TikTok",
+   objetivo:"Recordar que en Amalia se programan encargos para reuniones y celebraciones, y que hay tortas personalizadas.",
+   titulo:"Agenda tu pedido con Amalia",
+   concepto:"Video informativo animado, con fotos reales de Amalia, texto que entra frase por frase y voz en off. Las tortas que aparecen son trabajos reales de Amalia.",
+   guion:"Recuerda que en Amalia puedes programar tus encargos para reuniones y celebraciones.\n\nPanadería, pastelería y gelato para compartir en la oficina, en casa o con tus invitados.\n\nAdemás, contamos con servicio de personalización de tortas, hechas a tu gusto y para tu momento.\n\nSi tienes una primera comunión, un cumpleaños o una celebración especial, agenda tu pedido a tiempo.\n\nAmalia está lista para acompañar tus mejores momentos.",
+   copy:"Tus reuniones y celebraciones merecen Amalia 🎂\nProgramamos tus encargos y personalizamos tu torta para primeras comuniones, cumpleaños y fechas especiales.\nAgenda tu pedido con [días] de anticipación por [canal].\n\n"+SEDES,
+   cta:"Agenda tu pedido a tiempo",
+   portada:"Agenda tu pedido\ncon Amalia", portadaNota:"Una torta personalizada de Amalia",
+   ref:"Fondo crema, títulos en Poppins ExtraBold con banda miel y las fotos de producto entrando al ritmo de la voz. 20–25 s.",
+   prod:"Se arma sin jornada de grabación, con fotos de tortas personalizadas y de panadería en bandejas.",
+   pend:"Con cuántos días se agenda, por dónde se pide y fotos de tortas personalizadas ya hechas."}
+];
+
+const esc = s => s.replace(/&/g,"&amp;").replace(/</g,"&lt;");
+const hl = s => esc(s).replace(/\[([^\]]+)\]/g,'<mark>[$1]</mark>');
+
+function card(p){
+  const pi = PILAR[p.pilar];
+  return `<details class="card" id="${p.id}" data-pilar="${p.pilar}" style="--c:${pi.c}">
+  <summary>
+    <div class="date"><b>${p.dnum}</b><span>${p.dow}</span></div>
+    <div>
+      <h3>${hl(p.titulo)}</h3>
+      <div class="meta">
+        ${p.mes==="nov"?'<span class="pill oct">Anticipado · noviembre</span>':''}
+        <span class="pill objp">Obj. ${String(p.obj).padStart(2,"0")}</span>
+        <span class="pill p">${pi.n}</span>
+        <span class="pill">${p.formato}</span>
+        <span class="pill">${p.redes}</span>
+        ${p.pend?'<span class="pill warn">Falta un dato</span>':''}
+      </div>
+    </div>
+    <span class="chev">⌄</span>
+  </summary>
+  <div class="body">
+    <div>
+      <div class="field"><label>Objetivo</label><p><b>${String(p.obj).padStart(2,"0")} · ${OBJ[p.obj].n}</b>${p.obj2?` · también apoya ${String(p.obj2).padStart(2,"0")} · ${OBJ[p.obj2].n}`:""}<br>${p.objetivo}</p></div>
+      <div class="field"><label>Concepto</label><p>${hl(p.concepto)}</p></div>
+      ${p.guion?`<div class="field"><label>${p.glabel||"Guion"}</label><div class="copy">${hl(p.guion)}</div></div>`:""}
+      <div class="field"><label>Copy</label><div class="copy"><button class="cpbtn" data-copy="${p.id}">Copiar</button>${hl(p.copy)}</div></div>
+      <div class="field"><label>Llamado a la acción</label><p>${p.cta}</p></div>
+    </div>
+    <div>
+      <div class="field"><label>Portada</label><div class="portada">${hl(p.portada).replace(/\n/g,"<br>")}<small>${p.portadaNota}</small></div></div>
+      <div class="field"><label>Referencia visual</label><p>${p.ref}</p></div>
+      <div class="field"><label>Producción</label><p>${p.prod}</p></div>
+      ${p.pend?`<div class="note"><b>Pendiente:</b> ${hl(p.pend)}</div>`:''}
+    </div>
+  </div>
+  ${p.refs?`<div class="refs-wide"><label>Referencias</label><div class="reflinks">${p.refs.map(r=>`<a class="reflink" href="${r.url}" target="_blank" rel="noopener"><span><b>${r.t}</b>${r.d} · Ver en Instagram ↗</span></a>`).join("")}</div></div>`:""}
+</details>`;
+}
+
+function renderCards(f){
+  document.getElementById("cards").innerHTML = PIEZAS.filter(p=>f==="all"||String(p.obj)===f).map(card).join("");
+  document.querySelectorAll(".cpbtn").forEach(b=>b.onclick=e=>{
+    e.preventDefault();
+    const p = PIEZAS.find(x=>x.id===b.dataset.copy);
+    const done=()=>{b.textContent="Copiado ✓";setTimeout(()=>b.textContent="Copiar",1500)};
+    try{navigator.clipboard.writeText(p.copy).then(done,()=>{})}catch(err){}
+  });
+}
+const F = [["all","Todas"],["1","01 · Proveedor de gelato"],["2","02 · Gelato"],["3","03 · Equipo y panadería"],["4","04 · Navidad y encargos"]];
+document.getElementById("filters").innerHTML = F.map(([k,n],i)=>`<button data-f="${k}" class="${i?"":"on"}">${n}</button>`).join("");
+document.querySelectorAll("#filters button").forEach(b=>b.onclick=()=>{
+  document.querySelectorAll("#filters button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on"); renderCards(b.dataset.f);
+});
+renderCards("all");
+const chipP = p => `<a class="ochip" href="#${p.id}" data-open="${p.id}" style="--c:${PILAR[p.pilar].c}"><small>${p.mes==="nov"?"Noviembre":"Diciembre"} · ${p.formato}</small>${esc(p.titulo.replace(/\[|\]/g,""))}</a>`;
+document.getElementById("objs").innerHTML = Object.entries(OBJ).map(([k,o])=>{
+  const pr = PIEZAS.filter(p=>p.obj==k), se = PIEZAS.filter(p=>p.obj2==k);
+  return `<div class="obj"><div class="num">0${k}</div><h3>${o.n}</h3><p>${OBJ_WHY[k]}</p><div class="ps">${pr.length} pieza${pr.length>1?"s":""}</div>${pr.map(chipP).join("")}${se.length?`<div class="ps sec">También lo apoyan</div>${se.map(chipP).join("")}`:""}</div>`;
+}).join("");
+
+document.addEventListener("click",e=>{
+  const a = e.target.closest("[data-open]"); if(!a) return;
+  document.querySelectorAll("#filters button")[0].click();
+  const el = document.getElementById(a.dataset.open); if(el) el.open = true;
+});
+</script>
+</body>
+</html>
