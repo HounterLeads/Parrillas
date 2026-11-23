@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cygnus — Parrilla Black Friday + Diciembre 2026</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #FAF7F4;
+    color: #3D3533;
+    line-height: 1.7;
+    font-weight: 300;
+  }
+
+  .container { max-width: 1100px; margin: 0 auto; padding: 20px; }
+
+  /* HEADER */
+  .header {
+    text-align: center;
+    padding: 80px 30px 55px;
+    background: linear-gradient(180deg, #F0EBE5 0%, #FAF7F4 100%);
+    border-bottom: 1px solid #E8E0D8;
+  }
+  .header .brand {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1em;
+    letter-spacing: 8px;
+    text-transform: uppercase;
+    color: #B8956A;
+    margin-bottom: 16px;
+  }
+  .header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3em;
+    font-weight: 300;
+    color: #3D3533;
+    line-height: 1.2;
+  }
+  .header p { font-size: 0.95em; color: #8A7E76; margin-top: 14px; }
+  .header .doc-tag {
+    display: inline-block;
+    border: 1px solid #D4C8BC;
+    color: #8A7E76;
+    padding: 6px 22px;
+    border-radius: 50px;
+    font-size: 0.8em;
+    letter-spacing: 1px;
+    margin-top: 22px;
+  }
+
+  /* SECTION HEADER */
+  .section-head { text-align: center; margin: 70px 0 10px; }
+  .section-head .eyebrow {
+    font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase;
+    color: #B8956A; font-weight: 500;
+  }
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2.3em; font-weight: 300; color: #3D3533; margin-top: 6px;
+  }
+  .section-head p { color: #8A7E76; font-size: 0.9em; margin-top: 6px; }
+  .divider { width: 60px; height: 1px; background: #D4C8BC; margin: 22px auto 40px; }
+
+  /* GRID */
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 22px; }
+
+  /* CARD */
+  .card {
+    background: #FFFFFF;
+    border-radius: 18px;
+    border: 1px solid #E8E0D8;
+    box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: all 0.3s;
+  }
+  .card:hover { box-shadow: 0 8px 30px rgba(184,149,106,0.14); transform: translateY(-2px); }
+
+  /* MEDIA */
+  .card-media {
+    position: relative;
+    width: 100%;
+    height: 440px;
+    background: #17120E;
+    display: flex; align-items: center; justify-content: center;
+    overflow: hidden;
+  }
+  .card-media video, .card-media img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+  /* CARRUSEL */
+  .carousel { position: relative; width: 100%; height: 100%; }
+  .carousel .slide { position: absolute; inset: 0; opacity: 0; transition: opacity .35s; display: flex; align-items: center; justify-content: center; }
+  .carousel .slide.active { opacity: 1; }
+  .carousel .slide img, .carousel .slide video { width: 100%; height: 100%; object-fit: contain; }
+  .car-btn {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    background: rgba(255,255,255,0.85); color: #3D3533; border: none;
+    width: 38px; height: 38px; border-radius: 50%; cursor: pointer;
+    font-size: 1.3em; line-height: 1; display: flex; align-items: center; justify-content: center;
+    z-index: 3; transition: background .2s; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+  .car-btn:hover { background: #fff; }
+  .car-prev { left: 10px; }
+  .car-next { right: 10px; }
+  .car-count {
+    position: absolute; top: 12px; right: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 0.72em; font-weight: 500;
+    padding: 3px 11px; border-radius: 50px; letter-spacing: 0.5px;
+  }
+  .car-dots { position: absolute; bottom: 12px; left: 0; right: 0; display: flex; gap: 6px; justify-content: center; z-index: 3; }
+  .car-dots span { width: 7px; height: 7px; border-radius: 50%; background: rgba(255,255,255,0.5); transition: all .2s; }
+  .car-dots span.on { background: #fff; width: 18px; border-radius: 4px; }
+
+  .media-type {
+    position: absolute; top: 12px; left: 12px; z-index: 3;
+    background: rgba(0,0,0,0.55); color: #fff; font-size: 0.68em; font-weight: 500;
+    padding: 4px 11px; border-radius: 50px; letter-spacing: 1px; text-transform: uppercase;
+  }
+
+  /* BODY */
+  .card-body { padding: 22px 24px 20px; display: flex; flex-direction: column; flex: 1; }
+  .card-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+  .card-num { font-family: 'Cormorant Garamond', serif; font-size: 1.4em; color: #D4C8BC; }
+  .card-title {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.5em; font-weight: 500;
+    color: #3D3533; line-height: 1.2; margin-bottom: 10px;
+  }
+  .card-desc { color: #5A5250; font-size: 0.88em; font-weight: 300; flex: 1; }
+  .card-script {
+    white-space: pre-line; background: #FAF7F4; border-left: 2px solid #D4C8BC;
+    padding: 12px 16px; border-radius: 8px; font-size: 0.82em; color: #5A5250;
+    margin-top: 10px; font-style: italic;
+  }
+  .card-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 18px; padding-top: 16px; border-top: 1px solid #F0EBE5;
+  }
+  .card-ref { color: #B8956A; text-decoration: none; font-size: 0.8em; font-weight: 500; letter-spacing: 0.3px; }
+  .card-ref:hover { color: #8A6D45; }
+
+  /* TAGS */
+  .tags { display: flex; gap: 8px; align-items: center; }
+  .tag { display: inline-block; padding: 4px 13px; border-radius: 50px; font-size: 0.72em; font-weight: 500; letter-spacing: 0.4px; text-transform: uppercase; }
+  .tag-reel { background: #F0EBE5; color: #B8956A; }
+  .tag-carrusel { background: #EDE8E3; color: #8A7E76; }
+  .tag-status { background: #FFF8F0; color: #C4956A; border: 1px solid #F0DAD5; font-size: 0.72em; padding: 4px 12px; border-radius: 50px; }
+  .tag-future { background: #F0F0F5; color: #7E7EA0; border: 1px solid #E2E2EC; font-size: 0.72em; padding: 4px 12px; border-radius: 50px; }
+
+  /* SUMMARY */
+  .summary {
+    display: flex; justify-content: center; gap: 50px; flex-wrap: wrap;
+    margin: 40px 0 10px; padding: 30px; background: #FFFCF9;
+    border: 1px solid #E8E0D8; border-radius: 16px;
+  }
+  .summary .stat { text-align: center; }
+  .summary .stat .num { font-family: 'Cormorant Garamond', serif; font-size: 2.6em; color: #B8956A; line-height: 1; }
+  .summary .stat .lbl { font-size: 0.75em; letter-spacing: 1.5px; text-transform: uppercase; color: #8A7E76; margin-top: 8px; }
+
+  /* FOOTER */
+  /* OBJETIVO / INTRO */
+  .objetivo {
+    background: #FFFCF9;
+    border: 1px solid #E8E0D8;
+    border-radius: 18px;
+    padding: 44px 48px;
+    margin: 44px 0 10px;
+  }
+  .objetivo .eyebrow { font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase; color: #B8956A; font-weight: 500; }
+  .objetivo h3 {
+    font-family: 'Cormorant Garamond', serif; font-size: 1.9em; font-weight: 300;
+    color: #3D3533; margin: 6px 0 18px;
+  }
+  .objetivo .lead {
+    font-size: 1em; color: #5A5250; font-weight: 300; line-height: 1.8;
+    border-left: 2px solid #D4C8BC; padding-left: 20px; margin-bottom: 26px;
+  }
+  .objetivo h4 { font-size: 0.82em; letter-spacing: 1.5px; text-transform: uppercase; color: #B8956A; font-weight: 500; margin-bottom: 16px; }
+  .ejes { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .eje { background: #FFFFFF; border: 1px solid #F0EBE5; border-radius: 12px; padding: 20px 22px; }
+  .eje .eje-t { font-family: 'Cormorant Garamond', serif; font-size: 1.25em; color: #3D3533; margin-bottom: 8px; }
+  .eje .eje-d { font-size: 0.82em; color: #5A5250; font-weight: 300; }
+  .eje .eje-d em { color: #8A7E76; font-style: italic; }
+  .objetivo .cierre {
+    margin-top: 26px; text-align: center; font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35em; font-weight: 300; font-style: italic; color: #6B5E54; line-height: 1.5;
+  }
+  @media (max-width: 760px) { .ejes { grid-template-columns: 1fr; } .objetivo { padding: 30px 26px; } }
+
+  .footer { text-align: center; padding: 60px 20px 50px; color: #A89E96; font-size: 0.8em; }
+  .footer .brand-f { font-family: 'Cormorant Garamond', serif; letter-spacing: 6px; text-transform: uppercase; color: #B8956A; font-size: 1.1em; margin-bottom: 8px; }
+
+  @media (max-width: 760px) {
+    .grid { grid-template-columns: 1fr; }
+    .header h1 { font-size: 2.2em; }
+    .summary { gap: 28px; }
+    .card-media { height: 380px; }
+  }
+</style>
+<style>
+  .rows { margin-top: 14px; border-top: 1px solid #F0EBE5; }
+  .row { display: flex; gap: 14px; padding: 7px 0; border-bottom: 1px solid #F6F2EE; font-size: 0.8em; }
+  .row .k { flex: 0 0 128px; color: #B8956A; font-weight: 500; letter-spacing: .3px; }
+  .row .v { color: #5A5250; }
+  .lst { margin-top: 14px; }
+  .lst-t { font-size: 0.72em; letter-spacing: 1.5px; text-transform: uppercase; color: #B8956A; font-weight: 500; margin-bottom: 6px; }
+  .lst ol { padding-left: 20px; font-size: 0.83em; color: #5A5250; }
+  .lst ol li { padding: 2px 0; }
+  .checks { display: flex; flex-wrap: wrap; gap: 6px; }
+  .checks span { background: #F6F1EB; color: #6B5E54; font-size: 0.78em; padding: 3px 11px; border-radius: 50px; }
+  .card-script { font-style: normal; font-size: 0.84em; line-height: 1.65; }
+  .note { margin-top: 12px; font-size: 0.8em; color: #6B5E54; background: #FAF7F4; border-radius: 10px; padding: 10px 14px; }
+  .card.en-pauta { border: 2px solid #8FAE96; background: #F1F6F2; }
+  .card.en-pauta .card-body { background: #F1F6F2; }
+  .leyenda { display:flex; gap:22px; justify-content:center; flex-wrap:wrap; font-size:.8em; color:#6B5E54; margin:14px 0 0; }
+  .leyenda span { display:inline-flex; align-items:center; gap:8px; }
+  .leyenda i { width:16px; height:16px; border-radius:4px; display:inline-block; }
+  .pauta-btn { display: inline-block; margin-top: 14px; background: #B8956A; color: #fff; font-size: 0.78em; font-weight: 600; letter-spacing: .4px; padding: 8px 16px; border-radius: 50px; box-shadow: 0 3px 10px rgba(184,149,106,.35); }
+.alcance { background: #FFFCF9; border: 1px solid #E6D6C3; border-radius: 16px; padding: 28px 34px; margin: 22px 0 10px; }
+  .alcance .eyebrow { font-size: 0.78em; letter-spacing: 3px; text-transform: uppercase; color: #B8956A; font-weight: 500; margin-bottom: 8px; }
+  .alcance p { font-size: 0.92em; color: #5A5250; }
+  .alcance table { width: 100%; max-width: 560px; border-collapse: collapse; margin: 16px 0; font-size: 0.88em; }
+  .alcance th, .alcance td { padding: 8px 12px; border-bottom: 1px solid #F0EBE5; text-align: center; color: #5A5250; }
+  .alcance th { color: #B8956A; font-weight: 500; font-size: .85em; letter-spacing: .5px; text-transform: uppercase; }
+  .alcance td:first-child { text-align: left; }
+  .alcance tr.tot td { font-weight: 600; color: #3D3533; }
+  .alcance .decide { font-family: 'Cormorant Garamond', serif; font-size: 1.3em; font-style: italic; color: #6B5E54; }
+  .note.pauta { background: #F3EEE6; border-left: 3px solid #B8956A; }
+  .card.urgent { border-color: #E6C3B4; }
+  .tag-urg { background: #F7E3DA; color: #A5583C; }
+  .card-ref-txt { color: #8A7E76; font-size: 0.75em; text-align: right; max-width: 60%; }
+  .card-media.empty { background: #F0EBE5; }
+  .empty-t { text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.6em; color: #B8A796; line-height: 1.3; }
+  .empty-t span { font-family: 'Inter', sans-serif; font-size: .5em; letter-spacing: 2px; text-transform: uppercase; }
+  .card-media { height: 480px; }
+  .section-head.pauta .eyebrow { color: #8A6D45; }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="brand">Cygnus Wellness House</div>
+  <h1>Parrilla de Contenido</h1>
+  <p>Orgánico + Pauta · Black Friday + Diciembre 2026</p>
+  <div class="doc-tag">Propuesta para revisión · referencias reproducibles</div>
+</div>
+
+<div class="container">
+
+  <div class="summary">
+    <div class="stat"><div class="num">13<span style="font-size:.45em;color:#C9B8A6"> / 14</span></div><div class="lbl">Piezas orgánicas</div></div>
+    <div class="stat"><div class="num">6</div><div class="lbl">Reels</div></div>
+    <div class="stat"><div class="num">4</div><div class="lbl">Carruseles</div></div>
+    <div class="stat"><div class="num">3</div><div class="lbl">Posts</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Piezas de pauta</div></div>
+    <div class="stat"><div class="num">2</div><div class="lbl">Plus</div></div>
+  </div>
+
+  <div class="alcance">
+    <div class="eyebrow">Nota sobre el alcance</div>
+    <p>El plan contratado incluye <b>14 piezas</b>: 10 reels, 2 posts y 2 carruseles, con publicación y portadas. Esta parrilla reúne <b>15 piezas</b> entre orgánico y pauta, contando cada contenido una vez aunque se use en los dos. Los <b>2 adicionales</b> de la sección Plus van sin costo y no suman.</p>
+    <table>
+      <tr><th></th><th>Contratado</th><th>En la parrilla</th><th>Diferencia</th></tr>
+      <tr><td>Reels</td><td>10</td><td>8</td><td>-2</td></tr>
+      <tr><td>Carruseles</td><td>2</td><td>4</td><td>+2</td></tr>
+      <tr><td>Posts / piezas gráficas</td><td>2</td><td>3</td><td>+1</td></tr>
+      <tr class="tot"><td>Total</td><td>14</td><td>15</td><td>+1</td></tr>
+    </table>
+    <p class="decide">Revisemos la mezcla: el total es casi el contratado, pero hay más carruseles y posts y menos reels.</p>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">Sección 01</div>
+    <h2>Orgánico</h2>
+    <p>Contenido para el feed de Cygnus · 13 de 14 piezas definidas</p>
+  </div>
+  <div class="divider"></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-diciembre-media/refs/d01_1.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_2.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_3.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_4.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_5.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_6.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_7.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d01_8.png" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-carrusel">Carrusel 1:1</span></div></div>
+        <div class="card-title">¿Qué pasa en tu cuerpo dentro del sauna infrarrojo?</div>
+        <div class="card-desc">Carrusel tipo línea de tiempo: lo que vive tu cuerpo minuto a minuto durante una sesión de sauna infrarrojo, desde que entras hasta que sales. Estructura tomada de la referencia de Pure Motion Pilates.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Wellness House · El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Diciembre · fecha por definir</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li><b>Portada</b> · ¿Qué pasa en tu cuerpo dentro del sauna infrarrojo? 🔥</li><li><b>Minuto 0-5</b> · El calor infrarrojo empieza a calentar tu cuerpo desde adentro. Respiras y te relajas</li><li><b>Minuto 5-10</b> · Tu temperatura sube y la circulación se activa</li><li><b>Minuto 10-15</b> · Empiezas a sudar y tus músculos se sueltan</li><li><b>Minuto 15-20</b> · Sudoración profunda: tu piel se limpia y respira</li><li><b>Minuto 20-30</b> · Calma total. Tu mente se desconecta y tu cuerpo descansa</li><li><b>Al salir</b> · Te sientes liviana, recuperada y lista para descansar. Hidrátate 💧</li><li><b>Cierre / CTA</b> · Vívelo en Cygnus Wellness House · Reserva tu sesión</li></ol></div><div class="note"><b>Producción:</b> Línea de tiempo por minutos: validar con Cygnus cuánto dura una sesión (si son 20 min, se ajustan los tramos). Fotos reales del sauna de la Wellness House. Beneficios en lenguaje suave por políticas de Meta. Validar qué planes incluyen sauna.</div><div class="note"><b>Copy sugerido:</b> ¿Alguna vez te has preguntado qué pasa en tu cuerpo dentro del sauna? 🔥 Desde que entras hasta que sales, así se vive una sesión de sauna infrarrojo. Ve a tu ritmo y mantente hidratada 💧 Te esperamos en Cygnus Wellness House 🤍</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/p/De4hH5qnIgw/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card urgent">
+      <div class="card-media empty"><span class="media-type">Sin referencia aún</span><div class="empty-t">Post<br><span>Referencia por definir</span></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-urg">Urgente</span><span class="tag tag-reel">Post 1:1</span></div></div>
+        <div class="card-title">Post Black Friday</div>
+        <div class="card-desc">Pieza gráfica que anuncia el Black Friday en el feed: el descuento como protagonista, foto real del estudio y la web como cierre.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Ambas sedes · Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Viernes 27-nov</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“BLACK FRIDAY · [valor de la promo] en planes mensuales y membresía · cygnuspilates.com”</span></div></div>
+        <div class="note"><b>Producción:</b> Foto real del estudio (reformer o clase de Barre) con el descuento grande. Colores de marca #D4BEB3 y crema. Faltan referencia, valor de la promo y fecha de cierre.</div><div class="note"><b>Copy sugerido:</b> Este Black Friday empieza a moverte en Cygnus 🔥 Tienes [valor de la promo] en todos los planes mensuales y en la membresía, solo hasta [fecha de cierre]. Compra tu plan en cygnuspilates.com 🤍 #BlackFriday #CygnusWellnessHouse #PilatesMedellín</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><span class="card-ref-txt">Por definir</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/d03.jpg"><source src="cygnus-diciembre-media/refs/d03.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">03</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">Date navideña en Cygnus</div>
+        <div class="card-desc">Reel con la estructura de la referencia de Gina’s Flowers (DfaR1sKRM3k) y los textos exactos de Valentina: invitación a una date navideña en Cygnus, clase, arbolito y brunch.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Wellness House · El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Semana del 30-nov · antes del primer sábado (5-dic)</span></div></div>
+        <div class="lst"><div class="lst-t">Textos en pantalla</div><ol><li>Y si tenemos una date navideña ?</li><li>Una clase pilates, barre o wunda</li><li>Armamos nuestro arbolito navideño junt@s</li><li>Te animas?</li></ol></div><div class="note"><b>Producción:</b> Solo tomas reales del 13-nov (sin IA). El brunch NO va en el video: esa info se da por DM/WhatsApp a quienes se interesen. Brunch en cajita individual lista para cada persona. Escenas de clase, amigas y brunch generadas con Higgsfield (solo hay tomas reales del arbolito). Música navideña de la biblioteca de Meta/IG. Faltan precio final por persona (la propuesta del proveedor dice $65.000 de kit + brunch, sin la clase), si se reserva por WhatsApp o en la web, y la fecha del 19-dic: cae dentro del receso (16-dic a 5-ene). Brunch y taller en el patio de la Wellness House.</div><div class="note"><b>Copy sugerido:</b> Idea de date navideña con tus amigas 🎄✨ Empiezan con una clase de Pilates, Barre o Wunda, arman su propio arbolito navideño en un taller guiado y cierran con un brunch delicioso. Sábados de diciembre en Cygnus Wellness House, El Poblado, con turnos a las 7:00, 9:00 y 11:00 a.m. Los cupos son limitados: reserva el tuyo por WhatsApp 🤍</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/reel/DfaR1sKRM3k/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-diciembre-media/refs/d04_1.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d04_2.png" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">04</span><div class="tags"><span class="tag tag-reel">Post 1:1</span></div></div>
+        <div class="card-title">Post · Date navideña en Cygnus</div>
+        <div class="card-desc">Pieza gráfica del plan navideño (referencia Gina’s Flowers): el arbolito decorado como protagonista y el plan en una línea.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Wellness House · El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Semana del 30-nov</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Christmas date en Cygnus 🎄 Clase + taller de arbolito + brunch · Sábados de diciembre”</span></div></div>
+        <div class="note"><b>Producción:</b> Usar las tomas reales del arbolito. Faltan precio final y canal de reserva.</div><div class="note"><b>Copy sugerido:</b> La date navideña ideal es con tus amigas 🎄 Clase de Pilates, Barre o Wunda, taller para decorar tu arbolito soñado y brunch navideño. Sábados de diciembre en Cygnus Wellness House, El Poblado. Reserva tu cupo por WhatsApp 🤍</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/p/DfiGJgjlLC3/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-diciembre-media/refs/d06_1.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d06_2.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d06_3.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d06_4.png" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">05</span><div class="tags"><span class="tag tag-carrusel">Carrusel 1:1</span></div></div>
+        <div class="card-title">It's timeeee… tu wishlist de Navidad</div>
+        <div class="card-desc">Carrusel panorámico continuo (referencia Peonie Accessories): un moño navideño abre el carrusel con 'it's timeeee', la 'e' se alarga como una cinta que atraviesa las láminas y termina en la wishlist de Navidad con lo que se puede regalar o regalarse en Cygnus.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Primera semana de diciembre (después de Black Friday, temporada de prima y regalos)</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li><b>1 · Portada</b> · Moño navideño arriba + "it's timeeee" (la cinta de 'e' sale hacia la derecha)</li><li><b>2 · Cinta</b> · La cinta de 'eeee' sigue en onda sobre fondo crema con estrellitas</li><li><b>3 · Cinta</b> · La cinta hace un bucle y continúa</li><li><b>4 · Wishlist</b> · "de ir haciendo tu wishlist para navidad" rodeado de lo que ofrece Cygnus: gift card, plan mensual, membresía Cygnus Members, sesión de sauna infrarrojo y la date navideña (por confirmar con Cygnus)</li></ol></div><div class="note"><b>Producción:</b> Formato 1:1 (regla carruseles), diseñado como panorámica continua: la cinta debe empalmar exacto entre láminas. Traducción al ADN Cygnus: fondo crema #F2ECE6 con estrellitas greige, cinta de letras en greige #D4BEB3 o café #4A3B33; el moño puede ser rojo navideño o greige (definir). 'navidad' en itálica (Playfair). En la lámina 4, fotos reales de Cygnus o mockups de cada ítem. Confirmar ítems de la wishlist y si las gift cards ya están activas (se venden por WhatsApp).</div><div class="note"><b>Copy sugerido:</b> It's timeeee… 🎀 La Navidad está cada vez más cerca y es momento de armar tu wishlist. Regálate (o regálale a quien más quieres) movimiento, bienestar y tiempo para ti en Cygnus 🤍 Escríbenos y te contamos cómo.</div>
+        <div class="card-foot"><span class="tag-status">Propuesta por validar</span><a class="card-ref" href="https://www.instagram.com/p/DfngRGcEz8i/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media empty"><span class="media-type">Sin referencia aún</span><div class="empty-t">Carrusel<br><span>Referencia por definir</span></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">06</span><div class="tags"><span class="tag tag-carrusel">Carrusel 1:1</span></div></div>
+        <div class="card-title">El regalo perfecto esta Navidad</div>
+        <div class="card-desc">IDEA PROPIA (sin referencia aún). Carrusel que impulsa regalar una clase o un plan de Cygnus a los seres queridos, y explica en un paso a paso cómo regalarlo.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Entre el 8 y el 12 de diciembre (con la prima y antes del receso del 16-dic)</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li><b>1 · Portada</b> · Este año regala bienestar 🎁 · El regalo perfecto esta Navidad</li><li><b>2 · Una clase</b> · Para quien quiere probar: una clase de Pilates Reformer, Barre, Wunda o HIIT</li><li><b>3 · Un plan</b> · Para quien quiere moverse todo el mes: planes de Pilates y de clases grupales</li><li><b>4 · Cygnus Members</b> · Para quien lo quiere todo: clases, Pilates Reformer y sauna en las dos sedes</li><li><b>5 · Así de fácil</b> · 1. Escríbenos por WhatsApp · 2. Eliges el regalo · 3. Te enviamos su gift card con su nombre</li><li><b>6 · Cierre</b> · Regala tiempo para sí, movimiento y bienestar · Escríbenos y armamos su regalo</li></ol></div><div class="note"><b>Producción:</b> IDEA PROPIA de Claude, falta referencia de Valentina. Fotos reales de clases y de los espacios (reformer, barre, sauna) + mockup de gift card en colores Cygnus. Confirmar: qué se puede regalar (clase, planes, Members), si se muestran precios, formato de la gift card y vigencia/activación (el plan corre desde la activación; el receso va del 16-dic al 5-ene). Diferencia con d06: la wishlist despierta el deseo; esta pieza dice qué regalar y cómo comprarlo.</div><div class="note"><b>Copy sugerido:</b> Este año, el regalo perfecto es tiempo para sí 🎁🤍 Regálale a tu mamá, a tu hermana, a tu pareja o a tu mejor amiga una clase o un plan en Cygnus: movimiento, bienestar y un espacio solo para ella. Escríbenos por WhatsApp, eliges el regalo y te enviamos su gift card lista para entregar ✨</div>
+        <div class="card-foot"><span class="tag-status">Idea propia · por validar</span><span class="card-ref-txt">Por definir</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/d08.jpg"><source src="cygnus-diciembre-media/refs/d08.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">07</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">Día de velitas · Gracias</div>
+        <div class="card-desc">Video de noche iluminado solo con velas (referencia Cajas y Empaques): ambiente íntimo y cálido, velitas encendiéndose una a una en primer plano, luces desenfocadas al fondo y una persona encendiendo su vela. En Cygnus: en la Wellness House de noche, con texto en pantalla que da gracias por lo importante del año.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Lunes 7 de diciembre en la tarde-noche (noche de velitas)</span></div></div>
+        <div class="lst"><div class="lst-t">Textos en pantalla</div><ol><li>Esta noche de velitas encendemos una luz por…</li><li>…cada alumna que confió en nosotros</li><li>…nuestra nueva casa, Cygnus Wellness House</li><li>…nuestro equipo de coaches</li><li>…cada clase, cada respiración y cada avance</li><li>…y por todo lo que viene en 2027</li><li>Gracias por ser parte de Cygnus 🤍</li></ol></div><div class="note"><b>Producción:</b> Grabar de NOCHE con la luz apagada, solo velas y luces cálidas (bokeh). Tomas: hilera de velitas encendiéndose una a una en primer plano; manos encendiendo una vela; una alumna o coach con gorro navideño sosteniendo su vela frente a cámara (como la niña de la referencia); velas sobre el borde de un reformer o en el patio; llama en primer plano con luces desenfocadas; fachada de la casa con velitas en la entrada. Música: la de la referencia, 'Sabor Navideño' (Afrosound, instrumental), desde la biblioteca de Instagram al publicar. Texto en pantalla sobrio (Cormorant) con fundidos. Confirmar con Cygnus las cosas por las que dan gracias.</div><div class="note"><b>Copy sugerido:</b> Esta noche encendemos una luz por todo lo que este año nos regaló 🕯️ Por ustedes, por nuestra nueva casa, por nuestro equipo y por cada clase compartida. Gracias por hacer parte de Cygnus. Feliz noche de velitas 🤍</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/reel/DfGWxUbPfb4/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/d09.jpg"><source src="cygnus-diciembre-media/refs/d09.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">08</span><div class="tags"><span class="tag tag-reel">+ Pauta</span><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">¿Ya viniste a nuestra clase de Sculpt?</div>
+        <div class="card-desc">Video estilo campaña (referencia Centrico Pilates, clase LIFT): una alumna o coach entrenando Sculpt con mancuernas, tomas cálidas y elegantes de cuerpo entero y primeros planos de la cara y los brazos, con el texto "¿Ya viniste a nuestra clase de Sculpt?".</div>
+        <div class="pauta-btn">📣 Este contenido también va a pauta</div>
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles</span></div><div class="row"><span class="k">Publicar</span><span class="v">Diciembre · fecha por definir (antes del receso del 16-dic)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“¿Ya viniste a nuestra clase de Sculpt?”</span></div></div>
+        <div class="note"><b>Producción:</b> Grabar en Laureles (Sculpt es solo en Laureles; NO decir Wellness House). Tomas: cuerpo entero haciendo sentadilla con press de hombros con mancuernas; primer plano de la cara concentrada con los brazos arriba; manos tomando las mancuernas del rack; plano de espalda con bandas. Luz cálida, ropa neutra, fondo ordenado. Datos del copy tomados de la descripción oficial de modalidades; la referencia menciona peso y temperatura: confirmar con Cygnus si quieren dar esos datos de Sculpt.</div><div class="note pauta"><b>También en pauta:</b> puede ir a la campaña BARRE/Sculpt Laureles con la clase de prueba de $30.000.</div><div class="note"><b>Copy sugerido:</b> ¿Ya viniste a nuestra clase de Sculpt? 💪
+
+🏋️‍♀️ Mancuernas, pesas, bandas y peso corporal
+🔥 Intensidad media-alta · full body
+
+Sculpt potencia tu fuerza, define tu cuerpo y lleva tu entrenamiento a otro nivel.
+
+Clase de prueba por $30.000 en Cygnus Laureles. Te esperamos ✨</div>
+        <div class="card-foot"><span class="tag-status">Copy propuesto por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/p/DfcfxrLgT0y/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><img src="cygnus-diciembre-media/ref_vacaciones_2025.png" alt="" loading="lazy"></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">09</span><div class="tags"><span class="tag tag-reel">Post 4:5</span></div></div>
+        <div class="card-title">Cygnus se va de vacaciones</div>
+        <div class="card-desc">Post que avisa el receso de fin de año, en la línea del post de vacaciones de 2025 (cuaderno con espiral sobre foto del estudio), actualizado con las fechas de este año.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Entre el 12 y el 14 de diciembre (antes del cierre del 16-dic)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Cygnus se va de vacaciones · Del 16 de diciembre al 5 de enero estaremos recargando energía 🤍 · Seguimos activos en WhatsApp para que adquieras tu plan, regales una gift card y dejes tus clases agendadas para empezar el 2027 con toda ✨”</span></div></div>
+        <div class="note"><b>Producción:</b> Referencia = post de vacaciones de Cygnus 2025 (ref_vacaciones_2025.png). Mejora sugerida: subir el contraste del texto (el de 2025 quedó muy claro y se leía poco). Foto de fondo: Wellness House o salón de Reformer. Confirmar: fechas exactas (16-dic a 5-ene), si cierran AMBAS sedes, si reabren el 6-ene y si las gift cards y la preventa de enero ya están activas.</div><div class="note"><b>Copy sugerido:</b> Cygnus se va de vacaciones 🤍 Del 16 de diciembre al 5 de enero nos tomamos un respiro para recargar energía. Seguimos activos en WhatsApp: adquiere tu plan, regala una gift card y deja tus clases agendadas para arrancar el 2027 con toda ✨ Nos vemos el 6 de enero.</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><span class="card-ref-txt">Post de vacaciones Cygnus 2025</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media empty"><span class="media-type">Sin referencia aún</span><div class="empty-t">Carrusel<br><span>Referencia por definir</span></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">10</span><div class="tags"><span class="tag tag-carrusel">Carrusel 1:1</span></div></div>
+        <div class="card-title">Carta a la Cygnus 2026</div>
+        <div class="card-desc">IDEA PROPIA (sin referencia aún). Carrusel en formato carta: un sobre abre el carrusel y las láminas siguientes son la carta que Cygnus le escribe a su versión 2026 para agradecerle el año y despedirlo.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Jueves 31 de diciembre (programada)</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li><b>1 · Sobre</b> · Sobre crema cerrado con sello: "Para: Cygnus 2026 · De: Cygnus 2027"</li><li><b>2 · Carta</b> · Querida Cygnus 2026: gracias por atreverte. Este año abriste las puertas de una casa nueva en El Poblado y llenaste de movimiento cada rincón.</li><li><b>3 · Carta</b> · Gracias por cada alumna que llegó con dudas y hoy se mueve con confianza. Por las clases nuevas, por el sauna y por cada respiración compartida.</li><li><b>4 · Carta</b> · En 2027 seguimos creciendo con la misma esencia: cuerpo, calma y comunidad. Con amor, Cygnus 2027 🤍</li><li><b>5 · Cierre</b> · Feliz año nuevo 🥂 · Bienvenido 2027</li></ol></div><div class="note"><b>Producción:</b> IDEA PROPIA de Claude. Diseño: papel de carta crema con textura, letra manuscrita elegante (Playfair itálica o Pinyon Script para la firma), detalles en greige #D4BEB3 y café #4A3B33, sello de lacre con la C de Cygnus. Puede llevar una foto pequeña tipo polaroid de la Wellness House pegada en la carta. Confirmar con Cygnus los hitos del año que quieren mencionar. Sin menciones al receso ni a fechas de reapertura.</div><div class="note"><b>Copy sugerido:</b> Le escribimos una carta a nuestra versión 2026 💌 Gracias por este año lleno de movimiento, por nuestra nueva casa y por cada una de ustedes. Feliz año nuevo 🥂🤍</div>
+        <div class="card-foot"><span class="tag-status">Idea propia · por validar</span><span class="card-ref-txt">Por definir</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/d12.jpg"><source src="cygnus-diciembre-media/refs/d12.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">11</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">¿Por qué estás obsesionada con Pilates Reformer?</div>
+        <div class="card-desc">Video de primeros planos en el reformer (referencia ICONŚ Marbella): una alumna haciendo ejercicios con pelota y resortes, tomas muy cerradas y luz natural, con un texto pequeño blanco centrado que cambia en cada toma respondiendo la pregunta.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Diciembre · fecha por definir</span></div></div>
+        <div class="lst"><div class="lst-t">Textos en pantalla</div><ol><li>¿Por qué estás obsesionada con Pilates Reformer?</li><li>Te sientes más fuerte</li><li>Bajo impacto</li><li>Fortalece tu core</li><li>Tonifica tus músculos</li><li>Mente en calma</li><li>Una comunidad que te inspira</li><li>¿Eso responde tu pregunta?</li></ol></div><div class="note"><b>Producción:</b> Tomas MUY cerradas en el reformer (piernas con pelota, glúteo/puente, core, brazos con resortes), una sola alumna, luz natural o cálida, ropa en tonos neutros/azul oscuro. Cuidar el encuadre: elegante, nada sugestivo (evitar planos de espalda en cuatro apoyos). Texto pequeño blanco centrado como la referencia (letra sobria). Textos traducidos de la referencia: validar con Valentina.</div><div class="note"><b>Copy sugerido:</b> POV: el Reformer se volvió parte de tu personalidad 🤍 El temblor, el fuego, el "una más" que te hace sentir imparable. Esta es tu señal para reservar tu próxima clase. Pilates Reformer en Cygnus, tu nueva obsesión ✨</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/p/Dd0-tnUIP3m/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/d13.jpg"><source src="cygnus-diciembre-media/refs/d13.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">12</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">Clase especial para embarazadas</div>
+        <div class="card-desc">Video de una clase de Pilates Reformer para embarazadas (referencia ICONŚ Marbella): una alumna embarazada en el reformer y la coach acompañándola de cerca, corrigiendo y guiando cada movimiento. Transmite cuidado, seguridad y acompañamiento personalizado.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Por definir</span></div><div class="row"><span class="k">Publicar</span><span class="v">Diciembre · fecha por definir</span></div></div>
+        <div class="note"><b>Producción:</b> Necesita alumna embarazada para grabar (con su autorización) + coach. Tomas: la coach ajustando postura y resortes, ejercicios suaves de brazos con resortes sentada, respiración con manos en el vientre, cuadrupedia asistida. Descripción oficial: el Reformer es ideal para embarazadas (bajo impacto). Confirmar con Cygnus: ¿es clase nueva o especial de un día?, sede, horario, cupos por clase, precio, si incluye posparto, y requisitos (autorización médica, semanas de gestación). No prometer beneficios médicos.</div><div class="note"><b>Copy sugerido:</b> Hecha para cada etapa de la maternidad 🤍 Nuestra clase especial de Pilates Reformer para embarazadas te ayuda a conectar contigo, preparar tu cuerpo para el parto y sentirte fuerte. Cupos limitados, acompañamiento personalizado en cada movimiento. Escríbenos y reserva tu lugar ✨</div>
+        <div class="card-foot"><span class="tag-status">Copy propuesto por Claude · faltan datos de la clase</span><a class="card-ref" href="https://www.instagram.com/p/DfAA1uaIucf/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/d14.jpg"><source src="cygnus-diciembre-media/refs/d14.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">13</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">Así cuidamos cada detalle · limpieza</div>
+        <div class="card-desc">Video tipo ASMR de limpieza (referencia Tone Studio): primeros planos de las máquinas mientras se limpian, sonido real de la limpieza y un texto pequeño centrado. Muestra que cada espacio está listo e impecable para la siguiente clase.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Diciembre · fecha por definir</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Tu próxima clase, impecable para ti ✨”</span></div></div>
+        <div class="note"><b>Producción:</b> Tomas muy cerradas y lentas: paño o atomizador sobre el reformer (carro, apoyacabezas, barra de pies, correas), limpieza de la Wunda y de los accesorios (pelotas, bandas, mancuernas), plano final del salón ordenado e impecable. Sonido ambiente real (ASMR), sin música o muy suave. La referencia usa vapor: confirmar el método REAL de Cygnus (el vapor puede dañar el tapizado, varios comentarios de la referencia lo señalan) y cada cuánto limpian; el copy solo dice lo que de verdad hacen.</div><div class="note"><b>Copy sugerido:</b> Tu bienestar está en cada detalle ✨ Limpiamos y desinfectamos cada máquina para que llegues a un espacio fresco, cómodo e impecable en tu próxima clase 🤍</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/p/DfelsTqoLwj/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head pauta">
+    <div class="eyebrow">Sección 02</div>
+    <h2>Pauta</h2>
+    <p>Creativos para Meta Ads · 2 piezas</p>
+  </div>
+  <div class="divider"></div>
+  <div class="grid">
+    <div class="card urgent">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/p01.jpg"><source src="cygnus-diciembre-media/refs/p01.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-urg">Urgente</span><span class="tag tag-reel">Reel 9:16 + 4:5 (pauta)</span></div></div>
+        <div class="card-title">Black Friday · invitación directa</div>
+        <div class="card-desc">Video a cámara estilo invitación directa (referencia Mulise Skin): la persona mira a cámara, dice el descuento en los primeros segundos y cierra con urgencia. Compra en la web.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Ambas sedes · Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Viernes 27-nov (fechas exactas de la promo por definir)</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“BLACK FRIDAY · [valor de la promo] en planes mensuales y membresía · Solo hasta [fecha]”</span></div><div class="row"><span class="k">Campaña</span><span class="v">Black Friday · compra en sitio web (cygnuspilates.com)</span></div></div>
+        <div class="lst"><div class="lst-t">Guion · voz en off de los CEOs</div><div class="card-script">Hoy es el momento: llegó el Black Friday de Cygnus.
+
+Tienes [valor de la promo] en todos nuestros planes mensuales y en la membresía, para entrenar Pilates Reformer, Barre, Wunda y HIIT con atención personalizada.
+
+Es solo hasta [fecha de cierre] y se compra directamente en nuestra página web.
+
+Entra a cygnuspilates.com y empieza hoy. Te esperamos en Cygnus.</div></div><div class="note"><b>Producción:</b> Grabación a cámara, 15-20 s, plano medio en el estudio, mirada directa y tono cercano. El descuento se dice en los primeros 3 segundos. Faltan valor de la promo, fechas y quién sale a cámara (CEOs o coach). CTA de pauta: Comprar → web. Se quitó "máximo 5 personas" hasta confirmar cupo por clase.</div>
+        <div class="card-foot"><span class="tag-status">Guion propuesto por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/reel/DRsIf1vkbmi/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card urgent">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/p02.jpg"><source src="cygnus-diciembre-media/refs/p02.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-urg">Urgente</span><span class="tag tag-reel">Reel 9:16 + 4:5 (pauta)</span></div></div>
+        <div class="card-title">Black Friday · invitación indirecta</div>
+        <div class="card-desc">Video sin persona hablando a cámara (referencia Curva Studio): tomas del estudio y de clase con buena luz y textos en pantalla. La promo se cuenta con los textos y el copy.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Ambas sedes · Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Viernes 27-nov (fechas exactas de la promo por definir)</span></div><div class="row"><span class="k">Campaña</span><span class="v">Black Friday · compra en sitio web (cygnuspilates.com)</span></div></div>
+        <div class="lst"><div class="lst-t">Textos en pantalla</div><ol><li>🔥 Black Friday en Cygnus</li><li>Tu plan mensual con [valor de la promo]</li><li>También en la membresía</li><li>Pilates Reformer · Barre · Wunda · HIIT</li><li>Solo hasta [fecha de cierre]</li><li>Compra en cygnuspilates.com</li></ol></div><div class="note"><b>Producción:</b> Tomas de 1-2 s cada una: reformer en movimiento, clase de Barre, detalles del estudio, luz cálida. Un texto por toma, música de Meta. Se graba en la misma jornada del video directo. Faltan valor de la promo y fecha de cierre.</div><div class="note"><b>Copy sugerido:</b> 🔥 Llegó el Black Friday de Cygnus. Tus planes mensuales y la membresía tienen [valor de la promo] para que empieces a moverte con nosotras. Compra tu plan en cygnuspilates.com antes del [fecha de cierre] y asegura tu lugar 🤍 #BlackFriday #CygnusWellnessHouse #PilatesReformer #PilatesMedellín</div>
+        <div class="card-foot"><span class="tag-status">Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/reels/DfSAIKIieYp/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-head">
+    <div class="eyebrow">Plus</div>
+    <h2>Piezas adicionales</h2>
+    <p>Fuera de las 14 piezas del mes</p>
+  </div>
+  <div class="divider"></div>
+  <div class="grid">
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><div class="carousel"><div class="slide active"><img src="cygnus-diciembre-media/refs/d04_1.png" alt="" loading="lazy"></div><div class="slide"><img src="cygnus-diciembre-media/refs/d04_2.png" alt="" loading="lazy"></div></div></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">01</span><div class="tags"><span class="tag tag-carrusel">Carrusel 1:1</span></div></div>
+        <div class="card-title">Carrusel · Así es la date navideña</div>
+        <div class="card-desc">Carrusel que explica el plan paso a paso (referencia Gina’s Flowers): de la clase al arbolito y al brunch.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Wellness House · El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Semana del 30-nov</span></div></div>
+        <div class="lst"><div class="lst-t">Slides</div><ol><li><b>Portada</b> · Christmas date idea 🎄 Tu plan navideño con amigas en Cygnus</li><li><b>1 · La clase</b> · Pilates, Barre o Wunda para empezar el día moviéndote</li><li><b>2 · El taller</b> · Arma y decora tu propio arbolito con todo el kit incluido</li><li><b>3 · El brunch</b> · Tu cajita navideña lista: sándwich de jamón, queso y espinaca, parfait o fruta y mini Hatsu</li><li><b>Fechas y turnos</b> · Sábados 5, 12 y 19 de diciembre · 7:00, 9:00 y 11:00 a.m.</li><li><b>CTA</b> · Cupos limitados · Reserva por WhatsApp</li></ol></div><div class="note"><b>Producción:</b> Escenas de clase, amigas y brunch generadas con Higgsfield (solo hay tomas reales del arbolito). Faltan precio final, canal de reserva y confirmar el 19-dic (cae en el receso).</div><div class="note">Adicional · sin costo. No suma a las 14 piezas del plan.</div><div class="note"><b>Copy sugerido:</b> Christmas date idea 🎄✨ Llega con tus amigas, muévete en una clase de Pilates, Barre o Wunda, decora tu propio arbolito y cierra con un brunch navideño. Sábados de diciembre en Cygnus Wellness House, El Poblado. Reserva tu cupo por WhatsApp 🤍</div>
+        <div class="card-foot"><span class="tag-status">Adicional gratis · Textos propuestos por Claude · por validar</span><a class="card-ref" href="https://www.instagram.com/p/DfiGJgjlLC3/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-media"><span class="media-type">Referencia</span><video controls preload="metadata" playsinline poster="cygnus-diciembre-media/refs/x02.jpg"><source src="cygnus-diciembre-media/refs/x02.mp4" type="video/mp4"></video></div>
+      <div class="card-body">
+        <div class="card-top"><span class="card-num">02</span><div class="tags"><span class="tag tag-reel">Reel 9:16</span></div></div>
+        <div class="card-title">Matemática de chicas</div>
+        <div class="card-desc">Una sola toma de clase en el reformer (referencia PRO Pilates Barcelona) con un texto fijo en letra serif sobre el video. Se arma con tomas YA GRABADAS, sin jornada nueva.</div>
+        
+        <div class="rows"><div class="row"><span class="k">Sede</span><span class="v">Cygnus Laureles y Wellness House El Poblado</span></div><div class="row"><span class="k">Publicar</span><span class="v">Diciembre · fecha por definir</span></div><div class="row"><span class="k">Texto en pantalla</span><span class="v">“Matemática de chicas: si te hace sentir y verte mejor, es una inversión 🤍”</span></div></div>
+        <div class="note"><b>Producción:</b> Adicional · sin costo. No suma a las 14 piezas. Material ya grabado: la referencia es una zancada de pie en el reformer, igual a la toma IMG_0158 (alumna sola con gorro, 13-nov, Wellness House) en Contenido CRUDO CYGNUS/Navidad 13-nov-2026; también sirve otra toma de clase del banco de crudos. NO usar IMG_8006 (encuadre de espaldas). La referencia dice 'no es un gasto, es una inversión': se pasó a afirmativo por la regla de textos de la marca; si Valentina prefiere la frase original, se cambia.</div><div class="note"><b>Copy sugerido:</b> Invertir en tu cuerpo, en tu bienestar y en ese ratito solo para ti 🤍 Y si además sales de clase sintiéndote más fuerte, ligera y con energía, la inversión está más que justificada 🫶🏼 Te esperamos en Cygnus para tu próxima inversión ✨</div>
+        <div class="card-foot"><span class="tag-status">Adicional gratis · texto propuesto por Claude</span><a class="card-ref" href="https://www.instagram.com/p/DdbsDWdMfzB/" target="_blank">Ver referencia →</a></div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<div class="footer">
+  <div class="brand-f">Cygnus</div>
+  Parrilla de contenido · Black Friday + Diciembre 2026
+</div>
+
+<script>
+  document.querySelectorAll('.carousel').forEach(function(car){
+    var slides = car.querySelectorAll('.slide');
+    if (slides.length <= 1) return;
+    var idx = 0;
+
+    var count = document.createElement('div');
+    count.className = 'car-count';
+    car.appendChild(count);
+
+    var prev = document.createElement('button');
+    prev.className = 'car-btn car-prev'; prev.innerHTML = '‹';
+    var next = document.createElement('button');
+    next.className = 'car-btn car-next'; next.innerHTML = '›';
+    car.appendChild(prev); car.appendChild(next);
+
+    var dots = document.createElement('div');
+    dots.className = 'car-dots';
+    slides.forEach(function(){ dots.appendChild(document.createElement('span')); });
+    car.appendChild(dots);
+    var dotEls = dots.querySelectorAll('span');
+
+    function render(){
+      slides.forEach(function(s,i){
+        s.classList.toggle('active', i === idx);
+        if (i !== idx) { var v = s.querySelector('video'); if (v) v.pause(); }
+      });
+      dotEls.forEach(function(d,i){ d.classList.toggle('on', i === idx); });
+      count.textContent = (idx+1) + ' / ' + slides.length;
+    }
+    prev.addEventListener('click', function(){ idx = (idx - 1 + slides.length) % slides.length; render(); });
+    next.addEventListener('click', function(){ idx = (idx + 1) % slides.length; render(); });
+    render();
+  });
+</script>
+</body>
+</html>
