@@ -323,19 +323,24 @@
     },
     {
       "id": "d14",
-      "nombre": "Así cuidamos cada detalle · limpieza",
+      "nombre": "Beneficios de ser parte de la comunidad Cygnus",
       "formato": "Reel 9:16",
       "sede": "Cygnus Laureles y Wellness House El Poblado",
       "publicar": "Diciembre · fecha por definir",
-      "descripcion": "Video tipo ASMR de limpieza (referencia Tone Studio): primeros planos de las máquinas mientras se limpian, sonido real de la limpieza y un texto pequeño centrado. Muestra que cada espacio está listo e impecable para la siguiente clase.",
-      "texto_pantalla": "Tu próxima clase, impecable para ti ✨",
-      "copy_sugerido": "Tu bienestar está en cada detalle ✨ Limpiamos y desinfectamos cada máquina para que llegues a un espacio fresco, cómodo e impecable en tu próxima clase 🤍",
-      "notas": "Tomas muy cerradas y lentas: paño o atomizador sobre el reformer (carro, apoyacabezas, barra de pies, correas), limpieza de la Wunda y de los accesorios (pelotas, bandas, mancuernas), plano final del salón ordenado e impecable. Sonido ambiente real (ASMR), sin música o muy suave. La referencia usa vapor: confirmar el método REAL de Cygnus (el vapor puede dañar el tapizado, varios comentarios de la referencia lo señalan) y cada cuánto limpian; el copy solo dice lo que de verdad hacen.",
-      "referencia": "https://www.instagram.com/p/DfelsTqoLwj/",
-      "estado": "Textos propuestos por Claude · por validar",
-      "media": [
-        "refs/d14.mp4"
-      ]
+      "descripcion": "Video indirecto, sin persona hablando a cámara: tomas cálidas de los detalles que disfruta la comunidad Cygnus antes y después de clase. Café recién servido, aromática, chocolatinas y agua saborizada, con alumnas tomándolos y compartiendo. Los beneficios se cuentan con textos en pantalla.",
+      "textos": [
+        "Ser parte de Cygnus también se siente así 🤍",
+        "Tu café antes de clase ☕",
+        "Una aromática para cerrar 🌿",
+        "Chocolatinas para el antojo 🍫",
+        "Agua saborizada para hidratarte 💧",
+        "Beneficios de nuestra comunidad Cygnus"
+      ],
+      "copy_sugerido": "Ser parte de la comunidad Cygnus va más allá de la clase 🤍 Llegas, te sirves un café, cierras con una aromática, te das el gusto de una chocolatina y te hidratas con agua saborizada. Pequeños detalles que hacen que cada visita se sienta como en casa ☕🌿 #CygnusWellnessHouse #PilatesMedellín #ComunidadCygnus",
+      "notas": "Tomas de 1-2 s cada una: café sirviéndose, taza en mano, aromática con vapor, mano tomando una chocolatina, jarra de agua saborizada con fruta, alumnas en ropa de clase conversando con su bebida. Un texto por toma, luz cálida, música suave. Confirmar en qué sedes está cada beneficio y si es para todos los planes o solo para miembros.",
+      "referencia": "Idea propia (sin referencia de la marca)",
+      "estado": "Idea propia de Claude · por validar",
+      "media": []
     }
   ],
   "pauta": [
